@@ -14,7 +14,7 @@ export default function ComponentCard({
   return (
     <div className="rounded-2xl border border-zinc-800 overflow-hidden">
 
-      <div className="h-72 relative">
+      <div className="h-72 relative overflow-hidden">
         {children}
       </div>
 

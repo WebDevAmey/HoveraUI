@@ -1,10 +1,14 @@
+import Link from "next/link";
+
 interface CardProps {
   title: string;
+  slug: string;
   children: React.ReactNode;
 }
 
 export default function ComponentCard({
   title,
+  slug,
   children,
 }: CardProps) {
   return (
@@ -14,8 +18,15 @@ export default function ComponentCard({
         {children}
       </div>
 
-      <div className="p-4">
+      <div className="p-4 flex items-center justify-between">
         <h3>{title}</h3>
+
+        <Link
+          href={`/preview/${slug}`}
+          className="text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          Preview →
+        </Link>
       </div>
 
     </div>

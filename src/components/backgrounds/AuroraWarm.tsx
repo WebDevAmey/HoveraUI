@@ -1,4 +1,4 @@
-export default function Aurora() {
+export default function AuroraWarm() {
   return (
     <div className="relative h-screen overflow-hidden bg-black">
 

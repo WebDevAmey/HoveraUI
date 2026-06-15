@@ -14,50 +14,195 @@ export const backgrounds = [
     name: "Aurora",
     slug: "aurora",
     component: Aurora,
+    code: `<div className="relative h-screen overflow-hidden bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(circle at 20% 20%, rgba(124,58,237,.6), transparent 40%)",
+    }}
+  />
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(circle at 80% 80%, rgba(6,182,212,.6), transparent 40%)",
+    }}
+  />
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(circle at center, transparent, rgba(0,0,0,.8))",
+    }}
+  />
+</div>`,
   },
   {
     name: "Aurora Warm",
     slug: "aurora-warm",
     component: AuroraWarm,
+    code: `<div className="relative h-screen overflow-hidden bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(circle at 20% 20%, rgba(124,58,237,.6), transparent 40%)",
+    }}
+  />
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(circle at 80% 80%, rgba(124, 50, 18, 0.6), transparent 40%)",
+    }}
+  />
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(circle at center, transparent, rgba(0,0,0,.8))",
+    }}
+  />
+</div>`,
   },
   {
     name: "Spotlight",
     slug: "spotlight",
     component: Spotlight,
+    code: `<div className="relative h-screen bg-black overflow-hidden">
+  <div
+    className="absolute inset-0"
+    style={{
+      background: \`
+        radial-gradient(
+          80% 80% at 50% 0%,
+          rgba(168,85,247,.4),
+          transparent 60%
+        ),
+        radial-gradient(
+          80% 80% at 50% 100%,
+          rgba(59,130,246,.4),
+          transparent 60%
+        )
+      \`,
+    }}
+  />
+</div>`,
   },
   {
     name: "Spotlight 2",
     slug: "spotlight-2",
     component: Spotlight2,
+    code: `<div className="relative h-screen bg-black overflow-hidden">
+  <div
+    className="absolute inset-0"
+    style={{
+      background: \`
+        radial-gradient(
+          80% 80% at 0% 50%,
+          rgba(168,85,247,.4),
+          transparent 60%
+        ),
+        radial-gradient(
+          80% 80% at 100% 50%,
+          rgba(59,130,246,.4),
+          transparent 60%
+        )
+      \`,
+    }}
+  />
+</div>`,
   },
   {
     name: "Dot Grid",
     slug: "dot-grid",
     component: DotPattern,
+    code: `<div className="relative h-screen bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage:
+        "radial-gradient(rgba(255,255,255,.3) 1px, transparent 1px)",
+      backgroundSize: "30px 30px",
+    }}
+  />
+</div>`,
   },
   {
     name: "Dot Matrix",
     slug: "dot-matrix",
     component: Dotmatrix,
+    code: `<div className="relative h-screen bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage:
+        "radial-gradient(rgba(255,255,255,.25) 1px, transparent 1px)",
+      backgroundSize: "24px 24px",
+    }}
+  />
+</div>`,
   },
   {
     name: "Grid Pattern",
     slug: "grid-pattern",
     component: GridPattern,
+    code: `<div className="relative h-screen bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: \`
+linear-gradient(rgba(168,85,247,.15) 1px, transparent 1px),
+linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
+\`,
+      backgroundSize: "40px 40px",
+    }}
+  />
+</div>`,
   },
   {
     name: "Square Pattern",
     slug: "square-pattern",
     component: SquarePattern,
+    code: `<div className="relative h-screen bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: \`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='6' height='6' fill='rgba(255,255,255,0.2)'/%3E%3C/svg%3E")\`,
+      backgroundRepeat: "repeat",
+    }}
+  />
+</div>`,
   },
   {
     name: "Diagonal Lines",
     slug: "diagonal-lines",
     component: DiagonalLines,
+    code: `<div className="relative h-screen bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: \`
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,.1) 0px,
+          rgba(255,255,255,.1) 2px,
+          transparent 2px,
+          transparent 30px
+        )
+      \`,
+    }}
+  />
+</div>`,
   },
   {
     name: "Mesh Gradient",
     slug: "mesh-gradient",
     component: MeshGradient,
+    code: `<div className="relative h-screen bg-black overflow-hidden">
+  <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-purple-500 blur-[150px] opacity-40" />
+  <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-cyan-500 blur-[150px] opacity-40" />
+</div>`,
   },
 ];

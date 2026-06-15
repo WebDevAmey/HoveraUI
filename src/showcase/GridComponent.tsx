@@ -20,6 +20,7 @@ export default function ComponentGrid() {
             key={item.name}
             title={item.name}
             slug={item.slug}
+            code={item.code}
           >
             <Preview />
           </ComponentCard>

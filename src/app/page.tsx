@@ -2,22 +2,31 @@ import Hero from "@/components/layout/Hero";
 import ComponentGrid from "@/showcase/GridComponent";
 import HomeShell from "@/components/layout/HomeShell";
 import PreviewBackground from "@/components/PreviewBackground";
+import Navbar from "@/components/Navbar";
+import CommandPalette from "@/components/CommandPalette";
+import CategoryFilter from "@/components/CategoryFilter";
+import { Toaster } from "@/components/Toast";
 import { PreviewProvider } from "@/context/PreviewContext";
+import { AppProvider } from "@/context/AppContext";
 
 export default function Home() {
   return (
-    <PreviewProvider>
-      <PreviewBackground />
+    <AppProvider>
+      <PreviewProvider>
+        <PreviewBackground />
+        <Toaster />
+        <CommandPalette />
 
-      <HomeShell>
-        <Hero />
+        <HomeShell>
+          <Navbar />
+          <CategoryFilter />
 
-        <section className="max-w-7xl mx-auto px-6">
-
-          <ComponentGrid />
-
-        </section>
-      </HomeShell>
-    </PreviewProvider>
+          <div className="mx-auto max-w-7xl px-6 pb-20">
+            <Hero />
+            <ComponentGrid />
+          </div>
+        </HomeShell>
+      </PreviewProvider>
+    </AppProvider>
   );
 }

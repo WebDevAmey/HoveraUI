@@ -7,8 +7,10 @@ export default function HomeShell({ children }: { children: React.ReactNode }) {
 
   return (
     <main
-      className={`relative z-10 min-h-screen text-white transition-colors ${
-        activeSlug ? "bg-black/60 backdrop-blur-sm" : "bg-black"
+      className={`relative z-10 min-h-screen text-zinc-900 transition-colors duration-300 dark:text-zinc-50 ${
+        activeSlug
+          ? "bg-zinc-950/60 backdrop-blur-sm"
+          : "bg-zinc-50 dark:bg-zinc-950"
       }`}
     >
       {children}

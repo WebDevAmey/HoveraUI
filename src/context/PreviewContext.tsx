@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 interface PreviewContextType {
   activeSlug: string | null;
@@ -11,6 +11,16 @@ const PreviewContext = createContext<PreviewContextType | null>(null);
 
 export function PreviewProvider({ children }: { children: React.ReactNode }) {
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && activeSlug !== null) {
+        setActiveSlug(null);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [activeSlug]);
 
   return (
     <PreviewContext.Provider value={{ activeSlug, setActiveSlug }}>

@@ -1,3 +1,5 @@
+import type React from "react";
+import type { BackgroundItem } from "@/types";
 import Aurora from "@/components/backgrounds/Aurora";
 import AuroraWarm from "@/components/backgrounds/AuroraWarm";
 import Spotlight from "@/components/backgrounds/Spotlight";
@@ -9,11 +11,12 @@ import SquarePattern from "@/components/backgrounds/SquarePattern";
 import DiagonalLines from "@/components/backgrounds/DiagonalLines";
 import MeshGradient from "@/components/backgrounds/MeshGradient";
 
-export const backgrounds = [
+export const backgrounds: BackgroundItem[] = [
   {
     name: "Aurora",
     slug: "aurora",
-    component: Aurora,
+    category: "gradient",
+    component: Aurora as React.ComponentType,
     code: `<div className="relative h-screen overflow-hidden bg-black">
   <div
     className="absolute inset-0"
@@ -41,7 +44,8 @@ export const backgrounds = [
   {
     name: "Aurora Warm",
     slug: "aurora-warm",
-    component: AuroraWarm,
+    category: "gradient",
+    component: AuroraWarm as React.ComponentType,
     code: `<div className="relative h-screen overflow-hidden bg-black">
   <div
     className="absolute inset-0"
@@ -69,7 +73,8 @@ export const backgrounds = [
   {
     name: "Spotlight",
     slug: "spotlight",
-    component: Spotlight,
+    category: "gradient",
+    component: Spotlight as React.ComponentType,
     code: `<div className="relative h-screen bg-black overflow-hidden">
   <div
     className="absolute inset-0"
@@ -93,7 +98,8 @@ export const backgrounds = [
   {
     name: "Spotlight 2",
     slug: "spotlight-2",
-    component: Spotlight2,
+    category: "gradient",
+    component: Spotlight2 as React.ComponentType,
     code: `<div className="relative h-screen bg-black overflow-hidden">
   <div
     className="absolute inset-0"
@@ -117,7 +123,8 @@ export const backgrounds = [
   {
     name: "Dot Grid",
     slug: "dot-grid",
-    component: DotPattern,
+    category: "pattern",
+    component: DotPattern as React.ComponentType,
     code: `<div className="relative h-screen bg-black">
   <div
     className="absolute inset-0"
@@ -132,7 +139,8 @@ export const backgrounds = [
   {
     name: "Dot Matrix",
     slug: "dot-matrix",
-    component: Dotmatrix,
+    category: "pattern",
+    component: Dotmatrix as React.ComponentType,
     code: `<div className="relative h-screen bg-black">
   <div
     className="absolute inset-0"
@@ -147,7 +155,8 @@ export const backgrounds = [
   {
     name: "Grid Pattern",
     slug: "grid-pattern",
-    component: GridPattern,
+    category: "pattern",
+    component: GridPattern as React.ComponentType,
     code: `<div className="relative h-screen bg-black">
   <div
     className="absolute inset-0"
@@ -164,7 +173,8 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
   {
     name: "Square Pattern",
     slug: "square-pattern",
-    component: SquarePattern,
+    category: "pattern",
+    component: SquarePattern as React.ComponentType,
     code: `<div className="relative h-screen bg-black">
   <div
     className="absolute inset-0"
@@ -178,7 +188,8 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
   {
     name: "Diagonal Lines",
     slug: "diagonal-lines",
-    component: DiagonalLines,
+    category: "pattern",
+    component: DiagonalLines as React.ComponentType,
     code: `<div className="relative h-screen bg-black">
   <div
     className="absolute inset-0"
@@ -199,7 +210,8 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
   {
     name: "Mesh Gradient",
     slug: "mesh-gradient",
-    component: MeshGradient,
+    category: "gradient",
+    component: MeshGradient as React.ComponentType,
     code: `<div className="relative h-screen bg-black overflow-hidden">
   <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-purple-500 blur-[150px] opacity-40" />
   <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-cyan-500 blur-[150px] opacity-40" />

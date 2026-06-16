@@ -1,7 +1,5 @@
 @import "tailwindcss";
-
-/* Enable class-based dark: utilities for next-themes */
-@custom-variant dark (&:is(.dark *));
+@config "../../tailwind.config.js";
 
 @theme inline {
   --font-sans: var(--font-geist-sans);

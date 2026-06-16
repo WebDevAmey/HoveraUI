@@ -21,7 +21,7 @@ export default function PreviewBackground() {
 
   return (
     <div
-      className="fixed inset-0 z-0"
+      className="fixed inset-0 z-[60]"
       role="dialog"
       aria-modal="true"
       aria-label={`Full-screen preview: ${item.name}`}

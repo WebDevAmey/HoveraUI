@@ -1,5 +1,5 @@
 import Hero from "@/components/layout/Hero";
-import ComponentGrid from "@/showcase/GridComponent";
+import Grid from "@/components/Grid";
 import HomeShell from "@/components/layout/HomeShell";
 import Sidebar from "@/components/layout/Sidebar";
 import PreviewBackground from "@/components/PreviewBackground";
@@ -22,7 +22,7 @@ export default function Home() {
           <HomeShell>
             <div className="mx-auto max-w-5xl px-6 pb-20">
               <Hero />
-              <ComponentGrid />
+              <Grid />
             </div>
           </HomeShell>
         </div>

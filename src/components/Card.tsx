@@ -13,21 +13,14 @@ interface CardProps {
   children: React.ReactNode;
 }
 
-export default function ComponentCard({
-  title,
-  slug,
-  code,
-  category,
-  stagger,
-  children,
-}: CardProps) {
+export default function Card({ title, slug, code, category, stagger, children }: CardProps) {
   const { setActiveSlug } = usePreview();
   const { toggleFavorite, isFavorite } = useApp();
   const favorited = isFavorite(slug);
 
   return (
     <article
-      className="animate-fade-up group overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-900/40 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-700 hover:shadow-xl hover:shadow-black/40"
+      className="animate-fade-up group overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-200/60 dark:border-zinc-800/70 dark:bg-zinc-900/40 dark:hover:border-zinc-700 dark:hover:shadow-black/40"
       style={{ "--stagger": `${stagger * 55}ms` } as React.CSSProperties}
       aria-label={`${title} pattern`}
     >
@@ -35,7 +28,7 @@ export default function ComponentCard({
       <div className="relative h-52 overflow-hidden">
         {children}
 
-        {/* Hover overlay — hidden from screen readers, activated by mouse/touch */}
+        {/* Hover overlay */}
         <div
           className="absolute inset-0 flex items-end justify-center gap-2 pb-4 opacity-0 transition-all duration-200 group-hover:bg-black/50 group-hover:opacity-100"
           aria-hidden="true"
@@ -60,11 +53,9 @@ export default function ComponentCard({
           className={`absolute right-2.5 top-2.5 flex h-8 w-8 items-center justify-center rounded-full border bg-black/50 backdrop-blur transition-all duration-200 ${
             favorited
               ? "border-rose-500/60 text-rose-400 opacity-100"
-              : "border-white/20 text-white/50 opacity-0 group-hover:opacity-100 hover:border-rose-400/50 hover:text-rose-400"
+              : "border-white/20 text-white/60 opacity-0 group-hover:opacity-100 hover:border-rose-400/50 hover:text-rose-400"
           }`}
-          aria-label={
-            favorited ? `Remove ${title} from favorites` : `Add ${title} to favorites`
-          }
+          aria-label={favorited ? `Remove ${title} from favorites` : `Add ${title} to favorites`}
           aria-pressed={favorited}
         >
           <svg
@@ -85,23 +76,20 @@ export default function ComponentCard({
 
       {/* Card footer */}
       <div className="flex items-center justify-between px-4 py-3">
-        <div className="flex items-center gap-2">
-          <h3 className="text-sm font-medium text-zinc-100">{title}</h3>
-        </div>
+        <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{title}</h3>
         <div className="flex items-center gap-2">
           <span
             className={`rounded-full px-2 py-0.5 text-[11px] font-medium capitalize ${
               category === "gradient"
-                ? "bg-violet-500/15 text-violet-400"
-                : "bg-blue-500/15 text-blue-400"
+                ? "bg-violet-500/10 text-violet-600 dark:bg-violet-500/15 dark:text-violet-400"
+                : "bg-blue-500/10 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400"
             }`}
           >
             {category}
           </span>
-          {/* Accessible action buttons in footer for keyboard users */}
           <button
             onClick={() => setActiveSlug(slug)}
-            className="rounded-md px-2 py-1 text-xs text-zinc-500 hover:bg-zinc-800 hover:text-zinc-300 transition-colors"
+            className="rounded-md px-2 py-1 text-xs text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
             aria-label={`Preview ${title}`}
           >
             Preview

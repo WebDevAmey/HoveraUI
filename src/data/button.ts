@@ -9,7 +9,7 @@ export const buttons: ButtonItem[] = [
     name: "Glow Button",
     slug: "glow-button",
     category: "primary",
-    component: GlowButton as React.ComponentType,
+    component: GlowButton as React.ComponentType<{ isHovered?: boolean }>,
     code: `<button className="rounded-xl bg-violet-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.8)]">
   Glow Button
 </button>`,

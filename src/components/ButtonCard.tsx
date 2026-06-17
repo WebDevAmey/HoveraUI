@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import CopyButton from "@/components/CopyButton";
 import type { ButtonItem } from "@/types";
 
@@ -8,18 +9,20 @@ interface ButtonCardProps extends ButtonItem {
 }
 
 export default function ButtonCard({ name, category, component: Component, code, stagger }: ButtonCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <article
-      className="group animate-fade-up rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-950"
+      className="animate-fade-up rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-950"
       style={{ "--stagger": `${stagger * 55}ms` } as React.CSSProperties}
       aria-label={`${name} button`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Preview — button always visible, fully interactive */}
       <div className="flex h-52 items-center justify-center rounded-t-2xl bg-zinc-50 p-8 dark:bg-zinc-950">
-        <Component />
+        <Component isHovered={isHovered} />
       </div>
 
-      {/* Footer */}
       <div className="flex items-center justify-between border-t border-zinc-100 px-4 py-3 dark:border-zinc-800">
         <div className="flex items-center gap-2">
           <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{name}</h3>

@@ -14,6 +14,6 @@ export interface ButtonItem {
   name: string;
   slug: string;
   category: string;
-  component: React.ComponentType;
+  component: React.ComponentType<{ isHovered?: boolean }>;
   code: string;
 }

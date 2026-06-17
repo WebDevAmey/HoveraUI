@@ -30,6 +30,16 @@ body {
   border-radius: 4px;
 }
 
+/* Button card hover effects */
+.btn-card:hover .btn-glow {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.8);
+}
+
+.btn-card:hover .btn-border-reveal {
+  border-color: white;
+}
+
 /* Keyframes */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }

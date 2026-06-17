@@ -7,6 +7,8 @@ import Card from "@/components/Card";
 export default function Grid() {
   const { category, favorites, searchQuery } = useApp();
 
+  if (category === "buttons") return null;
+
   const filtered = backgrounds.filter((bg) => {
     const matchesSearch = bg.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCat =

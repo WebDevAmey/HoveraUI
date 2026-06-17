@@ -7,10 +7,10 @@ interface ButtonCardProps extends ButtonItem {
   stagger: number;
 }
 
-export default function ButtonCard({ name, slug, category, component: Component, code, stagger }: ButtonCardProps) {
+export default function ButtonCard({ name, category, component: Component, code, stagger }: ButtonCardProps) {
   return (
     <article
-      className="animate-fade-up rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-950"
+      className="group animate-fade-up rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-950"
       style={{ "--stagger": `${stagger * 55}ms` } as React.CSSProperties}
       aria-label={`${name} button`}
     >

@@ -11,6 +11,8 @@ import NewButton from "@/components/buttons/NewButton";
 import LuminanceFlux from "@/components/buttons/LuminanceFlux";
 import FrostedGlass from "@/components/buttons/FrostedGlass";
 import Neumorphic from "@/components/buttons/Neumorphic";
+import ReadMore from "@/components/buttons/ReadMore";
+import ShimmerSwipe from "@/components/buttons/ShimmerSwipe";
 
 export const buttons: ButtonItem[] = [
   {
@@ -126,6 +128,41 @@ active:shadow-[inset_4px_4px_10px_rgba(0,0,0,0.1),inset_-4px_-4px_10px_rgba(255,
 transition">
   Neumorphic
 </button>`
-  }
+  } ,
+  {
+    name: " Read More Button",
+    slug: "read-more-button",
+    category: "primary",
+    component: ReadMore as React.ComponentType,
+    code: ` <button className="group relative px-8 py-3 rounded-full text-white font-semibold 
+    bg-white/10 backdrop-blur-xl border border-white/20
+    shadow-[0_0_30px_rgba(255,0,150,0.6)] 
+    overflow-hidden">
+
+    <span className="absolute inset-0 bg-pink-500 opacity-30 blur-2xl group-hover:blur-3xl transition duration-500"></span>
+
+    <span className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent 
+        translate-x-[-20%] group-hover:translate-x-[20%]
+        transition duration-700 ease-out"></span>
+
+    <span className="relative z-10">Read More</span>
+</button>`
+  } ,
+
+  {
+    name: " Shimmer Swipe Button",
+    slug: "shimmer-swipe-button",
+    category: "primary",
+    component: ShimmerSwipe as React.ComponentType,
+    code: `<button className="relative px-10 py-4 rounded-xl bg-indigo-600 text-white font-semibold overflow-hidden group shadow-lg hover:shadow-indigo-500/40 transition hover:scale-105">
+
+  
+  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent
+               -translate-x-full group-hover:translate-x-full
+               transition duration-700 ease-out"></span>
+
+  <span className="relative z-10">Shimmer Swipe</span>
+</button>`
+  } 
 
 ];

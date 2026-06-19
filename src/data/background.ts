@@ -12,6 +12,8 @@ import DiagonalLines from "@/components/backgrounds/DiagonalLines";
 import MeshGradient from "@/components/backgrounds/MeshGradient";
 import Spotlight3 from "@/components/backgrounds/Spotlight3";
 import Spotlight4 from "@/components/backgrounds/Spotlight4";
+import Spotlight5 from "@/components/backgrounds/Spotlight5";
+import Spotlight6 from "@/components/backgrounds/Spotlight6";
 
 export const backgrounds: BackgroundItem[] = [
   {
@@ -251,6 +253,46 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
       background: \`
         radial-gradient(
           80% 80% at 100% 50%,
+          rgba(168,85,247,.4),
+          transparent 60%
+        )
+      \`,
+    }}
+  />
+</div>`,
+  } ,
+  {
+    name: "Spotlight 5",
+    slug: "spotlight-5",
+    category: "gradient",
+    component: Spotlight5 as React.ComponentType,
+    code: `<div className="relative h-screen bg-black overflow-hidden">
+  <div
+    className="absolute inset-0"
+    style={{
+      background: \`
+        radial-gradient(
+          80% 80% at 0% 50%,
+          rgba(168,85,247,.4),
+          transparent 60%
+        )
+      \`,
+    }}
+  />
+</div>`,
+  } ,
+  {
+    name: "Spotlight 6",
+    slug: "spotlight-6",
+    category: "gradient",
+    component: Spotlight6 as React.ComponentType,
+    code: `<div className="relative h-screen bg-black overflow-hidden">
+  <div
+    className="absolute inset-0"
+    style={{
+      background: \`
+        radial-gradient(
+          80% 80% at 50% 100%,
           rgba(168,85,247,.4),
           transparent 60%
         )

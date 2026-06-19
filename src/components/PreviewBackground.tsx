@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { backgrounds } from "@/data/background";
 import { usePreview } from "@/context/PreviewContext";
 import CopyButton from "@/components/CopyButton";
@@ -11,11 +11,12 @@ export default function PreviewBackground() {
 
   const item = backgrounds.find((bg) => bg.slug === activeSlug);
 
-  useEffect(() => {
-    if (!item) setShowCode(false);
-  }, [item]);
-
   if (!item) return null;
+
+  const close = () => {
+    setActiveSlug(null);
+    setShowCode(false);
+  };
 
   const Background = item.component;
 
@@ -49,7 +50,7 @@ export default function PreviewBackground() {
           <div className="mx-1 h-4 w-px bg-white/20" aria-hidden="true" />
 
           <button
-            onClick={() => setActiveSlug(null)}
+            onClick={close}
             className="rounded-full px-3 py-1 text-xs text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             aria-label="Close preview"
           >

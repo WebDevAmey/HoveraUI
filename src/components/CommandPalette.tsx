@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { usePreview } from "@/context/PreviewContext";
 import { backgrounds } from "@/data/background";
@@ -16,26 +16,23 @@ export default function CommandPalette() {
     bg.name.toLowerCase().includes(query.toLowerCase())
   );
 
+  const open = useCallback(() => {
+    setQuery("");
+    setActiveIndex(0);
+    setCommandOpen(true);
+    setTimeout(() => inputRef.current?.focus(), 30);
+  }, [setCommandOpen]);
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        setCommandOpen(true);
+        open();
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [setCommandOpen]);
-
-  useEffect(() => {
-    if (isCommandOpen) {
-      setQuery("");
-      setActiveIndex(0);
-      setTimeout(() => inputRef.current?.focus(), 30);
-    }
-  }, [isCommandOpen]);
-
-  useEffect(() => setActiveIndex(0), [query]);
+  }, [open]);
 
   const close = () => setCommandOpen(false);
 
@@ -86,7 +83,10 @@ export default function CommandPalette() {
           <input
             ref={inputRef}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setActiveIndex(0);
+            }}
             onKeyDown={handleKey}
             placeholder="Search patterns…"
             className="flex-1 bg-transparent text-sm text-zinc-900 placeholder-zinc-400 outline-none dark:text-white dark:placeholder-zinc-500"

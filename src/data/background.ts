@@ -10,6 +10,8 @@ import GridPattern from "@/components/backgrounds/GridPattern";
 import SquarePattern from "@/components/backgrounds/SquarePattern";
 import DiagonalLines from "@/components/backgrounds/DiagonalLines";
 import MeshGradient from "@/components/backgrounds/MeshGradient";
+import Spotlight3 from "@/components/backgrounds/Spotlight3";
+import Spotlight4 from "@/components/backgrounds/Spotlight4";
 
 export const backgrounds: BackgroundItem[] = [
   {
@@ -217,4 +219,44 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
   <div className="absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-cyan-500 blur-[150px] opacity-40" />
 </div>`,
   },
+  {
+    name: "Spotlight 3",
+    slug: "spotlight-3",
+    category: "gradient",
+    component: Spotlight3 as React.ComponentType,
+    code: `<div className="relative h-screen bg-black overflow-hidden">
+  <div
+    className="absolute inset-0"
+    style={{
+      background: \`
+        radial-gradient(
+          80% 80% at 0% 50%,
+          rgba(168,85,247,.4),
+          transparent 60%
+        )
+      \`,
+    }}
+  />
+</div>`,
+  } ,
+  {
+    name: "Spotlight 4",
+    slug: "spotlight-4",
+    category: "gradient",
+    component: Spotlight4 as React.ComponentType,
+    code: `<div className="relative h-screen bg-black overflow-hidden">
+  <div
+    className="absolute inset-0"
+    style={{
+      background: \`
+        radial-gradient(
+          80% 80% at 100% 50%,
+          rgba(168,85,247,.4),
+          transparent 60%
+        )
+      \`,
+    }}
+  />
+</div>`,
+  }
 ];

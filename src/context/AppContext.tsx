@@ -33,6 +33,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const stored = localStorage.getItem("pl:favorites");
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing state from localStorage, an external system
       if (stored) setFavorites(JSON.parse(stored));
     } catch {
       // ignore

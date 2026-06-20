@@ -15,14 +15,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "BackLab — CSS Background Patterns",
-    template: "%s | BackLab",
+    default: "Hovera UI — CSS Background Patterns",
+    template: "%s | Hovera UI",
   },
   description:
     "A curated library of production-ready CSS and Tailwind background patterns. Preview live, copy the code, drop it in your project.",
   metadataBase: new URL("https://backlab.dev"),
   openGraph: {
-    title: "BackLab — CSS Background Patterns",
+    title: "Hovera UI — CSS Background Patterns",
     description:
       "Preview and copy beautiful CSS background patterns for your next project.",
     type: "website",

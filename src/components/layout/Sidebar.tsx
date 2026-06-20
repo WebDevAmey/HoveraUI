@@ -33,9 +33,9 @@ export default function Sidebar() {
         </span>
         <div className="flex flex-col">
           <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-base font-bold leading-tight text-transparent">
-            BackLab
+            Hovera UI
           </span>
-          <span className="text-[10px] text-zinc-500">UI pattern library</span>
+          <span className="text-[10px] text-zinc-500">UI library</span>
         </div>
       </div>
 

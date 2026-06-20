@@ -20,7 +20,7 @@ export async function generateMetadata({
     title: item.name,
     description: `Preview the ${item.name} background — production-ready CSS/Tailwind code, copy and use instantly.`,
     openGraph: {
-      title: `${item.name} | BackLab`,
+      title: `${item.name} | Hovera UI`,
       description: `${item.name} — a production-ready CSS background pattern.`,
       type: "website",
     },

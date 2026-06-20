@@ -1,7 +1,6 @@
 "use client";
 
 import { useApp } from "@/context/AppContext";
-import { usePreview } from "@/context/PreviewContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { backgrounds } from "@/data/background";
 import { buttons } from "@/data/button";
@@ -16,24 +15,6 @@ const FILTER_TABS = [
 
 export default function Sidebar() {
   const { category, setCategory, searchQuery, setSearchQuery, favorites } = useApp();
-  const { setActiveSlug, activeSlug } = usePreview();
-
-  const visibleBgs = backgrounds.filter((bg) => {
-    const matchesSearch = bg.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCat =
-      category === "all" ||
-      (category === "favorites" ? favorites.includes(bg.slug) : bg.category === category);
-    return matchesSearch && matchesCat;
-  });
-
-  const visibleButtons = buttons.filter((btn) => {
-    const matchesSearch = btn.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCat = category === "all" || category === "buttons";
-    return matchesSearch && matchesCat;
-  });
-
-  const gradients = visibleBgs.filter((b) => b.category === "gradient");
-  const patterns = visibleBgs.filter((b) => b.category === "pattern");
 
   function getCount(val: string) {
     if (val === "all") return backgrounds.length + buttons.length;
@@ -41,8 +22,6 @@ export default function Sidebar() {
     if (val === "buttons") return buttons.length;
     return backgrounds.filter((b) => b.category === val).length;
   }
-
-  const totalVisible = visibleBgs.length + visibleButtons.length;
 
   return (
     <aside className="flex h-screen w-64 shrink-0 flex-col bg-[#0d0d12] text-zinc-300">
@@ -127,87 +106,7 @@ export default function Sidebar() {
 
       <div className="mx-4 mb-2 h-px bg-white/10" />
 
-      {/* List */}
-      <nav className="flex-1 overflow-y-auto px-3 pb-3" aria-label="Item list">
-        {totalVisible === 0 && (
-          <p className="px-3 py-8 text-center text-xs text-zinc-500">No results found</p>
-        )}
-
-        {gradients.length > 0 && (
-          <section className="mb-4">
-            <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-              Gradients
-            </p>
-            <div className="space-y-0.5">
-              {gradients.map((bg) => (
-                <button
-                  key={bg.slug}
-                  onClick={() => setActiveSlug(activeSlug === bg.slug ? null : bg.slug)}
-                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-all ${
-                    activeSlug === bg.slug
-                      ? "bg-violet-500/15 text-violet-300 ring-1 ring-violet-500/30"
-                      : "text-zinc-400 hover:translate-x-0.5 hover:bg-white/5 hover:text-zinc-100"
-                  }`}
-                  aria-pressed={activeSlug === bg.slug}
-                >
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-violet-400" aria-hidden="true" />
-                  {bg.name}
-                </button>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {patterns.length > 0 && (
-          <section className="mb-4">
-            <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-              Patterns
-            </p>
-            <div className="space-y-0.5">
-              {patterns.map((bg) => (
-                <button
-                  key={bg.slug}
-                  onClick={() => setActiveSlug(activeSlug === bg.slug ? null : bg.slug)}
-                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-all ${
-                    activeSlug === bg.slug
-                      ? "bg-blue-500/15 text-blue-300 ring-1 ring-blue-500/30"
-                      : "text-zinc-400 hover:translate-x-0.5 hover:bg-white/5 hover:text-zinc-100"
-                  }`}
-                  aria-pressed={activeSlug === bg.slug}
-                >
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-blue-400" aria-hidden="true" />
-                  {bg.name}
-                </button>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {visibleButtons.length > 0 && (
-          <section className="mb-4">
-            <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-              Buttons
-            </p>
-            <div className="space-y-0.5">
-              {visibleButtons.map((btn) => (
-                <button
-                  key={btn.slug}
-                  onClick={() => setActiveSlug(activeSlug === btn.slug ? null : btn.slug)}
-                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-all ${
-                    activeSlug === btn.slug
-                      ? "bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/30"
-                      : "text-zinc-400 hover:translate-x-0.5 hover:bg-white/5 hover:text-zinc-100"
-                  }`}
-                  aria-pressed={activeSlug === btn.slug}
-                >
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" aria-hidden="true" />
-                  {btn.name}
-                </button>
-              ))}
-            </div>
-          </section>
-        )}
-      </nav>
+      <div className="flex-1" />
 
       {/* Footer */}
       <div className="flex items-center justify-between border-t border-white/10 p-4">

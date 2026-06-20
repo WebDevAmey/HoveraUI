@@ -17,6 +17,14 @@ import LinkButton from "@/components/buttons/LinkButton";
 import SlideTextButton from "@/components/buttons/SlideTextButton";
 import GradientLinkButton from "@/components/buttons/GradientLinkButton";
 import UnderlineHover from "@/components/buttons/UnderlineHover";
+import SlideFillButton from "@/components/buttons/SlideFillButton";
+import BlobHoverButton from "@/components/buttons/BlobHoverButton";
+import LiquidFillButton from "@/components/buttons/LiquidFillButton";
+import SplitCurtainButton from "@/components/buttons/SplitCurtainButton";
+import RadialBloomButton from "@/components/buttons/RadialBloomButton";
+import XRayScannerButton from "@/components/buttons/XRayScannerButton";
+import ChamberDoorButton from "@/components/buttons/ChamberDoorButton";
+import ShredderButton from "@/components/buttons/ShredderButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -218,6 +226,97 @@ transition">
   </span>
 </button>`,
     needsLightPreview: true,
+  },
+  {
+    name: "Slide Fill Button",
+    slug: "slide-fill-button",
+    category: "primary",
+    component: SlideFillButton as React.ComponentType,
+    code: `<button className="relative z-10 overflow-hidden rounded border-2 border-black bg-amber-500 px-8 py-3 text-black transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:bg-emerald-500 before:translate-y-full before:transition-transform before:duration-300 hover:text-white hover:before:translate-y-0">
+  Get in touch
+</button>`,
+    needsLightPreview: true,
+  },
+  {
+    name: "Blob Hover Button",
+    slug: "blob-hover-button",
+    category: "primary",
+    component: BlobHoverButton as React.ComponentType,
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-[4px] border border-[#4f4f4f] px-[24px] py-[12px] text-[19px] font-normal text-black transition-all duration-200 ease-in before:absolute before:left-1/2 before:top-[100%] before:z-[-1] before:block before:h-[180%] before:w-[140%] before:-translate-x-1/2 before:scale-x-[1.25] before:scale-y-[1] before:rounded-full before:bg-black/5 before:transition-all before:duration-500 before:delay-100 before:ease-[cubic-bezier(0.55,0,0.1,1)] before:content-[''] after:absolute after:left-[55%] after:top-[180%] after:z-[-1] after:block after:h-[190%] after:w-[160%] after:-translate-x-1/2 after:scale-x-[1.45] after:scale-y-[1] after:rounded-full after:bg-[#39bda7] after:transition-all after:duration-500 after:delay-100 after:ease-[cubic-bezier(0.55,0,0.1,1)] after:content-[''] hover:border-[#39bda7] hover:text-white hover:before:top-[-35%] hover:before:scale-x-[0.8] hover:before:scale-y-[1.3] hover:before:bg-[#39bda7] hover:after:top-[-45%] hover:after:scale-x-[0.8] hover:after:scale-y-[1.3] hover:after:bg-[#39bda7]">
+  Hover Me
+</button>`,
+    needsLightPreview: true,
+  },
+  {
+    name: "Liquid Fill Button",
+    slug: "liquid-fill-button",
+    category: "primary",
+    component: LiquidFillButton as React.ComponentType,
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-indigo-600 bg-transparent px-6 py-3 text-lg font-semibold text-indigo-600 transition-colors duration-300 ease-in-out before:absolute before:left-1/2 before:top-[120%] before:z-[-1] before:h-[300%] before:w-[150%] before:-translate-x-1/2 before:rounded-[40%] before:bg-indigo-400 before:transition-all before:duration-700 before:ease-out before:content-[''] after:absolute after:left-1/2 after:top-[120%] after:z-[-1] after:h-[300%] after:w-[160%] after:-translate-x-1/2 after:rounded-[43%] after:bg-indigo-600 after:transition-all after:duration-500 after:delay-75 after:ease-out after:content-[''] hover:text-white hover:before:top-[-50%] hover:before:rotate-180 hover:after:top-[-50%] hover:after:rotate-[360deg]">
+  Liquid Fill
+</button>`,
+    needsLightPreview: true,
+  },
+  {
+    name: "Split Curtain Button",
+    slug: "split-curtain-button",
+    category: "primary",
+    component: SplitCurtainButton as React.ComponentType,
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-emerald-600 bg-transparent px-6 py-3 text-lg font-semibold text-emerald-600 transition-colors duration-300 before:absolute before:left-0 before:top-0 before:z-[-1] before:h-full before:w-full before:-translate-x-full before:-translate-y-full before:bg-emerald-600 before:transition-transform before:duration-300 before:ease-out before:content-[''] after:absolute after:left-0 after:top-0 after:z-[-1] after:h-full after:w-full after:translate-x-full after:translate-y-full after:bg-emerald-600 after:transition-transform after:duration-300 after:ease-out after:content-[''] hover:text-white hover:before:translate-x-0 hover:before:translate-y-0 hover:after:translate-x-0 hover:after:translate-y-0">
+  Split Curtain
+</button>`,
+    needsLightPreview: true,
+  },
+  {
+    name: "Radial Bloom Button",
+    slug: "radial-bloom-button",
+    category: "primary",
+    component: RadialBloomButton as React.ComponentType,
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-rose-600 bg-transparent px-6 py-3 text-lg font-semibold text-rose-600 transition-colors duration-500 before:absolute before:left-1/2 before:top-1/2 before:z-[-1] before:h-8 before:w-8 before:-translate-x-1/2 before:-translate-y-1/2 before:scale-0 before:rounded-full before:bg-rose-600 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:text-white hover:before:scale-[6]">
+  Radial Bloom
+</button>`,
+    needsLightPreview: true,
+  },
+  {
+    name: "X-Ray Scanner Button",
+    slug: "x-ray-scanner-button",
+    category: "primary",
+    component: XRayScannerButton as React.ComponentType,
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded border-2 border-white bg-neutral-900 px-6 py-3 text-lg font-bold text-white before:absolute before:bottom-0 before:left-0 before:h-0 before:w-full before:bg-white before:mix-blend-difference before:transition-all before:duration-300 before:ease-out before:content-[''] hover:before:h-full">
+  X-RAY SCANNER
+</button>`,
+  },
+  {
+    name: "Chamber Door Button",
+    slug: "chamber-door-button",
+    category: "primary",
+    component: ChamberDoorButton as React.ComponentType,
+    code: `<button className="group relative inline-block h-14 w-48 cursor-pointer bg-transparent [perspective:1000px] [transform-style:preserve-3d]">
+  <div className="absolute inset-0 z-0 rounded bg-cyan-400 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
+
+  <span className="absolute left-0 top-0 z-10 flex h-[50%] w-full origin-top items-end justify-center overflow-hidden border-x-2 border-t-2 border-white bg-neutral-900 font-bold text-white transition-transform duration-300 group-hover:[transform:rotateX(60deg)]">
+    <span className="translate-y-[50%]">OPEN CHAMBER</span>
+  </span>
+
+  <span className="absolute bottom-0 left-0 z-10 flex h-[50%] w-full origin-bottom items-start justify-center overflow-hidden border-x-2 border-b-2 border-white bg-neutral-900 font-bold text-white transition-transform duration-300 group-hover:[transform:rotateX(-60deg)]">
+    <span className="-translate-y-[50%]">OPEN CHAMBER</span>
+  </span>
+</button>`,
+  },
+  {
+    name: "Shredder Button",
+    slug: "shredder-button",
+    category: "primary",
+    component: ShredderButton as React.ComponentType,
+    code: `<button className="group relative inline-block cursor-pointer overflow-hidden rounded border-2 border-neutral-800 bg-neutral-900 px-8 py-3 text-xl font-black tracking-wider text-transparent">
+  SHREDDER
+  <span className="absolute inset-0 flex items-center justify-center bg-neutral-900 text-rose-500 transition-transform duration-300 ease-out [clip-path:polygon(0_0,_100%_0,_100%_33%,_0_33%,_0_66%,_100%_66%,_100%_100%,_0_100%)] group-hover:translate-y-2">
+    SHREDDER
+  </span>
+  <span className="absolute inset-0 flex items-center justify-center bg-neutral-900 text-cyan-400 transition-transform duration-300 ease-out [clip-path:polygon(0_33%,_100%_33%,_100%_66%,_0_66%,_0_100%,_100%_100%)] group-hover:-translate-y-2">
+    SHREDDER
+  </span>
+</button>`,
   }
 
 ];

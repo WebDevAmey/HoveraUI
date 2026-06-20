@@ -45,28 +45,34 @@ export default function Sidebar() {
   const totalVisible = visibleBgs.length + visibleButtons.length;
 
   return (
-    <aside className="flex h-screen w-64 shrink-0 flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+    <aside className="flex h-screen w-64 shrink-0 flex-col bg-[#0d0d12] text-zinc-300">
 
       {/* Logo */}
-      <div className="border-b border-zinc-200 p-5 dark:border-zinc-800">
-        <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-lg font-bold text-transparent">
-          BackLab
+      <div className="flex items-center gap-2.5 p-5">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 text-sm font-bold text-white shadow-[0_0_20px_rgba(168,85,247,0.5)]">
+          B
         </span>
+        <div className="flex flex-col">
+          <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-base font-bold leading-tight text-transparent">
+            BackLab
+          </span>
+          <span className="text-[10px] text-zinc-500">UI pattern library</span>
+        </div>
       </div>
 
       {/* Search */}
-      <div className="border-b border-zinc-200 p-3 dark:border-zinc-800">
-        <div className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="px-4 pb-3">
+        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 transition-colors focus-within:border-violet-500/50 focus-within:bg-white/[0.07]">
           <svg
-            width="13"
-            height="13"
+            width="14"
+            height="14"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="shrink-0 text-zinc-400"
+            className="shrink-0 text-zinc-500"
             aria-hidden="true"
           >
             <circle cx="11" cy="11" r="8" />
@@ -76,13 +82,13 @@ export default function Sidebar() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search…"
-            className="w-full bg-transparent text-sm text-zinc-900 placeholder-zinc-400 outline-none dark:text-zinc-100"
+            className="w-full bg-transparent text-sm text-zinc-100 placeholder-zinc-500 outline-none"
             aria-label="Search"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+              className="text-xs text-zinc-500 hover:text-zinc-300"
               aria-label="Clear search"
             >
               ✕
@@ -92,24 +98,24 @@ export default function Sidebar() {
       </div>
 
       {/* Category filter */}
-      <div className="border-b border-zinc-200 p-3 dark:border-zinc-800">
-        <div className="flex flex-col gap-0.5">
+      <div className="px-3 pb-3">
+        <div className="flex flex-col gap-1">
           {FILTER_TABS.map((tab) => (
             <button
               key={tab.value}
               onClick={() => setCategory(tab.value)}
-              className={`flex items-center justify-between rounded-lg px-3 py-1.5 text-sm transition-colors ${
+              className={`flex items-center justify-between rounded-full px-4 py-2 text-sm font-medium transition-all ${
                 category === tab.value
-                  ? "bg-violet-50 text-violet-700 dark:bg-violet-500/10 dark:text-violet-400"
-                  : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800/60"
+                  ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-[0_0_18px_rgba(168,85,247,0.45)]"
+                  : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
               }`}
             >
               <span>{tab.label}</span>
               <span
-                className={`rounded-full px-1.5 py-0.5 text-xs tabular-nums ${
+                className={`rounded-full px-1.5 py-0.5 text-[10px] tabular-nums ${
                   category === tab.value
-                    ? "bg-violet-100 text-violet-600 dark:bg-violet-500/20 dark:text-violet-300"
-                    : "bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-500"
+                    ? "bg-white/20 text-white"
+                    : "bg-white/5 text-zinc-500"
                 }`}
               >
                 {getCount(tab.value)}
@@ -119,15 +125,17 @@ export default function Sidebar() {
         </div>
       </div>
 
+      <div className="mx-4 mb-2 h-px bg-white/10" />
+
       {/* List */}
-      <nav className="flex-1 overflow-y-auto p-3" aria-label="Item list">
+      <nav className="flex-1 overflow-y-auto px-3 pb-3" aria-label="Item list">
         {totalVisible === 0 && (
-          <p className="px-3 py-8 text-center text-xs text-zinc-400">No results found</p>
+          <p className="px-3 py-8 text-center text-xs text-zinc-500">No results found</p>
         )}
 
         {gradients.length > 0 && (
           <section className="mb-4">
-            <p className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-600">
+            <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
               Gradients
             </p>
             <div className="space-y-0.5">
@@ -135,10 +143,10 @@ export default function Sidebar() {
                 <button
                   key={bg.slug}
                   onClick={() => setActiveSlug(activeSlug === bg.slug ? null : bg.slug)}
-                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-all ${
                     activeSlug === bg.slug
-                      ? "bg-violet-50 text-violet-700 dark:bg-violet-500/10 dark:text-violet-400"
-                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/60"
+                      ? "bg-violet-500/15 text-violet-300 ring-1 ring-violet-500/30"
+                      : "text-zinc-400 hover:translate-x-0.5 hover:bg-white/5 hover:text-zinc-100"
                   }`}
                   aria-pressed={activeSlug === bg.slug}
                 >
@@ -152,7 +160,7 @@ export default function Sidebar() {
 
         {patterns.length > 0 && (
           <section className="mb-4">
-            <p className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-600">
+            <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
               Patterns
             </p>
             <div className="space-y-0.5">
@@ -160,10 +168,10 @@ export default function Sidebar() {
                 <button
                   key={bg.slug}
                   onClick={() => setActiveSlug(activeSlug === bg.slug ? null : bg.slug)}
-                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-all ${
                     activeSlug === bg.slug
-                      ? "bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400"
-                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/60"
+                      ? "bg-blue-500/15 text-blue-300 ring-1 ring-blue-500/30"
+                      : "text-zinc-400 hover:translate-x-0.5 hover:bg-white/5 hover:text-zinc-100"
                   }`}
                   aria-pressed={activeSlug === bg.slug}
                 >
@@ -177,7 +185,7 @@ export default function Sidebar() {
 
         {visibleButtons.length > 0 && (
           <section className="mb-4">
-            <p className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-600">
+            <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
               Buttons
             </p>
             <div className="space-y-0.5">
@@ -185,10 +193,10 @@ export default function Sidebar() {
                 <button
                   key={btn.slug}
                   onClick={() => setActiveSlug(activeSlug === btn.slug ? null : btn.slug)}
-                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm transition-all ${
                     activeSlug === btn.slug
-                      ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
-                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/60"
+                      ? "bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/30"
+                      : "text-zinc-400 hover:translate-x-0.5 hover:bg-white/5 hover:text-zinc-100"
                   }`}
                   aria-pressed={activeSlug === btn.slug}
                 >
@@ -202,8 +210,8 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="flex items-center justify-between border-t border-zinc-200 p-4 dark:border-zinc-800">
-        <span className="text-xs text-zinc-400">
+      <div className="flex items-center justify-between border-t border-white/10 p-4">
+        <span className="text-xs text-zinc-500">
           {backgrounds.length} patterns · {buttons.length} buttons
         </span>
         <ThemeToggle />

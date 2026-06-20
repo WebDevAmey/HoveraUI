@@ -1,6 +1,7 @@
 import Hero from "@/components/layout/Hero";
 import Grid from "@/components/Grid";
 import ButtonGrid from "@/components/ButtonGrid";
+import Footer from "@/components/layout/Footer";
 import HomeShell from "@/components/layout/HomeShell";
 import Sidebar from "@/components/layout/Sidebar";
 import PreviewBackground from "@/components/PreviewBackground";
@@ -26,6 +27,7 @@ export default function Home() {
               <Grid />
               <ButtonGrid />
             </div>
+            <Footer />
           </HomeShell>
         </div>
       </PreviewProvider>

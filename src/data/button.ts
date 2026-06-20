@@ -25,6 +25,7 @@ import RadialBloomButton from "@/components/buttons/RadialBloomButton";
 import XRayScannerButton from "@/components/buttons/XRayScannerButton";
 import ChamberDoorButton from "@/components/buttons/ChamberDoorButton";
 import ShredderButton from "@/components/buttons/ShredderButton";
+import OutlineButton from "@/components/buttons/OutlineButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -317,6 +318,16 @@ transition">
     SHREDDER
   </span>
 </button>`,
+  },
+  {
+    name: "Outline Button",
+    slug: "outline-button",
+    category: "primary",
+    component: OutlineButton as React.ComponentType,
+    code: `<button className="border border-black text-black-500 px-4 py-2 rounded-full hover:scale-105 hover:text-orange-600 hover:border-orange-600 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg">
+  Outline Button
+</button>`,
+    needsLightPreview: true,
   }
 
 ];

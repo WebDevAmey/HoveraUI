@@ -16,4 +16,5 @@ export interface ButtonItem {
   category: string;
   component: React.ComponentType<{ isHovered?: boolean }>;
   code: string;
+  needsLightPreview?: boolean;
 }

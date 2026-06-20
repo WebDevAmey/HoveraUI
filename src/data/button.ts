@@ -177,7 +177,8 @@ transition">
         className="font-bold text-black font-black text-5xl px-4 py-2 rounded underline bg-clip-text bg-gradient-to-r from-black via-blue-600 to-indigo-500 cursor-pointer transition-all duration-500 ease-out  bg-[size:200%_100%] bg-[position:0%_0] hover:bg-[position:100%_0] hover:text-transparent"
       >
         Link
-      </button>`
+      </button>`,
+    needsLightPreview: true,
   },
   {
     name: "Slide Text Button",
@@ -202,7 +203,8 @@ transition">
     component: GradientLinkButton as React.ComponentType,
     code: `<button className="relative inline-block cursor-pointer bg-gradient-to-r from-blue-600 via-blue-600 to-black bg-[size:200%_100%] bg-[position:100%_0] bg-clip-text text-5xl font-black text-transparent transition-all duration-700 ease-out hover:bg-[position:0%_0]">
   Link
-</button>`
+</button>`,
+    needsLightPreview: true,
   },
   {
     name: "Underline Hover Button",
@@ -214,7 +216,8 @@ transition">
     Hover Me
     <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-indigo-600 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
   </span>
-</button>`
+</button>`,
+    needsLightPreview: true,
   }
 
 ];

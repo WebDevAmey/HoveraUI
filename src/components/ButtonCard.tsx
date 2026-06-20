@@ -8,7 +8,7 @@ interface ButtonCardProps extends ButtonItem {
   stagger: number;
 }
 
-export default function ButtonCard({ name, category, component: Component, code, stagger }: ButtonCardProps) {
+export default function ButtonCard({ name, category, component: Component, code, stagger, needsLightPreview }: ButtonCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -19,7 +19,11 @@ export default function ButtonCard({ name, category, component: Component, code,
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex h-52 items-center justify-center rounded-t-2xl bg-zinc-50 p-8 dark:bg-zinc-950">
+      <div
+        className={`flex h-52 items-center justify-center rounded-t-2xl p-8 ${
+          needsLightPreview ? "bg-white" : "bg-zinc-50 dark:bg-zinc-950"
+        }`}
+      >
         <Component isHovered={isHovered} />
       </div>
 

@@ -13,7 +13,7 @@ export default function ButtonCard({ name, category, component: Component, code,
 
   return (
     <article
-      className="animate-fade-up rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-950"
+      className="animate-fade-up rounded-2xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800/70 dark:bg-zinc-950"
       style={{ "--stagger": `${stagger * 55}ms` } as React.CSSProperties}
       aria-label={`${name} button`}
       onMouseEnter={() => setIsHovered(true)}

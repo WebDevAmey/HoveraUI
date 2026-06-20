@@ -1,4 +1,4 @@
-export default function Spotlight4() {
+export default function Spotlight5() {
   return (
     <div className="relative h-screen bg-black overflow-hidden">
       <div

@@ -13,6 +13,10 @@ import FrostedGlass from "@/components/buttons/FrostedGlass";
 import Neumorphic from "@/components/buttons/Neumorphic";
 import ReadMore from "@/components/buttons/ReadMore";
 import ShimmerSwipe from "@/components/buttons/ShimmerSwipe";
+import LinkButton from "@/components/buttons/LinkButton";
+import SlideTextButton from "@/components/buttons/SlideTextButton";
+import GradientLinkButton from "@/components/buttons/GradientLinkButton";
+import UnderlineHover from "@/components/buttons/UnderlineHover";
 
 export const buttons: ButtonItem[] = [
   {
@@ -163,6 +167,54 @@ transition">
 
   <span className="relative z-10">Shimmer Swipe</span>
 </button>`
-  } 
+  } ,
+  {
+    name: " Link Button",
+    slug: "link-button",
+    category: "primary",
+    component: LinkButton as React.ComponentType,
+    code: `<button
+        className="font-bold text-black font-black text-5xl px-4 py-2 rounded underline bg-clip-text bg-gradient-to-r from-black via-blue-600 to-indigo-500 cursor-pointer transition-all duration-500 ease-out  bg-[size:200%_100%] bg-[position:0%_0] hover:bg-[position:100%_0] hover:text-transparent"
+      >
+        Link
+      </button>`
+  },
+  {
+    name: "Slide Text Button",
+    slug: "slide-text-button",
+    category: "primary",
+    component: SlideTextButton as React.ComponentType,
+    code: `<button className="group cursor-pointer rounded-xl border-[1px] border-slate-500 bg-gradient-to-b from-indigo-500 to-pink-600 px-6 py-3 font-medium text-white shadow-[0px_4px_32px_0_rgba(99,102,241,.70)]">
+  <div className="relative overflow-hidden">
+    <p className="duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-x-20">
+      Button
+    </p>
+    <p className="absolute top-0 left-20 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:left-0">
+      Button
+    </p>
+  </div>
+</button>`
+  },
+  {
+    name: "Gradient Link Button",
+    slug: "gradient-link-button",
+    category: "primary",
+    component: GradientLinkButton as React.ComponentType,
+    code: `<button className="relative inline-block cursor-pointer bg-gradient-to-r from-blue-600 via-blue-600 to-black bg-[size:200%_100%] bg-[position:100%_0] bg-clip-text text-5xl font-black text-transparent transition-all duration-700 ease-out hover:bg-[position:0%_0]">
+  Link
+</button>`
+  },
+  {
+    name: "Underline Hover Button",
+    slug: "underline-hover-button",
+    category: "primary",
+    component: UnderlineHover as React.ComponentType,
+    code: `<button className="group px-6 py-3 text-lg font-medium text-indigo-600">
+  <span className="relative inline-block">
+    Hover Me
+    <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-indigo-600 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
+  </span>
+</button>`
+  }
 
 ];

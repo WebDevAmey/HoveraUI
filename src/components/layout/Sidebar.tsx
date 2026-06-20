@@ -4,12 +4,14 @@ import { useApp } from "@/context/AppContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { backgrounds } from "@/data/background";
 import { buttons } from "@/data/button";
+import { loaders } from "@/data/loader";
 
 const FILTER_TABS = [
   { label: "All", value: "all" as const },
   { label: "Gradients", value: "gradient" as const },
   { label: "Patterns", value: "pattern" as const },
   { label: "Buttons", value: "buttons" as const },
+  { label: "Loaders", value: "loaders" as const },
   { label: "Favorites", value: "favorites" as const },
 ];
 
@@ -17,9 +19,10 @@ export default function Sidebar() {
   const { category, setCategory, searchQuery, setSearchQuery, favorites } = useApp();
 
   function getCount(val: string) {
-    if (val === "all") return backgrounds.length + buttons.length;
+    if (val === "all") return backgrounds.length + buttons.length + loaders.length;
     if (val === "favorites") return favorites.length;
     if (val === "buttons") return buttons.length;
+    if (val === "loaders") return loaders.length;
     return backgrounds.filter((b) => b.category === val).length;
   }
 
@@ -111,7 +114,7 @@ export default function Sidebar() {
       {/* Footer */}
       <div className="flex items-center justify-between border-t border-white/10 p-4">
         <span className="text-xs text-zinc-500">
-          {backgrounds.length} patterns · {buttons.length} buttons
+          {backgrounds.length} patterns · {buttons.length} buttons · {loaders.length} loaders
         </span>
         <ThemeToggle />
       </div>

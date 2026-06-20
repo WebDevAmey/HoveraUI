@@ -94,6 +94,21 @@ body {
   to   { opacity: 1; }
 }
 
+@keyframes mercury-center {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+}
+
+@keyframes mercury-left {
+  0%, 100% { transform: translateX(-55px); }
+  50% { transform: translateX(0); }
+}
+
+@keyframes mercury-right {
+  0%, 100% { transform: translateX(55px); }
+  50% { transform: translateX(0); }
+}
+
 @keyframes scaleIn {
   from { opacity: 0; transform: scale(0.96) translateY(6px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }

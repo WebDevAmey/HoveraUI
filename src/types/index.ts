@@ -18,3 +18,13 @@ export interface ButtonItem {
   code: string;
   needsLightPreview?: boolean;
 }
+
+
+export interface LoaderItem {
+  name: string;
+  slug: string;
+  category: string;
+  component: React.ComponentType;
+  code: string;
+  needsLightPreview?: boolean;
+}

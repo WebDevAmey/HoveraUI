@@ -4,6 +4,49 @@
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --background: #fff;
+  --foreground: #18181b;
+  --primary: #7c3aed;
+  --primary-foreground: #fff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --destructive: #ef4444;
+  --destructive-foreground: #fff;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --input: #e4e4e7;
+  --ring: #7c3aed;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --primary: #8b5cf6;
+  --primary-foreground: #fff;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --destructive: #ef4444;
+  --destructive-foreground: #fff;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  --input: #3f3f46;
+  --ring: #8b5cf6;
 }
 
 html {

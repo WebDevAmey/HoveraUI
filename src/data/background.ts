@@ -15,6 +15,7 @@ import Spotlight4 from "@/components/backgrounds/Spotlight4";
 import Spotlight5 from "@/components/backgrounds/Spotlight5";
 import Spotlight6 from "@/components/backgrounds/Spotlight6";
 import HexGrid from "@/components/backgrounds/HexGrid";
+import ConicSwirl from "@/components/backgrounds/ConicSwirl";
 
 export const backgrounds: BackgroundItem[] = [
   {
@@ -313,6 +314,27 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
     style={{
       backgroundImage: \`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpolygon points='28,0 56,16 56,50 28,66 0,50 0,16' fill='none' stroke='rgba(255,255,255,0.15)' stroke-width='1'/%3E%3C/svg%3E")\`,
       backgroundSize: "56px 100px",
+    }}
+  />
+</div>`,
+  },
+  {
+    name: "Conic Swirl",
+    slug: "conic-swirl",
+    category: "gradient",
+    component: ConicSwirl as React.ComponentType,
+    code: `<div className="relative h-screen overflow-hidden bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "conic-gradient(from 180deg at 50% 50%, rgba(124,58,237,.5), rgba(6,182,212,.5), rgba(236,72,153,.5), rgba(124,58,237,.5))",
+    }}
+  />
+  <div
+    className="absolute inset-0"
+    style={{
+      background: "radial-gradient(circle at center, transparent, rgba(0,0,0,.85))",
     }}
   />
 </div>`,

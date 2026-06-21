@@ -14,6 +14,7 @@ import Spotlight3 from "@/components/backgrounds/Spotlight3";
 import Spotlight4 from "@/components/backgrounds/Spotlight4";
 import Spotlight5 from "@/components/backgrounds/Spotlight5";
 import Spotlight6 from "@/components/backgrounds/Spotlight6";
+import HexGrid from "@/components/backgrounds/HexGrid";
 
 export const backgrounds: BackgroundItem[] = [
   {
@@ -297,6 +298,21 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
           transparent 60%
         )
       \`,
+    }}
+  />
+</div>`,
+  },
+  {
+    name: "Hex Grid",
+    slug: "hex-grid",
+    category: "pattern",
+    component: HexGrid as React.ComponentType,
+    code: `<div className="relative h-screen bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: \`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpolygon points='28,0 56,16 56,50 28,66 0,50 0,16' fill='none' stroke='rgba(255,255,255,0.15)' stroke-width='1'/%3E%3C/svg%3E")\`,
+      backgroundSize: "56px 100px",
     }}
   />
 </div>`,

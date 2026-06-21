@@ -16,6 +16,7 @@ import Spotlight5 from "@/components/backgrounds/Spotlight5";
 import Spotlight6 from "@/components/backgrounds/Spotlight6";
 import HexGrid from "@/components/backgrounds/HexGrid";
 import ConicSwirl from "@/components/backgrounds/ConicSwirl";
+import Crosshatch from "@/components/backgrounds/Crosshatch";
 
 export const backgrounds: BackgroundItem[] = [
   {
@@ -335,6 +336,35 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
     className="absolute inset-0"
     style={{
       background: "radial-gradient(circle at center, transparent, rgba(0,0,0,.85))",
+    }}
+  />
+</div>`,
+  },
+  {
+    name: "Crosshatch",
+    slug: "crosshatch",
+    category: "pattern",
+    component: Crosshatch as React.ComponentType,
+    code: `<div className="relative h-screen bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: \`
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,.08) 0px,
+          rgba(255,255,255,.08) 1px,
+          transparent 1px,
+          transparent 16px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,.08) 0px,
+          rgba(255,255,255,.08) 1px,
+          transparent 1px,
+          transparent 16px
+        )
+      \`,
     }}
   />
 </div>`,

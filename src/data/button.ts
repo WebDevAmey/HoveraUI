@@ -27,6 +27,7 @@ import ChamberDoorButton from "@/components/buttons/ChamberDoorButton";
 import ShredderButton from "@/components/buttons/ShredderButton";
 import OutlineButton from "@/components/buttons/OutlineButton";
 import MorseSignalButton from "@/components/buttons/MorseSignalButton";
+import ScanRingButton from "@/components/buttons/ScanRingButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -344,6 +345,19 @@ transition">
     <span className="h-1 w-3 rounded-full bg-emerald-500 opacity-15 transition-opacity delay-500 duration-200 group-hover:opacity-100" />
     <span className="h-1 w-7 rounded-full bg-emerald-500 opacity-15 transition-opacity delay-700 duration-200 group-hover:opacity-100" />
   </span>
+</button>`,
+  },
+  {
+    name: "Scan Ring Button",
+    slug: "scan-ring-button",
+    category: "primary",
+    component: ScanRingButton as React.ComponentType,
+    code: `<button className="group relative inline-flex h-16 w-16 items-center justify-center rounded-full bg-neutral-950 text-cyan-400">
+  <span className="absolute inset-0 rounded-full border border-cyan-400/70 opacity-0 scale-50 transition-all delay-0 duration-300 group-hover:scale-100 group-hover:opacity-100" />
+  <span className="absolute inset-0 rounded-full border border-cyan-400/50 opacity-0 scale-50 transition-all delay-100 duration-300 group-hover:scale-125 group-hover:opacity-100" />
+  <span className="absolute inset-0 rounded-full border border-cyan-400/30 opacity-0 scale-50 transition-all delay-200 duration-300 group-hover:scale-150 group-hover:opacity-100" />
+  <span className="absolute inset-0 rounded-full border border-cyan-400/10 opacity-0 scale-50 transition-all delay-300 duration-300 group-hover:scale-[1.75] group-hover:opacity-100" />
+  <span className="relative z-10 text-xs font-semibold tracking-wide">SCAN</span>
 </button>`,
   }
 

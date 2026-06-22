@@ -21,6 +21,7 @@ import DuotoneDrift from "@/components/backgrounds/DuotoneDrift";
 import PrismSpectrum from "@/components/backgrounds/PrismSpectrum";
 import EmberDrift from "@/components/backgrounds/EmberDrift";
 import NoiseVeil from "@/components/backgrounds/NoiseVeil";
+import SonarArc from "@/components/backgrounds/SonarArc";
 
 export const backgrounds: BackgroundItem[] = [
   {
@@ -473,6 +474,34 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
       background:
         "radial-gradient(circle at 30% 30%, rgba(45,212,191,.35), transparent 55%), radial-gradient(circle at 75% 75%, rgba(236,72,153,.3), transparent 55%)",
       mixBlendMode: "color",
+    }}
+  />
+</div>`,
+  },
+  {
+    name: "Sonar Arc",
+    slug: "sonar-arc",
+    category: "pattern",
+    component: SonarArc as React.ComponentType,
+    code: `<div className="relative h-screen overflow-hidden bg-black">
+  <div
+    className="absolute inset-0"
+    style={{
+      background: \`
+        repeating-radial-gradient(
+          circle at 50% 130%,
+          transparent 0px,
+          transparent 36px,
+          rgba(45,212,191,.22) 38px,
+          transparent 40px
+        )
+      \`,
+    }}
+  />
+  <div
+    className="absolute inset-0"
+    style={{
+      background: "linear-gradient(to top, rgba(0,0,0,.9), transparent 60%)",
     }}
   />
 </div>`,

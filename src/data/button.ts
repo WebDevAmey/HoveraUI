@@ -28,6 +28,7 @@ import ShredderButton from "@/components/buttons/ShredderButton";
 import OutlineButton from "@/components/buttons/OutlineButton";
 import MorseSignalButton from "@/components/buttons/MorseSignalButton";
 import ScanRingButton from "@/components/buttons/ScanRingButton";
+import EclipseButton from "@/components/buttons/EclipseButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -358,6 +359,18 @@ transition">
   <span className="absolute inset-0 rounded-full border border-cyan-400/30 opacity-0 scale-50 transition-all delay-200 duration-300 group-hover:scale-150 group-hover:opacity-100" />
   <span className="absolute inset-0 rounded-full border border-cyan-400/10 opacity-0 scale-50 transition-all delay-300 duration-300 group-hover:scale-[1.75] group-hover:opacity-100" />
   <span className="relative z-10 text-xs font-semibold tracking-wide">SCAN</span>
+</button>`,
+  },
+  {
+    name: "Eclipse Button",
+    slug: "eclipse-button",
+    category: "primary",
+    component: EclipseButton as React.ComponentType,
+    code: `<button className="group relative inline-flex h-14 w-40 items-center justify-center overflow-hidden rounded-full bg-amber-400 font-bold text-black">
+  <span className="absolute right-0 top-0 h-14 w-14 rounded-full bg-neutral-950 transition-transform duration-500 ease-out [transform:translateX(50%)] group-hover:[transform:translateX(-10%)]" />
+  <span className="relative z-10 transition-colors duration-300 group-hover:text-amber-300">
+    ECLIPSE
+  </span>
 </button>`,
   }
 

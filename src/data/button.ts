@@ -30,6 +30,7 @@ import MorseSignalButton from "@/components/buttons/MorseSignalButton";
 import ScanRingButton from "@/components/buttons/ScanRingButton";
 import EclipseButton from "@/components/buttons/EclipseButton";
 import TallyStrikeButton from "@/components/buttons/TallyStrikeButton";
+import CompassLockButton from "@/components/buttons/CompassLockButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -385,6 +386,20 @@ transition">
   <span className="h-5 w-[2px] origin-bottom scale-y-0 bg-rose-500 transition-transform delay-100 duration-200 group-hover:scale-y-100" />
   <span className="h-5 w-[2px] origin-bottom scale-y-0 bg-rose-500 transition-transform delay-200 duration-200 group-hover:scale-y-100" />
   <span className="h-5 w-[2px] origin-bottom rotate-[20deg] scale-y-0 bg-rose-500 transition-transform delay-300 duration-200 group-hover:scale-y-100" />
+</button>`,
+  },
+  {
+    name: "Compass Lock Button",
+    slug: "compass-lock-button",
+    category: "primary",
+    component: CompassLockButton as React.ComponentType,
+    code: `<button className="group relative inline-flex h-16 w-16 items-center justify-center rounded-full border border-neutral-700 bg-neutral-950">
+  <span className="absolute top-1 h-2 w-[1px] bg-neutral-600" />
+  <span className="absolute bottom-1 h-2 w-[1px] bg-neutral-600" />
+  <span className="absolute left-1 h-[1px] w-2 bg-neutral-600" />
+  <span className="absolute right-1 h-[1px] w-2 bg-neutral-600" />
+  <span className="absolute h-0 w-0 origin-center border-x-[5px] border-b-[14px] border-x-transparent border-b-rose-500 transition-transform duration-500 ease-out [transform:rotate(20deg)] group-hover:[transform:rotate(200deg)]" />
+  <span className="absolute h-1.5 w-1.5 rounded-full bg-neutral-300" />
 </button>`,
   }
 

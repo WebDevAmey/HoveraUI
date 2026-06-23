@@ -37,6 +37,7 @@ import HoverArrowButton from "@/components/buttons/HoverArrowButton";
 import PressButton from "@/components/buttons/PressButton";
 import PlayNowButton from "@/components/buttons/PlayNowButton";
 import RoseBorderButton from "@/components/buttons/RoseBorderButton";
+import VioletBorderButton from "@/components/buttons/VioletBorderButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -482,6 +483,15 @@ transition">
     category: "primary",
     component: RoseBorderButton as React.ComponentType,
     code: `<button className="bg-rose-950 text-rose-400 border border-rose-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">Hover Me</button>`,
+  },
+  {
+    name: "Violet Border Button",
+    slug: "violet-border-button",
+    category: "primary",
+    component: VioletBorderButton as React.ComponentType,
+    code: `<button className="relative overflow-hidden bg-violet-950 border text-violet-400 border-violet-400 font-medium px-4 py-2 rounded-md hover:brightness-150 border-b-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:border-t-4">
+  Hover Me
+</button>`,
   }
 
 ];

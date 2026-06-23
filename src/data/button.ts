@@ -36,6 +36,7 @@ import RivetPressButton from "@/components/buttons/RivetPressButton";
 import HoverArrowButton from "@/components/buttons/HoverArrowButton";
 import PressButton from "@/components/buttons/PressButton";
 import PlayNowButton from "@/components/buttons/PlayNowButton";
+import RoseBorderButton from "@/components/buttons/RoseBorderButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -474,6 +475,13 @@ transition">
     code: `<button className="relative overflow-hidden px-8 py-3 rounded-[24px] bg-gradient-to-r from-[#2891c5] to-[#13b6da] text-[1.9rem] font-bold flex cursor-pointer text-white hover:shadow-[0_15px_50px_-15px_#13b6da]">
   Play Now
 </button>`,
+  },
+  {
+    name: "Rose Border Button",
+    slug: "rose-border-button",
+    category: "primary",
+    component: RoseBorderButton as React.ComponentType,
+    code: `<button className="bg-rose-950 text-rose-400 border border-rose-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">Hover Me</button>`,
   }
 
 ];

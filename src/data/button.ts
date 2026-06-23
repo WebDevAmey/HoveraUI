@@ -35,6 +35,7 @@ import PulseSeismographButton from "@/components/buttons/PulseSeismographButton"
 import RivetPressButton from "@/components/buttons/RivetPressButton";
 import HoverArrowButton from "@/components/buttons/HoverArrowButton";
 import PressButton from "@/components/buttons/PressButton";
+import PlayNowButton from "@/components/buttons/PlayNowButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -463,6 +464,15 @@ transition">
     component: PressButton as React.ComponentType,
     code: `<button className="relative overflow-hidden px-8 py-3 bg-pink-600 text-white rounded-full font-medium transition-all duration-100 transform active:translate-y-1 active:shadow-none shadow-[0_4px_0_0_#be185d]">
   Press
+</button>`,
+  },
+  {
+    name: "Play Now Button",
+    slug: "play-now-button",
+    category: "primary",
+    component: PlayNowButton as React.ComponentType,
+    code: `<button className="relative overflow-hidden px-8 py-3 rounded-[24px] bg-gradient-to-r from-[#2891c5] to-[#13b6da] text-[1.9rem] font-bold flex cursor-pointer text-white hover:shadow-[0_15px_50px_-15px_#13b6da]">
+  Play Now
 </button>`,
   }
 

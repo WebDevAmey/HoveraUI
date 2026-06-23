@@ -34,6 +34,7 @@ import CompassLockButton from "@/components/buttons/CompassLockButton";
 import PulseSeismographButton from "@/components/buttons/PulseSeismographButton";
 import RivetPressButton from "@/components/buttons/RivetPressButton";
 import HoverArrowButton from "@/components/buttons/HoverArrowButton";
+import PressButton from "@/components/buttons/PressButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -454,6 +455,15 @@ transition">
   </span>
 </button>`,
     needsLightPreview: true,
+  },
+  {
+    name: "Press Button",
+    slug: "press-button",
+    category: "primary",
+    component: PressButton as React.ComponentType,
+    code: `<button className="relative overflow-hidden px-8 py-3 bg-pink-600 text-white rounded-full font-medium transition-all duration-100 transform active:translate-y-1 active:shadow-none shadow-[0_4px_0_0_#be185d]">
+  Press
+</button>`,
   }
 
 ];

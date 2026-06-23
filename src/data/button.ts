@@ -33,6 +33,7 @@ import TallyStrikeButton from "@/components/buttons/TallyStrikeButton";
 import CompassLockButton from "@/components/buttons/CompassLockButton";
 import PulseSeismographButton from "@/components/buttons/PulseSeismographButton";
 import RivetPressButton from "@/components/buttons/RivetPressButton";
+import HoverArrowButton from "@/components/buttons/HoverArrowButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -437,6 +438,22 @@ transition">
     RIVETED
   </span>
 </button>`,
+  },
+  {
+    name: "Hover Arrow Button",
+    slug: "hover-arrow-button",
+    category: "primary",
+    component: HoverArrowButton as React.ComponentType,
+    code: `<button className="group relative overflow-hidden border-2 border-blue-600 bg-white px-8 py-3 text-white rounded-full font-medium min-w-[120px] h-[52px]">
+  <span className="block transition-all duration-300 transform group-hover:translate-x-full group-hover:opacity-0 text-blue-600">
+    Hover
+  </span>
+
+  <span className="absolute inset-0 flex items-center justify-center transition-all duration-300 transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 text-white bg-blue-600">
+    →
+  </span>
+</button>`,
+    needsLightPreview: true,
   }
 
 ];

@@ -15,7 +15,7 @@ export default function NavbarCard({ name, category, component: Component, code,
       aria-label={`${name} navbar`}
     >
       <div
-        className={`relative flex h-52 items-center justify-center overflow-hidden rounded-t-2xl p-8 ${
+        className={`relative flex h-72 items-center justify-center overflow-hidden rounded-t-2xl p-6 ${
           needsLightPreview ? "bg-white" : "bg-zinc-50 dark:bg-zinc-950"
         }`}
       >

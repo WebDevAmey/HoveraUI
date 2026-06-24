@@ -72,5 +72,6 @@ export const navbars: NavbarItem[] = [
     </button>
   </nav>
 </div>`,
+    needsLightPreview: true,
   },
 ];

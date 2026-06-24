@@ -23,7 +23,7 @@ export default function NavbarGrid() {
       <p className="mb-5 text-xs text-zinc-500" aria-live="polite" aria-atomic="true">
         {filtered.length} navbar{filtered.length !== 1 ? "s" : ""}
       </p>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5">
         {filtered.map((item, i) => (
           <NavbarCard key={item.slug} {...item} stagger={i} />
         ))}

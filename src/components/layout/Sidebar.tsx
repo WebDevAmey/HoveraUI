@@ -73,7 +73,7 @@ export default function Sidebar() {
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="text-xs text-zinc-500 hover:text-zinc-300"
+              className="flex h-5 w-5 items-center justify-center rounded-sm border border-white/10 text-xs text-zinc-500 transition-colors duration-150 hover:border-cyan-500/40 hover:text-cyan-400"
               aria-label="Clear search"
             >
               ✕
@@ -89,18 +89,24 @@ export default function Sidebar() {
             <button
               key={tab.value}
               onClick={() => setCategory(tab.value)}
-              className={`flex items-center justify-between rounded-full px-4 py-2 text-sm font-medium transition-all ${
+              className={`group relative flex items-center justify-between overflow-hidden border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-150 ${
                 category === tab.value
-                  ? "bg-cyan-500 text-black shadow-[0_0_16px_rgba(34,211,238,0.35)]"
-                  : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                  ? "border-cyan-500/50 bg-cyan-500/10 text-cyan-400"
+                  : "border-transparent text-zinc-400 hover:border-white/10 hover:bg-white/5 hover:text-zinc-200"
               }`}
             >
+              <span
+                className={`absolute left-0 top-0 h-full w-0.5 bg-cyan-400 transition-transform duration-150 ${
+                  category === tab.value ? "scale-y-100" : "scale-y-0"
+                }`}
+                aria-hidden="true"
+              />
               <span>{tab.label}</span>
               <span
-                className={`rounded-full px-1.5 py-0.5 text-[10px] tabular-nums ${
+                className={`rounded-sm border px-1.5 py-0.5 text-[10px] tabular-nums normal-case ${
                   category === tab.value
-                    ? "bg-black/15 text-black"
-                    : "bg-white/5 text-zinc-500"
+                    ? "border-cyan-500/40 text-cyan-400"
+                    : "border-white/10 text-zinc-500"
                 }`}
               >
                 {getCount(tab.value)}

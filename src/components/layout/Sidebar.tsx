@@ -34,8 +34,8 @@ export default function Sidebar() {
 
       {/* Logo */}
       <div className="flex items-center gap-2.5 p-5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500 text-sm font-bold text-black shadow-[0_0_16px_rgba(34,211,238,0.35)]">
-          B
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 text-sm font-bold text-black shadow-[0_0_16px_rgba(34,211,238,0.35)]">
+          H
         </span>
         <div className="flex flex-col">
           <span className="text-base font-bold leading-tight text-white">

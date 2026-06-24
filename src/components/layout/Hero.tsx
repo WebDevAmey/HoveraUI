@@ -5,15 +5,15 @@ export default function Hero() {
   const patternCount = backgrounds.filter((b) => b.category === "pattern").length;
 
   return (
-    <section className="py-14 text-center" aria-label="Hero">
-      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-600 dark:text-violet-400">
-        <span className="h-1.5 w-1.5 rounded-full bg-violet-500 dark:bg-violet-400" aria-hidden="true" />
+    <section className="py-20 text-center" aria-label="Hero">
+      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-cyan-600 dark:text-cyan-400">
+        <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400" aria-hidden="true" />
         Open Source · Free to use
       </div>
 
-      <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl">
+      <h1 className="text-4xl font-bold tracking-tighter text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl">
         Beautiful{" "}
-        <span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent dark:from-violet-400 dark:to-indigo-400">
+        <span className="text-cyan-600 dark:text-cyan-400">
           Background Patterns
         </span>
       </h1>

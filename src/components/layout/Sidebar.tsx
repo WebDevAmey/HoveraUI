@@ -30,15 +30,15 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="flex h-screen w-64 shrink-0 flex-col bg-[#0d0d12] text-zinc-300">
+    <aside className="flex h-screen w-64 shrink-0 flex-col bg-[#050507] text-zinc-300">
 
       {/* Logo */}
       <div className="flex items-center gap-2.5 p-5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 text-sm font-bold text-white shadow-[0_0_20px_rgba(168,85,247,0.5)]">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500 text-sm font-bold text-black shadow-[0_0_16px_rgba(34,211,238,0.35)]">
           B
         </span>
         <div className="flex flex-col">
-          <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-base font-bold leading-tight text-transparent">
+          <span className="text-base font-bold leading-tight text-white">
             Hovera UI
           </span>
           <span className="text-[10px] text-zinc-500">UI library</span>
@@ -47,7 +47,7 @@ export default function Sidebar() {
 
       {/* Search */}
       <div className="px-4 pb-3">
-        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 transition-colors focus-within:border-violet-500/50 focus-within:bg-white/[0.07]">
+        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 transition-colors focus-within:border-cyan-500/50 focus-within:bg-white/[0.07]">
           <svg
             width="14"
             height="14"
@@ -91,7 +91,7 @@ export default function Sidebar() {
               onClick={() => setCategory(tab.value)}
               className={`flex items-center justify-between rounded-full px-4 py-2 text-sm font-medium transition-all ${
                 category === tab.value
-                  ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-[0_0_18px_rgba(168,85,247,0.45)]"
+                  ? "bg-cyan-500 text-black shadow-[0_0_16px_rgba(34,211,238,0.35)]"
                   : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
               }`}
             >
@@ -99,7 +99,7 @@ export default function Sidebar() {
               <span
                 className={`rounded-full px-1.5 py-0.5 text-[10px] tabular-nums ${
                   category === tab.value
-                    ? "bg-white/20 text-white"
+                    ? "bg-black/15 text-black"
                     : "bg-white/5 text-zinc-500"
                 }`}
               >

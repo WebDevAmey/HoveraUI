@@ -81,7 +81,7 @@ export default function Card({ title, slug, code, category, stagger, children }:
           <span
             className={`rounded-full px-2 py-0.5 text-[11px] font-medium capitalize ${
               category === "gradient"
-                ? "bg-violet-500/10 text-violet-600 dark:bg-violet-500/15 dark:text-violet-400"
+                ? "bg-cyan-500/10 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400"
                 : "bg-blue-500/10 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400"
             }`}
           >

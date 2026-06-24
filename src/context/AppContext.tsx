@@ -8,7 +8,7 @@ import {
   useCallback,
 } from "react";
 
-type FilterCategory = "all" | "gradient" | "pattern" | "buttons" | "loaders" | "favorites";
+type FilterCategory = "all" | "gradient" | "pattern" | "buttons" | "loaders" | "navbars" | "favorites";
 
 interface AppContextType {
   category: FilterCategory;

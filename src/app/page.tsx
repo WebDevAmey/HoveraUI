@@ -2,6 +2,7 @@ import Hero from "@/components/layout/Hero";
 import Grid from "@/components/Grid";
 import ButtonGrid from "@/components/ButtonGrid";
 import LoaderGrid from "@/components/LoaderGrid";
+import NavbarGrid from "@/components/NavbarGrid";
 import Footer from "@/components/layout/Footer";
 import HomeShell from "@/components/layout/HomeShell";
 import Sidebar from "@/components/layout/Sidebar";
@@ -28,6 +29,7 @@ export default function Home() {
               <Grid />
               <ButtonGrid />
               <LoaderGrid />
+              <NavbarGrid />
             </div>
             <Footer />
           </HomeShell>

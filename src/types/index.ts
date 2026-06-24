@@ -28,3 +28,13 @@ export interface LoaderItem {
   code: string;
   needsLightPreview?: boolean;
 }
+
+
+export interface NavbarItem {
+  name: string;
+  slug: string;
+  category: string;
+  component: React.ComponentType;
+  code: string;
+  needsLightPreview?: boolean;
+}

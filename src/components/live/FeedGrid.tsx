@@ -73,6 +73,7 @@ export default function FeedGrid() {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing state from the drops API, an external system
     loadPage(0);
   }, [loadPage]);
 

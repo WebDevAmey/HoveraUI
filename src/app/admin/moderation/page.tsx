@@ -51,7 +51,10 @@ export default function ModerationPage() {
   }, []);
 
   useEffect(() => {
-    if (!authLoading && user) loadQueue();
+    if (!authLoading && user) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing state from the moderation queue API, an external system
+      loadQueue();
+    }
   }, [authLoading, user, loadQueue]);
 
   async function moderate(id: string, action: "approve" | "reject") {

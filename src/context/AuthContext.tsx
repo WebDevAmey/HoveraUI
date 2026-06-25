@@ -57,10 +57,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     supabase.auth.getUser().then(async ({ data }) => {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing state from Supabase's session, an external system
       setUser(data.user);
       await loadProfile(data.user);
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing state from Supabase's session, an external system
       setLoading(false);
     });
 

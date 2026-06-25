@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useMemo } from "react";
 import { buildSandboxSrcDoc } from "@/lib/sandbox";
 
 interface SandboxPreviewProps {
@@ -17,25 +17,18 @@ interface SandboxPreviewProps {
  * regardless of which host actually served the iframe.
  *
  * `active` gates whether the iframe mounts at all, so off-screen drops in
- * the feed are not running their scripts.
+ * the feed are not running their scripts, and the iframe unmounts again once
+ * it scrolls back out of view.
  */
 export default function SandboxPreview({ sourceCode, active, className }: SandboxPreviewProps) {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [srcDoc, setSrcDoc] = useState<string | null>(null);
+  const srcDoc = useMemo(() => buildSandboxSrcDoc(sourceCode), [sourceCode]);
 
-  useEffect(() => {
-    if (active && srcDoc === null) {
-      setSrcDoc(buildSandboxSrcDoc(sourceCode));
-    }
-  }, [active, sourceCode, srcDoc]);
-
-  if (srcDoc === null) {
+  if (!active) {
     return <div className={className} aria-hidden="true" />;
   }
 
   return (
     <iframe
-      ref={iframeRef}
       title="Drop preview"
       srcDoc={srcDoc}
       sandbox="allow-scripts"

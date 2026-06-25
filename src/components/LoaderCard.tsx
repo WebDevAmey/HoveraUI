@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import CopyButton from "@/components/CopyButton";
 import type { LoaderItem } from "@/types";
 
@@ -24,7 +25,11 @@ export default function LoaderCard({ name, slug, category, component: Component,
 
       <div className="flex items-center justify-between border-t border-border px-4 py-3">
         <div className="flex items-center gap-2">
-          <h3 className="text-sm font-medium text-foreground">{name}</h3>
+          <h3 className="text-sm font-medium text-foreground">
+            <Link href={`/components/${slug}`} className="hover:underline">
+              {name}
+            </Link>
+          </h3>
           <span className="rounded-md bg-secondary px-2 py-0.5 text-[11px] font-medium capitalize text-muted-foreground">
             {category}
           </span>

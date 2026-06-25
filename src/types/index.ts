@@ -17,6 +17,7 @@ export interface ButtonItem {
   component: React.ComponentType<{ isHovered?: boolean }>;
   code: string;
   needsLightPreview?: boolean;
+  description?: string;
 }
 
 
@@ -27,6 +28,7 @@ export interface LoaderItem {
   component: React.ComponentType;
   code: string;
   needsLightPreview?: boolean;
+  description?: string;
 }
 
 
@@ -37,4 +39,5 @@ export interface NavbarItem {
   component: React.ComponentType;
   code: string;
   needsLightPreview?: boolean;
+  description?: string;
 }

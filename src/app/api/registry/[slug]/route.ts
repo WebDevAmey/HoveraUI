@@ -3,6 +3,7 @@ import { backgrounds } from "@/data/background";
 import { buttons } from "@/data/button";
 import { loaders } from "@/data/loader";
 import { navbars } from "@/data/navbar";
+import { slugToComponentName } from "@/lib/componentName";
 
 interface RegistryEntry {
   name: string;
@@ -27,6 +28,19 @@ export async function GET(
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
 
+  const componentName = slugToComponentName(slug);
+  const indentedCode = entry.code
+    .split("\n")
+    .map((line) => `    ${line}`)
+    .join("\n");
+
+  const content = `export default function ${componentName}() {
+  return (
+${indentedCode}
+  );
+}
+`;
+
   return NextResponse.json({
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
     name: slug,
@@ -34,8 +48,9 @@ export async function GET(
     title: entry.name,
     files: [
       {
-        path: `${slug}.html`,
-        content: entry.code,
+        path: `${slug}.tsx`,
+        target: `components/ui/${slug}.tsx`,
+        content,
         type: "registry:component",
       },
     ],

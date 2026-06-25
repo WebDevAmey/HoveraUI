@@ -45,13 +45,6 @@ export default function TopNav() {
           </button>
 
           <Link
-            href="/live"
-            className="rounded-md px-3 py-1.5 text-sm font-medium text-foreground/75 transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            Live
-          </Link>
-
-          <Link
             href="https://github.com/WebDevAmey/HoveraUI"
             target="_blank"
             rel="noreferrer"

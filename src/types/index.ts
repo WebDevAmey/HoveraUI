@@ -38,26 +38,3 @@ export interface NavbarItem {
   code: string;
   needsLightPreview?: boolean;
 }
-
-
-export type DropStatus = "pending" | "approved" | "rejected";
-
-export interface DropItem {
-  id: string;
-  name: string;
-  slug: string;
-  category: string;
-  tags: string[];
-  sourceCode: string;
-  makerNote: string;
-  behaviorNote: string;
-  status: DropStatus;
-  authorId: string;
-  authorHandle: string;
-  authorAvatarUrl: string | null;
-  remixedFrom: string | null;
-  copiesCount: number;
-  usedCount: number;
-  remixCount: number;
-  createdAt: string;
-}

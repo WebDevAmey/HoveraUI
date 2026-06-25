@@ -45,6 +45,12 @@ export default function Card({ title, slug, code, category, stagger, children }:
             className="flex items-center gap-1.5 rounded-full border border-white/30 bg-black/50 px-4 py-2 text-sm font-medium text-white backdrop-blur transition-transform hover:bg-black/70 active:scale-95"
             tabIndex={-1}
           />
+          <CopyButton
+            code={`npx shadcn add @hovera/${slug}`}
+            label="Copy CLI"
+            className="flex items-center gap-1.5 rounded-full border border-white/30 bg-black/50 px-4 py-2 text-sm font-medium text-white backdrop-blur transition-transform hover:bg-black/70 active:scale-95"
+            tabIndex={-1}
+          />
         </div>
 
         {/* Favorite button */}

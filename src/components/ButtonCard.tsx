@@ -8,7 +8,7 @@ interface ButtonCardProps extends ButtonItem {
   stagger: number;
 }
 
-export default function ButtonCard({ name, category, component: Component, code, stagger, needsLightPreview }: ButtonCardProps) {
+export default function ButtonCard({ name, slug, category, component: Component, code, stagger, needsLightPreview }: ButtonCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -34,10 +34,17 @@ export default function ButtonCard({ name, category, component: Component, code,
             {category}
           </span>
         </div>
-        <CopyButton
-          code={code}
-          className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-        />
+        <div className="flex items-center gap-1">
+          <CopyButton
+            code={code}
+            className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          />
+          <CopyButton
+            code={`npx shadcn add @hovera/${slug}`}
+            label="Copy CLI"
+            className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          />
+        </div>
       </div>
     </article>
   );

@@ -7,7 +7,7 @@ interface NavbarCardProps extends NavbarItem {
   stagger: number;
 }
 
-export default function NavbarCard({ name, category, component: Component, code, stagger, needsLightPreview }: NavbarCardProps) {
+export default function NavbarCard({ name, slug, category, component: Component, code, stagger, needsLightPreview }: NavbarCardProps) {
   return (
     <article
       className="animate-fade-up rounded-md border border-border bg-card"
@@ -29,10 +29,17 @@ export default function NavbarCard({ name, category, component: Component, code,
             {category}
           </span>
         </div>
-        <CopyButton
-          code={code}
-          className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-        />
+        <div className="flex items-center gap-1">
+          <CopyButton
+            code={code}
+            className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          />
+          <CopyButton
+            code={`npx shadcn add @hovera/${slug}`}
+            label="Copy CLI"
+            className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          />
+        </div>
       </div>
     </article>
   );

@@ -18,7 +18,7 @@ export default function CopyButton({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
-      showToast("Code copied to clipboard!");
+      showToast("Copied to clipboard!");
     } catch {
       showToast("Failed to copy — please try manually.");
     }
@@ -28,7 +28,7 @@ export default function CopyButton({
     <button
       onClick={handleCopy}
       className={className}
-      aria-label="Copy code to clipboard"
+      aria-label={`${label} to clipboard`}
       tabIndex={tabIndex}
     >
       <svg

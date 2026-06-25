@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   const { data, error } = await supabase
     .from("drops")
     .select(
-      "id, name, slug, category, tags, source_code, maker_note, behavior_note, status, remixed_from, copies_count, used_count, remix_count, created_at, author_id, profiles(github_username, avatar_url)"
+      "id, name, slug, category, tags, source_code, maker_note, behavior_note, status, remixed_from, copies_count, used_count, remix_count, created_at, author_id, profiles!drops_author_id_fkey(github_username, avatar_url)"
     )
     .order("created_at", { ascending: false })
     .range(from, to);

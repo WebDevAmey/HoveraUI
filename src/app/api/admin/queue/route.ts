@@ -27,7 +27,7 @@ export async function GET() {
     admin
       .from("drops")
       .select(
-        "id, name, slug, category, source_code, maker_note, behavior_note, status, created_at, profiles(github_username)"
+        "id, name, slug, category, source_code, maker_note, behavior_note, status, created_at, profiles!drops_author_id_fkey(github_username)"
       )
       .eq("status", "pending")
       .order("created_at", { ascending: true }),

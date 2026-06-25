@@ -126,7 +126,7 @@ export default function CommandPalette() {
                 }`}
               >
                 <span
-                  className={`h-2 w-2 shrink-0 rounded-full ${bg.category === "gradient" ? "bg-cyan-500" : "bg-blue-500"}`}
+                  className={`h-2 w-2 shrink-0 rounded-full ${bg.category === "gradient" ? "bg-zinc-900 dark:bg-white" : "bg-zinc-400"}`}
                   aria-hidden="true"
                 />
                 <span className="flex-1">{bg.name}</span>

@@ -10,28 +10,28 @@ interface NavbarCardProps extends NavbarItem {
 export default function NavbarCard({ name, category, component: Component, code, stagger, needsLightPreview }: NavbarCardProps) {
   return (
     <article
-      className="animate-fade-up rounded-2xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800/70 dark:bg-zinc-950"
+      className="animate-fade-up rounded-md border border-border bg-card"
       style={{ "--stagger": `${stagger * 55}ms` } as React.CSSProperties}
       aria-label={`${name} navbar`}
     >
       <div
-        className={`relative flex h-72 items-center justify-center overflow-hidden rounded-t-2xl p-6 ${
+        className={`relative flex h-72 items-center justify-center overflow-hidden rounded-t-md p-6 ${
           needsLightPreview ? "bg-white" : "bg-zinc-50 dark:bg-zinc-950"
         }`}
       >
         <Component />
       </div>
 
-      <div className="flex items-center justify-between border-t border-zinc-100 px-4 py-3 dark:border-zinc-800">
+      <div className="flex items-center justify-between border-t border-border px-4 py-3">
         <div className="flex items-center gap-2">
-          <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{name}</h3>
-          <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium capitalize text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
+          <h3 className="text-sm font-medium text-foreground">{name}</h3>
+          <span className="rounded-md bg-secondary px-2 py-0.5 text-[11px] font-medium capitalize text-muted-foreground">
             {category}
           </span>
         </div>
         <CopyButton
           code={code}
-          className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+          className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
         />
       </div>
     </article>

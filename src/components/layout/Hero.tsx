@@ -1,39 +1,65 @@
+"use client";
+
+import Link from "next/link";
 import { backgrounds } from "@/data/background";
+import { buttons } from "@/data/button";
+import { loaders } from "@/data/loader";
+import { navbars } from "@/data/navbar";
+import { useApp } from "@/context/AppContext";
 
 export default function Hero() {
-  const gradientCount = backgrounds.filter((b) => b.category === "gradient").length;
-  const patternCount = backgrounds.filter((b) => b.category === "pattern").length;
+  const { setCategory } = useApp();
 
   return (
-    <section className="py-20 text-center" aria-label="Hero">
-      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-cyan-600 dark:text-cyan-400">
-        <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400" aria-hidden="true" />
-        Open Source · Free to use
+    <section className="border-b border-border py-10" aria-label="Hero">
+      <div className="flex w-fit items-center gap-2 rounded-md border border-border bg-secondary/40 px-3 py-1.5 font-mono text-xs text-muted-foreground">
+        <span className="h-1.5 w-1.5 rounded-full bg-foreground" aria-hidden="true" />
+        Component catalog
       </div>
 
-      <h1 className="text-4xl font-bold tracking-tighter text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl">
-        Beautiful{" "}
-        <span className="text-cyan-600 dark:text-cyan-400">
-          Background Patterns
-        </span>
-      </h1>
-
-      <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-zinc-500 sm:text-lg">
-        Production-ready CSS and Tailwind backgrounds. Preview live, copy the
-        code, drop it in your project.
-      </p>
-
-      <div className="mt-10 flex justify-center gap-10">
-        {[
-          { value: String(backgrounds.length), label: "Patterns" },
-          { value: String(gradientCount), label: "Gradients" },
-          { value: String(patternCount), label: "CSS Patterns" },
-        ].map((stat) => (
-          <div key={stat.label} className="text-center">
-            <div className="text-2xl font-bold text-zinc-900 dark:text-white">{stat.value}</div>
-            <div className="mt-0.5 text-xs text-zinc-500">{stat.label}</div>
+      <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
+        <div className="max-w-2xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+            Browse the Hovera UI component library.
+          </h1>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            Pick a category, preview the live demo, then copy the code and drop it in your project.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button
+              onClick={() => setCategory("buttons")}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-foreground/15 bg-foreground/[0.04] px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-foreground/[0.08]"
+            >
+              Start with buttons
+              <span aria-hidden="true">↗</span>
+            </button>
+            <Link
+              href="/live"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground/85 transition-colors hover:bg-secondary/60"
+            >
+              Browse Hovera Live
+            </Link>
           </div>
-        ))}
+        </div>
+
+        <div className="grid grid-cols-2 gap-px overflow-hidden border border-border bg-border">
+          <div className="bg-background p-4">
+            <p className="text-2xl font-semibold text-foreground">{buttons.length}</p>
+            <p className="mt-1 font-mono text-[11px] uppercase text-muted-foreground">buttons</p>
+          </div>
+          <div className="bg-background p-4">
+            <p className="text-2xl font-semibold text-foreground">{backgrounds.length}</p>
+            <p className="mt-1 font-mono text-[11px] uppercase text-muted-foreground">patterns</p>
+          </div>
+          <div className="bg-background p-4">
+            <p className="text-2xl font-semibold text-foreground">{loaders.length}</p>
+            <p className="mt-1 font-mono text-[11px] uppercase text-muted-foreground">loaders</p>
+          </div>
+          <div className="bg-background p-4">
+            <p className="text-2xl font-semibold text-foreground">{navbars.length}</p>
+            <p className="mt-1 font-mono text-[11px] uppercase text-muted-foreground">navbars</p>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -20,7 +20,7 @@ export default function Card({ title, slug, code, category, stagger, children }:
 
   return (
     <article
-      className="animate-fade-up group overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-200/60 dark:border-zinc-800/70 dark:bg-zinc-900/40 dark:hover:border-zinc-700 dark:hover:shadow-black/40"
+      className="animate-fade-up group overflow-hidden rounded-md border border-border bg-card transition-colors hover:border-foreground/30"
       style={{ "--stagger": `${stagger * 55}ms` } as React.CSSProperties}
       aria-label={`${title} pattern`}
     >
@@ -75,21 +75,15 @@ export default function Card({ title, slug, code, category, stagger, children }:
       </div>
 
       {/* Card footer */}
-      <div className="flex items-center justify-between px-4 py-3">
-        <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{title}</h3>
+      <div className="flex items-center justify-between border-t border-border px-4 py-3">
+        <h3 className="text-sm font-medium text-foreground">{title}</h3>
         <div className="flex items-center gap-2">
-          <span
-            className={`rounded-full px-2 py-0.5 text-[11px] font-medium capitalize ${
-              category === "gradient"
-                ? "bg-cyan-500/10 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400"
-                : "bg-blue-500/10 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400"
-            }`}
-          >
+          <span className="rounded-md bg-secondary px-2 py-0.5 text-[11px] font-medium capitalize text-muted-foreground">
             {category}
           </span>
           <button
             onClick={() => setActiveSlug(slug)}
-            className="rounded-md px-2 py-1 text-xs text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+            className="rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
             aria-label={`Preview ${title}`}
           >
             Preview

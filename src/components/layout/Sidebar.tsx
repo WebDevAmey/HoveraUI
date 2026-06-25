@@ -1,7 +1,6 @@
 "use client";
 
 import { useApp } from "@/context/AppContext";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { backgrounds } from "@/data/background";
 import { buttons } from "@/data/button";
 import { loaders } from "@/data/loader";
@@ -30,24 +29,10 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="flex h-screen w-64 shrink-0 flex-col bg-[#050507] text-zinc-300">
-
-      {/* Logo */}
-      <div className="flex items-center gap-2.5 p-5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 text-sm font-bold text-black shadow-[0_0_16px_rgba(34,211,238,0.35)]">
-          H
-        </span>
-        <div className="flex flex-col">
-          <span className="text-base font-bold leading-tight text-white">
-            Hovera UI
-          </span>
-          <span className="text-[10px] text-zinc-500">UI library</span>
-        </div>
-      </div>
-
+    <aside className="flex h-screen w-64 shrink-0 flex-col border-r border-border bg-background text-foreground">
       {/* Search */}
-      <div className="px-4 pb-3">
-        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 transition-colors focus-within:border-cyan-500/50 focus-within:bg-white/[0.07]">
+      <div className="p-4">
+        <div className="flex items-center gap-2 rounded-md border border-border bg-secondary/40 px-3 py-2 transition-colors focus-within:border-foreground/30">
           <svg
             width="14"
             height="14"
@@ -57,7 +42,7 @@ export default function Sidebar() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="shrink-0 text-zinc-500"
+            className="shrink-0 text-muted-foreground"
             aria-hidden="true"
           >
             <circle cx="11" cy="11" r="8" />
@@ -67,13 +52,13 @@ export default function Sidebar() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search…"
-            className="w-full bg-transparent text-sm text-zinc-100 placeholder-zinc-500 outline-none"
+            className="w-full bg-transparent text-sm text-foreground placeholder-muted-foreground outline-none"
             aria-label="Search"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="flex h-5 w-5 items-center justify-center rounded-sm border border-white/10 text-xs text-zinc-500 transition-colors duration-150 hover:border-cyan-500/40 hover:text-cyan-400"
+              className="flex h-5 w-5 items-center justify-center rounded-sm border border-border text-xs text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
               aria-label="Clear search"
             >
               ✕
@@ -83,49 +68,39 @@ export default function Sidebar() {
       </div>
 
       {/* Category filter */}
-      <div className="px-3 pb-3">
-        <div className="flex flex-col gap-1">
-          {FILTER_TABS.map((tab) => (
-            <button
-              key={tab.value}
-              onClick={() => setCategory(tab.value)}
-              className={`group relative flex items-center justify-between overflow-hidden border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-150 ${
-                category === tab.value
-                  ? "border-cyan-500/50 bg-cyan-500/10 text-cyan-400"
-                  : "border-transparent text-zinc-400 hover:border-white/10 hover:bg-white/5 hover:text-zinc-200"
-              }`}
-            >
-              <span
-                className={`absolute left-0 top-0 h-full w-0.5 bg-cyan-400 transition-transform duration-150 ${
-                  category === tab.value ? "scale-y-100" : "scale-y-0"
-                }`}
-                aria-hidden="true"
-              />
-              <span>{tab.label}</span>
-              <span
-                className={`rounded-sm border px-1.5 py-0.5 text-[10px] tabular-nums normal-case ${
+      <div className="flex-1 overflow-y-auto px-3 pb-4">
+        <div className="flex flex-col">
+          <div className="flex items-center gap-2.5 rounded-md px-2 py-2 text-sm font-medium text-foreground">
+            <span className="h-2 w-2 rounded-full bg-foreground" aria-hidden="true" />
+            Categories
+          </div>
+
+          <div className="ml-4 flex flex-col gap-0.5 border-l border-border pl-2">
+            {FILTER_TABS.map((tab) => (
+              <button
+                key={tab.value}
+                onClick={() => setCategory(tab.value)}
+                className={`flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors ${
                   category === tab.value
-                    ? "border-cyan-500/40 text-cyan-400"
-                    : "border-white/10 text-zinc-500"
+                    ? "bg-secondary font-medium text-foreground"
+                    : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
                 }`}
               >
-                {getCount(tab.value)}
-              </span>
-            </button>
-          ))}
+                <span className="truncate">{tab.label}</span>
+                <span className="ml-2 rounded-md bg-background px-1.5 py-0.5 text-[10px] tabular-nums text-muted-foreground">
+                  {getCount(tab.value)}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="mx-4 mb-2 h-px bg-white/10" />
-
-      <div className="flex-1" />
-
       {/* Footer */}
-      <div className="flex items-center justify-between border-t border-white/10 p-4">
-        <span className="text-xs text-zinc-500">
+      <div className="border-t border-border p-4">
+        <span className="text-xs text-muted-foreground">
           {backgrounds.length} patterns · {buttons.length} buttons · {loaders.length} loaders · {navbars.length} navbars
         </span>
-        <ThemeToggle />
       </div>
     </aside>
   );

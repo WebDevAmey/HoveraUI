@@ -17,7 +17,7 @@ export default function Footer() {
 
             <h1 className="dark:text-gray-300 mt-4">
               Build with{" "}
-              <span className="dark:text-cyan-400">
+              <span className="dark:text-white">
                 <Link href="https://x.com">Hovera UI</Link>
               </span>
             </h1>

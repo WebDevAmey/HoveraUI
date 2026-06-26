@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { backgrounds } from "@/data/background";
+import { docEntries } from "@/data/docs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -9,8 +9,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    ...backgrounds.map((bg) => ({
-      url: `https://backlab.dev/patterns/${bg.slug}`,
+    {
+      url: "https://backlab.dev/docs",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...docEntries.map((entry) => ({
+      url: `https://backlab.dev/docs/${entry.slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,

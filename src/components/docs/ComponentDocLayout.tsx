@@ -6,7 +6,9 @@ import { notFound } from "next/navigation";
 import { findDocEntry } from "@/data/docs";
 import { getRegistryUrl, getRegistryBaseUrl } from "@/lib/registry";
 import { PackageManagerProvider, usePackageManager } from "@/context/PackageManagerContext";
-import DocsTopNav from "@/components/docs/DocsTopNav";
+import { useApp } from "@/context/AppContext";
+import SiteNav from "@/components/layout/SiteNav";
+import CommandPalette from "@/components/CommandPalette";
 import DocsSidebar from "@/components/docs/DocsSidebar";
 import TabToggle from "@/components/docs/TabToggle";
 import PackageManagerTabs from "@/components/docs/PackageManagerTabs";
@@ -62,6 +64,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tocOpen, setTocOpen] = useState(false);
   const { packageManager } = usePackageManager();
+  const { setCommandOpen } = useApp();
 
   const registryUrl = getRegistryUrl(entry.slug);
   const baseUrl = getRegistryBaseUrl();
@@ -70,7 +73,8 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <DocsTopNav onOpenSidebar={() => setSidebarOpen(true)} />
+      <SiteNav onOpenSidebar={() => setSidebarOpen(true)} onOpenCommand={() => setCommandOpen(true)} />
+      <CommandPalette />
 
       <div className="mx-auto flex w-full max-w-7xl flex-1 gap-8 px-4 py-8 md:px-8">
         {/* Left sidebar (desktop) */}

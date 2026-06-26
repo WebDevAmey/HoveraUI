@@ -40,6 +40,13 @@ const nextConfig: NextConfig = {
         destination: "/docs/:slug",
         permanent: true,
       },
+      {
+        // Legacy background-only detail route, same component now lives on
+        // the shared docs template under the same slug.
+        source: "/patterns/:slug",
+        destination: "/docs/:slug",
+        permanent: true,
+      },
     ];
   },
 };

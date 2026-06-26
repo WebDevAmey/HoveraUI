@@ -1,45 +1,34 @@
-import Hero from "@/components/layout/Hero";
-import Grid from "@/components/Grid";
-import ButtonGrid from "@/components/ButtonGrid";
-import LoaderGrid from "@/components/LoaderGrid";
-import NavbarGrid from "@/components/NavbarGrid";
+import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
-import HomeShell from "@/components/layout/HomeShell";
-import Sidebar from "@/components/layout/Sidebar";
-import TopNav from "@/components/layout/TopNav";
-import PreviewBackground from "@/components/PreviewBackground";
-import CommandPalette from "@/components/CommandPalette";
-import { Toaster } from "@/components/Toast";
-import { PreviewProvider } from "@/context/PreviewContext";
-import { AppProvider } from "@/context/AppContext";
+import CommandPaletteWithTrigger from "@/components/landing/CommandPaletteWithTrigger";
+import Hero from "@/components/landing/Hero";
+import TechStack from "@/components/landing/TechStack";
+import StatsRow from "@/components/landing/StatsRow";
+import DiscoverPaths from "@/components/landing/DiscoverPaths";
+import ShowcaseGrid from "@/components/landing/ShowcaseGrid";
+import StoryStrip from "@/components/landing/StoryStrip";
+import Marquee from "@/components/landing/Marquee";
+import FinalCTA from "@/components/landing/FinalCTA";
+
+export const metadata: Metadata = {
+  title: "Hovera UI — Hover-first React component library",
+  description:
+    "A shadcn-compatible library of hover-first buttons, loaders, navbars and backgrounds. Preview live, copy the code, or install via the CLI.",
+};
 
 export default function Home() {
   return (
-    <AppProvider>
-      <PreviewProvider>
-        <PreviewBackground />
-        <Toaster />
-        <CommandPalette />
-
-        <div className="flex h-screen flex-col overflow-hidden">
-          <TopNav />
-
-          <div className="flex flex-1 overflow-hidden">
-            <Sidebar />
-
-            <HomeShell>
-              <div className="mx-auto max-w-5xl px-6 pb-20">
-                <Hero />
-                <Grid />
-                <ButtonGrid />
-                <LoaderGrid />
-                <NavbarGrid />
-              </div>
-              <Footer />
-            </HomeShell>
-          </div>
-        </div>
-      </PreviewProvider>
-    </AppProvider>
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <CommandPaletteWithTrigger />
+      <Hero />
+      <TechStack />
+      <StatsRow />
+      <DiscoverPaths />
+      <ShowcaseGrid />
+      <StoryStrip />
+      <Marquee />
+      <FinalCTA />
+      <Footer />
+    </div>
   );
 }

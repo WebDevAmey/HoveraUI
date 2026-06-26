@@ -56,18 +56,18 @@
   --input: #e4e4e7;
   --ring: #09090b;
 
-  /* Hovera brand accent (distinct from generic shadcn zinc) */
-  --hovera-accent: #7c3aed;
+  /* Hovera brand accent: black and white only, no color accent */
+  --hovera-accent: #09090b;
   --hovera-accent-foreground: #ffffff;
-  --hovera-accent-glow: rgba(124, 58, 237, 0.45);
+  --hovera-accent-glow: rgba(9, 9, 11, 0.35);
   --code-bg: #fafafa;
   --code-foreground: #18181b;
   --doc-radius: 0.75rem;
 
-  /* Locked accent (single source of truth, same violet as --hovera-accent) */
-  --accent-locked: #7c3aed;
-  --accent-locked-glow: rgba(124, 58, 237, 0.45);
-  --accent-locked-muted: rgba(124, 58, 237, 0.12);
+  /* Locked accent (single source of truth, same as --hovera-accent) */
+  --accent-locked: #09090b;
+  --accent-locked-glow: rgba(9, 9, 11, 0.35);
+  --accent-locked-muted: rgba(9, 9, 11, 0.08);
 
   /* Light mode has no real depth tiers, surfaces stay close to background */
   --surface-0: #ffffff;
@@ -108,18 +108,18 @@
   --input: #27272a;
   --ring: #ffffff;
 
-  /* Hovera brand accent, brighter electric violet on dark surfaces */
-  --hovera-accent: #8b5cf6;
-  --hovera-accent-foreground: #ffffff;
-  --hovera-accent-glow: rgba(139, 92, 246, 0.55);
+  /* Hovera brand accent, white on dark surfaces, still black and white only */
+  --hovera-accent: #ffffff;
+  --hovera-accent-foreground: #09090b;
+  --hovera-accent-glow: rgba(255, 255, 255, 0.35);
   --code-bg: #18181b;
   --code-foreground: #e4e4e7;
   --doc-radius: 0.75rem;
 
-  /* Locked accent (single source of truth, brighter electric violet on dark) */
-  --accent-locked: #8b5cf6;
-  --accent-locked-glow: rgba(139, 92, 246, 0.55);
-  --accent-locked-muted: rgba(139, 92, 246, 0.16);
+  /* Locked accent (single source of truth, white on dark) */
+  --accent-locked: #ffffff;
+  --accent-locked-glow: rgba(255, 255, 255, 0.35);
+  --accent-locked-muted: rgba(255, 255, 255, 0.12);
 
   /* Dark-first surface tiers: real depth instead of a single flat inversion */
   --surface-0: #09090b;
@@ -164,16 +164,6 @@ body {
   border-radius: 4px;
 }
 .dark :focus-visible { outline-color: rgb(255 255 255); }
-
-/* Button card hover effects */
-.btn-card:hover .btn-glow {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.8);
-}
-
-.btn-card:hover .btn-border-reveal {
-  border-color: white;
-}
 
 /* Keyframes */
 @keyframes fadeUp {

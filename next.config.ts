@@ -31,6 +31,17 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        // Legacy component detail route, replaced by the shared docs template.
+        // Permanent redirect so bookmarks/SEO carry over to the new canonical URL.
+        source: "/components/:slug",
+        destination: "/docs/:slug",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

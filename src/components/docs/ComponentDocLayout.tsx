@@ -16,6 +16,7 @@ import PropsTable from "@/components/docs/PropsTable";
 import FlowThreadTOC from "@/components/docs/FlowThreadTOC";
 import RevealSection from "@/components/docs/RevealSection";
 import CopyButton from "@/components/CopyButton";
+import Footer from "@/components/layout/Footer";
 import type { FlowThreadSection } from "@/components/docs/useFlowThreadProgress";
 
 const PAGE_SECTIONS: FlowThreadSection[] = [
@@ -145,6 +146,9 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
               )}
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">{entry.description}</p>
+            {entry.story && (
+              <p className="mt-1 text-sm italic text-muted-foreground/80">{entry.story}</p>
+            )}
           </RevealSection>
 
           <RevealSection id="preview" className="mb-12">
@@ -172,7 +176,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
               </div>
 
               {previewTab === "preview" ? (
-                <PreviewCanvas>
+                <PreviewCanvas needsLightPreview={entry.needsLightPreview}>
                   <Preview />
                 </PreviewCanvas>
               ) : (
@@ -246,6 +250,8 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
           </div>
         </aside>
       </div>
+
+      <Footer />
     </div>
   );
 }

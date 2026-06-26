@@ -7,6 +7,8 @@ export const spinnerLoaderDoc: ComponentDocEntry = {
   description: "A simple indeterminate spinner with a status label, useful for inline loading states.",
   category: "loaders",
   isNew: true,
+  story: "A spinning ring paired with a status label, built so the eye has both motion and text to confirm something is happening.",
+  needsLightPreview: true,
   Preview: SpinnerLoader,
   code: `<div className="flex flex-col items-center justify-center space-y-2">
   <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600" />

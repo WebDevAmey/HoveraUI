@@ -27,6 +27,14 @@
   --color-hovera-foreground: var(--hovera-accent-foreground);
   --color-code-bg: var(--code-bg);
   --color-code-foreground: var(--code-foreground);
+
+  --color-accent-locked: var(--accent-locked);
+  --color-accent-locked-glow: var(--accent-locked-glow);
+  --color-accent-locked-muted: var(--accent-locked-muted);
+
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
 }
 
 :root {
@@ -55,6 +63,30 @@
   --code-bg: #fafafa;
   --code-foreground: #18181b;
   --doc-radius: 0.75rem;
+
+  /* Locked accent (single source of truth, same violet as --hovera-accent) */
+  --accent-locked: #7c3aed;
+  --accent-locked-glow: rgba(124, 58, 237, 0.45);
+  --accent-locked-muted: rgba(124, 58, 237, 0.12);
+
+  /* Light mode has no real depth tiers, surfaces stay close to background */
+  --surface-0: #ffffff;
+  --surface-1: #fafafa;
+  --surface-2: #f4f4f5;
+
+  /* Display type scale (responsive, clamp-based, on top of Geist Sans) */
+  --text-display-sm: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  --text-display-md: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+  --text-display-lg: clamp(2.75rem, 1.8rem + 4.5vw, 5.5rem);
+
+  --radius-card: 1rem;
+  --shadow-glow: 0 0 30px var(--accent-locked-glow);
+
+  /* Motion tokens, consumed by CSS keyframes and src/lib/motion.ts */
+  --ease-flow: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 450ms;
 }
 
 .dark {
@@ -83,6 +115,28 @@
   --code-bg: #18181b;
   --code-foreground: #e4e4e7;
   --doc-radius: 0.75rem;
+
+  /* Locked accent (single source of truth, brighter electric violet on dark) */
+  --accent-locked: #8b5cf6;
+  --accent-locked-glow: rgba(139, 92, 246, 0.55);
+  --accent-locked-muted: rgba(139, 92, 246, 0.16);
+
+  /* Dark-first surface tiers: real depth instead of a single flat inversion */
+  --surface-0: #09090b;
+  --surface-1: #131316;
+  --surface-2: #1c1c21;
+
+  --text-display-sm: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  --text-display-md: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+  --text-display-lg: clamp(2.75rem, 1.8rem + 4.5vw, 5.5rem);
+
+  --radius-card: 1rem;
+  --shadow-glow: 0 0 30px var(--accent-locked-glow);
+
+  --ease-flow: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 450ms;
 }
 
 html {
@@ -194,6 +248,20 @@ body {
   animation: flowNodePulse 1.8s ease-in-out infinite;
 }
 
+/* Testimonial marquee: continuous translateX loop, pausable on hover */
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -208,5 +276,10 @@ body {
 
   .flow-node-active {
     animation: none !important;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
   }
 }

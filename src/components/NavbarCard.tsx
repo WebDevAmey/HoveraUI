@@ -26,7 +26,7 @@ export default function NavbarCard({ name, slug, category, component: Component,
       <div className="flex items-center justify-between border-t border-border px-4 py-3">
         <div className="flex items-center gap-2">
           <h3 className="text-sm font-medium text-foreground">
-            <Link href={`/components/${slug}`} className="hover:underline">
+            <Link href={`/docs/${slug}`} className="hover:underline">
               {name}
             </Link>
           </h3>

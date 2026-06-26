@@ -3,18 +3,17 @@
 import { useEffect, useState } from "react";
 
 const FALLBACK_STARS = 128;
-const REPO = "WebDevAmey/HoveraUI";
 
 export default function GithubStars() {
   const [stars, setStars] = useState<number>(FALLBACK_STARS);
 
   useEffect(() => {
     let cancelled = false;
-    fetch(`https://api.github.com/repos/${REPO}`)
+    fetch("/api/github-stars")
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (!cancelled && data && typeof data.stargazers_count === "number") {
-          setStars(data.stargazers_count);
+        if (!cancelled && data && typeof data.stars === "number") {
+          setStars(data.stars);
         }
       })
       .catch(() => {

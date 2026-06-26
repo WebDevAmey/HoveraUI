@@ -1,32 +1,43 @@
 import type { DocNavGroup } from "@/types/docs";
+import { buttons } from "@/data/button";
+import { loaders } from "@/data/loader";
+import { navbars } from "@/data/navbar";
+import { backgrounds } from "@/data/background";
+
+function toNavItem(slug: string, name: string) {
+  return { slug, name: name.trim(), isNew: slug === "spinner-loader" };
+}
+
+const buttonItems = buttons.map((b) => toNavItem(b.slug, b.name));
+const loaderItems = loaders.map((l) => toNavItem(l.slug, l.name));
+const navbarItems = navbars.map((n) => toNavItem(n.slug, n.name));
+const gradientItems = backgrounds.filter((b) => b.category === "gradient").map((b) => toNavItem(b.slug, b.name));
+const patternItems = backgrounds.filter((b) => b.category === "pattern").map((b) => toNavItem(b.slug, b.name));
 
 export const docsNav: DocNavGroup[] = [
   {
     label: "Buttons",
     icon: "buttons",
-    items: [
-      { slug: "glow-button", name: "Glow Button" },
-      { slug: "border-reveal", name: "Border Reveal" },
-      { slug: "ripple-button", name: "Ripple Button" },
-      { slug: "swipe-button", name: "Swipe Button" },
-    ],
+    items: buttonItems,
   },
   {
-    label: "Text & Motion",
+    label: "Loaders",
     icon: "motion",
-    items: [
-      { slug: "spinner-loader", name: "Spinner Loader", isNew: true },
-      { slug: "bouncing-dots-loader", name: "Bouncing Dots Loader" },
-      { slug: "mercury-loader", name: "Mercury Loader" },
-    ],
+    items: loaderItems,
   },
   {
-    label: "Interactive",
+    label: "Navbars",
     icon: "interactive",
-    items: [
-      { slug: "aether-navbar", name: "Aether Navbar" },
-      { slug: "vertex-navbar", name: "Vertex Navbar" },
-      { slug: "radical-navbar", name: "Radical Navbar" },
-    ],
+    items: navbarItems,
+  },
+  {
+    label: "Gradients",
+    icon: "motion",
+    items: gradientItems,
+  },
+  {
+    label: "Patterns",
+    icon: "interactive",
+    items: patternItems,
   },
 ];

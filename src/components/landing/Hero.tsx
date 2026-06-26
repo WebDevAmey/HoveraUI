@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import GlowButtonDemo from "@/components/buttons/GlowButtonDemo";
+import HoveraFlagshipCard from "@/components/landing/HoveraFlagshipCard";
 import { heroItemVariants, heroItemVariantsReduced, MAGNETIC_SPRING } from "@/lib/motion";
 
 export default function Hero() {
@@ -70,9 +70,9 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             variants={variants}
-            className="flex h-72 items-center justify-center rounded-[var(--radius-card)] border border-border bg-card sm:h-96"
+            className="flex min-h-[28rem] items-center justify-center rounded-[var(--radius-card)] border border-border bg-card p-6"
           >
-            <GlowButtonDemo label="Try hovering" size="lg" />
+            <HoveraFlagshipCard />
           </motion.div>
         </div>
       </div>

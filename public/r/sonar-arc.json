@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonar-arc",
+  "type": "registry:component",
+  "title": "Sonar Arc",
+  "files": [
+    {
+      "path": "sonar-arc.tsx",
+      "target": "components/ui/sonar-arc.tsx",
+      "content": "export default function SonarArc() {\n  return (\n    <div className=\"relative h-screen overflow-hidden bg-black\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background: `\n            repeating-radial-gradient(\n              circle at 50% 130%,\n              transparent 0px,\n              transparent 36px,\n              rgba(45,212,191,.22) 38px,\n              transparent 40px\n            )\n          `,\n        }}\n      />\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background: \"linear-gradient(to top, rgba(0,0,0,.9), transparent 60%)\",\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

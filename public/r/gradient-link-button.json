@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-link-button",
+  "type": "registry:component",
+  "title": "Gradient Link Button",
+  "files": [
+    {
+      "path": "gradient-link-button.tsx",
+      "target": "components/ui/gradient-link-button.tsx",
+      "content": "export default function GradientLinkButton() {\n  return (\n    <button className=\"relative inline-block cursor-pointer bg-gradient-to-r from-blue-600 via-blue-600 to-black bg-[size:200%_100%] bg-[position:100%_0] bg-clip-text text-5xl font-black text-transparent transition-all duration-700 ease-out hover:bg-[position:0%_0]\">\n      Link\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

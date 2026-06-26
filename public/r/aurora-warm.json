@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-warm",
+  "type": "registry:component",
+  "title": "Aurora Warm",
+  "files": [
+    {
+      "path": "aurora-warm.tsx",
+      "target": "components/ui/aurora-warm.tsx",
+      "content": "export default function AuroraWarm() {\n  return (\n    <div className=\"relative h-screen overflow-hidden bg-black\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background:\n            \"radial-gradient(circle at 20% 20%, rgba(124,58,237,.6), transparent 40%)\",\n        }}\n      />\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background:\n            \"radial-gradient(circle at 80% 80%, rgba(124, 50, 18, 0.6), transparent 40%)\",\n        }}\n      />\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background:\n            \"radial-gradient(circle at center, transparent, rgba(0,0,0,.8))\",\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

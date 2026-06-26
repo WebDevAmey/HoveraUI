@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-loader",
+  "type": "registry:component",
+  "title": "Spinner Loader",
+  "files": [
+    {
+      "path": "spinner-loader.tsx",
+      "target": "components/ui/spinner-loader.tsx",
+      "content": "export default function SpinnerLoader() {\n  return (\n    <div className=\"flex flex-col items-center justify-center space-y-2\">\n      <div className=\"h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600\" />\n      <p className=\"text-sm font-medium tracking-wide text-slate-500\">Loading data...</p>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

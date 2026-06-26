@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magma-vein",
+  "type": "registry:component",
+  "title": "Magma Vein",
+  "files": [
+    {
+      "path": "magma-vein.tsx",
+      "target": "components/ui/magma-vein.tsx",
+      "content": "export default function MagmaVein() {\n  return (\n    <div className=\"relative h-screen overflow-hidden bg-[#0c0402]\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background: `\n            repeating-conic-gradient(from 0deg at 20% 30%, rgba(255,90,0,.18) 0deg 8deg, transparent 8deg 26deg),\n            repeating-conic-gradient(from 45deg at 75% 70%, rgba(255,60,0,.15) 0deg 6deg, transparent 6deg 22deg),\n            repeating-conic-gradient(from 90deg at 50% 90%, rgba(255,140,40,.12) 0deg 5deg, transparent 5deg 20deg)\n          `,\n          filter: \"blur(0.5px)\",\n        }}\n      />\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background: \"radial-gradient(circle at center, transparent, rgba(0,0,0,.85))\",\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

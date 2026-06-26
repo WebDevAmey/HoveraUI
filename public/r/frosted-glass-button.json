@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "frosted-glass-button",
+  "type": "registry:component",
+  "title": " Frosted Glass Button",
+  "files": [
+    {
+      "path": "frosted-glass-button.tsx",
+      "target": "components/ui/frosted-glass-button.tsx",
+      "content": "export default function FrostedGlassButton() {\n  return (\n    <button className=\"relative px-12 py-4 rounded-full text-white font-medium \n    bg-white/10 backdrop-blur-xl border border-white/20 \n    hover:bg-white/20 hover:scale-105 transition\">\n      Frosted Glass\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

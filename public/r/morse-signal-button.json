@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morse-signal-button",
+  "type": "registry:component",
+  "title": "Morse Signal Button",
+  "files": [
+    {
+      "path": "morse-signal-button.tsx",
+      "target": "components/ui/morse-signal-button.tsx",
+      "content": "export default function MorseSignalButton() {\n  return (\n    <button className=\"group inline-flex flex-col items-center gap-2 rounded-lg border border-emerald-500/40 bg-neutral-950 px-8 py-4 font-mono text-sm tracking-widest text-emerald-400\">\n      <span>SEND SIGNAL</span>\n      <span className=\"flex h-1 gap-1\">\n        <span className=\"h-1 w-3 rounded-full bg-emerald-500 opacity-15 transition-opacity delay-0 duration-200 group-hover:opacity-100\" />\n        <span className=\"h-1 w-3 rounded-full bg-emerald-500 opacity-15 transition-opacity delay-150 duration-200 group-hover:opacity-100\" />\n        <span className=\"h-1 w-7 rounded-full bg-emerald-500 opacity-15 transition-opacity delay-300 duration-200 group-hover:opacity-100\" />\n        <span className=\"h-1 w-3 rounded-full bg-emerald-500 opacity-15 transition-opacity delay-500 duration-200 group-hover:opacity-100\" />\n        <span className=\"h-1 w-7 rounded-full bg-emerald-500 opacity-15 transition-opacity delay-700 duration-200 group-hover:opacity-100\" />\n      </span>\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

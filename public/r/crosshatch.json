@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "crosshatch",
+  "type": "registry:component",
+  "title": "Crosshatch",
+  "files": [
+    {
+      "path": "crosshatch.tsx",
+      "target": "components/ui/crosshatch.tsx",
+      "content": "export default function Crosshatch() {\n  return (\n    <div className=\"relative h-screen bg-black\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          backgroundImage: `\n            repeating-linear-gradient(\n              45deg,\n              rgba(255,255,255,.08) 0px,\n              rgba(255,255,255,.08) 1px,\n              transparent 1px,\n              transparent 16px\n            ),\n            repeating-linear-gradient(\n              -45deg,\n              rgba(255,255,255,.08) 0px,\n              rgba(255,255,255,.08) 1px,\n              transparent 1px,\n              transparent 16px\n            )\n          `,\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

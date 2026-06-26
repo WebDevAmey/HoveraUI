@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mercury-loader",
+  "type": "registry:component",
+  "title": "Mercury Loader",
+  "files": [
+    {
+      "path": "mercury-loader.tsx",
+      "target": "components/ui/mercury-loader.tsx",
+      "content": "export default function MercuryLoader() {\n  return (\n    <svg className=\"absolute h-0 w-0 pointer-events-none hidden\" aria-hidden=\"true\">\n      <defs>\n        <filter id=\"mercury-melt\">\n          <feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"10\" result=\"blur\" />\n          <feColorMatrix\n            in=\"blur\"\n            mode=\"matrix\"\n            values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9\"\n            result=\"goo\"\n          />\n          <feComposite in=\"SourceGraphic\" in2=\"goo\" operator=\"atop\" />\n        </filter>\n      </defs>\n    </svg>\n    \n    <div className=\"flex flex-col items-center justify-center space-y-4\">\n      <div\n        className=\"relative flex h-24 w-48 items-center justify-center bg-transparent [filter:url(#mercury-melt)]\"\n        role=\"status\"\n        aria-live=\"polite\"\n      >\n        <div className=\"absolute h-8 w-8 animate-[mercury-left_2s_infinite_cubic-bezier(0.77,0,0.17,1)] rounded-full bg-zinc-800 blur-[6px]\" />\n        <div className=\"absolute h-8 w-8 animate-[mercury-center_2s_infinite_ease-in-out] rounded-full bg-zinc-800 blur-[6px]\" />\n        <div className=\"absolute h-8 w-8 animate-[mercury-right_2s_infinite_cubic-bezier(0.77,0,0.17,1)] rounded-full bg-zinc-800 blur-[6px] [animation-delay:0.15s]\" />\n      </div>\n    \n      <p className=\"text-sm font-medium uppercase tracking-wider text-zinc-500\">Connecting...</p>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

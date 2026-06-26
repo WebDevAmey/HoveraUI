@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "new-button",
+  "type": "registry:component",
+  "title": " New Button",
+  "files": [
+    {
+      "path": "new-button.tsx",
+      "target": "components/ui/new-button.tsx",
+      "content": "export default function NewButton() {\n  return (\n    <button className=\"px-8 py-3 bg-emerald-600 rounded-xl text-white font-semibold hover:-translate-y-1 active:translate-y-0 hover:shadow-xl transform transition-all \">\n    Button\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

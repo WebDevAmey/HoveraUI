@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bouncing-dots-loader",
+  "type": "registry:component",
+  "title": "Bouncing Dots Loader",
+  "files": [
+    {
+      "path": "bouncing-dots-loader.tsx",
+      "target": "components/ui/bouncing-dots-loader.tsx",
+      "content": "export default function BouncingDotsLoader() {\n  return (\n    <div className=\"flex items-center space-x-2 py-4\">\n      <div className=\"h-3 w-3 animate-bounce rounded-full bg-emerald-500 [animation-delay:-0.3s]\" />\n      <div className=\"h-3 w-3 animate-bounce rounded-full bg-emerald-500 [animation-delay:-0.15s]\" />\n      <div className=\"h-3 w-3 animate-bounce rounded-full bg-emerald-500\" />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

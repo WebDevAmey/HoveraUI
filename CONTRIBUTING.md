@@ -18,4 +18,13 @@ That's it — there's no review queue or moderation step beyond normal PR review
 
 ## Why no backend
 
-The registry (`src/app/api/registry/[slug]/route.ts`) is a static lookup built from those same data files at module load — no database, no auth, no network call. `npx shadcn add @hovera/<slug>` just fetches that JSON and copies the file in, exactly like shadcn's own registry.
+The registry (`src/app/api/registry/[slug]/route.ts`) is a static lookup built from those same data files at module load, no database, no auth, no network call. The same data also gets written out as static files in `public/r/<slug>.json` by `npm run build:registry` (wired as `predev`/`prebuild`), which is what the shadcn CLI actually fetches in production via `npx shadcn@latest add ${NEXT_PUBLIC_REGISTRY_URL}/r/<slug>.json`. Set `NEXT_PUBLIC_REGISTRY_URL` in `.env.local` (see `.env.example`) to whatever host you deploy to.
+
+## Adding a full documentation page (optional)
+
+A handful of components (currently `glow-button` and `spinner-loader`) also render through the richer doc template at `/docs/<slug>` instead of the older flat `/components/<slug>` page. To opt a component into that template:
+
+1. Add a `src/data/docs/<slug>.ts` file exporting a `ComponentDocEntry` (see `src/types/docs.ts`): `slug`, `name`, `description`, `category`, `Preview` (a real React component, wrap your component in a small props-driven demo if it needs configurable props for the Props table), `code`, `usage`, `dependencies`, and `props`.
+2. Register it in `src/data/docs/index.ts` and add a nav entry in `src/data/docs/nav.ts`.
+
+This is optional. Components that skip it keep working on the existing `/components/<slug>` page, no change to the basic contribution flow above.

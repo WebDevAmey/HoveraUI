@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-fill-button",
+  "type": "registry:component",
+  "title": "Slide Fill Button",
+  "files": [
+    {
+      "path": "slide-fill-button.tsx",
+      "target": "components/ui/slide-fill-button.tsx",
+      "content": "export default function SlideFillButton() {\n  return (\n    <button className=\"relative z-10 overflow-hidden rounded border-2 border-black bg-amber-500 px-8 py-3 text-black transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:bg-emerald-500 before:translate-y-full before:transition-transform before:duration-300 hover:text-white hover:before:translate-y-0\">\n      Get in touch\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "diagonal-lines",
+  "type": "registry:component",
+  "title": "Diagonal Lines",
+  "files": [
+    {
+      "path": "diagonal-lines.tsx",
+      "target": "components/ui/diagonal-lines.tsx",
+      "content": "export default function DiagonalLines() {\n  return (\n    <div className=\"relative h-screen bg-black\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          backgroundImage: `\n            repeating-linear-gradient(\n              45deg,\n              rgba(255,255,255,.1) 0px,\n              rgba(255,255,255,.1) 2px,\n              transparent 2px,\n              transparent 30px\n            )\n          `,\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

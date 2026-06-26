@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-grid",
+  "type": "registry:component",
+  "title": "Dot Grid",
+  "files": [
+    {
+      "path": "dot-grid.tsx",
+      "target": "components/ui/dot-grid.tsx",
+      "content": "export default function DotGrid() {\n  return (\n    <div className=\"relative h-screen bg-black\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          backgroundImage:\n            \"radial-gradient(rgba(255,255,255,.3) 1px, transparent 1px)\",\n          backgroundSize: \"30px 30px\",\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

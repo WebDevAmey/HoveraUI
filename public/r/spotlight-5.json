@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-5",
+  "type": "registry:component",
+  "title": "Spotlight 5",
+  "files": [
+    {
+      "path": "spotlight-5.tsx",
+      "target": "components/ui/spotlight-5.tsx",
+      "content": "export default function Spotlight5() {\n  return (\n    <div className=\"relative h-screen bg-black overflow-hidden\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background: `\n            radial-gradient(\n              80% 80% at 0% 50%,\n              rgba(168,85,247,.4),\n              transparent 60%\n            )\n          `,\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

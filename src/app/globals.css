@@ -22,6 +22,11 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  --color-hovera: var(--hovera-accent);
+  --color-hovera-foreground: var(--hovera-accent-foreground);
+  --color-code-bg: var(--code-bg);
+  --color-code-foreground: var(--code-foreground);
 }
 
 :root {
@@ -42,6 +47,14 @@
   --border: #e4e4e7;
   --input: #e4e4e7;
   --ring: #09090b;
+
+  /* Hovera brand accent (distinct from generic shadcn zinc) */
+  --hovera-accent: #7c3aed;
+  --hovera-accent-foreground: #ffffff;
+  --hovera-accent-glow: rgba(124, 58, 237, 0.45);
+  --code-bg: #fafafa;
+  --code-foreground: #18181b;
+  --doc-radius: 0.75rem;
 }
 
 .dark {
@@ -62,6 +75,14 @@
   --border: #27272a;
   --input: #27272a;
   --ring: #ffffff;
+
+  /* Hovera brand accent, brighter electric violet on dark surfaces */
+  --hovera-accent: #8b5cf6;
+  --hovera-accent-foreground: #ffffff;
+  --hovera-accent-glow: rgba(139, 92, 246, 0.55);
+  --code-bg: #18181b;
+  --code-foreground: #e4e4e7;
+  --doc-radius: 0.75rem;
 }
 
 html {
@@ -153,9 +174,39 @@ body {
   animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Flow thread doc animation (clip-path reveal, distinct from fade/scale) */
+@keyframes clipRevealUp {
+  from { clip-path: inset(0 0 100% 0); opacity: 0; }
+  to   { clip-path: inset(0 0 0% 0); opacity: 1; }
+}
+
+@keyframes flowNodePulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--hovera-accent-glow); }
+  50% { box-shadow: 0 0 0 6px var(--hovera-accent-glow); }
+}
+
+.animate-clip-reveal {
+  animation: clipRevealUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--stagger, 0ms);
+}
+
+.flow-node-active {
+  animation: flowNodePulse 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .animate-clip-reveal {
+    clip-path: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  .flow-node-active {
+    animation: none !important;
   }
 }

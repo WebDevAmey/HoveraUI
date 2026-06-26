@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "x-ray-scanner-button",
+  "type": "registry:component",
+  "title": "X-Ray Scanner Button",
+  "files": [
+    {
+      "path": "x-ray-scanner-button.tsx",
+      "target": "components/ui/x-ray-scanner-button.tsx",
+      "content": "export default function XRayScannerButton() {\n  return (\n    <button className=\"relative z-10 inline-block cursor-pointer overflow-hidden rounded border-2 border-white bg-neutral-900 px-6 py-3 text-lg font-bold text-white before:absolute before:bottom-0 before:left-0 before:h-0 before:w-full before:bg-white before:mix-blend-difference before:transition-all before:duration-300 before:ease-out before:content-[''] hover:before:h-full\">\n      X-RAY SCANNER\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

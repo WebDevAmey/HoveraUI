@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "underline-hover-button",
+  "type": "registry:component",
+  "title": "Underline Hover Button",
+  "files": [
+    {
+      "path": "underline-hover-button.tsx",
+      "target": "components/ui/underline-hover-button.tsx",
+      "content": "export default function UnderlineHoverButton() {\n  return (\n    <button className=\"group px-6 py-3 text-lg font-medium text-indigo-600\">\n      <span className=\"relative inline-block\">\n        Hover Me\n        <span className=\"absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-indigo-600 transition-transform duration-300 ease-out group-hover:scale-x-100\"></span>\n      </span>\n    </button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

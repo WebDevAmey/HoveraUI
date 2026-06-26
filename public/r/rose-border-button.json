@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rose-border-button",
+  "type": "registry:component",
+  "title": "Rose Border Button",
+  "files": [
+    {
+      "path": "rose-border-button.tsx",
+      "target": "components/ui/rose-border-button.tsx",
+      "content": "export default function RoseBorderButton() {\n  return (\n    <button className=\"bg-rose-950 text-rose-400 border border-rose-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group\">Hover Me</button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

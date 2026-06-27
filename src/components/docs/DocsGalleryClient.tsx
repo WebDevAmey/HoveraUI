@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { docEntries } from "@/data/docs";
 import { useApp } from "@/context/AppContext";
 import SiteNav from "@/components/layout/SiteNav";
@@ -22,6 +23,7 @@ const FILTERS: { label: string; value: FilterValue }[] = [
 ];
 
 export default function DocsGalleryClient() {
+  const router = useRouter();
   const { favorites, toggleFavorite, isFavorite } = useApp();
   const [filter, setFilter] = useState<FilterValue>("all");
   const [search, setSearch] = useState("");
@@ -111,7 +113,17 @@ export default function DocsGalleryClient() {
               const favorited = isFavorite(entry.slug);
               return (
                 <CursorGlowCard key={entry.slug}>
-                  <Link href={`/docs/${entry.slug}`} className="block">
+                  {/* Not a <Link>: some previews (e.g. navbar demos) render their own
+                      <a> tags, and nesting an anchor inside an anchor is invalid HTML. */}
+                  <div
+                    role="link"
+                    tabIndex={0}
+                    onClick={() => router.push(`/docs/${entry.slug}`)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") router.push(`/docs/${entry.slug}`);
+                    }}
+                    className="block cursor-pointer"
+                  >
                     <LazyMount
                       className={`flex h-40 items-center justify-center overflow-hidden p-6 ${
                         entry.needsLightPreview ? "bg-white" : "bg-secondary/20"
@@ -119,7 +131,7 @@ export default function DocsGalleryClient() {
                     >
                       <Preview />
                     </LazyMount>
-                  </Link>
+                  </div>
                   <div className="flex items-center justify-between border-t border-border px-4 py-3">
                     <Link href={`/docs/${entry.slug}`} className="min-w-0">
                       <h3 className="truncate text-sm font-medium text-foreground hover:underline">

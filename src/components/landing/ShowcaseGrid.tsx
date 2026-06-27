@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { docEntries } from "@/data/docs";
 import CursorGlowCard from "@/components/CursorGlowCard";
 import LazyMount from "@/components/LazyMount";
@@ -18,6 +19,7 @@ const FEATURED_SLUGS = [
 ];
 
 export default function ShowcaseGrid() {
+  const router = useRouter();
   const entries = FEATURED_SLUGS
     .map((slug) => docEntries.find((e) => e.slug === slug))
     .filter((e): e is NonNullable<typeof e> => Boolean(e));
@@ -35,7 +37,17 @@ export default function ShowcaseGrid() {
             const Preview = entry.Preview;
             return (
               <CursorGlowCard key={entry.slug}>
-                <Link href={`/docs/${entry.slug}`} className="block">
+                {/* Not a <Link>: some previews (e.g. navbar demos) render their own
+                    <a> tags, and nesting an anchor inside an anchor is invalid HTML. */}
+                <div
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => router.push(`/docs/${entry.slug}`)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") router.push(`/docs/${entry.slug}`);
+                  }}
+                  className="block cursor-pointer"
+                >
                   <LazyMount
                     className={`flex h-36 items-center justify-center overflow-hidden p-5 ${
                       entry.needsLightPreview ? "bg-white" : "bg-secondary/20"
@@ -43,7 +55,7 @@ export default function ShowcaseGrid() {
                   >
                     <Preview />
                   </LazyMount>
-                </Link>
+                </div>
                 <div className="border-t border-border px-4 py-3">
                   <Link href={`/docs/${entry.slug}`}>
                     <h3 className="truncate text-sm font-medium text-foreground hover:underline">

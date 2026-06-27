@@ -3,12 +3,14 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { docEntries } from "@/data/docs";
 import { useApp } from "@/context/AppContext";
 import SiteNav from "@/components/layout/SiteNav";
 import Footer from "@/components/layout/Footer";
 import CursorGlowCard from "@/components/CursorGlowCard";
 import LazyMount from "@/components/LazyMount";
+import { TRANSITION_FLOW } from "@/lib/motion";
 
 type FilterValue =
   | "all"
@@ -67,7 +69,7 @@ export default function DocsGalleryClient() {
       <SiteNav />
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-12 md:px-8">
-        <h1 className="text-2xl font-semibold text-foreground">Components</h1>
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground">Components</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Browse every component, preview live, copy the code or install via the CLI.
         </p>
@@ -84,12 +86,19 @@ export default function DocsGalleryClient() {
                 role="tab"
                 aria-selected={filter === f.value}
                 onClick={() => setFilter(f.value)}
-                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                className={`relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                   filter === f.value
-                    ? "bg-card text-foreground shadow-sm"
+                    ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
+                {filter === f.value && (
+                  <motion.div
+                    layoutId="active-filter-pill"
+                    transition={TRANSITION_FLOW}
+                    className="absolute inset-0 -z-10 rounded-md bg-card shadow-sm"
+                  />
+                )}
                 {f.label}
                 {f.value === "favorites" && favorites.length > 0 && (
                   <span className="ml-1.5 text-xs text-muted-foreground">({favorites.length})</span>

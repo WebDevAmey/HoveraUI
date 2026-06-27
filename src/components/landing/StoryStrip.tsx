@@ -14,7 +14,7 @@ export default function StoryStrip() {
   return (
     <RevealSection id="story" className="border-b border-border bg-secondary/10 px-4 py-16 md:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-2xl font-semibold text-foreground">Built with intent, not just markup</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-foreground">Built with intent, not just markup</h2>
         <p className="mt-2 max-w-xl text-sm text-muted-foreground">
           Every component in Hovera UI ships with a note on what its hover state is meant to say.
         </p>
@@ -22,8 +22,11 @@ export default function StoryStrip() {
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {entries.map((entry) => (
             <Link key={entry.slug} href={`/docs/${entry.slug}`} className="group block">
-              <p className="text-sm font-medium text-foreground group-hover:text-hovera">
+              <p className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-hovera">
                 {entry.name}
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+                  →
+                </span>
               </p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{entry.story}</p>
             </Link>

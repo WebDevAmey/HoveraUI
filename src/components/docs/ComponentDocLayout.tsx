@@ -141,7 +141,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
           </div>
 
           <RevealSection id="overview" className="mb-8">
-            <h1 className="text-2xl font-semibold text-foreground">
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground">
               {entry.name}
               {entry.isNew && (
                 <span className="ml-2 rounded-full bg-hovera px-2 py-0.5 text-[11px] font-semibold text-hovera-foreground align-middle">

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const PRODUCT_LINKS = [
   { href: "/docs", label: "Components" },
@@ -41,7 +44,9 @@ export default function Footer() {
               {PRODUCT_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                    {link.label}
+                    <motion.span className="inline-block" whileHover={{ x: 2 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                      {link.label}
+                    </motion.span>
                   </Link>
                 </li>
               ))}
@@ -54,7 +59,9 @@ export default function Footer() {
               {RESOURCE_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                    {link.label}
+                    <motion.span className="inline-block" whileHover={{ x: 2 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                      {link.label}
+                    </motion.span>
                   </Link>
                 </li>
               ))}
@@ -72,7 +79,9 @@ export default function Footer() {
                     rel={link.href.startsWith("http") ? "noreferrer" : undefined}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    {link.label}
+                    <motion.span className="inline-block" whileHover={{ x: 2 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                      {link.label}
+                    </motion.span>
                   </Link>
                 </li>
               ))}

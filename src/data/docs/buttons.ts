@@ -1,5 +1,6 @@
 import type { ComponentDocEntry } from "@/types/docs";
 import { buttons } from "@/data/button";
+import { classifyStack } from "@/lib/classify-stack";
 
 function usageFor(slug: string, componentName: string) {
   return `import ${componentName} from "@/components/ui/${slug}"\n\nexport function ${componentName}Demo() {\n  return <${componentName}>Get Started</${componentName}>\n}`;
@@ -56,6 +57,7 @@ export const buttonDocs: ComponentDocEntry[] = buttons
       name: btn.name.trim(),
       description: `A hover-driven ${btn.category} button, ${btn.name.trim().toLowerCase()}.`,
       category: "buttons",
+      stack: classifyStack(btn.code),
       story: STORIES[btn.slug],
       Preview: btn.component as React.ComponentType,
       code: btn.code,

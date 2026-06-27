@@ -1,5 +1,6 @@
 import type { ComponentDocEntry } from "@/types/docs";
 import { navbars } from "@/data/navbar";
+import { classifyStack } from "@/lib/classify-stack";
 
 function usageFor(slug: string, componentName: string) {
   return `import ${componentName} from "@/components/ui/${slug}"\n\nexport function ${componentName}Demo() {\n  return <${componentName} />\n}`;
@@ -19,6 +20,7 @@ export const navbarDocs: ComponentDocEntry[] = navbars.map((nav) => {
     name: nav.name.trim(),
     description: `A floating navigation bar, ${nav.name.trim().toLowerCase()}.`,
     category: "navbars",
+    stack: classifyStack(nav.code),
     story: STORIES[nav.slug],
     Preview: nav.component,
     code: nav.code,

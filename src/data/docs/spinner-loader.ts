@@ -6,6 +6,7 @@ export const spinnerLoaderDoc: ComponentDocEntry = {
   name: "Spinner Loader",
   description: "A simple indeterminate spinner with a status label, useful for inline loading states.",
   category: "loaders",
+  stack: "tailwind",
   isNew: true,
   story: "A spinning ring paired with a status label, built so the eye has both motion and text to confirm something is happening.",
   needsLightPreview: true,

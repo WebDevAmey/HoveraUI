@@ -10,7 +10,18 @@ import Footer from "@/components/layout/Footer";
 import CursorGlowCard from "@/components/CursorGlowCard";
 import LazyMount from "@/components/LazyMount";
 
-type FilterValue = "all" | "buttons" | "loaders" | "navbars" | "gradient" | "pattern" | "favorites";
+type FilterValue =
+  | "all"
+  | "buttons"
+  | "loaders"
+  | "navbars"
+  | "gradient"
+  | "pattern"
+  | "css"
+  | "tailwind"
+  | "favorites";
+
+const STACK_FILTERS: FilterValue[] = ["css", "tailwind"];
 
 const FILTERS: { label: string; value: FilterValue }[] = [
   { label: "All", value: "all" },
@@ -19,6 +30,8 @@ const FILTERS: { label: string; value: FilterValue }[] = [
   { label: "Navbars", value: "navbars" },
   { label: "Gradients", value: "gradient" },
   { label: "Patterns", value: "pattern" },
+  { label: "CSS", value: "css" },
+  { label: "Tailwind", value: "tailwind" },
   { label: "Favorites", value: "favorites" },
 ];
 
@@ -33,6 +46,8 @@ export default function DocsGalleryClient() {
 
     if (filter === "favorites") {
       entries = entries.filter((e) => favorites.includes(e.slug));
+    } else if (STACK_FILTERS.includes(filter)) {
+      entries = entries.filter((e) => e.stack === filter);
     } else if (filter !== "all") {
       entries = entries.filter((e) => e.category === filter);
     }

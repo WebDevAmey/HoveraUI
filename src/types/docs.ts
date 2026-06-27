@@ -12,6 +12,7 @@ export interface ComponentDocEntry {
   name: string;
   description: string;
   category: string;
+  stack: "css" | "tailwind";
   isNew?: boolean;
   /** One to two line note in Hovera's hover-first voice, grounded in what the component's code actually does. */
   story?: string;

@@ -1,5 +1,6 @@
 import type { ComponentDocEntry } from "@/types/docs";
 import { loaders } from "@/data/loader";
+import { classifyStack } from "@/lib/classify-stack";
 
 function usageFor(slug: string, componentName: string) {
   return `import ${componentName} from "@/components/ui/${slug}"\n\nexport function ${componentName}Demo() {\n  return <${componentName} />\n}`;
@@ -21,6 +22,7 @@ export const loaderDocs: ComponentDocEntry[] = loaders
       name: ldr.name.trim(),
       description: `A self-contained loading indicator, ${ldr.name.trim().toLowerCase()}.`,
       category: "loaders",
+      stack: classifyStack(ldr.code),
       story: STORIES[ldr.slug],
       Preview: ldr.component,
       code: ldr.code,

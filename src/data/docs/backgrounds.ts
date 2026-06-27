@@ -1,5 +1,6 @@
 import type { ComponentDocEntry } from "@/types/docs";
 import { backgrounds } from "@/data/background";
+import { classifyStack } from "@/lib/classify-stack";
 
 function usageFor(slug: string, componentName: string) {
   return `import ${componentName} from "@/components/ui/${slug}"\n\nexport function ${componentName}Demo() {\n  return <${componentName} />\n}`;
@@ -39,6 +40,7 @@ export const backgroundDocs: ComponentDocEntry[] = backgrounds.map((bg) => {
     name: bg.name,
     description: `A full-bleed ${bg.category} background, ${bg.name.toLowerCase()}, built from layered CSS gradients.`,
     category: bg.category,
+    stack: classifyStack(bg.code),
     story: STORIES[bg.slug],
     Preview: bg.component,
     code: bg.code,

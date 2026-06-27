@@ -6,6 +6,7 @@ export const glowButtonDoc: ComponentDocEntry = {
   name: "Glow Button",
   description: "A primary call-to-action button with a violet glow that intensifies on hover.",
   category: "buttons",
+  stack: "tailwind",
   story: "Hover and the button lifts slightly while a violet glow blooms outward, signaling that this is the action to take.",
   Preview: GlowButtonDemo,
   code: `<button className="rounded-xl bg-violet-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.8)]">

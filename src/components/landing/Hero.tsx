@@ -30,7 +30,7 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               variants={variants}
-              className="mt-5 text-[var(--text-display-md)] font-semibold leading-[1.05] tracking-tight text-foreground sm:text-[var(--text-display-lg)]"
+              className="mt-6 text-[length:var(--text-display-md)] font-semibold leading-[1.02] tracking-tight text-foreground sm:text-[length:var(--text-display-lg)]"
             >
               Interfaces that respond before you click.
             </motion.h1>
@@ -40,7 +40,7 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               variants={variants}
-              className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground"
+              className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
               Hovera UI is a shadcn-compatible library of buttons, loaders, navbars and
               backgrounds built around the moment a cursor arrives, not just the moment

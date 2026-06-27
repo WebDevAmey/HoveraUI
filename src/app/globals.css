@@ -76,8 +76,8 @@
 
   /* Display type scale (responsive, clamp-based, on top of Geist Sans) */
   --text-display-sm: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
-  --text-display-md: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
-  --text-display-lg: clamp(2.75rem, 1.8rem + 4.5vw, 5.5rem);
+  --text-display-md: clamp(2.25rem, 1.6rem + 2.5vw, 3.25rem);
+  --text-display-lg: clamp(2.75rem, 1.8rem + 3.5vw, 4.5rem);
 
   --radius-card: 1rem;
   --shadow-glow: 0 0 30px var(--accent-locked-glow);
@@ -127,8 +127,8 @@
   --surface-2: #1c1c21;
 
   --text-display-sm: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
-  --text-display-md: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
-  --text-display-lg: clamp(2.75rem, 1.8rem + 4.5vw, 5.5rem);
+  --text-display-md: clamp(2.25rem, 1.6rem + 2.5vw, 3.25rem);
+  --text-display-lg: clamp(2.75rem, 1.8rem + 3.5vw, 4.5rem);
 
   --radius-card: 1rem;
   --shadow-glow: 0 0 30px var(--accent-locked-glow);

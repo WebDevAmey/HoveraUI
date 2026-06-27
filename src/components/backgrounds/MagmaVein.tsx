@@ -1,6 +1,6 @@
 export default function MagmaVein() {
   return (
-    <div className="relative h-screen overflow-hidden bg-[#0c0402]">
+    <div className="relative h-screen w-full overflow-hidden bg-[#0c0402]">
       <div
         className="absolute inset-0"
         style={{

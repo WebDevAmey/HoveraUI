@@ -1,6 +1,6 @@
 export default function Aurora() {
   return (
-    <div className="relative h-screen overflow-hidden bg-black">
+    <div className="relative h-screen w-full overflow-hidden bg-black">
 
       <div
         className="absolute inset-0"

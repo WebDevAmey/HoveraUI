@@ -1,6 +1,6 @@
 export default function NoiseVeil() {
   return (
-    <div className="relative h-screen overflow-hidden bg-[#0c0f14]">
+    <div className="relative h-screen w-full overflow-hidden bg-[#0c0f14]">
       <div
         className="absolute inset-0"
         style={{

@@ -1,6 +1,6 @@
 export default function GridPattern() {
   return (
-    <div className="relative h-screen bg-black">
+    <div className="relative h-screen w-full bg-black">
 
       <div
         className="absolute inset-0"

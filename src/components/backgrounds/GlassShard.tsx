@@ -1,6 +1,6 @@
 export default function GlassShard() {
   return (
-    <div className="relative h-screen overflow-hidden bg-[#050b14]">
+    <div className="relative h-screen w-full overflow-hidden bg-[#050b14]">
       <div
         className="absolute inset-0"
         style={{

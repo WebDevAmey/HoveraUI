@@ -1,6 +1,6 @@
 export default function EmberDrift() {
   return (
-    <div className="relative h-screen overflow-hidden bg-[#0a0604]">
+    <div className="relative h-screen w-full overflow-hidden bg-[#0a0604]">
       <div
         className="absolute inset-0"
         style={{

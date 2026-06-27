@@ -1,6 +1,6 @@
 export default function Spotlight4() {
   return (
-    <div className="relative h-screen bg-black overflow-hidden">
+    <div className="relative h-screen w-full bg-black overflow-hidden">
       <div
         className="absolute inset-0"
         style={{

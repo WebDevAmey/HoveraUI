@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Product</h3>
+            <h3 className="text-sm font-semibold tracking-tight text-foreground">Product</h3>
             <ul className="mt-3 space-y-2">
               {PRODUCT_LINKS.map((link) => (
                 <li key={link.label}>
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Resources</h3>
+            <h3 className="text-sm font-semibold tracking-tight text-foreground">Resources</h3>
             <ul className="mt-3 space-y-2">
               {RESOURCE_LINKS.map((link) => (
                 <li key={link.label}>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Company</h3>
+            <h3 className="text-sm font-semibold tracking-tight text-foreground">Company</h3>
             <ul className="mt-3 space-y-2">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.label}>

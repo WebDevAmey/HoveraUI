@@ -48,7 +48,7 @@ export default function DiscoverPaths() {
                 href={path.href}
                 className="group flex h-full flex-col rounded-[var(--radius-card)] border border-border bg-card p-6 transition-colors hover:border-hovera/50"
               >
-                <h3 className="text-base font-semibold text-foreground">{path.title}</h3>
+                <h3 className="text-base font-semibold tracking-tight text-foreground">{path.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {path.description}
                 </p>

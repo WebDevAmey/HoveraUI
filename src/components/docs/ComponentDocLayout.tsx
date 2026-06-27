@@ -190,7 +190,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
           </RevealSection>
 
           <RevealSection id="installation" className="mb-12">
-            <h2 className="mb-3 text-lg font-semibold text-foreground">Installation</h2>
+            <h2 className="mb-3 text-lg font-semibold tracking-tight text-foreground">Installation</h2>
             <TabToggle
               label="Installation method"
               value={installTab}
@@ -233,12 +233,12 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
           </RevealSection>
 
           <RevealSection id="usage" className="mb-12">
-            <h2 className="mb-3 text-lg font-semibold text-foreground">Usage</h2>
+            <h2 className="mb-3 text-lg font-semibold tracking-tight text-foreground">Usage</h2>
             <CodeBlock code={entry.usage} />
           </RevealSection>
 
           <RevealSection id="props" className="mb-12">
-            <h2 className="mb-3 text-lg font-semibold text-foreground">Props</h2>
+            <h2 className="mb-3 text-lg font-semibold tracking-tight text-foreground">Props</h2>
             <PropsTable props={entry.props} />
           </RevealSection>
 

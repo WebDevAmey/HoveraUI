@@ -158,14 +158,14 @@ export default function DocsGalleryClient() {
                   </div>
                   <div className="flex items-center justify-between border-t border-border px-4 py-3">
                     <Link href={`/docs/${entry.slug}`} className="min-w-0">
-                      <h3 className="truncate text-sm font-medium text-foreground hover:underline">
+                      <h2 className="truncate text-sm font-medium tracking-tight text-foreground hover:underline">
                         {entry.name}
                         {entry.isNew && (
                           <span className="ml-2 rounded-full bg-hovera px-1.5 py-0.5 text-[10px] font-semibold text-hovera-foreground align-middle">
                             New
                           </span>
                         )}
-                      </h3>
+                      </h2>
                       <p className="truncate text-xs text-muted-foreground">{entry.category}</p>
                     </Link>
                     <button

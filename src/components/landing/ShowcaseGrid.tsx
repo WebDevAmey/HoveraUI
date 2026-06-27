@@ -27,7 +27,7 @@ export default function ShowcaseGrid() {
   return (
     <RevealSection id="showcase" className="border-b border-border px-4 py-16 md:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-2xl font-semibold text-foreground">A few favorites</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-foreground">A few favorites</h2>
         <p className="mt-2 max-w-xl text-sm text-muted-foreground">
           Hover any card. Click through for the live preview, the code, and the install command.
         </p>
@@ -58,7 +58,7 @@ export default function ShowcaseGrid() {
                 </div>
                 <div className="border-t border-border px-4 py-3">
                   <Link href={`/docs/${entry.slug}`}>
-                    <h3 className="truncate text-sm font-medium text-foreground hover:underline">
+                    <h3 className="truncate text-sm font-medium tracking-tight text-foreground hover:underline">
                       {entry.name}
                     </h3>
                   </Link>

@@ -45,7 +45,7 @@ export default function HoveraFlagshipCard() {
           transition={{ duration: 0.5, ease: EASE_FLOW }}
           className="flex h-[26rem] w-72 flex-col rounded-xl border border-zinc-800 bg-zinc-950 p-6 text-white shadow-[var(--shadow-glow)]"
         >
-          <h2 className="text-[11px] font-bold">Hovera UI Components</h2>
+          <p className="text-[11px] font-bold">Hovera UI Components</p>
           <p className="mt-2 text-[11px] text-zinc-400">
             A collection of beautiful UI components.
           </p>

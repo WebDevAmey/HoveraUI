@@ -17,6 +17,12 @@ type FilterValue =
   | "buttons"
   | "loaders"
   | "navbars"
+  | "cards"
+  | "tabs"
+  | "marquee"
+  | "text"
+  | "sections"
+  | "command"
   | "gradient"
   | "pattern"
   | "css"
@@ -30,6 +36,12 @@ const FILTERS: { label: string; value: FilterValue }[] = [
   { label: "Buttons", value: "buttons" },
   { label: "Loaders", value: "loaders" },
   { label: "Navbars", value: "navbars" },
+  { label: "Cards", value: "cards" },
+  { label: "Tabs", value: "tabs" },
+  { label: "Marquee", value: "marquee" },
+  { label: "Text", value: "text" },
+  { label: "Sections", value: "sections" },
+  { label: "Command", value: "command" },
   { label: "Gradients", value: "gradient" },
   { label: "Patterns", value: "pattern" },
   { label: "CSS", value: "css" },

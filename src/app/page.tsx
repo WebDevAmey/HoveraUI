@@ -6,6 +6,7 @@ import TechStack from "@/components/landing/TechStack";
 import StatsRow from "@/components/landing/StatsRow";
 import DiscoverPaths from "@/components/landing/DiscoverPaths";
 import ShowcaseGrid from "@/components/landing/ShowcaseGrid";
+import NewArrivals from "@/components/landing/NewArrivals";
 import StoryStrip from "@/components/landing/StoryStrip";
 import Marquee from "@/components/landing/Marquee";
 import FinalCTA from "@/components/landing/FinalCTA";
@@ -25,6 +26,7 @@ export default function Home() {
       <StatsRow />
       <DiscoverPaths />
       <ShowcaseGrid />
+      <NewArrivals />
       <StoryStrip />
       <Marquee />
       <FinalCTA />

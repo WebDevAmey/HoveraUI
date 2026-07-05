@@ -13,7 +13,7 @@ const STORIES: Record<string, string> = {
 
 // spinner-loader is migrated separately in ./spinner-loader.ts (the original worked example).
 export const loaderDocs: ComponentDocEntry[] = loaders
-  .filter((ldr) => ldr.slug !== "spinner-loader")
+  .filter((ldr) => ldr.slug !== "spinner-loader" && ldr.slug !== "skeleton-loader")
   .map((ldr) => {
     const componentName = ldr.name.replace(/[^a-zA-Z0-9]/g, "");
 

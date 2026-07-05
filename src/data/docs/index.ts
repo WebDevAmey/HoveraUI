@@ -5,6 +5,11 @@ import { backgroundDocs } from "@/data/docs/backgrounds";
 import { buttonDocs } from "@/data/docs/buttons";
 import { loaderDocs } from "@/data/docs/loaders";
 import { navbarDocs } from "@/data/docs/navbars";
+import { cardDocs } from "@/data/docs/cards";
+import { tabDocs } from "@/data/docs/tabs";
+import { marqueeDocs } from "@/data/docs/marquees";
+import { floatingNavbarDoc } from "@/data/docs/floating-navbar";
+import { skeletonLoaderDoc } from "@/data/docs/skeleton-loader";
 
 export const docEntries: ComponentDocEntry[] = [
   glowButtonDoc,
@@ -13,6 +18,11 @@ export const docEntries: ComponentDocEntry[] = [
   ...loaderDocs,
   ...backgroundDocs,
   ...navbarDocs,
+  floatingNavbarDoc,
+  skeletonLoaderDoc,
+  ...cardDocs,
+  ...tabDocs,
+  ...marqueeDocs,
 ];
 
 export function findDocEntry(slug: string): ComponentDocEntry | undefined {

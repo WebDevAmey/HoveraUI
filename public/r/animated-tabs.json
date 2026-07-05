@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-tabs",
+  "type": "registry:component",
+  "title": "Animated Tabs",
+  "description": "Radix-powered tabs with a spring-animated shared active pill.",
+  "dependencies": [
+    "framer-motion",
+    "@radix-ui/react-tabs"
+  ],
+  "files": [
+    {
+      "path": "animated-tabs.tsx",
+      "target": "components/ui/animated-tabs.tsx",
+      "content": "\"use client\";\n\nimport { useId, useState } from \"react\";\nimport * as Tabs from \"@radix-ui/react-tabs\";\nimport { motion, useReducedMotion } from \"framer-motion\";\n\ninterface TabDef {\n  value: string;\n  label: string;\n  content: React.ReactNode;\n}\n\ninterface AnimatedTabsProps {\n  tabs?: TabDef[];\n  defaultValue?: string;\n  className?: string;\n}\n\nconst DEFAULT_TABS: TabDef[] = [\n  { value: \"preview\", label: \"Preview\", content: \"A live look at the component, exactly as it ships.\" },\n  { value: \"code\", label: \"Code\", content: \"Copy-paste source with no wrapper abstractions.\" },\n  { value: \"props\", label: \"Props\", content: \"Every prop typed, defaulted, and documented.\" },\n];\n\nexport default function AnimatedTabs({\n  tabs = DEFAULT_TABS,\n  defaultValue,\n  className = \"\",\n}: AnimatedTabsProps) {\n  const [active, setActive] = useState(defaultValue ?? tabs[0]?.value);\n  const pillId = useId();\n  const prefersReducedMotion = useReducedMotion();\n\n  return (\n    <Tabs.Root value={active} onValueChange={setActive} className={\"w-full max-w-md \" + className}>\n      <Tabs.List className=\"relative flex w-fit gap-1 rounded-full border border-white/10 bg-neutral-900 p-1\">\n        {tabs.map((tab) => (\n          <Tabs.Trigger\n            key={tab.value}\n            value={tab.value}\n            className=\"relative rounded-full px-4 py-1.5 text-sm text-neutral-400 transition-colors duration-200 hover:text-neutral-200 focus-visible:outline-2 focus-visible:outline-offset-2 data-[state=active]:text-white\"\n          >\n            {active === tab.value && (\n              <motion.span\n                layoutId={pillId}\n                transition={\n                  prefersReducedMotion\n                    ? { duration: 0 }\n                    : { type: \"spring\", stiffness: 400, damping: 32 }\n                }\n                className=\"absolute inset-0 rounded-full bg-white/10\"\n              />\n            )}\n            <span className=\"relative z-10\">{tab.label}</span>\n          </Tabs.Trigger>\n        ))}\n      </Tabs.List>\n      {tabs.map((tab) => (\n        <Tabs.Content key={tab.value} value={tab.value} className=\"mt-4 text-sm text-neutral-300\">\n          <motion.div\n            key={active}\n            initial={prefersReducedMotion ? false : { opacity: 0, y: 4 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}\n          >\n            {tab.content}\n          </motion.div>\n        </Tabs.Content>\n      ))}\n    </Tabs.Root>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

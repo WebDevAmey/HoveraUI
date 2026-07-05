@@ -12,7 +12,10 @@ const STORIES: Record<string, string> = {
   "radical-navbar": "A flat, hard-edged yellow and black navbar with a heavy offset shadow, leaning into a brutalist, poster-like style.",
 };
 
-export const navbarDocs: ComponentDocEntry[] = navbars.map((nav) => {
+// floating-navbar has a hand-written rich entry in ./floating-navbar.ts.
+export const navbarDocs: ComponentDocEntry[] = navbars
+  .filter((nav) => nav.slug !== "floating-navbar")
+  .map((nav) => {
   const componentName = nav.name.replace(/[^a-zA-Z0-9]/g, "");
 
   return {

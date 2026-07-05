@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "type": "registry:component",
+  "title": "Marquee",
+  "description": "An infinite, seamless content marquee with hover-pause and reverse direction.",
+  "files": [
+    {
+      "path": "marquee.tsx",
+      "target": "components/ui/marquee.tsx",
+      "content": "\"use client\";\n\ninterface MarqueeProps {\n  children: React.ReactNode;\n  /** Seconds for one full loop. Lower is faster. */\n  speed?: number;\n  reverse?: boolean;\n  pauseOnHover?: boolean;\n  className?: string;\n}\n\nexport default function Marquee({\n  children,\n  speed = 30,\n  reverse = false,\n  pauseOnHover = true,\n  className = \"\",\n}: MarqueeProps) {\n  return (\n    <div className={\"group relative overflow-hidden \" + className}>\n      <style>{\"@keyframes hovera-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }\"}</style>\n      <div\n        className={\n          \"flex w-max gap-6 motion-reduce:[animation-play-state:paused]\" +\n          (pauseOnHover ? \" group-hover:[animation-play-state:paused]\" : \"\")\n        }\n        style={{\n          animation: \"hovera-marquee \" + speed + \"s linear infinite\",\n          animationDirection: reverse ? \"reverse\" : \"normal\",\n        }}\n      >\n        <div className=\"flex shrink-0 items-center gap-6\">{children}</div>\n        <div className=\"flex shrink-0 items-center gap-6\" aria-hidden>\n          {children}\n        </div>\n      </div>\n      <div\n        aria-hidden\n        className=\"pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-neutral-950 to-transparent\"\n      />\n      <div\n        aria-hidden\n        className=\"pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-neutral-950 to-transparent\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

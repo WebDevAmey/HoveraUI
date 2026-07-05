@@ -836,6 +836,19 @@
       ]
     },
     {
+      "name": "skeleton-loader",
+      "type": "registry:component",
+      "title": "Skeleton Loader",
+      "description": "A shimmering card skeleton with configurable lines and avatar.",
+      "files": [
+        {
+          "path": "skeleton-loader.tsx",
+          "target": "components/ui/skeleton-loader.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "aether-navbar",
       "type": "registry:component",
       "title": "Aether Navbar",
@@ -870,6 +883,68 @@
         {
           "path": "radical-navbar.tsx",
           "target": "components/ui/radical-navbar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "floating-navbar",
+      "type": "registry:component",
+      "title": "Floating Navbar",
+      "description": "A scroll-aware pill navbar that hides on scroll down and returns on scroll up.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "floating-navbar.tsx",
+          "target": "components/ui/floating-navbar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:component",
+      "title": "Spotlight Card",
+      "description": "A card with a cursor-tracking radial spotlight and a subtle hover lift.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "spotlight-card.tsx",
+          "target": "components/ui/spotlight-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-tabs",
+      "type": "registry:component",
+      "title": "Animated Tabs",
+      "description": "Radix-powered tabs with a spring-animated shared active pill.",
+      "dependencies": [
+        "framer-motion",
+        "@radix-ui/react-tabs"
+      ],
+      "files": [
+        {
+          "path": "animated-tabs.tsx",
+          "target": "components/ui/animated-tabs.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:component",
+      "title": "Marquee",
+      "description": "An infinite, seamless content marquee with hover-pause and reverse direction.",
+      "files": [
+        {
+          "path": "marquee.tsx",
+          "target": "components/ui/marquee.tsx",
           "type": "registry:component"
         }
       ]

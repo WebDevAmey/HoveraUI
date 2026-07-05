@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-navbar",
+  "type": "registry:component",
+  "title": "Floating Navbar",
+  "description": "A scroll-aware pill navbar that hides on scroll down and returns on scroll up.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "floating-navbar.tsx",
+      "target": "components/ui/floating-navbar.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { motion, useMotionValueEvent, useReducedMotion, useScroll } from \"framer-motion\";\n\ninterface NavLink {\n  label: string;\n  href: string;\n}\n\ninterface FloatingNavbarProps {\n  links?: NavLink[];\n  ctaLabel?: string;\n  ctaHref?: string;\n  /** Set false to render in-flow (e.g. inside a preview container). */\n  fixed?: boolean;\n  className?: string;\n}\n\nconst DEFAULT_LINKS: NavLink[] = [\n  { label: \"Home\", href: \"#\" },\n  { label: \"Components\", href: \"#\" },\n  { label: \"Docs\", href: \"#\" },\n];\n\nexport default function FloatingNavbar({\n  links = DEFAULT_LINKS,\n  ctaLabel = \"Get started\",\n  ctaHref = \"#\",\n  fixed = true,\n  className = \"\",\n}: FloatingNavbarProps) {\n  const { scrollY } = useScroll();\n  const [hidden, setHidden] = useState(false);\n  const prefersReducedMotion = useReducedMotion();\n\n  // Hide when scrolling down past the fold, reveal on any upward scroll.\n  useMotionValueEvent(scrollY, \"change\", (latest) => {\n    const previous = scrollY.getPrevious() ?? 0;\n    setHidden(latest > previous && latest > 120);\n  });\n\n  return (\n    <motion.nav\n      animate={hidden ? \"hidden\" : \"visible\"}\n      initial=\"visible\"\n      variants={{\n        visible: { y: 0, opacity: 1 },\n        hidden: { y: -24, opacity: 0 },\n      }}\n      transition={\n        prefersReducedMotion ? { duration: 0 } : { duration: 0.3, ease: [0.16, 1, 0.3, 1] }\n      }\n      className={\n        (fixed ? \"fixed inset-x-0 top-4 z-50 mx-auto \" : \"relative mx-auto \") +\n        \"flex w-max items-center gap-1 rounded-full border border-white/10 bg-neutral-900/80 px-2 py-1.5 shadow-lg shadow-black/20 backdrop-blur-md \" +\n        className\n      }\n    >\n      {links.map((link) => (\n        <a\n          key={link.label}\n          href={link.href}\n          className=\"rounded-full px-3 py-1 text-sm text-neutral-400 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2\"\n        >\n          {link.label}\n        </a>\n      ))}\n      <a\n        href={ctaHref}\n        className=\"ml-1 rounded-full bg-white px-3 py-1 text-sm font-medium text-neutral-950 transition-transform duration-200 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none\"\n      >\n        {ctaLabel}\n      </a>\n    </motion.nav>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

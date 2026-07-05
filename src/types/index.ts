@@ -22,6 +22,17 @@ export interface RegistryMeta {
 }
 
 
+/** Generic registry item shape used by newer categories (cards, tabs, marquee, …). */
+export interface ComponentItem extends RegistryMeta {
+  name: string;
+  slug: string;
+  category: string;
+  component: React.ComponentType;
+  code: string;
+  needsLightPreview?: boolean;
+}
+
+
 export interface BackgroundItem extends RegistryMeta {
   name: string;
   slug: string;

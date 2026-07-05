@@ -45,7 +45,7 @@ export const buttons: ButtonItem[] = [
     slug: "glow-button",
     category: "primary",
     component: GlowButton as React.ComponentType<{ isHovered?: boolean }>,
-    code: `<button className="rounded-xl bg-violet-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.8)]">
+    code: `<button className="rounded-xl bg-violet-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.8)] focus-visible:outline-2 focus-visible:outline-offset-2">
   Glow Button
 </button>`,
   },
@@ -54,7 +54,7 @@ export const buttons: ButtonItem[] = [
     slug: "border-reveal",
     category: "primary",
     component: BorderReveal as React.ComponentType,
-    code: `<button className="rounded-lg border-2 border-transparent bg-black px-8 py-3 text-white transition-all duration-300 hover:border-white">
+    code: `<button className="rounded-lg border-2 border-transparent bg-black px-8 py-3 text-white transition-all duration-300 hover:border-white focus-visible:outline-2 focus-visible:outline-offset-2">
   Border Reveal
 </button>`,
   },
@@ -63,7 +63,7 @@ export const buttons: ButtonItem[] = [
     slug:"ripple-button",
     category:"primary",
     component: RippleButton as React.ComponentType,
-    code:`<button className="relative overflow-hidden rounded-lg bg-blue-600 px-7 py-3 text-white group">
+    code:`<button className="relative overflow-hidden rounded-lg bg-blue-600 px-7 py-3 text-white group focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="absolute inset-0 scale-0 bg-white opacity-0 transition-transform duration-300 group-active:scale-150 group-active:opacity-20" />
   <span className="relative">
     Click Me
@@ -75,7 +75,7 @@ export const buttons: ButtonItem[] = [
     slug: "3d-button",
     category: "primary",
     component: DButton as React.ComponentType,
-    code: `<button className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-xl shadow-lg transform transition-all hover:-translate-y-1 hover:shadow-xl active:translate-y-0 active:shadow-md">
+    code: `<button className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-xl shadow-lg transform transition-all hover:-translate-y-1 hover:shadow-xl active:translate-y-0 active:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2">
   3D Press
 </button>`, 
   } ,
@@ -84,7 +84,7 @@ export const buttons: ButtonItem[] = [
     slug: "neon-swipe-button",
     category: "primary",
     component: NeonSwipe as React.ComponentType,
-    code: `<button className="group relative px-8 py-3 text-white bg-indigo-600 rounded-lg overflow-hidden">
+    code: `<button className="group relative px-8 py-3 text-white bg-indigo-600 rounded-lg overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 -translate-x-full group-hover:translate-x-0 transition duration-500"></span>
   <span className="relative z-10">Neon Swipe</span>
 </button>`, 
@@ -94,7 +94,7 @@ export const buttons: ButtonItem[] = [
     slug: "swipe-button",
     category: "primary",
     component: SwipeButton as React.ComponentType,
-    code: `<button className="group relative px-8 py-3 rounded-lg bg-indigo-600 text-white overflow-hidden hover:scale-105 hover:-translate-y-1 active:translate-y-0 transform transition-all">
+    code: `<button className="group relative px-8 py-3 rounded-lg bg-indigo-600 text-white overflow-hidden hover:scale-105 hover:-translate-y-1 active:translate-y-0 transform transition-all focus-visible:outline-2 focus-visible:outline-offset-2">
     <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-blue-500 to-pink-500 -translate-x-full group-hover:translate-x-0 transition duration-500 hover:scale-105"></span>
     <span className="relative z-10">Swipe Me </span>
 </button>`
@@ -104,7 +104,7 @@ export const buttons: ButtonItem[] = [
     slug: "new-button",
     category: "primary",
     component: NewButton as React.ComponentType,
-    code: `<button className="px-8 py-3 bg-emerald-600 rounded-xl text-white font-semibold hover:-translate-y-1 active:translate-y-0 hover:shadow-xl transform transition-all ">
+    code: `<button className="px-8 py-3 bg-emerald-600 rounded-xl text-white font-semibold hover:-translate-y-1 active:translate-y-0 hover:shadow-xl transform transition-all focus-visible:outline-2 focus-visible:outline-offset-2">
 Button
 </button>`
   } ,
@@ -115,7 +115,7 @@ Button
     component: LuminanceFlux as React.ComponentType,
     code: `<button className="group relative px-14 py-4 rounded-2xl text-white font-semibold 
 bg-slate-900 overflow-hidden shadow-[0_0_30px_rgba(120,0,255,0.3)]
-transition hover:scale-105">
+transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2">
 
   <span className="absolute inset-0 bg-gradient-to-r from-fuchsia-500 via-indigo-500 to-cyan-400
                opacity-40 translate-x-[-30%]
@@ -138,7 +138,7 @@ transition hover:scale-105">
     component: FrostedGlass as React.ComponentType,
     code: `<button className="relative px-12 py-4 rounded-full text-white font-medium 
 bg-white/10 backdrop-blur-xl border border-white/20 
-hover:bg-white/20 hover:scale-105 transition">
+hover:bg-white/20 hover:scale-105 transition focus-visible:outline-2 focus-visible:outline-offset-2">
   Frosted Glass
 </button>`
   } ,
@@ -150,7 +150,7 @@ hover:bg-white/20 hover:scale-105 transition">
     code: `<button className="px-10 py-4 rounded-full bg-gray-100 text-gray-800 font-semibold 
 shadow-[8px_8px_18px_rgba(17,24,39,0.15),-8px_-8px_18px_rgba(255,255,255,0.9)] 
 active:shadow-[inset_4px_4px_10px_rgba(0,0,0,0.1),inset_-4px_-4px_10px_rgba(255,255,255,0.8)] 
-transition">
+transition focus-visible:outline-2 focus-visible:outline-offset-2">
   Neumorphic
 </button>`
   } ,
@@ -162,7 +162,7 @@ transition">
     code: ` <button className="group relative px-8 py-3 rounded-full text-white font-semibold 
     bg-white/10 backdrop-blur-xl border border-white/20
     shadow-[0_0_30px_rgba(255,0,150,0.6)] 
-    overflow-hidden">
+    overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2">
 
     <span className="absolute inset-0 bg-pink-500 opacity-30 blur-2xl group-hover:blur-3xl transition duration-500"></span>
 
@@ -179,7 +179,7 @@ transition">
     slug: "shimmer-swipe-button",
     category: "primary",
     component: ShimmerSwipe as React.ComponentType,
-    code: `<button className="relative px-10 py-4 rounded-xl bg-indigo-600 text-white font-semibold overflow-hidden group shadow-lg hover:shadow-indigo-500/40 transition hover:scale-105">
+    code: `<button className="relative px-10 py-4 rounded-xl bg-indigo-600 text-white font-semibold overflow-hidden group shadow-lg hover:shadow-indigo-500/40 transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2">
 
   
   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent
@@ -195,7 +195,7 @@ transition">
     category: "primary",
     component: LinkButton as React.ComponentType,
     code: `<button
-        className="font-bold text-black font-black text-5xl px-4 py-2 rounded underline bg-clip-text bg-gradient-to-r from-black via-blue-600 to-indigo-500 cursor-pointer transition-all duration-500 ease-out  bg-[size:200%_100%] bg-[position:0%_0] hover:bg-[position:100%_0] hover:text-transparent"
+        className="font-bold text-black font-black text-5xl px-4 py-2 rounded underline bg-clip-text bg-gradient-to-r from-black via-blue-600 to-indigo-500 cursor-pointer transition-all duration-500 ease-out  bg-[size:200%_100%] bg-[position:0%_0] hover:bg-[position:100%_0] hover:text-transparent focus-visible:outline-2 focus-visible:outline-offset-2"
       >
         Link
       </button>`,
@@ -206,7 +206,7 @@ transition">
     slug: "slide-text-button",
     category: "primary",
     component: SlideTextButton as React.ComponentType,
-    code: `<button className="group cursor-pointer rounded-xl border-[1px] border-slate-500 bg-gradient-to-b from-indigo-500 to-pink-600 px-6 py-3 font-medium text-white shadow-[0px_4px_32px_0_rgba(99,102,241,.70)]">
+    code: `<button className="group cursor-pointer rounded-xl border-[1px] border-slate-500 bg-gradient-to-b from-indigo-500 to-pink-600 px-6 py-3 font-medium text-white shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] focus-visible:outline-2 focus-visible:outline-offset-2">
   <div className="relative overflow-hidden">
     <p className="duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-x-20">
       Button
@@ -222,7 +222,7 @@ transition">
     slug: "gradient-link-button",
     category: "primary",
     component: GradientLinkButton as React.ComponentType,
-    code: `<button className="relative inline-block cursor-pointer bg-gradient-to-r from-blue-600 via-blue-600 to-black bg-[size:200%_100%] bg-[position:100%_0] bg-clip-text text-5xl font-black text-transparent transition-all duration-700 ease-out hover:bg-[position:0%_0]">
+    code: `<button className="relative inline-block cursor-pointer bg-gradient-to-r from-blue-600 via-blue-600 to-black bg-[size:200%_100%] bg-[position:100%_0] bg-clip-text text-5xl font-black text-transparent transition-all duration-700 ease-out hover:bg-[position:0%_0] focus-visible:outline-2 focus-visible:outline-offset-2">
   Link
 </button>`,
     needsLightPreview: true,
@@ -232,7 +232,7 @@ transition">
     slug: "underline-hover-button",
     category: "primary",
     component: UnderlineHover as React.ComponentType,
-    code: `<button className="group px-6 py-3 text-lg font-medium text-indigo-600">
+    code: `<button className="group px-6 py-3 text-lg font-medium text-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="relative inline-block">
     Hover Me
     <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-indigo-600 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
@@ -245,7 +245,7 @@ transition">
     slug: "slide-fill-button",
     category: "primary",
     component: SlideFillButton as React.ComponentType,
-    code: `<button className="relative z-10 overflow-hidden rounded border-2 border-black bg-amber-500 px-8 py-3 text-black transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:bg-emerald-500 before:translate-y-full before:transition-transform before:duration-300 hover:text-white hover:before:translate-y-0">
+    code: `<button className="relative z-10 overflow-hidden rounded border-2 border-black bg-amber-500 px-8 py-3 text-black transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:bg-emerald-500 before:translate-y-full before:transition-transform before:duration-300 hover:text-white hover:before:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2">
   Get in touch
 </button>`,
     needsLightPreview: true,
@@ -255,7 +255,7 @@ transition">
     slug: "blob-hover-button",
     category: "primary",
     component: BlobHoverButton as React.ComponentType,
-    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-[4px] border border-[#4f4f4f] px-[24px] py-[12px] text-[19px] font-normal text-black transition-all duration-200 ease-in before:absolute before:left-1/2 before:top-[100%] before:z-[-1] before:block before:h-[180%] before:w-[140%] before:-translate-x-1/2 before:scale-x-[1.25] before:scale-y-[1] before:rounded-full before:bg-black/5 before:transition-all before:duration-500 before:delay-100 before:ease-[cubic-bezier(0.55,0,0.1,1)] before:content-[''] after:absolute after:left-[55%] after:top-[180%] after:z-[-1] after:block after:h-[190%] after:w-[160%] after:-translate-x-1/2 after:scale-x-[1.45] after:scale-y-[1] after:rounded-full after:bg-[#39bda7] after:transition-all after:duration-500 after:delay-100 after:ease-[cubic-bezier(0.55,0,0.1,1)] after:content-[''] hover:border-[#39bda7] hover:text-white hover:before:top-[-35%] hover:before:scale-x-[0.8] hover:before:scale-y-[1.3] hover:before:bg-[#39bda7] hover:after:top-[-45%] hover:after:scale-x-[0.8] hover:after:scale-y-[1.3] hover:after:bg-[#39bda7]">
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-[4px] border border-[#4f4f4f] px-[24px] py-[12px] text-[19px] font-normal text-black transition-all duration-200 ease-in before:absolute before:left-1/2 before:top-[100%] before:z-[-1] before:block before:h-[180%] before:w-[140%] before:-translate-x-1/2 before:scale-x-[1.25] before:scale-y-[1] before:rounded-full before:bg-black/5 before:transition-all before:duration-500 before:delay-100 before:ease-[cubic-bezier(0.55,0,0.1,1)] before:content-[''] after:absolute after:left-[55%] after:top-[180%] after:z-[-1] after:block after:h-[190%] after:w-[160%] after:-translate-x-1/2 after:scale-x-[1.45] after:scale-y-[1] after:rounded-full after:bg-[#39bda7] after:transition-all after:duration-500 after:delay-100 after:ease-[cubic-bezier(0.55,0,0.1,1)] after:content-[''] hover:border-[#39bda7] hover:text-white hover:before:top-[-35%] hover:before:scale-x-[0.8] hover:before:scale-y-[1.3] hover:before:bg-[#39bda7] hover:after:top-[-45%] hover:after:scale-x-[0.8] hover:after:scale-y-[1.3] hover:after:bg-[#39bda7] focus-visible:outline-2 focus-visible:outline-offset-2">
   Hover Me
 </button>`,
     needsLightPreview: true,
@@ -265,7 +265,7 @@ transition">
     slug: "liquid-fill-button",
     category: "primary",
     component: LiquidFillButton as React.ComponentType,
-    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-indigo-600 bg-transparent px-6 py-3 text-lg font-semibold text-indigo-600 transition-colors duration-300 ease-in-out before:absolute before:left-1/2 before:top-[120%] before:z-[-1] before:h-[300%] before:w-[150%] before:-translate-x-1/2 before:rounded-[40%] before:bg-indigo-400 before:transition-all before:duration-700 before:ease-out before:content-[''] after:absolute after:left-1/2 after:top-[120%] after:z-[-1] after:h-[300%] after:w-[160%] after:-translate-x-1/2 after:rounded-[43%] after:bg-indigo-600 after:transition-all after:duration-500 after:delay-75 after:ease-out after:content-[''] hover:text-white hover:before:top-[-50%] hover:before:rotate-180 hover:after:top-[-50%] hover:after:rotate-[360deg]">
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-indigo-600 bg-transparent px-6 py-3 text-lg font-semibold text-indigo-600 transition-colors duration-300 ease-in-out before:absolute before:left-1/2 before:top-[120%] before:z-[-1] before:h-[300%] before:w-[150%] before:-translate-x-1/2 before:rounded-[40%] before:bg-indigo-400 before:transition-all before:duration-700 before:ease-out before:content-[''] after:absolute after:left-1/2 after:top-[120%] after:z-[-1] after:h-[300%] after:w-[160%] after:-translate-x-1/2 after:rounded-[43%] after:bg-indigo-600 after:transition-all after:duration-500 after:delay-75 after:ease-out after:content-[''] hover:text-white hover:before:top-[-50%] hover:before:rotate-180 hover:after:top-[-50%] hover:after:rotate-[360deg] focus-visible:outline-2 focus-visible:outline-offset-2">
   Liquid Fill
 </button>`,
     needsLightPreview: true,
@@ -275,7 +275,7 @@ transition">
     slug: "split-curtain-button",
     category: "primary",
     component: SplitCurtainButton as React.ComponentType,
-    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-emerald-600 bg-transparent px-6 py-3 text-lg font-semibold text-emerald-600 transition-colors duration-300 before:absolute before:left-0 before:top-0 before:z-[-1] before:h-full before:w-full before:-translate-x-full before:-translate-y-full before:bg-emerald-600 before:transition-transform before:duration-300 before:ease-out before:content-[''] after:absolute after:left-0 after:top-0 after:z-[-1] after:h-full after:w-full after:translate-x-full after:translate-y-full after:bg-emerald-600 after:transition-transform after:duration-300 after:ease-out after:content-[''] hover:text-white hover:before:translate-x-0 hover:before:translate-y-0 hover:after:translate-x-0 hover:after:translate-y-0">
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-emerald-600 bg-transparent px-6 py-3 text-lg font-semibold text-emerald-600 transition-colors duration-300 before:absolute before:left-0 before:top-0 before:z-[-1] before:h-full before:w-full before:-translate-x-full before:-translate-y-full before:bg-emerald-600 before:transition-transform before:duration-300 before:ease-out before:content-[''] after:absolute after:left-0 after:top-0 after:z-[-1] after:h-full after:w-full after:translate-x-full after:translate-y-full after:bg-emerald-600 after:transition-transform after:duration-300 after:ease-out after:content-[''] hover:text-white hover:before:translate-x-0 hover:before:translate-y-0 hover:after:translate-x-0 hover:after:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2">
   Split Curtain
 </button>`,
     needsLightPreview: true,
@@ -285,7 +285,7 @@ transition">
     slug: "radial-bloom-button",
     category: "primary",
     component: RadialBloomButton as React.ComponentType,
-    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-rose-600 bg-transparent px-6 py-3 text-lg font-semibold text-rose-600 transition-colors duration-500 before:absolute before:left-1/2 before:top-1/2 before:z-[-1] before:h-8 before:w-8 before:-translate-x-1/2 before:-translate-y-1/2 before:scale-0 before:rounded-full before:bg-rose-600 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:text-white hover:before:scale-[6]">
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-lg border-2 border-rose-600 bg-transparent px-6 py-3 text-lg font-semibold text-rose-600 transition-colors duration-500 before:absolute before:left-1/2 before:top-1/2 before:z-[-1] before:h-8 before:w-8 before:-translate-x-1/2 before:-translate-y-1/2 before:scale-0 before:rounded-full before:bg-rose-600 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:text-white hover:before:scale-[6] focus-visible:outline-2 focus-visible:outline-offset-2">
   Radial Bloom
 </button>`,
     needsLightPreview: true,
@@ -295,7 +295,7 @@ transition">
     slug: "x-ray-scanner-button",
     category: "primary",
     component: XRayScannerButton as React.ComponentType,
-    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded border-2 border-white bg-neutral-900 px-6 py-3 text-lg font-bold text-white before:absolute before:bottom-0 before:left-0 before:h-0 before:w-full before:bg-white before:mix-blend-difference before:transition-all before:duration-300 before:ease-out before:content-[''] hover:before:h-full">
+    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded border-2 border-white bg-neutral-900 px-6 py-3 text-lg font-bold text-white before:absolute before:bottom-0 before:left-0 before:h-0 before:w-full before:bg-white before:mix-blend-difference before:transition-all before:duration-300 before:ease-out before:content-[''] hover:before:h-full focus-visible:outline-2 focus-visible:outline-offset-2">
   X-RAY SCANNER
 </button>`,
   },
@@ -304,7 +304,7 @@ transition">
     slug: "chamber-door-button",
     category: "primary",
     component: ChamberDoorButton as React.ComponentType,
-    code: `<button className="group relative inline-block h-14 w-48 cursor-pointer bg-transparent [perspective:1000px] [transform-style:preserve-3d]">
+    code: `<button className="group relative inline-block h-14 w-48 cursor-pointer bg-transparent [perspective:1000px] [transform-style:preserve-3d] focus-visible:outline-2 focus-visible:outline-offset-2">
   <div className="absolute inset-0 z-0 rounded bg-cyan-400 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
 
   <span className="absolute left-0 top-0 z-10 flex h-[50%] w-full origin-top items-end justify-center overflow-hidden border-x-2 border-t-2 border-white bg-neutral-900 font-bold text-white transition-transform duration-300 group-hover:[transform:rotateX(60deg)]">
@@ -321,7 +321,7 @@ transition">
     slug: "shredder-button",
     category: "primary",
     component: ShredderButton as React.ComponentType,
-    code: `<button className="group relative inline-block cursor-pointer overflow-hidden rounded border-2 border-neutral-800 bg-neutral-900 px-8 py-3 text-xl font-black tracking-wider text-transparent">
+    code: `<button className="group relative inline-block cursor-pointer overflow-hidden rounded border-2 border-neutral-800 bg-neutral-900 px-8 py-3 text-xl font-black tracking-wider text-transparent focus-visible:outline-2 focus-visible:outline-offset-2">
   SHREDDER
   <span className="absolute inset-0 flex items-center justify-center bg-neutral-900 text-rose-500 transition-transform duration-300 ease-out [clip-path:polygon(0_0,_100%_0,_100%_33%,_0_33%,_0_66%,_100%_66%,_100%_100%,_0_100%)] group-hover:translate-y-2">
     SHREDDER
@@ -336,7 +336,7 @@ transition">
     slug: "outline-button",
     category: "primary",
     component: OutlineButton as React.ComponentType,
-    code: `<button className="border border-black text-black-500 px-4 py-2 rounded-full hover:scale-105 hover:text-orange-600 hover:border-orange-600 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg">
+    code: `<button className="border border-black text-black-500 px-4 py-2 rounded-full hover:scale-105 hover:text-orange-600 hover:border-orange-600 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2">
   Outline Button
 </button>`,
     needsLightPreview: true,
@@ -346,7 +346,7 @@ transition">
     slug: "morse-signal-button",
     category: "primary",
     component: MorseSignalButton as React.ComponentType,
-    code: `<button className="group inline-flex flex-col items-center gap-2 rounded-lg border border-emerald-500/40 bg-neutral-950 px-8 py-4 font-mono text-sm tracking-widest text-emerald-400">
+    code: `<button className="group inline-flex flex-col items-center gap-2 rounded-lg border border-emerald-500/40 bg-neutral-950 px-8 py-4 font-mono text-sm tracking-widest text-emerald-400 focus-visible:outline-2 focus-visible:outline-offset-2">
   <span>SEND SIGNAL</span>
   <span className="flex h-1 gap-1">
     <span className="h-1 w-3 rounded-full bg-emerald-500 opacity-15 transition-opacity delay-0 duration-200 group-hover:opacity-100" />
@@ -362,7 +362,7 @@ transition">
     slug: "scan-ring-button",
     category: "primary",
     component: ScanRingButton as React.ComponentType,
-    code: `<button className="group relative inline-flex h-16 w-16 items-center justify-center rounded-full bg-neutral-950 text-cyan-400">
+    code: `<button className="group relative inline-flex h-16 w-16 items-center justify-center rounded-full bg-neutral-950 text-cyan-400 focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="absolute inset-0 rounded-full border border-cyan-400/70 opacity-0 scale-50 transition-all delay-0 duration-300 group-hover:scale-100 group-hover:opacity-100" />
   <span className="absolute inset-0 rounded-full border border-cyan-400/50 opacity-0 scale-50 transition-all delay-100 duration-300 group-hover:scale-125 group-hover:opacity-100" />
   <span className="absolute inset-0 rounded-full border border-cyan-400/30 opacity-0 scale-50 transition-all delay-200 duration-300 group-hover:scale-150 group-hover:opacity-100" />
@@ -375,7 +375,7 @@ transition">
     slug: "eclipse-button",
     category: "primary",
     component: EclipseButton as React.ComponentType,
-    code: `<button className="group relative inline-flex h-14 w-40 items-center justify-center overflow-hidden rounded-full bg-amber-400 font-bold text-black">
+    code: `<button className="group relative inline-flex h-14 w-40 items-center justify-center overflow-hidden rounded-full bg-amber-400 font-bold text-black focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="absolute right-0 top-0 h-14 w-14 rounded-full bg-neutral-950 transition-transform duration-500 ease-out [transform:translateX(50%)] group-hover:[transform:translateX(-10%)]" />
   <span className="relative z-10 transition-colors duration-300 group-hover:text-amber-300">
     ECLIPSE
@@ -387,7 +387,7 @@ transition">
     slug: "tally-strike-button",
     category: "primary",
     component: TallyStrikeButton as React.ComponentType,
-    code: `<button className="group inline-flex h-14 w-44 items-center justify-center gap-1.5 rounded-md border border-neutral-700 bg-neutral-950 font-mono text-sm text-neutral-200">
+    code: `<button className="group inline-flex h-14 w-44 items-center justify-center gap-1.5 rounded-md border border-neutral-700 bg-neutral-950 font-mono text-sm text-neutral-200 focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="relative z-10 mr-2">TALLY</span>
   <span className="h-5 w-[2px] origin-bottom scale-y-0 bg-rose-500 transition-transform delay-0 duration-200 group-hover:scale-y-100" />
   <span className="h-5 w-[2px] origin-bottom scale-y-0 bg-rose-500 transition-transform delay-100 duration-200 group-hover:scale-y-100" />
@@ -400,7 +400,7 @@ transition">
     slug: "compass-lock-button",
     category: "primary",
     component: CompassLockButton as React.ComponentType,
-    code: `<button className="group relative inline-flex h-16 w-16 items-center justify-center rounded-full border border-neutral-700 bg-neutral-950">
+    code: `<button className="group relative inline-flex h-16 w-16 items-center justify-center rounded-full border border-neutral-700 bg-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="absolute top-1 h-2 w-[1px] bg-neutral-600" />
   <span className="absolute bottom-1 h-2 w-[1px] bg-neutral-600" />
   <span className="absolute left-1 h-[1px] w-2 bg-neutral-600" />
@@ -414,7 +414,7 @@ transition">
     slug: "pulse-seismograph-button",
     category: "primary",
     component: PulseSeismographButton as React.ComponentType,
-    code: `<button className="group relative inline-flex h-14 w-44 items-center justify-center overflow-hidden rounded-lg border border-emerald-500/30 bg-neutral-950 font-mono text-sm text-emerald-400">
+    code: `<button className="group relative inline-flex h-14 w-44 items-center justify-center overflow-hidden rounded-lg border border-emerald-500/30 bg-neutral-950 font-mono text-sm text-emerald-400 focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="absolute z-10 transition-opacity duration-300 group-hover:opacity-0">
     PULSE
   </span>
@@ -433,7 +433,7 @@ transition">
     slug: "rivet-press-button",
     category: "primary",
     component: RivetPressButton as React.ComponentType,
-    code: `<button className="group relative inline-flex h-14 w-44 items-center justify-center rounded-md border-2 border-neutral-700 bg-gradient-to-b from-neutral-800 to-neutral-900 font-bold tracking-wide text-neutral-300">
+    code: `<button className="group relative inline-flex h-14 w-44 items-center justify-center rounded-md border-2 border-neutral-700 bg-gradient-to-b from-neutral-800 to-neutral-900 font-bold tracking-wide text-neutral-300 focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="absolute left-1.5 top-1.5 h-2 w-2 rounded-full bg-neutral-600 transition-all delay-0 duration-300 group-hover:bg-amber-400 group-hover:shadow-[0_0_6px_2px_rgba(251,191,36,0.8)]" />
   <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-neutral-600 transition-all delay-75 duration-300 group-hover:bg-amber-400 group-hover:shadow-[0_0_6px_2px_rgba(251,191,36,0.8)]" />
   <span className="absolute bottom-1.5 left-1.5 h-2 w-2 rounded-full bg-neutral-600 transition-all delay-150 duration-300 group-hover:bg-amber-400 group-hover:shadow-[0_0_6px_2px_rgba(251,191,36,0.8)]" />
@@ -448,7 +448,7 @@ transition">
     slug: "hover-arrow-button",
     category: "primary",
     component: HoverArrowButton as React.ComponentType,
-    code: `<button className="group relative overflow-hidden border-2 border-blue-600 bg-white px-8 py-3 text-white rounded-full font-medium min-w-[120px] h-[52px]">
+    code: `<button className="group relative overflow-hidden border-2 border-blue-600 bg-white px-8 py-3 text-white rounded-full font-medium min-w-[120px] h-[52px] focus-visible:outline-2 focus-visible:outline-offset-2">
   <span className="block transition-all duration-300 transform group-hover:translate-x-full group-hover:opacity-0 text-blue-600">
     Hover
   </span>
@@ -464,7 +464,7 @@ transition">
     slug: "press-button",
     category: "primary",
     component: PressButton as React.ComponentType,
-    code: `<button className="relative overflow-hidden px-8 py-3 bg-pink-600 text-white rounded-full font-medium transition-all duration-100 transform active:translate-y-1 active:shadow-none shadow-[0_4px_0_0_#be185d]">
+    code: `<button className="relative overflow-hidden px-8 py-3 bg-pink-600 text-white rounded-full font-medium transition-all duration-100 transform active:translate-y-1 active:shadow-none shadow-[0_4px_0_0_#be185d] focus-visible:outline-2 focus-visible:outline-offset-2">
   Press
 </button>`,
   },
@@ -473,7 +473,7 @@ transition">
     slug: "play-now-button",
     category: "primary",
     component: PlayNowButton as React.ComponentType,
-    code: `<button className="relative overflow-hidden px-8 py-3 rounded-[24px] bg-gradient-to-r from-[#2891c5] to-[#13b6da] text-[1.9rem] font-bold flex cursor-pointer text-white hover:shadow-[0_15px_50px_-15px_#13b6da]">
+    code: `<button className="relative overflow-hidden px-8 py-3 rounded-[24px] bg-gradient-to-r from-[#2891c5] to-[#13b6da] text-[1.9rem] font-bold flex cursor-pointer text-white hover:shadow-[0_15px_50px_-15px_#13b6da] focus-visible:outline-2 focus-visible:outline-offset-2">
   Play Now
 </button>`,
   },
@@ -482,14 +482,14 @@ transition">
     slug: "rose-border-button",
     category: "primary",
     component: RoseBorderButton as React.ComponentType,
-    code: `<button className="bg-rose-950 text-rose-400 border border-rose-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">Hover Me</button>`,
+    code: `<button className="bg-rose-950 text-rose-400 border border-rose-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group focus-visible:outline-2 focus-visible:outline-offset-2">Hover Me</button>`,
   },
   {
     name: "Violet Border Button",
     slug: "violet-border-button",
     category: "primary",
     component: VioletBorderButton as React.ComponentType,
-    code: `<button className="relative overflow-hidden bg-violet-950 border text-violet-400 border-violet-400 font-medium px-4 py-2 rounded-md hover:brightness-150 border-b-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:border-t-4">
+    code: `<button className="relative overflow-hidden bg-violet-950 border text-violet-400 border-violet-400 font-medium px-4 py-2 rounded-md hover:brightness-150 border-b-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:border-t-4 focus-visible:outline-2 focus-visible:outline-offset-2">
   Hover Me
 </button>`,
   }

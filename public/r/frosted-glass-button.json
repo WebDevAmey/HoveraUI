@@ -8,7 +8,7 @@
     {
       "path": "frosted-glass-button.tsx",
       "target": "components/ui/frosted-glass-button.tsx",
-      "content": "export default function FrostedGlassButton() {\n  return (\n    <button className=\"relative px-12 py-4 rounded-full text-white font-medium \n    bg-white/10 backdrop-blur-xl border border-white/20 \n    hover:bg-white/20 hover:scale-105 transition\">\n      Frosted Glass\n    </button>\n  );\n}\n",
+      "content": "export default function FrostedGlassButton() {\n  return (\n    <button className=\"relative px-12 py-4 rounded-full text-white font-medium \n    bg-white/10 backdrop-blur-xl border border-white/20 \n    hover:bg-white/20 hover:scale-105 transition focus-visible:outline-2 focus-visible:outline-offset-2\">\n      Frosted Glass\n    </button>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

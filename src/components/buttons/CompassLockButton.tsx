@@ -1,6 +1,6 @@
 export default function CompassLockButton() {
   return (
-    <button className="group relative inline-flex h-16 w-16 items-center justify-center rounded-full border border-neutral-700 bg-neutral-950">
+    <button className="group relative inline-flex h-16 w-16 items-center justify-center rounded-full border border-neutral-700 bg-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2">
       <span className="absolute top-1 h-2 w-[1px] bg-neutral-600" />
       <span className="absolute bottom-1 h-2 w-[1px] bg-neutral-600" />
       <span className="absolute left-1 h-[1px] w-2 bg-neutral-600" />

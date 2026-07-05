@@ -9,7 +9,7 @@ export default function RadicalNavbar() {
           <a href="#" className="font-bold font-black text-black hover:bg-white hover:border-black px-4 py-2 hover:border-2 border-2 border-yellow-400">Studio</a>
         </div>
 
-        <button className="text-white font-black font-bold px-4 py-2 bg-black hover:bg-yellow-400 hover:text-black border-2 border-black">
+        <button className="text-white font-black font-bold px-4 py-2 bg-black hover:bg-yellow-400 hover:text-black border-2 border-black focus-visible:outline-2 focus-visible:outline-offset-2">
           Let&apos;s Talk
         </button>
       </nav>

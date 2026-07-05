@@ -18,7 +18,7 @@ export const navbars: NavbarItem[] = [
       <a href="#" className="text-slate-400 hover:text-cyan-400 text-xs font-medium uppercase tracking-widest px-3 py-1 transition-colors">Core</a>
       <a href="#" className="text-slate-400 hover:text-cyan-400 text-xs font-medium uppercase tracking-widest px-3 py-1 transition-colors">Network</a>
     </div>
-    <button className="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full border border-cyan-500/40 transition-all">
+    <button className="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full border border-cyan-500/40 transition-all focus-visible:outline-2 focus-visible:outline-offset-2">
       Terminal
     </button>
   </nav>
@@ -47,7 +47,7 @@ export const navbars: NavbarItem[] = [
       </a>
     </div>
 
-    <button className="relative overflow-hidden bg-rose-950 border text-rose-400 border-rose-400 font-medium px-4 py-2 rounded-md hover:brightness-150 border-b-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:border-t-4">
+    <button className="relative overflow-hidden bg-rose-950 border text-rose-400 border-rose-400 font-medium px-4 py-2 rounded-md hover:brightness-150 border-b-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:border-t-4 focus-visible:outline-2 focus-visible:outline-offset-2">
       Connect with us
     </button>
   </nav>
@@ -67,7 +67,7 @@ export const navbars: NavbarItem[] = [
       <a href="#" className="font-bold font-black text-black hover:bg-white hover:border-black px-4 py-2 hover:border-2 border-2 border-yellow-400">Studio</a>
     </div>
 
-    <button className="text-white font-black font-bold px-4 py-2 bg-black hover:bg-yellow-400 hover:text-black border-2 border-black">
+    <button className="text-white font-black font-bold px-4 py-2 bg-black hover:bg-yellow-400 hover:text-black border-2 border-black focus-visible:outline-2 focus-visible:outline-offset-2">
       Let's Talk
     </button>
   </nav>

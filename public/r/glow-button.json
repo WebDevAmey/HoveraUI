@@ -8,7 +8,7 @@
     {
       "path": "glow-button.tsx",
       "target": "components/ui/glow-button.tsx",
-      "content": "export default function GlowButton() {\n  return (\n    <button className=\"rounded-xl bg-violet-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.8)]\">\n      Glow Button\n    </button>\n  );\n}\n",
+      "content": "export default function GlowButton() {\n  return (\n    <button className=\"rounded-xl bg-violet-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.8)] focus-visible:outline-2 focus-visible:outline-offset-2\">\n      Glow Button\n    </button>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

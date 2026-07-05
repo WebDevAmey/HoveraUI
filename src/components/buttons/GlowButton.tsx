@@ -1,7 +1,7 @@
 export default function GlowButton({ isHovered }: { isHovered?: boolean }) {
   return (
     <button
-      className="rounded-xl bg-violet-600 px-6 py-3 font-medium text-white"
+      className="rounded-xl bg-violet-600 px-6 py-3 font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-2"
       style={{
         transition: "transform 300ms, box-shadow 300ms",
         transform: isHovered ? "scale(1.05)" : "scale(1)",

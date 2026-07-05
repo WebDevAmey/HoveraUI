@@ -8,7 +8,7 @@
     {
       "path": "swipe-button.tsx",
       "target": "components/ui/swipe-button.tsx",
-      "content": "export default function SwipeButton() {\n  return (\n    <button className=\"group relative px-8 py-3 rounded-lg bg-indigo-600 text-white overflow-hidden hover:scale-105 hover:-translate-y-1 active:translate-y-0 transform transition-all\">\n        <span className=\"absolute inset-0 bg-gradient-to-r from-indigo-500 via-blue-500 to-pink-500 -translate-x-full group-hover:translate-x-0 transition duration-500 hover:scale-105\"></span>\n        <span className=\"relative z-10\">Swipe Me </span>\n    </button>\n  );\n}\n",
+      "content": "export default function SwipeButton() {\n  return (\n    <button className=\"group relative px-8 py-3 rounded-lg bg-indigo-600 text-white overflow-hidden hover:scale-105 hover:-translate-y-1 active:translate-y-0 transform transition-all focus-visible:outline-2 focus-visible:outline-offset-2\">\n        <span className=\"absolute inset-0 bg-gradient-to-r from-indigo-500 via-blue-500 to-pink-500 -translate-x-full group-hover:translate-x-0 transition duration-500 hover:scale-105\"></span>\n        <span className=\"relative z-10\">Swipe Me </span>\n    </button>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

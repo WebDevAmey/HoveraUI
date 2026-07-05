@@ -8,7 +8,7 @@
     {
       "path": "read-more-button.tsx",
       "target": "components/ui/read-more-button.tsx",
-      "content": "export default function ReadMoreButton() {\n  return (\n     <button className=\"group relative px-8 py-3 rounded-full text-white font-semibold \n        bg-white/10 backdrop-blur-xl border border-white/20\n        shadow-[0_0_30px_rgba(255,0,150,0.6)] \n        overflow-hidden\">\n    \n        <span className=\"absolute inset-0 bg-pink-500 opacity-30 blur-2xl group-hover:blur-3xl transition duration-500\"></span>\n    \n        <span className=\"absolute inset-0 bg-gradient-to-br from-white/10 to-transparent \n            translate-x-[-20%] group-hover:translate-x-[20%]\n            transition duration-700 ease-out\"></span>\n    \n        <span className=\"relative z-10\">Read More</span>\n    </button>\n  );\n}\n",
+      "content": "export default function ReadMoreButton() {\n  return (\n     <button className=\"group relative px-8 py-3 rounded-full text-white font-semibold \n        bg-white/10 backdrop-blur-xl border border-white/20\n        shadow-[0_0_30px_rgba(255,0,150,0.6)] \n        overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2\">\n    \n        <span className=\"absolute inset-0 bg-pink-500 opacity-30 blur-2xl group-hover:blur-3xl transition duration-500\"></span>\n    \n        <span className=\"absolute inset-0 bg-gradient-to-br from-white/10 to-transparent \n            translate-x-[-20%] group-hover:translate-x-[20%]\n            transition duration-700 ease-out\"></span>\n    \n        <span className=\"relative z-10\">Read More</span>\n    </button>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

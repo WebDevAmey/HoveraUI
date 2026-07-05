@@ -8,7 +8,7 @@
     {
       "path": "neon-swipe-button.tsx",
       "target": "components/ui/neon-swipe-button.tsx",
-      "content": "export default function NeonSwipeButton() {\n  return (\n    <button className=\"group relative px-8 py-3 text-white bg-indigo-600 rounded-lg overflow-hidden\">\n      <span className=\"absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 -translate-x-full group-hover:translate-x-0 transition duration-500\"></span>\n      <span className=\"relative z-10\">Neon Swipe</span>\n    </button>\n  );\n}\n",
+      "content": "export default function NeonSwipeButton() {\n  return (\n    <button className=\"group relative px-8 py-3 text-white bg-indigo-600 rounded-lg overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2\">\n      <span className=\"absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 -translate-x-full group-hover:translate-x-0 transition duration-500\"></span>\n      <span className=\"relative z-10\">Neon Swipe</span>\n    </button>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

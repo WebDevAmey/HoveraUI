@@ -1,6 +1,6 @@
 export default function PulseSeismographButton() {
   return (
-    <button className="group relative inline-flex h-14 w-44 items-center justify-center overflow-hidden rounded-lg border border-emerald-500/30 bg-neutral-950 font-mono text-sm text-emerald-400">
+    <button className="group relative inline-flex h-14 w-44 items-center justify-center overflow-hidden rounded-lg border border-emerald-500/30 bg-neutral-950 font-mono text-sm text-emerald-400 focus-visible:outline-2 focus-visible:outline-offset-2">
       <span className="absolute z-10 transition-opacity duration-300 group-hover:opacity-0">
         PULSE
       </span>

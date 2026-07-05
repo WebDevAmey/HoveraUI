@@ -26,7 +26,7 @@ That's it — there's no review queue or moderation step beyond normal PR review
 npx shadcn@latest add ${NEXT_PUBLIC_REGISTRY_URL}/r/<slug>.json
 ```
 
-Set `NEXT_PUBLIC_REGISTRY_URL` in `.env.local` (see `.env.example`) to whatever host you deploy to. There is no `@hovera/<slug>` shorthand today; the full-URL form above is the supported install command and is what every doc page shows.
+Set `NEXT_PUBLIC_REGISTRY_URL` in `.env.local` (see `.env.example`) to whatever host you deploy to. Consumers can also opt into the `@hovera/<slug>` shorthand by adding `"registries": { "@hovera": "<host>/r/{name}.json" }` to their own `components.json` — this is verified working with the current shadcn CLI, but the full-URL form is what every doc page shows since it needs no setup.
 
 ## Quality bar for new components
 

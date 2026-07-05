@@ -8,7 +8,17 @@ A shadcn-compatible component registry of animated buttons, backgrounds, loaders
 npx shadcn@latest add https://<registry-host>/r/<slug>.json
 ```
 
-Each component's doc page shows the exact command (with npm/pnpm/yarn/bun variants), a live interactive preview, the full source, and a props table.
+Or add the registry once to your project's `components.json` and use the shorthand (verified against the shadcn CLI):
+
+```json
+"registries": { "@hovera": "https://<registry-host>/r/{name}.json" }
+```
+
+```bash
+npx shadcn@latest add @hovera/spotlight-card
+```
+
+Declared npm dependencies (`framer-motion`, `@radix-ui/react-tabs`, `cmdk`, …) are installed automatically. Each component's doc page shows the exact command (with npm/pnpm/yarn/bun variants), a live interactive preview, the full source, and a props table.
 
 ## What's inside
 

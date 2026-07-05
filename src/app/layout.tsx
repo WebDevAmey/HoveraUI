@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { AppProvider } from "@/context/AppContext";
 import { Toaster } from "@/components/Toast";
+import SmoothScroll from "@/components/chrome/SmoothScroll";
+import Preloader from "@/components/chrome/Preloader";
+import CustomCursor from "@/components/chrome/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -52,6 +55,9 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <AppProvider>
+            <SmoothScroll />
+            <Preloader />
+            <CustomCursor />
             {children}
             <Toaster />
           </AppProvider>

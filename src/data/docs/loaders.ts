@@ -27,7 +27,7 @@ export const loaderDocs: ComponentDocEntry[] = loaders
       Preview: ldr.component,
       code: ldr.code,
       usage: usageFor(ldr.slug, componentName),
-      dependencies: [],
+      dependencies: ldr.dependencies ?? [],
       props: [],
       needsLightPreview: ldr.needsLightPreview,
     };

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter",
+  "type": "registry:component",
+  "title": "Typewriter",
+  "description": "Cycles through phrases with type-and-delete rhythm and a blinking caret.",
+  "files": [
+    {
+      "path": "typewriter.tsx",
+      "target": "components/ui/typewriter.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState, useSyncExternalStore } from \"react\";\n\nfunction subscribeReducedMotion(callback: () => void) {\n  const mq = window.matchMedia(\"(prefers-reduced-motion: reduce)\");\n  mq.addEventListener(\"change\", callback);\n  return () => mq.removeEventListener(\"change\", callback);\n}\n\nfunction useReducedMotionPreference() {\n  return useSyncExternalStore(\n    subscribeReducedMotion,\n    () => window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches,\n    () => false\n  );\n}\n\ninterface TypewriterProps {\n  words?: string[];\n  /** Milliseconds per typed character. */\n  typingSpeed?: number;\n  /** Milliseconds per deleted character. */\n  deletingSpeed?: number;\n  /** Milliseconds to hold a completed word. */\n  holdTime?: number;\n  className?: string;\n}\n\nexport default function Typewriter({\n  words = [\"hover states\", \"scroll reveals\", \"micro-interactions\"],\n  typingSpeed = 70,\n  deletingSpeed = 40,\n  holdTime = 1400,\n  className = \"\",\n}: TypewriterProps) {\n  const [wordIndex, setWordIndex] = useState(0);\n  const [length, setLength] = useState(0);\n  const [deleting, setDeleting] = useState(false);\n  const reduced = useReducedMotionPreference();\n\n  useEffect(() => {\n    if (reduced) return;\n    const word = words[wordIndex % words.length];\n    let timeout: ReturnType<typeof setTimeout>;\n\n    if (!deleting && length < word.length) {\n      timeout = setTimeout(() => setLength(length + 1), typingSpeed);\n    } else if (!deleting && length === word.length) {\n      timeout = setTimeout(() => setDeleting(true), holdTime);\n    } else if (deleting && length > 0) {\n      timeout = setTimeout(() => setLength(length - 1), deletingSpeed);\n    } else {\n      timeout = setTimeout(() => {\n        setDeleting(false);\n        setWordIndex((i) => (i + 1) % words.length);\n      }, 200);\n    }\n    return () => clearTimeout(timeout);\n  }, [length, deleting, wordIndex, words, typingSpeed, deletingSpeed, holdTime, reduced]);\n\n  const word = words[wordIndex % words.length];\n  const shown = reduced ? words[0] : word.slice(0, length);\n\n  return (\n    <span className={\"text-2xl font-semibold text-white \" + className}>\n      <style>{\"@keyframes hovera-caret { 0%, 45% { opacity: 1; } 50%, 100% { opacity: 0; } }\"}</style>\n      {shown}\n      <span\n        aria-hidden\n        className=\"ml-0.5 inline-block h-[1.1em] w-[2px] translate-y-[0.15em] bg-violet-400 motion-reduce:opacity-100\"\n        style={{ animation: reduced ? undefined : \"hovera-caret 1s steps(1) infinite\" }}\n      />\n    </span>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

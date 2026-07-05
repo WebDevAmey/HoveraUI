@@ -28,7 +28,7 @@ export const navbarDocs: ComponentDocEntry[] = navbars
     Preview: nav.component,
     code: nav.code,
     usage: usageFor(nav.slug, componentName),
-    dependencies: [],
+    dependencies: nav.dependencies ?? [],
     props: [],
     needsLightPreview: nav.needsLightPreview,
   };

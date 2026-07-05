@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particle-field",
+  "type": "registry:component",
+  "title": "Particle Field",
+  "description": "A drifting canvas particle field that renders a static frame under reduced motion.",
+  "files": [
+    {
+      "path": "particle-field.tsx",
+      "target": "components/ui/particle-field.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef } from \"react\";\n\nexport default function ParticleField() {\n  const canvasRef = useRef<HTMLCanvasElement>(null);\n\n  useEffect(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n    const ctx = canvas.getContext(\"2d\");\n    if (!ctx) return;\n\n    const reduced = window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches;\n    const dpr = Math.min(window.devicePixelRatio || 1, 2);\n    let raf = 0;\n    let width = 0;\n    let height = 0;\n\n    const particles = Array.from({ length: 70 }, () => ({\n      x: Math.random(),\n      y: Math.random(),\n      r: Math.random() * 1.6 + 0.4,\n      vx: (Math.random() - 0.5) * 0.0005,\n      vy: (Math.random() - 0.5) * 0.0005,\n      a: Math.random() * 0.5 + 0.15,\n    }));\n\n    function resize() {\n      if (!canvas) return;\n      width = canvas.clientWidth;\n      height = canvas.clientHeight;\n      canvas.width = width * dpr;\n      canvas.height = height * dpr;\n      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);\n    }\n\n    function draw() {\n      if (!ctx) return;\n      ctx.clearRect(0, 0, width, height);\n      for (const p of particles) {\n        if (!reduced) {\n          p.x = (p.x + p.vx + 1) % 1;\n          p.y = (p.y + p.vy + 1) % 1;\n        }\n        ctx.beginPath();\n        ctx.arc(p.x * width, p.y * height, p.r, 0, Math.PI * 2);\n        ctx.fillStyle = \"rgba(196, 181, 253, \" + p.a + \")\";\n        ctx.fill();\n      }\n      if (!reduced) raf = requestAnimationFrame(draw);\n    }\n\n    resize();\n    draw();\n    window.addEventListener(\"resize\", resize);\n    return () => {\n      cancelAnimationFrame(raf);\n      window.removeEventListener(\"resize\", resize);\n    };\n  }, []);\n\n  return (\n    <div className=\"relative h-screen overflow-hidden bg-neutral-950\">\n      <canvas ref={canvasRef} className=\"absolute inset-0 h-full w-full\" aria-hidden />\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background: \"radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.1), transparent 55%)\",\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -8,6 +8,9 @@ import { navbarDocs } from "@/data/docs/navbars";
 import { cardDocs } from "@/data/docs/cards";
 import { tabDocs } from "@/data/docs/tabs";
 import { marqueeDocs } from "@/data/docs/marquees";
+import { textDocs } from "@/data/docs/texts";
+import { sectionDocs } from "@/data/docs/sections";
+import { commandDocs } from "@/data/docs/command";
 import { floatingNavbarDoc } from "@/data/docs/floating-navbar";
 import { skeletonLoaderDoc } from "@/data/docs/skeleton-loader";
 
@@ -23,6 +26,9 @@ export const docEntries: ComponentDocEntry[] = [
   ...cardDocs,
   ...tabDocs,
   ...marqueeDocs,
+  ...textDocs,
+  ...sectionDocs,
+  ...commandDocs,
 ];
 
 export function findDocEntry(slug: string): ComponentDocEntry | undefined {

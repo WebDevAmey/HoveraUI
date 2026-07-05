@@ -62,7 +62,7 @@ export const buttonDocs: ComponentDocEntry[] = buttons
       Preview: btn.component as React.ComponentType,
       code: btn.code,
       usage: usageFor(btn.slug, componentName),
-      dependencies: [],
+      dependencies: btn.dependencies ?? [],
       props: [],
       needsLightPreview: btn.needsLightPreview,
     };

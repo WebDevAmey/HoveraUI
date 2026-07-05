@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilt-card",
+  "type": "registry:component",
+  "title": "Tilt Card",
+  "description": "A 3D perspective card that banks toward the cursor on springs and stays flat on touch devices.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "tilt-card.tsx",
+      "target": "components/ui/tilt-card.tsx",
+      "content": "\"use client\";\n\nimport { useRef } from \"react\";\nimport { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from \"framer-motion\";\n\ninterface TiltCardProps {\n  children?: React.ReactNode;\n  className?: string;\n  /** Max tilt in degrees. */\n  maxTilt?: number;\n}\n\nexport default function TiltCard({ children, className = \"\", maxTilt = 10 }: TiltCardProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const prefersReducedMotion = useReducedMotion();\n\n  const px = useMotionValue(0.5);\n  const py = useMotionValue(0.5);\n  const rotateX = useSpring(useTransform(py, [0, 1], [maxTilt, -maxTilt]), { stiffness: 260, damping: 24 });\n  const rotateY = useSpring(useTransform(px, [0, 1], [-maxTilt, maxTilt]), { stiffness: 260, damping: 24 });\n\n  // Mouse-only by design: on touch devices (no hover) the card stays flat.\n  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {\n    if (prefersReducedMotion) return;\n    const el = ref.current;\n    if (!el) return;\n    const rect = el.getBoundingClientRect();\n    px.set((e.clientX - rect.left) / rect.width);\n    py.set((e.clientY - rect.top) / rect.height);\n  }\n\n  function handleMouseLeave() {\n    px.set(0.5);\n    py.set(0.5);\n  }\n\n  return (\n    <div style={{ perspective: 800 }}>\n      <motion.div\n        ref={ref}\n        onMouseMove={handleMouseMove}\n        onMouseLeave={handleMouseLeave}\n        style={\n          prefersReducedMotion\n            ? undefined\n            : { rotateX, rotateY, transformStyle: \"preserve-3d\" }\n        }\n        className={\n          \"relative rounded-2xl border border-white/10 bg-neutral-950 p-6 shadow-xl shadow-black/30 \" +\n          className\n        }\n      >\n        <div style={{ transform: \"translateZ(24px)\" }}>{children}</div>\n      </motion.div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

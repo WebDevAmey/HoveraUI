@@ -24,6 +24,9 @@ import NoiseVeil from "@/components/backgrounds/NoiseVeil";
 import SonarArc from "@/components/backgrounds/SonarArc";
 import GlassShard from "@/components/backgrounds/GlassShard";
 import MagmaVein from "@/components/backgrounds/MagmaVein";
+import AuroraFlow from "@/components/backgrounds/AuroraFlow";
+import Beams from "@/components/backgrounds/Beams";
+import ParticleField from "@/components/backgrounds/ParticleField";
 
 export const backgrounds: BackgroundItem[] = [
   {
@@ -557,5 +560,174 @@ linear-gradient(90deg, rgba(59,130,246,.15) 1px, transparent 1px)
     }}
   />
 </div>`,
-  }
+  },
+  {
+    name: "Aurora Flow",
+    slug: "aurora-flow",
+    category: "gradient",
+    component: AuroraFlow as React.ComponentType,
+    description: "Three drifting aurora blobs in continuous motion, transform-only and reduced-motion safe.",
+    dependencies: ["framer-motion"],
+    code: `"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
+export default function AuroraFlow() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const drift = (xs: number[], ys: number[], duration: number) =>
+    prefersReducedMotion
+      ? undefined
+      : {
+          x: xs,
+          y: ys,
+          transition: { duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "mirror" as const },
+        };
+
+  return (
+    <div className="relative h-screen overflow-hidden bg-neutral-950">
+      <motion.div
+        aria-hidden
+        animate={drift([0, 120, -60], [0, -80, 40], 18)}
+        className="absolute -top-1/4 left-1/4 h-[60vh] w-[60vh] rounded-full bg-violet-600/30 blur-[120px] will-change-transform"
+      />
+      <motion.div
+        aria-hidden
+        animate={drift([0, -100, 80], [0, 60, -50], 22)}
+        className="absolute top-1/3 right-1/5 h-[50vh] w-[50vh] rounded-full bg-cyan-500/25 blur-[110px] will-change-transform"
+      />
+      <motion.div
+        aria-hidden
+        animate={drift([0, 70, -90], [0, -50, 70], 26)}
+        className="absolute bottom-0 left-1/3 h-[45vh] w-[45vh] rounded-full bg-fuchsia-500/20 blur-[100px] will-change-transform"
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(10,10,10,0.7))]" />
+    </div>
+  );
+}`,
+  },
+  {
+    name: "Beams",
+    slug: "beams",
+    category: "gradient",
+    component: Beams as React.ComponentType,
+    description: "Falling light beams on a dark field, pure CSS keyframes with a paused reduced-motion state.",
+    code: `"use client";
+
+const BEAMS = [
+  { left: "10%", delay: "0s", duration: "7s", width: "2px", color: "rgba(139,92,246,0.5)" },
+  { left: "30%", delay: "2.2s", duration: "9s", width: "1px", color: "rgba(34,211,238,0.45)" },
+  { left: "52%", delay: "1.1s", duration: "8s", width: "2px", color: "rgba(232,121,249,0.4)" },
+  { left: "72%", delay: "3.4s", duration: "10s", width: "1px", color: "rgba(139,92,246,0.45)" },
+  { left: "88%", delay: "0.6s", duration: "7.5s", width: "2px", color: "rgba(34,211,238,0.4)" },
+];
+
+export default function Beams() {
+  return (
+    <div className="relative h-screen overflow-hidden bg-neutral-950">
+      <style>{"@keyframes hovera-beam { from { transform: translateY(-100%); } to { transform: translateY(100vh); } }"}</style>
+      {BEAMS.map((beam, i) => (
+        <div
+          key={i}
+          aria-hidden
+          className="absolute top-0 h-2/5 motion-reduce:[animation-play-state:paused]"
+          style={{
+            left: beam.left,
+            width: beam.width,
+            background: "linear-gradient(to bottom, transparent, " + beam.color + ", transparent)",
+            animation: "hovera-beam " + beam.duration + " linear " + beam.delay + " infinite",
+          }}
+        />
+      ))}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.12), transparent 60%)",
+        }}
+      />
+    </div>
+  );
+}`,
+  },
+  {
+    name: "Particle Field",
+    slug: "particle-field",
+    category: "pattern",
+    component: ParticleField as React.ComponentType,
+    description: "A drifting canvas particle field that renders a static frame under reduced motion.",
+    code: `"use client";
+
+import { useEffect, useRef } from "react";
+
+export default function ParticleField() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let raf = 0;
+    let width = 0;
+    let height = 0;
+
+    const particles = Array.from({ length: 70 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      r: Math.random() * 1.6 + 0.4,
+      vx: (Math.random() - 0.5) * 0.0005,
+      vy: (Math.random() - 0.5) * 0.0005,
+      a: Math.random() * 0.5 + 0.15,
+    }));
+
+    function resize() {
+      if (!canvas) return;
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function draw() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      for (const p of particles) {
+        if (!reduced) {
+          p.x = (p.x + p.vx + 1) % 1;
+          p.y = (p.y + p.vy + 1) % 1;
+        }
+        ctx.beginPath();
+        ctx.arc(p.x * width, p.y * height, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(196, 181, 253, " + p.a + ")";
+        ctx.fill();
+      }
+      if (!reduced) raf = requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    window.addEventListener("resize", resize);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <div className="relative h-screen overflow-hidden bg-neutral-950">
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.1), transparent 55%)",
+        }}
+      />
+    </div>
+  );
+}`,
+  },
 ];

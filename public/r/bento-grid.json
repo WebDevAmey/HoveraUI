@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-grid",
+  "type": "registry:component",
+  "title": "Bento Grid",
+  "description": "A staggered-entrance bento layout with per-card hover lift.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "bento-grid.tsx",
+      "target": "components/ui/bento-grid.tsx",
+      "content": "\"use client\";\n\nimport { motion, useReducedMotion } from \"framer-motion\";\n\ninterface BentoItem {\n  title: string;\n  description: string;\n  /** Tailwind col/row span classes, e.g. \"md:col-span-2\". */\n  className?: string;\n}\n\ninterface BentoGridProps {\n  items?: BentoItem[];\n  className?: string;\n}\n\nconst DEFAULT_ITEMS: BentoItem[] = [\n  { title: \"Copy-paste native\", description: \"Every component is a single file you own after install.\", className: \"md:col-span-2\" },\n  { title: \"Motion built in\", description: \"Springs and staggers tuned per component.\" },\n  { title: \"Reduced-motion safe\", description: \"Every animation has a calm fallback.\" },\n  { title: \"Registry powered\", description: \"Install over the shadcn CLI from any host.\", className: \"md:col-span-2\" },\n];\n\nexport default function BentoGrid({ items = DEFAULT_ITEMS, className = \"\" }: BentoGridProps) {\n  const prefersReducedMotion = useReducedMotion();\n\n  return (\n    <motion.div\n      initial={prefersReducedMotion ? false : \"hidden\"}\n      whileInView=\"visible\"\n      viewport={{ once: true, margin: \"-40px\" }}\n      transition={{ staggerChildren: 0.08 }}\n      className={\"grid w-full max-w-2xl grid-cols-1 gap-4 md:grid-cols-3 \" + className}\n    >\n      {items.map((item) => (\n        <motion.div\n          key={item.title}\n          variants={{\n            hidden: { opacity: 0, y: 16 },\n            visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },\n          }}\n          whileHover={prefersReducedMotion ? undefined : { y: -3 }}\n          className={\n            \"group rounded-2xl border border-white/10 bg-neutral-950 p-5 transition-colors duration-300 hover:border-white/20 \" +\n            (item.className ?? \"\")\n          }\n        >\n          <p className=\"text-sm font-medium text-white\">{item.title}</p>\n          <p className=\"mt-1.5 text-sm leading-relaxed text-neutral-400\">{item.description}</p>\n        </motion.div>\n      ))}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

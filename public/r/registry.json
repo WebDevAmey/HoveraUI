@@ -316,6 +316,48 @@
       ]
     },
     {
+      "name": "aurora-flow",
+      "type": "registry:component",
+      "title": "Aurora Flow",
+      "description": "Three drifting aurora blobs in continuous motion, transform-only and reduced-motion safe.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "aurora-flow.tsx",
+          "target": "components/ui/aurora-flow.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "beams",
+      "type": "registry:component",
+      "title": "Beams",
+      "description": "Falling light beams on a dark field, pure CSS keyframes with a paused reduced-motion state.",
+      "files": [
+        {
+          "path": "beams.tsx",
+          "target": "components/ui/beams.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "particle-field",
+      "type": "registry:component",
+      "title": "Particle Field",
+      "description": "A drifting canvas particle field that renders a static frame under reduced motion.",
+      "files": [
+        {
+          "path": "particle-field.tsx",
+          "target": "components/ui/particle-field.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "glow-button",
       "type": "registry:component",
       "title": "Glow Button",
@@ -920,6 +962,22 @@
       ]
     },
     {
+      "name": "tilt-card",
+      "type": "registry:component",
+      "title": "Tilt Card",
+      "description": "A 3D perspective card that banks toward the cursor on springs and stays flat on touch devices.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "tilt-card.tsx",
+          "target": "components/ui/tilt-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "animated-tabs",
       "type": "registry:component",
       "title": "Animated Tabs",
@@ -945,6 +1003,112 @@
         {
           "path": "marquee.tsx",
           "target": "components/ui/marquee.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:component",
+      "title": "Text Reveal",
+      "description": "Words rise out of a clipped line one by one as the text scrolls into view.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "text-reveal.tsx",
+          "target": "components/ui/text-reveal.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "typewriter",
+      "type": "registry:component",
+      "title": "Typewriter",
+      "description": "Cycles through phrases with type-and-delete rhythm and a blinking caret.",
+      "files": [
+        {
+          "path": "typewriter.tsx",
+          "target": "components/ui/typewriter.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:component",
+      "title": "Gradient Text",
+      "description": "Text clipped to a panning gradient, paused automatically under reduced motion.",
+      "files": [
+        {
+          "path": "gradient-text.tsx",
+          "target": "components/ui/gradient-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bento-grid",
+      "type": "registry:component",
+      "title": "Bento Grid",
+      "description": "A staggered-entrance bento layout with per-card hover lift.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "bento-grid.tsx",
+          "target": "components/ui/bento-grid.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:component",
+      "title": "Timeline",
+      "description": "A vertical timeline whose entries slide into place as they enter the viewport.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "timeline.tsx",
+          "target": "components/ui/timeline.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-carousel",
+      "type": "registry:component",
+      "title": "Testimonial Carousel",
+      "description": "A directional fade-slide testimonial carousel, hand-rolled on Motion with no carousel dependency.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "testimonial-carousel.tsx",
+          "target": "components/ui/testimonial-carousel.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "command-menu",
+      "type": "registry:component",
+      "title": "Command Menu",
+      "description": "A cmdk-powered command palette with grouped actions, opened with Cmd/Ctrl+K.",
+      "dependencies": [
+        "cmdk"
+      ],
+      "files": [
+        {
+          "path": "command-menu.tsx",
+          "target": "components/ui/command-menu.tsx",
           "type": "registry:component"
         }
       ]

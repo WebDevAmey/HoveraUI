@@ -3,6 +3,7 @@
   "name": "gradient-link-button",
   "type": "registry:component",
   "title": "Gradient Link Button",
+  "description": "A hover-driven primary button, gradient link button.",
   "files": [
     {
       "path": "gradient-link-button.tsx",

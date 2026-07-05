@@ -3,6 +3,7 @@
   "name": "prism-spectrum",
   "type": "registry:component",
   "title": "Prism Spectrum",
+  "description": "A full-bleed gradient background, prism spectrum, built from layered CSS gradients.",
   "files": [
     {
       "path": "prism-spectrum.tsx",

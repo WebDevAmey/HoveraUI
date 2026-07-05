@@ -3,6 +3,7 @@
   "name": "split-curtain-button",
   "type": "registry:component",
   "title": "Split Curtain Button",
+  "description": "A hover-driven primary button, split curtain button.",
   "files": [
     {
       "path": "split-curtain-button.tsx",

@@ -3,6 +3,7 @@
   "name": "noise-veil",
   "type": "registry:component",
   "title": "Noise Veil",
+  "description": "A full-bleed pattern background, noise veil, built from layered CSS gradients.",
   "files": [
     {
       "path": "noise-veil.tsx",

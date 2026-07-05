@@ -3,6 +3,7 @@
   "name": "radical-navbar",
   "type": "registry:component",
   "title": "Radical Navbar",
+  "description": "A floating navigation bar, radical navbar.",
   "files": [
     {
       "path": "radical-navbar.tsx",

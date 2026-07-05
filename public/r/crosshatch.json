@@ -3,6 +3,7 @@
   "name": "crosshatch",
   "type": "registry:component",
   "title": "Crosshatch",
+  "description": "A full-bleed pattern background, crosshatch, built from layered CSS gradients.",
   "files": [
     {
       "path": "crosshatch.tsx",

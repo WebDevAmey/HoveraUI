@@ -3,6 +3,7 @@
   "name": "duotone-drift",
   "type": "registry:component",
   "title": "Duotone Drift",
+  "description": "A full-bleed gradient background, duotone drift, built from layered CSS gradients.",
   "files": [
     {
       "path": "duotone-drift.tsx",

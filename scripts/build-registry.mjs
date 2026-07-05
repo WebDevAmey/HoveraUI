@@ -1,6 +1,8 @@
-// Builds static shadcn registry-item JSON files into public/r/<slug>.json.
-// Reuses the same data arrays as src/app/api/registry/[slug]/route.ts so the
-// static files and the API route never drift out of sync.
+// Builds static shadcn registry files into public/r/:
+//   - one registry-item JSON per component  -> public/r/<slug>.json
+//   - a registry index                      -> public/r/registry.json
+// Reads the same data arrays that render the site (src/data/*.ts), so the
+// docs pages and the installable registry never drift out of sync.
 import { build } from "esbuild";
 import { mkdir, writeFile, rm } from "node:fs/promises";
 import path from "node:path";
@@ -9,6 +11,9 @@ import { fileURLToPath } from "node:url";
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = path.join(rootDir, ".registry-build");
 const publicDir = path.join(rootDir, "public", "r");
+
+const REGISTRY_NAME = "hovera";
+const HOMEPAGE = process.env.NEXT_PUBLIC_REGISTRY_URL || "http://localhost:3000";
 
 function slugToComponentName(slug) {
   return slug
@@ -26,11 +31,21 @@ import { backgrounds } from "${path.join(rootDir, "src/data/background.ts").repl
 import { buttons } from "${path.join(rootDir, "src/data/button.ts").replace(/\\/g, "\\\\")}";
 import { loaders } from "${path.join(rootDir, "src/data/loader.ts").replace(/\\/g, "\\\\")}";
 import { navbars } from "${path.join(rootDir, "src/data/navbar.ts").replace(/\\/g, "\\\\")}";
+import { docEntries } from "${path.join(rootDir, "src/data/docs/index.ts").replace(/\\/g, "\\\\")}";
+
+const docDescriptions = Object.fromEntries(
+  docEntries.map((entry) => [entry.slug, entry.description])
+);
 
 globalThis.__REGISTRY_ITEMS__ = [...backgrounds, ...buttons, ...loaders, ...navbars].map((item) => ({
   slug: item.slug,
   name: item.name,
   code: item.code,
+  description: item.description ?? docDescriptions[item.slug],
+  dependencies: item.dependencies,
+  registryDependencies: item.registryDependencies,
+  cssVars: item.cssVars,
+  tailwind: item.tailwind,
 }));
 `;
   await writeFile(entryPath, entrySource, "utf8");
@@ -57,33 +72,71 @@ globalThis.__REGISTRY_ITEMS__ = [...backgrounds, ...buttons, ...loaders, ...navb
   return items;
 }
 
-function buildRegistryItem(item) {
+function buildFileContent(item) {
+  // Snippets that are already a complete module (imports, hooks, named
+  // exports) ship verbatim; bare-JSX snippets get wrapped in a component.
+  if (item.code.includes("export default") || item.code.includes("export function")) {
+    return item.code.endsWith("\n") ? item.code : item.code + "\n";
+  }
+
   const componentName = slugToComponentName(item.slug);
   const indentedCode = item.code
     .split("\n")
     .map((line) => `    ${line}`)
     .join("\n");
 
-  const content = `export default function ${componentName}() {
+  return `export default function ${componentName}() {
   return (
 ${indentedCode}
   );
 }
 `;
+}
 
-  return {
+function buildRegistryItem(item) {
+  const registryItem = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
     name: item.slug,
     type: "registry:component",
     title: item.name,
-    files: [
-      {
-        path: `${item.slug}.tsx`,
-        target: `components/ui/${item.slug}.tsx`,
-        content,
-        type: "registry:component",
-      },
-    ],
+  };
+
+  if (item.description) registryItem.description = item.description;
+  if (item.dependencies?.length) registryItem.dependencies = item.dependencies;
+  if (item.registryDependencies?.length) {
+    registryItem.registryDependencies = item.registryDependencies;
+  }
+
+  registryItem.files = [
+    {
+      path: `${item.slug}.tsx`,
+      target: `components/ui/${item.slug}.tsx`,
+      content: buildFileContent(item),
+      type: "registry:component",
+    },
+  ];
+
+  if (item.cssVars && Object.keys(item.cssVars).length) registryItem.cssVars = item.cssVars;
+  if (item.tailwind && Object.keys(item.tailwind).length) registryItem.tailwind = item.tailwind;
+
+  return registryItem;
+}
+
+function buildRegistryIndex(registryItems) {
+  return {
+    $schema: "https://ui.shadcn.com/schema/registry.json",
+    name: REGISTRY_NAME,
+    homepage: HOMEPAGE,
+    items: registryItems.map((item) => {
+      const rest = { ...item };
+      delete rest.$schema;
+      rest.files = item.files.map((file) => {
+        const f = { ...file };
+        delete f.content;
+        return f;
+      });
+      return rest;
+    }),
   };
 }
 
@@ -91,15 +144,24 @@ async function main() {
   const items = await loadDataArrays();
   await mkdir(publicDir, { recursive: true });
 
+  const registryItems = [];
   for (const item of items) {
     const registryItem = buildRegistryItem(item);
+    registryItems.push(registryItem);
     const filePath = path.join(publicDir, `${item.slug}.json`);
     await writeFile(filePath, JSON.stringify(registryItem, null, 2) + "\n", "utf8");
   }
 
+  const indexPath = path.join(publicDir, "registry.json");
+  await writeFile(
+    indexPath,
+    JSON.stringify(buildRegistryIndex(registryItems), null, 2) + "\n",
+    "utf8"
+  );
+
   await rm(outDir, { recursive: true, force: true });
 
-  console.log(`Wrote ${items.length} registry file(s) to public/r/`);
+  console.log(`Wrote ${items.length} registry item(s) + registry.json to public/r/`);
 }
 
 main().catch((err) => {

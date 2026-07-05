@@ -3,6 +3,7 @@
   "name": "neon-swipe-button",
   "type": "registry:component",
   "title": "Neon Swipe Button",
+  "description": "A hover-driven primary button, neon swipe button.",
   "files": [
     {
       "path": "neon-swipe-button.tsx",

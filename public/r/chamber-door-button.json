@@ -3,6 +3,7 @@
   "name": "chamber-door-button",
   "type": "registry:component",
   "title": "Chamber Door Button",
+  "description": "A hover-driven primary button, chamber door button.",
   "files": [
     {
       "path": "chamber-door-button.tsx",

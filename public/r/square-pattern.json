@@ -3,6 +3,7 @@
   "name": "square-pattern",
   "type": "registry:component",
   "title": "Square Pattern",
+  "description": "A full-bleed pattern background, square pattern, built from layered CSS gradients.",
   "files": [
     {
       "path": "square-pattern.tsx",

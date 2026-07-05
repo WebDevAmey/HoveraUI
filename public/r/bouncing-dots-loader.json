@@ -3,6 +3,7 @@
   "name": "bouncing-dots-loader",
   "type": "registry:component",
   "title": "Bouncing Dots Loader",
+  "description": "A self-contained loading indicator, bouncing dots loader.",
   "files": [
     {
       "path": "bouncing-dots-loader.tsx",

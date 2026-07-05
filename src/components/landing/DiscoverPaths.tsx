@@ -34,7 +34,7 @@ export default function DiscoverPaths() {
       <div className="mx-auto max-w-6xl">
         <h2 className="text-2xl font-semibold tracking-tight text-foreground">Three ways in</h2>
         <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-          Start wherever you're building, the interaction, the motion behind it, or the way it ships.
+          Start wherever you&apos;re building, the interaction, the motion behind it, or the way it ships.
         </p>
 
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">

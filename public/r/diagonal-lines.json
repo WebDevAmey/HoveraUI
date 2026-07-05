@@ -3,6 +3,7 @@
   "name": "diagonal-lines",
   "type": "registry:component",
   "title": "Diagonal Lines",
+  "description": "A full-bleed pattern background, diagonal lines, built from layered CSS gradients.",
   "files": [
     {
       "path": "diagonal-lines.tsx",

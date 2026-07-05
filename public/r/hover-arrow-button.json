@@ -3,6 +3,7 @@
   "name": "hover-arrow-button",
   "type": "registry:component",
   "title": "Hover Arrow Button",
+  "description": "A hover-driven primary button, hover arrow button.",
   "files": [
     {
       "path": "hover-arrow-button.tsx",

@@ -3,6 +3,7 @@
   "name": "border-reveal",
   "type": "registry:component",
   "title": "Border Reveal",
+  "description": "A hover-driven primary button, border reveal.",
   "files": [
     {
       "path": "border-reveal.tsx",

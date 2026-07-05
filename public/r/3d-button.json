@@ -3,6 +3,7 @@
   "name": "3d-button",
   "type": "registry:component",
   "title": "3D Button",
+  "description": "A hover-driven primary button, 3d button.",
   "files": [
     {
       "path": "3d-button.tsx",

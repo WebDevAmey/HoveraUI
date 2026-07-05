@@ -3,6 +3,7 @@
   "name": "liquid-fill-button",
   "type": "registry:component",
   "title": "Liquid Fill Button",
+  "description": "A hover-driven primary button, liquid fill button.",
   "files": [
     {
       "path": "liquid-fill-button.tsx",

@@ -3,6 +3,7 @@
   "name": "magma-vein",
   "type": "registry:component",
   "title": "Magma Vein",
+  "description": "A full-bleed pattern background, magma vein, built from layered CSS gradients.",
   "files": [
     {
       "path": "magma-vein.tsx",

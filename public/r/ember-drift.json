@@ -3,6 +3,7 @@
   "name": "ember-drift",
   "type": "registry:component",
   "title": "Ember Drift",
+  "description": "A full-bleed gradient background, ember drift, built from layered CSS gradients.",
   "files": [
     {
       "path": "ember-drift.tsx",

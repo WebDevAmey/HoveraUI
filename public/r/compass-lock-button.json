@@ -3,6 +3,7 @@
   "name": "compass-lock-button",
   "type": "registry:component",
   "title": "Compass Lock Button",
+  "description": "A hover-driven primary button, compass lock button.",
   "files": [
     {
       "path": "compass-lock-button.tsx",

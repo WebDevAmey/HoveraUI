@@ -3,6 +3,7 @@
   "name": "pulse-seismograph-button",
   "type": "registry:component",
   "title": "Pulse Seismograph Button",
+  "description": "A hover-driven primary button, pulse seismograph button.",
   "files": [
     {
       "path": "pulse-seismograph-button.tsx",

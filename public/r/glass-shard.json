@@ -3,6 +3,7 @@
   "name": "glass-shard",
   "type": "registry:component",
   "title": "Glass Shard",
+  "description": "A full-bleed gradient background, glass shard, built from layered CSS gradients.",
   "files": [
     {
       "path": "glass-shard.tsx",

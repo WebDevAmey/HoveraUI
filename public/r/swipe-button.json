@@ -3,6 +3,7 @@
   "name": "swipe-button",
   "type": "registry:component",
   "title": " Swipe Button",
+  "description": "A hover-driven primary button, swipe button.",
   "files": [
     {
       "path": "swipe-button.tsx",

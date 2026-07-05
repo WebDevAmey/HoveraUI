@@ -3,6 +3,7 @@
   "name": "aurora",
   "type": "registry:component",
   "title": "Aurora",
+  "description": "A full-bleed gradient background, aurora, built from layered CSS gradients.",
   "files": [
     {
       "path": "aurora.tsx",

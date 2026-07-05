@@ -3,6 +3,7 @@
   "name": "grid-pattern",
   "type": "registry:component",
   "title": "Grid Pattern",
+  "description": "A full-bleed pattern background, grid pattern, built from layered CSS gradients.",
   "files": [
     {
       "path": "grid-pattern.tsx",

@@ -3,6 +3,7 @@
   "name": "dot-matrix",
   "type": "registry:component",
   "title": "Dot Matrix",
+  "description": "A full-bleed pattern background, dot matrix, built from layered CSS gradients.",
   "files": [
     {
       "path": "dot-matrix.tsx",

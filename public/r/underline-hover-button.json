@@ -3,6 +3,7 @@
   "name": "underline-hover-button",
   "type": "registry:component",
   "title": "Underline Hover Button",
+  "description": "A hover-driven primary button, underline hover button.",
   "files": [
     {
       "path": "underline-hover-button.tsx",

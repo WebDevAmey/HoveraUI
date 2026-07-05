@@ -3,6 +3,7 @@
   "name": "glow-button",
   "type": "registry:component",
   "title": "Glow Button",
+  "description": "A primary call-to-action button with a violet glow that intensifies on hover.",
   "files": [
     {
       "path": "glow-button.tsx",

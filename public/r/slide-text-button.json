@@ -3,6 +3,7 @@
   "name": "slide-text-button",
   "type": "registry:component",
   "title": "Slide Text Button",
+  "description": "A hover-driven primary button, slide text button.",
   "files": [
     {
       "path": "slide-text-button.tsx",

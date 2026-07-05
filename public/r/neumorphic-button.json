@@ -3,6 +3,7 @@
   "name": "neumorphic-button",
   "type": "registry:component",
   "title": " Neumorphic Button",
+  "description": "A hover-driven primary button, neumorphic button.",
   "files": [
     {
       "path": "neumorphic-button.tsx",

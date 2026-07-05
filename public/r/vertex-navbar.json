@@ -3,6 +3,7 @@
   "name": "vertex-navbar",
   "type": "registry:component",
   "title": "Vertex Navbar",
+  "description": "A floating navigation bar, vertex navbar.",
   "files": [
     {
       "path": "vertex-navbar.tsx",

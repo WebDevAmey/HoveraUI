@@ -3,6 +3,7 @@
   "name": "conic-swirl",
   "type": "registry:component",
   "title": "Conic Swirl",
+  "description": "A full-bleed gradient background, conic swirl, built from layered CSS gradients.",
   "files": [
     {
       "path": "conic-swirl.tsx",

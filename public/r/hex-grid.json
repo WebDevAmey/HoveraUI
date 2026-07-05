@@ -3,6 +3,7 @@
   "name": "hex-grid",
   "type": "registry:component",
   "title": "Hex Grid",
+  "description": "A full-bleed pattern background, hex grid, built from layered CSS gradients.",
   "files": [
     {
       "path": "hex-grid.tsx",

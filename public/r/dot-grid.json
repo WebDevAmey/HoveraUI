@@ -3,6 +3,7 @@
   "name": "dot-grid",
   "type": "registry:component",
   "title": "Dot Grid",
+  "description": "A full-bleed pattern background, dot grid, built from layered CSS gradients.",
   "files": [
     {
       "path": "dot-grid.tsx",

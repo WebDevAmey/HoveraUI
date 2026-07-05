@@ -3,6 +3,7 @@
   "name": "shimmer-swipe-button",
   "type": "registry:component",
   "title": " Shimmer Swipe Button",
+  "description": "A hover-driven primary button, shimmer swipe button.",
   "files": [
     {
       "path": "shimmer-swipe-button.tsx",

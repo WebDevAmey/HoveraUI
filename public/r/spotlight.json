@@ -3,6 +3,7 @@
   "name": "spotlight",
   "type": "registry:component",
   "title": "Spotlight",
+  "description": "A full-bleed gradient background, spotlight, built from layered CSS gradients.",
   "files": [
     {
       "path": "spotlight.tsx",

@@ -3,6 +3,7 @@
   "name": "sonar-arc",
   "type": "registry:component",
   "title": "Sonar Arc",
+  "description": "A full-bleed pattern background, sonar arc, built from layered CSS gradients.",
   "files": [
     {
       "path": "sonar-arc.tsx",

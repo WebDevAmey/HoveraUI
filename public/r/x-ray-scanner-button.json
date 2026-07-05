@@ -3,6 +3,7 @@
   "name": "x-ray-scanner-button",
   "type": "registry:component",
   "title": "X-Ray Scanner Button",
+  "description": "A hover-driven primary button, x-ray scanner button.",
   "files": [
     {
       "path": "x-ray-scanner-button.tsx",

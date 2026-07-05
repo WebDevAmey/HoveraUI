@@ -3,6 +3,7 @@
   "name": "blob-hover-button",
   "type": "registry:component",
   "title": "Blob Hover Button",
+  "description": "A hover-driven primary button, blob hover button.",
   "files": [
     {
       "path": "blob-hover-button.tsx",

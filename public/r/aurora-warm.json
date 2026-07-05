@@ -3,6 +3,7 @@
   "name": "aurora-warm",
   "type": "registry:component",
   "title": "Aurora Warm",
+  "description": "A full-bleed gradient background, aurora warm, built from layered CSS gradients.",
   "files": [
     {
       "path": "aurora-warm.tsx",

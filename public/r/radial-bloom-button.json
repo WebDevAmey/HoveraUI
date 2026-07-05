@@ -3,6 +3,7 @@
   "name": "radial-bloom-button",
   "type": "registry:component",
   "title": "Radial Bloom Button",
+  "description": "A hover-driven primary button, radial bloom button.",
   "files": [
     {
       "path": "radial-bloom-button.tsx",

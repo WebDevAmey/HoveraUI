@@ -3,6 +3,7 @@
   "name": "rose-border-button",
   "type": "registry:component",
   "title": "Rose Border Button",
+  "description": "A hover-driven primary button, rose border button.",
   "files": [
     {
       "path": "rose-border-button.tsx",

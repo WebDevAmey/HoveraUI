@@ -3,6 +3,7 @@
   "name": "violet-border-button",
   "type": "registry:component",
   "title": "Violet Border Button",
+  "description": "A hover-driven primary button, violet border button.",
   "files": [
     {
       "path": "violet-border-button.tsx",

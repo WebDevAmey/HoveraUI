@@ -3,6 +3,7 @@
   "name": "frosted-glass-button",
   "type": "registry:component",
   "title": " Frosted Glass Button",
+  "description": "A hover-driven primary button, frosted glass button.",
   "files": [
     {
       "path": "frosted-glass-button.tsx",

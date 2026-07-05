@@ -3,6 +3,7 @@
   "name": "press-button",
   "type": "registry:component",
   "title": "Press Button",
+  "description": "A hover-driven primary button, press button.",
   "files": [
     {
       "path": "press-button.tsx",

@@ -3,6 +3,7 @@
   "name": "morse-signal-button",
   "type": "registry:component",
   "title": "Morse Signal Button",
+  "description": "A hover-driven primary button, morse signal button.",
   "files": [
     {
       "path": "morse-signal-button.tsx",

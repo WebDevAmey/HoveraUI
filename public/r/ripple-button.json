@@ -3,6 +3,7 @@
   "name": "ripple-button",
   "type": "registry:component",
   "title": "Ripple Button",
+  "description": "A hover-driven primary button, ripple button.",
   "files": [
     {
       "path": "ripple-button.tsx",

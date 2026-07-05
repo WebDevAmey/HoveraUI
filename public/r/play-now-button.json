@@ -3,6 +3,7 @@
   "name": "play-now-button",
   "type": "registry:component",
   "title": "Play Now Button",
+  "description": "A hover-driven primary button, play now button.",
   "files": [
     {
       "path": "play-now-button.tsx",

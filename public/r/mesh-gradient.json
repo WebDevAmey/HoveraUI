@@ -3,6 +3,7 @@
   "name": "mesh-gradient",
   "type": "registry:component",
   "title": "Mesh Gradient",
+  "description": "A full-bleed gradient background, mesh gradient, built from layered CSS gradients.",
   "files": [
     {
       "path": "mesh-gradient.tsx",

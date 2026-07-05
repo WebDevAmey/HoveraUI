@@ -3,6 +3,7 @@
   "name": "new-button",
   "type": "registry:component",
   "title": " New Button",
+  "description": "A hover-driven primary button, new button.",
   "files": [
     {
       "path": "new-button.tsx",

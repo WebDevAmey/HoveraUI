@@ -3,6 +3,7 @@
   "name": "tally-strike-button",
   "type": "registry:component",
   "title": "Tally Strike Button",
+  "description": "A hover-driven primary button, tally strike button.",
   "files": [
     {
       "path": "tally-strike-button.tsx",

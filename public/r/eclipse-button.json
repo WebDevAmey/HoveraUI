@@ -3,6 +3,7 @@
   "name": "eclipse-button",
   "type": "registry:component",
   "title": "Eclipse Button",
+  "description": "A hover-driven primary button, eclipse button.",
   "files": [
     {
       "path": "eclipse-button.tsx",

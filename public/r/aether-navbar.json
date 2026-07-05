@@ -3,6 +3,7 @@
   "name": "aether-navbar",
   "type": "registry:component",
   "title": "Aether Navbar",
+  "description": "A floating navigation bar, aether navbar.",
   "files": [
     {
       "path": "aether-navbar.tsx",

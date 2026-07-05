@@ -4,27 +4,34 @@ Hovera UI has no backend, no submission form, and no account system, by design �
 
 ## Add a component
 
-1. Pick the category: `src/components/{buttons,loaders,navbars,backgrounds}/`.
-2. Create your component there as a plain React component (see any existing file in that folder for the pattern).
-3. Add an entry for it in the matching data file: `src/data/{button,loader,navbar,background}.ts`. Each entry needs:
+1. Pick the category and create your component under `src/components/{buttons,loaders,navbars,backgrounds}/` as a plain React component (see any existing file in that folder for the pattern).
+2. Add an entry in the matching data file, `src/data/{button,loader,navbar,background}.ts`. Each entry needs:
    - `name` — display name shown on its card.
-   - `slug` — unique, kebab-case, used for the URL and the `npx shadcn add @hovera/<slug>` command.
+   - `slug` — unique, kebab-case, used for the URL and the registry file name.
    - `category` — used for the badge and sidebar filter.
    - `component` — the component you just added.
-   - `code` — the exact JSX/Tailwind snippet shown in "Copy code" and served by the registry. Keep it copy-paste runnable on its own.
-4. Open a PR.
+   - `code` — the exact JSX/Tailwind snippet shown in "Copy code" and served by the registry. Keep it copy-paste runnable on its own, and keep it in sync with the component — they are two representations of the same thing.
+   - Registry metadata as applicable: `dependencies` (npm packages the snippet imports), `registryDependencies` (other Hovera items it composes), and `cssVars` (any `--hovera-*` tokens the snippet references, with light and dark values). If your snippet uses `var(--anything)` that isn't a stock shadcn token, it must ship `cssVars`, or it will render broken in consumer apps.
+3. Add a documentation entry (required, not optional): create `src/data/docs/<slug>.ts` exporting a `ComponentDocEntry` (see `src/types/docs.ts`) or add it to the category file in `src/data/docs/`, then register it in `src/data/docs/index.ts`. Every component page routes through `/docs/<slug>` — an item without a doc entry has no page at all. The sidebar (`src/data/docs/nav.ts`) picks it up automatically from the data arrays.
+4. Run `npm run build:registry && npm run build && npm run lint && npx tsc --noEmit` — all four must pass.
+5. Open a PR.
 
 That's it — there's no review queue or moderation step beyond normal PR review.
 
-## Why no backend
+## How installs work (no backend)
 
-The registry (`src/app/api/registry/[slug]/route.ts`) is a static lookup built from those same data files at module load, no database, no auth, no network call. The same data also gets written out as static files in `public/r/<slug>.json` by `npm run build:registry` (wired as `predev`/`prebuild`), which is what the shadcn CLI actually fetches in production via `npx shadcn@latest add ${NEXT_PUBLIC_REGISTRY_URL}/r/<slug>.json`. Set `NEXT_PUBLIC_REGISTRY_URL` in `.env.local` (see `.env.example`) to whatever host you deploy to.
+`npm run build:registry` (wired as `predev`/`prebuild`, implemented in `scripts/build-registry.mjs`) reads the data files and writes one shadcn `registry-item.json`-shaped file per component to `public/r/<slug>.json`, plus a `public/r/registry.json` index. The shadcn CLI fetches those static files directly:
 
-## Adding a full documentation page (optional)
+```bash
+npx shadcn@latest add ${NEXT_PUBLIC_REGISTRY_URL}/r/<slug>.json
+```
 
-A handful of components (currently `glow-button` and `spinner-loader`) also render through the richer doc template at `/docs/<slug>` instead of the older flat `/components/<slug>` page. To opt a component into that template:
+Set `NEXT_PUBLIC_REGISTRY_URL` in `.env.local` (see `.env.example`) to whatever host you deploy to. There is no `@hovera/<slug>` shorthand today; the full-URL form above is the supported install command and is what every doc page shows.
 
-1. Add a `src/data/docs/<slug>.ts` file exporting a `ComponentDocEntry` (see `src/types/docs.ts`): `slug`, `name`, `description`, `category`, `Preview` (a real React component, wrap your component in a small props-driven demo if it needs configurable props for the Props table), `code`, `usage`, `dependencies`, and `props`.
-2. Register it in `src/data/docs/index.ts` and add a nav entry in `src/data/docs/nav.ts`.
+## Quality bar for new components
 
-This is optional. Components that skip it keep working on the existing `/components/<slug>` page, no change to the basic contribution flow above.
+- Framer Motion for animation, GPU-accelerated transforms/opacity only.
+- `prefers-reduced-motion` respected in every animated component (see `src/lib/motion.ts`).
+- Visible `focus-visible` states on every interactive element.
+- Works in both light and dark themes using the tokens in `src/app/globals.css`.
+- Doc prose explains the interaction rationale (see `src/data/docs/buttons.ts` for the bar), not just what the component is called.

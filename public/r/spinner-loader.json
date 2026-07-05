@@ -3,6 +3,7 @@
   "name": "spinner-loader",
   "type": "registry:component",
   "title": "Spinner Loader",
+  "description": "A simple indeterminate spinner with a status label, useful for inline loading states.",
   "files": [
     {
       "path": "spinner-loader.tsx",

@@ -3,6 +3,7 @@
   "name": "scan-ring-button",
   "type": "registry:component",
   "title": "Scan Ring Button",
+  "description": "A hover-driven primary button, scan ring button.",
   "files": [
     {
       "path": "scan-ring-button.tsx",

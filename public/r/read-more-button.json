@@ -3,6 +3,7 @@
   "name": "read-more-button",
   "type": "registry:component",
   "title": " Read More Button",
+  "description": "A hover-driven primary button, read more button.",
   "files": [
     {
       "path": "read-more-button.tsx",

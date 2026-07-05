@@ -3,6 +3,7 @@
   "name": "mercury-loader",
   "type": "registry:component",
   "title": "Mercury Loader",
+  "description": "A self-contained loading indicator, mercury loader.",
   "files": [
     {
       "path": "mercury-loader.tsx",

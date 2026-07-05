@@ -3,6 +3,7 @@
   "name": "slide-fill-button",
   "type": "registry:component",
   "title": "Slide Fill Button",
+  "description": "A hover-driven primary button, slide fill button.",
   "files": [
     {
       "path": "slide-fill-button.tsx",

@@ -3,6 +3,7 @@
   "name": "rivet-press-button",
   "type": "registry:component",
   "title": "Rivet Press Button",
+  "description": "A hover-driven primary button, rivet press button.",
   "files": [
     {
       "path": "rivet-press-button.tsx",

@@ -3,6 +3,7 @@
   "name": "outline-button",
   "type": "registry:component",
   "title": "Outline Button",
+  "description": "A hover-driven primary button, outline button.",
   "files": [
     {
       "path": "outline-button.tsx",

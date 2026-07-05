@@ -3,6 +3,7 @@
   "name": "luminance-flux-button",
   "type": "registry:component",
   "title": " Luminance Flux Button",
+  "description": "A hover-driven primary button, luminance flux button.",
   "files": [
     {
       "path": "luminance-flux-button.tsx",

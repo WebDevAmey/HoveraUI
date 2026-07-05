@@ -3,6 +3,7 @@
   "name": "link-button",
   "type": "registry:component",
   "title": " Link Button",
+  "description": "A hover-driven primary button, link button.",
   "files": [
     {
       "path": "link-button.tsx",

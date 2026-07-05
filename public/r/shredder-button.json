@@ -3,6 +3,7 @@
   "name": "shredder-button",
   "type": "registry:component",
   "title": "Shredder Button",
+  "description": "A hover-driven primary button, shredder button.",
   "files": [
     {
       "path": "shredder-button.tsx",

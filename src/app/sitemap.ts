@@ -10,13 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://backlab.dev/docs",
+      url: "https://backlab.dev/components",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     ...docEntries.map((entry) => ({
-      url: `https://backlab.dev/docs/${entry.slug}`,
+      url: `https://backlab.dev/components/${entry.slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,

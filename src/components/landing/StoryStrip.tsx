@@ -21,7 +21,7 @@ export default function StoryStrip() {
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {entries.map((entry) => (
-            <Link key={entry.slug} href={`/docs/${entry.slug}`} className="group block">
+            <Link key={entry.slug} href={`/components/${entry.slug}`} className="group block">
               <p className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-hovera">
                 {entry.name}
                 <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">

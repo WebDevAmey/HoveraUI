@@ -14,9 +14,8 @@ interface SiteNavProps {
 }
 
 const NAV_LINKS = [
-  { href: "/docs", label: "Components" },
-  { href: "/docs", label: "Docs" },
-  { href: "/#discover", label: "Templates" },
+  { href: "/components", label: "Components" },
+  { href: "/docs/getting-started", label: "Docs" },
 ];
 
 /**

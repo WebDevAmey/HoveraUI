@@ -48,7 +48,7 @@ export default function NewArrivals() {
             </p>
           </div>
           <Link
-            href="/docs"
+            href="/components"
             className="shrink-0 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             Browse all →
@@ -67,7 +67,7 @@ export default function NewArrivals() {
               <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
                 <span className="text-sm font-medium text-foreground">{tile.label}</span>
                 <Link
-                  href={"/docs/" + tile.slug}
+                  href={"/components/" + tile.slug}
                   className="text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   View docs →

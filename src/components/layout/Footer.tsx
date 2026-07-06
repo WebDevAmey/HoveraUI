@@ -4,14 +4,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const PRODUCT_LINKS = [
-  { href: "/docs", label: "Components" },
-  { href: "/docs", label: "Browse all" },
+  { href: "/components", label: "Components" },
+  { href: "/components", label: "Browse all" },
   { href: "/#discover", label: "Discover" },
 ];
 
 const RESOURCE_LINKS = [
-  { href: "/docs/glow-button", label: "Getting started" },
-  { href: "/docs", label: "Installation" },
+  { href: "/docs/getting-started", label: "Getting started" },
+  { href: "/components", label: "Installation" },
   { href: "https://github.com/WebDevAmey/HoveraUI", label: "GitHub" },
 ];
 

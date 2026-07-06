@@ -116,7 +116,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
         <main className="min-w-0 flex-1 max-w-3xl">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-3 text-sm text-muted-foreground">
-            <Link href="/docs" className="hover:text-foreground">Components</Link>
+            <Link href="/components" className="hover:text-foreground">Components</Link>
             <span className="mx-1.5">/</span>
             <span className="text-foreground">{entry.name}</span>
           </nav>

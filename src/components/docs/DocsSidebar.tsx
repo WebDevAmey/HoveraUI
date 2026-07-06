@@ -23,6 +23,15 @@ const ICONS: Record<DocNavGroup["icon"], React.ReactNode> = {
   ),
 };
 
+export const GUIDES = [
+  { slug: "getting-started", name: "Getting started" },
+  { slug: "installation", name: "Installation" },
+  { slug: "theming", name: "Theming" },
+  { slug: "accessibility", name: "Accessibility" },
+  { slug: "contributing", name: "Contributing" },
+  { slug: "faq", name: "FAQ" },
+];
+
 interface DocsSidebarProps {
   activeSlug: string;
   className?: string;
@@ -32,6 +41,31 @@ export default function DocsSidebar({ activeSlug, className }: DocsSidebarProps)
   return (
     <nav aria-label="Component documentation" className={className}>
       <div className="flex flex-col gap-5">
+        <div>
+          <div className="flex items-center gap-2 px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            {ICONS.interactive}
+            Documentation
+          </div>
+          <div className="mt-1.5 flex flex-col gap-0.5">
+            {GUIDES.map((guide) => {
+              const isActive = guide.slug === activeSlug;
+              return (
+                <Link
+                  key={guide.slug}
+                  href={`/docs/${guide.slug}`}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors ${
+                    isActive
+                      ? "bg-secondary font-medium text-foreground"
+                      : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+                  }`}
+                >
+                  <span className="truncate">{guide.name}</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
         {docsNav.map((group) => (
           <div key={group.label}>
             <div className="flex items-center gap-2 px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -44,7 +78,7 @@ export default function DocsSidebar({ activeSlug, className }: DocsSidebarProps)
                 return (
                   <Link
                     key={item.slug}
-                    href={`/docs/${item.slug}`}
+                    href={`/components/${item.slug}`}
                     aria-current={isActive ? "page" : undefined}
                     className={`flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors ${
                       isActive

@@ -43,9 +43,9 @@ export default function ShowcaseGrid() {
                   role="link"
                   tabIndex={0}
                   aria-label={`View ${entry.name} docs`}
-                  onClick={() => router.push(`/docs/${entry.slug}`)}
+                  onClick={() => router.push(`/components/${entry.slug}`)}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") router.push(`/docs/${entry.slug}`);
+                    if (e.key === "Enter") router.push(`/components/${entry.slug}`);
                   }}
                   className="block cursor-pointer"
                 >
@@ -58,7 +58,7 @@ export default function ShowcaseGrid() {
                   </LazyMount>
                 </div>
                 <div className="border-t border-border px-4 py-3">
-                  <Link href={`/docs/${entry.slug}`}>
+                  <Link href={`/components/${entry.slug}`}>
                     <h3 className="truncate text-sm font-medium tracking-tight text-foreground hover:underline">
                       {entry.name}
                     </h3>

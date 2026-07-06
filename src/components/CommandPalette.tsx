@@ -26,7 +26,7 @@ export default function CommandPalette() {
 
   const select = (slug: string) => {
     setCommandOpen(false);
-    router.push(`/docs/${slug}`);
+    router.push(`/components/${slug}`);
   };
 
   if (!isCommandOpen) return null;

@@ -24,7 +24,7 @@ export default function GuideLayout({ slug, title, lead, children }: GuideLayout
       <div className="mx-auto flex w-full max-w-7xl flex-1 gap-10 px-4 py-10 md:px-8">
         <DocsSidebar
           activeSlug={slug}
-          className="sticky top-24 hidden max-h-[calc(100vh-8rem)] w-56 shrink-0 self-start overflow-y-auto lg:block"
+          className="sticky top-24 hidden w-56 shrink-0 self-start overflow-y-auto lg:block"
         />
         <main className="min-w-0 max-w-3xl flex-1">
           <h1 className="text-3xl font-semibold tracking-tight text-foreground">{title}</h1>

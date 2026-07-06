@@ -19,7 +19,6 @@ type FilterValue =
   | "navbars"
   | "cards"
   | "tabs"
-  | "marquee"
   | "text"
   | "sections"
   | "command"
@@ -38,7 +37,6 @@ const FILTERS: { label: string; value: FilterValue }[] = [
   { label: "Navbars", value: "navbars" },
   { label: "Cards", value: "cards" },
   { label: "Tabs", value: "tabs" },
-  { label: "Marquee", value: "marquee" },
   { label: "Text", value: "text" },
   { label: "Sections", value: "sections" },
   { label: "Command", value: "command" },

@@ -4,12 +4,12 @@ import GuideLayout, { GuideSection, GuideCode } from "@/components/docs/GuideLay
 
 export const metadata: Metadata = {
   title: "Getting started",
-  description: "HoveraUI is a monochrome effect library: ~36 signature interactions rendered entirely in black and white, installable one file at a time through the shadcn CLI.",
+  description: "HoveraUI is a collection of ~36 hover-first components with animated interactions, installable one file at a time through the shadcn CLI.",
 };
 
 export default function Page() {
   return (
-    <GuideLayout slug="getting-started" title="Getting started" lead="HoveraUI is a monochrome effect library: ~36 signature interactions rendered entirely in black and white, installable one file at a time through the shadcn CLI.">
+    <GuideLayout slug="getting-started" title="Getting started" lead="HoveraUI is a collection of ~36 hover-first components with animated interactions, installable one file at a time through the shadcn CLI.">
 
       <GuideSection title="Pick an effect">
         <p>

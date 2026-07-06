@@ -16,7 +16,7 @@ function entrance(delaySeconds: number): React.CSSProperties {
 }
 
 /**
- * Monochrome hero: the headline IS a library component (DisplacementText)
+ * Hero: the headline IS a library component (DisplacementText)
  * over another one (LightLines) — the products demo themselves. Scoped dark
  * in both themes; text paints first, the streak field is pure CSS behind it.
  */
@@ -54,7 +54,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-xs text-neutral-300 backdrop-blur-sm"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-          The monochrome effect library
+          Hover-first component library
         </div>
 
         <div style={entrance(0.15)} className="mt-8">
@@ -67,12 +67,12 @@ export default function Hero() {
         </div>
 
         <h1 className="mt-4 max-w-2xl text-xl font-medium leading-snug text-neutral-300 sm:text-2xl">
-          Interfaces that respond before you click — every effect in pure black and white.
+          Interfaces that respond before you click.
         </h1>
 
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-neutral-500 sm:text-base">
-          No color, no gradients, no glow palettes. Thirty-six signature interactions built from
-          light, shadow, displacement and motion — each one a single file you install and own.
+          Over thirty signature components built around hover, motion, and tasteful color accents —
+          each one a single file you install and own.
         </p>
 
         <div style={entrance(0.6)} className="mt-9 flex flex-col items-center gap-4 sm:flex-row">

@@ -3,24 +3,31 @@ import GuideLayout, { GuideSection, GuideCode } from "@/components/docs/GuideLay
 
 export const metadata: Metadata = {
   title: "Theming",
-  description: "HoveraUI is monochrome by design. Effects express through light, shadow, blur, displacement and motion — never color.",
+  description: "Hovera UI uses CSS custom properties for colors, surfaces, and motion tokens — all customizable from your global stylesheet.",
 };
 
 export default function Page() {
   return (
-    <GuideLayout slug="theming" title="Theming" lead="HoveraUI is monochrome by design. Effects express through light, shadow, blur, displacement and motion — never color.">
+    <GuideLayout slug="theming" title="Theming" lead="Hovera UI uses CSS custom properties for colors, surfaces, and motion tokens — all customizable from your global stylesheet.">
 
-      <GuideSection title="The monochrome contract">
+      <GuideSection title="Color tokens">
         <p>
-          Components ship on a near-black canvas (<code>#09090b</code>) with white and neutral-gray light.
-          There are no color tokens to configure — that restraint is the identity. If you need an accent,
-          change the grayscale values in the component you installed; you own the file.
+          The brand accent defaults to an indigo-violet palette (<code>--hovera-accent</code>, <code>--accent-locked</code>).
+          Override these variables in your <code>globals.css</code> to match your brand:
+        </p>
+        <GuideCode>{"--hovera-accent: #6d28d9;\n--hovera-accent-foreground: #ffffff;\n--accent-locked: #6d28d9;\n--accent-locked-muted: rgba(109, 40, 217, 0.08);"}</GuideCode>
+      </GuideSection>
+      <GuideSection title="Surface tokens">
+        <p>
+          Surfaces use a three-tier depth system: <code>--surface-0</code> (base), <code>--surface-1</code> (elevated),
+          and <code>--surface-2</code> (prominent). On dark mode these provide real depth instead of a single flat
+          inversion.
         </p>
       </GuideSection>
       <GuideSection title="Dark and light">
         <p>
           The docs site runs both themes via <code>next-themes</code>. Most effects are designed dark-first
-          (light on black); several read equally well inverted. Each component page previews the real rendering.
+          (light on dark); several read equally well inverted. Each component page previews the real rendering.
         </p>
       </GuideSection>
       <GuideSection title="Motion tokens">

@@ -79,7 +79,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
       <div className="mx-auto flex w-full max-w-7xl flex-1 gap-8 px-4 py-8 md:px-8">
         {/* Left sidebar (desktop) */}
         <aside className="hidden w-56 shrink-0 lg:block">
-          <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pb-8">
+          <div className="sticky top-20 overflow-y-auto pb-8">
             <DocsSidebar activeSlug={entry.slug} />
           </div>
         </aside>

@@ -10,10 +10,11 @@ export default function Page() {
   return (
     <GuideLayout slug="faq" title="FAQ" lead="Short answers to the questions that come up.">
 
-      <GuideSection title="Why black and white only?">
+      <GuideSection title="Can I change the accent color?">
         <p>
-          Every effect library leans on color and gradients. HoveraUI is the counter-bet: effects strong
-          enough to carry attention with nothing but light and motion. The constraint is the brand.
+          Yes. Override the <code>--hovera-accent</code> and <code>--accent-locked</code> CSS custom
+          properties in your <code>globals.css</code> to any color you need. Each component file you install
+          is yours to edit.
         </p>
       </GuideSection>
       <GuideSection title="Is this a component framework?">

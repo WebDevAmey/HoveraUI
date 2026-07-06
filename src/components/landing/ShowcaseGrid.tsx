@@ -9,13 +9,17 @@ import RevealSection from "@/components/docs/RevealSection";
 
 const FEATURED_SLUGS = [
   "glow-button",
-  "liquid-fill-button",
-  "radial-bloom-button",
   "x-ray-scanner-button",
-  "chamber-door-button",
-  "aurora",
-  "conic-swirl",
+  "spotlight-card",
+  "animated-tabs",
+  "aurora-flow",
+  "meteors",
+  "liquid-text",
   "mercury-loader",
+  "floating-navbar",
+  "bento-grid",
+  "border-beam",
+  "command-menu",
 ];
 
 export default function ShowcaseGrid() {

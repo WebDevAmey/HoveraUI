@@ -3,12 +3,12 @@ import GuideLayout, { GuideSection } from "@/components/docs/GuideLayout";
 
 export const metadata: Metadata = {
   title: "Contributing",
-  description: "Adding a component is a pull request — no forms, no backend. The bar: a distinctive effect that reads in pure black and white.",
+  description: "Adding a component is a pull request — no forms, no backend. Every component ships as a single self-contained file.",
 };
 
 export default function Page() {
   return (
-    <GuideLayout slug="contributing" title="Contributing" lead="Adding a component is a pull request — no forms, no backend. The bar: a distinctive effect that reads in pure black and white.">
+    <GuideLayout slug="contributing" title="Contributing" lead="Adding a component is a pull request — no forms, no backend. Every component ships as a single self-contained file.">
 
       <GuideSection title="The flow">
         <p>
@@ -19,10 +19,10 @@ export default function Page() {
           <a href="https://github.com/WebDevAmey/HoveraUI/blob/main/CONTRIBUTING.md" className="text-foreground underline underline-offset-4">CONTRIBUTING.md</a>.
         </p>
       </GuideSection>
-      <GuideSection title="The monochrome rule">
+      <GuideSection title="Design constraint">
         <p>
-          No chromatic color. If the effect needs color to work, it does not belong here — light, shadow,
-          blur, displacement and motion are the whole vocabulary.
+          Every component should work in both light and dark mode. Effects rely on hover-first interactions:
+          light, shadow, blur, displacement, motion, and tasteful accent colors.
         </p>
       </GuideSection>
     </GuideLayout>

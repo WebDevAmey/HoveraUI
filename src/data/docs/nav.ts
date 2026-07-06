@@ -10,25 +10,10 @@ import { sections } from "@/data/section";
 import { commands } from "@/data/command";
 
 const NEW_SLUGS = new Set([
-  "spotlight-card",
-  "animated-tabs",
-  "marquee",
-  "floating-navbar",
-  "skeleton-loader",
-  "tilt-card",
-  "text-reveal",
-  "typewriter",
-  "gradient-text",
-  "bento-grid",
-  "timeline",
-  "testimonial-carousel",
-  "command-menu",
-  "aurora-flow",
-  "beams",
-  "particle-field",
-  "border-beam",
-  "magnetic-button",
-  "meteors",
+  "displacement-text",
+  "liquid-text",
+  "light-lines",
+  "pixel-trail",
 ]);
 
 function toNavItem(slug: string, name: string) {

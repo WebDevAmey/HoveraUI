@@ -85,6 +85,32 @@
       ]
     },
     {
+      "name": "light-lines",
+      "type": "registry:component",
+      "title": "Light Lines",
+      "description": "White light streaks race across black at staggered speeds, pure CSS and paused under reduced motion.",
+      "files": [
+        {
+          "path": "light-lines.tsx",
+          "target": "components/ui/light-lines.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pixel-trail",
+      "type": "registry:component",
+      "title": "Pixel Trail",
+      "description": "A grid of cells ignites white where the pointer passes and decays back to black.",
+      "files": [
+        {
+          "path": "pixel-trail.tsx",
+          "target": "components/ui/pixel-trail.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "ripple-button",
       "type": "registry:component",
       "title": "Ripple Button",
@@ -411,6 +437,32 @@
         {
           "path": "typewriter.tsx",
           "target": "components/ui/typewriter.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "displacement-text",
+      "type": "registry:component",
+      "title": "Displacement Text",
+      "description": "Glyphs lift, tilt and stretch under the cursor with gaussian falloff, like type pressed through a field.",
+      "files": [
+        {
+          "path": "displacement-text.tsx",
+          "target": "components/ui/displacement-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "liquid-text",
+      "type": "registry:component",
+      "title": "Liquid Text",
+      "description": "Type melts under the cursor via an animated SVG turbulence displacement, then sets solid again.",
+      "files": [
+        {
+          "path": "liquid-text.tsx",
+          "target": "components/ui/liquid-text.tsx",
           "type": "registry:component"
         }
       ]

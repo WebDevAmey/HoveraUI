@@ -3,6 +3,8 @@ import { textEffects } from "@/data/text";
 import { classifyStack } from "@/lib/classify-stack";
 import TextReveal from "@/components/text/TextReveal";
 import Typewriter from "@/components/text/Typewriter";
+import DisplacementText from "@/components/text/DisplacementText";
+import LiquidText from "@/components/text/LiquidText";
 
 function get(slug: string) {
   return textEffects.find((t) => t.slug === slug)!;
@@ -56,6 +58,53 @@ export function HeroLine() {
       { name: "deletingSpeed", type: "number", default: "40", description: "Milliseconds per deleted character." },
       { name: "holdTime", type: "number", default: "1400", description: "Milliseconds a completed phrase stays before deleting." },
       { name: "className", type: "string", default: '""', description: "Extra classes merged onto the span." },
+    ],
+  },
+  {
+    slug: "displacement-text",
+    name: "Displacement Text",
+    description: get("displacement-text").description ?? "",
+    category: "text",
+    stack: classifyStack(get("displacement-text").code),
+    isNew: true,
+    story:
+      "Move the cursor through the word and each glyph lifts, tilts and stretches on a gaussian falloff — type behaving like a field, not a string. Direct style writes mean zero re-renders; touch and reduced-motion users get solid, legible text.",
+    Preview: DisplacementText,
+    code: get("displacement-text").code,
+    usage: `import DisplacementText from "@/components/ui/displacement-text"
+
+export function Headline() {
+  return <DisplacementText text="HOVERA" className="text-6xl" />
+}`,
+    dependencies: [],
+    props: [
+      { name: "text", type: "string", description: "The string to split into displaceable glyphs." },
+      { name: "strength", type: "number", default: "22", description: "Max lift in px at the cursor's center." },
+      { name: "radius", type: "number", default: "120", description: "Gaussian falloff radius in px." },
+      { name: "className", type: "string", default: '""', description: "Extra classes merged onto the wrapper." },
+    ],
+  },
+  {
+    slug: "liquid-text",
+    name: "Liquid Text",
+    description: get("liquid-text").description ?? "",
+    category: "text",
+    stack: classifyStack(get("liquid-text").code),
+    isNew: true,
+    story:
+      "Hover and the letters go molten — an SVG turbulence field displaces the glyphs while a rAF loop stirs the noise, then everything sets solid when you leave. Reduced motion never melts: the text stays a stable solid.",
+    Preview: LiquidText,
+    code: get("liquid-text").code,
+    usage: `import LiquidText from "@/components/ui/liquid-text"
+
+export function Brand() {
+  return <LiquidText text="HOVERA" intensity={30} />
+}`,
+    dependencies: [],
+    props: [
+      { name: "text", type: "string", description: "The text to distort." },
+      { name: "intensity", type: "number", default: "26", description: "Peak displacement scale while molten." },
+      { name: "className", type: "string", default: '""', description: "Extra classes merged onto the wrapper." },
     ],
   },
 ];

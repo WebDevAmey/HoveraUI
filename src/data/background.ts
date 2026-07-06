@@ -6,6 +6,8 @@ import AuroraFlow from "@/components/backgrounds/AuroraFlow";
 import Beams from "@/components/backgrounds/Beams";
 import ParticleField from "@/components/backgrounds/ParticleField";
 import Meteors from "@/components/backgrounds/Meteors";
+import LightLines from "@/components/backgrounds/LightLines";
+import PixelTrail from "@/components/backgrounds/PixelTrail";
 
 export const backgrounds: BackgroundItem[] = [
   {
@@ -286,6 +288,163 @@ export default function Meteors() {
           background: "radial-gradient(ellipse at 50% 120%, rgba(246,246,246,0.12), transparent 60%)",
         }}
       />
+    </div>
+  );
+}`,
+  },
+  {
+    name: "Light Lines",
+    slug: "light-lines",
+    category: "pattern",
+    component: LightLines as React.ComponentType,
+    description: "White light streaks race across black at staggered speeds, pure CSS and paused under reduced motion.",
+    code: `"use client";
+
+const LINES = [
+  { top: "12%", delay: "0s", duration: "4.2s", width: "34vw", opacity: 0.7 },
+  { top: "28%", delay: "1.6s", duration: "6.5s", width: "22vw", opacity: 0.4 },
+  { top: "43%", delay: "0.7s", duration: "3.6s", width: "42vw", opacity: 0.85 },
+  { top: "58%", delay: "2.8s", duration: "7.2s", width: "18vw", opacity: 0.35 },
+  { top: "72%", delay: "1.1s", duration: "5.1s", width: "30vw", opacity: 0.6 },
+  { top: "86%", delay: "3.4s", duration: "4.7s", width: "26vw", opacity: 0.5 },
+];
+
+export default function LightLines() {
+  return (
+    <div className="relative h-screen overflow-hidden bg-neutral-950">
+      <style>{"@keyframes hovera-light-line { from { transform: translateX(-110%); } to { transform: translateX(110vw); } }"}</style>
+      {LINES.map((line, i) => (
+        <div
+          key={i}
+          aria-hidden
+          className="absolute h-px motion-reduce:[animation-play-state:paused]"
+          style={{
+            top: line.top,
+            width: line.width,
+            opacity: line.opacity,
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.9) 45%, #ffffff 50%, rgba(255,255,255,0.9) 55%, transparent)",
+            boxShadow: "0 0 12px rgba(255,255,255,0.35)",
+            animation:
+              "hovera-light-line " + line.duration + " cubic-bezier(0.4, 0, 0.2, 1) " + line.delay + " infinite",
+          }}
+        />
+      ))}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(9,9,11,0.8))",
+        }}
+      />
+    </div>
+  );
+}`,
+  },
+  {
+    name: "Pixel Trail",
+    slug: "pixel-trail",
+    category: "pattern",
+    component: PixelTrail as React.ComponentType,
+    description: "A grid of cells ignites white where the pointer passes and decays back to black.",
+    code: `"use client";
+
+import { useEffect, useRef } from "react";
+
+interface PixelTrailProps {
+  /** Size of one pixel cell in px. */
+  cellSize?: number;
+  /** Seconds for a lit cell to fade back to black. */
+  fadeSeconds?: number;
+  className?: string;
+}
+
+export default function PixelTrail({
+  cellSize = 22,
+  fadeSeconds = 1.1,
+  className = "",
+}: PixelTrailProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Cells light to white where the pointer passes and decay each frame.
+  // Under reduced motion the canvas stays dark and the label still reads.
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = 0;
+    let height = 0;
+    let cols = 0;
+    let cells = new Float32Array(0);
+    let raf = 0;
+    let active = false;
+
+    function resize() {
+      if (!canvas) return;
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(width / cellSize);
+      cells = new Float32Array(cols * Math.ceil(height / cellSize));
+    }
+
+    function light(x: number, y: number) {
+      const col = Math.floor(x / cellSize);
+      const row = Math.floor(y / cellSize);
+      const index = row * cols + col;
+      if (index >= 0 && index < cells.length) cells[index] = 1;
+      if (!active) {
+        active = true;
+        raf = requestAnimationFrame(frame);
+      }
+    }
+
+    function frame() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      const decay = 1 / (fadeSeconds * 60);
+      let alive = false;
+      for (let i = 0; i < cells.length; i++) {
+        const v = cells[i];
+        if (v <= 0) continue;
+        alive = true;
+        cells[i] = v - decay;
+        const col = i % cols;
+        const row = (i - col) / cols;
+        ctx.fillStyle = "rgba(255,255,255," + (v * 0.9).toFixed(3) + ")";
+        ctx.fillRect(col * cellSize + 1, row * cellSize + 1, cellSize - 2, cellSize - 2);
+      }
+      if (alive) raf = requestAnimationFrame(frame);
+      else active = false;
+    }
+
+    function onPointerMove(e: PointerEvent) {
+      const rect = canvas!.getBoundingClientRect();
+      light(e.clientX - rect.left, e.clientY - rect.top);
+    }
+
+    resize();
+    canvas.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("resize", resize);
+    return () => {
+      cancelAnimationFrame(raf);
+      canvas.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("resize", resize);
+    };
+  }, [cellSize, fadeSeconds]);
+
+  return (
+    <div className={"relative h-screen overflow-hidden bg-neutral-950 " + className}>
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <p className="text-sm tracking-widest text-neutral-600 uppercase">Move your cursor</p>
+      </div>
     </div>
   );
 }`,

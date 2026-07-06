@@ -358,6 +358,19 @@
       ]
     },
     {
+      "name": "meteors",
+      "type": "registry:component",
+      "title": "Meteors",
+      "description": "Meteor streaks falling across a dotted night field, pure CSS and reduced-motion safe.",
+      "files": [
+        {
+          "path": "meteors.tsx",
+          "target": "components/ui/meteors.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "glow-button",
       "type": "registry:component",
       "title": "Glow Button",
@@ -839,6 +852,22 @@
       ]
     },
     {
+      "name": "magnetic-button",
+      "type": "registry:component",
+      "title": "Magnetic Button",
+      "description": "A button that leans toward the cursor on springs and snaps back on leave.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "magnetic-button.tsx",
+          "target": "components/ui/magnetic-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "spinner-loader",
       "type": "registry:component",
       "title": "Spinner Loader",
@@ -973,6 +1002,19 @@
         {
           "path": "tilt-card.tsx",
           "target": "components/ui/tilt-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:component",
+      "title": "Border Beam",
+      "description": "A light that runs a continuous lap around the card border, violet into cyan.",
+      "files": [
+        {
+          "path": "border-beam.tsx",
+          "target": "components/ui/border-beam.tsx",
           "type": "registry:component"
         }
       ]

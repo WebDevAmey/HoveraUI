@@ -7,6 +7,7 @@ function usageFor(slug: string, componentName: string) {
 }
 
 const STORIES: Record<string, string> = {
+  "magnetic-button": "The button leans toward your cursor before you reach it and springs back the moment you leave, the most literal form of an interface meeting you halfway.",
   "glow-button": "Hover and the button lifts slightly while a violet glow blooms outward, signaling that this is the action to take.",
   "border-reveal": "The border is invisible at rest and snaps to white on hover, a minimal cue that costs nothing until the user reaches for it.",
   "ripple-button": "A click sends a circular ripple expanding from the center, the same physical metaphor as water responding to touch.",

@@ -108,7 +108,7 @@ export default function DocsGalleryClient() {
                   <motion.div
                     layoutId="active-filter-pill"
                     transition={TRANSITION_FLOW}
-                    className="absolute inset-0 -z-10 rounded-md bg-card shadow-sm"
+                    className="absolute inset-0 -z-10 rounded-md bg-card shadow-sm ring-1 ring-inset ring-[color:var(--glow-1)]/25"
                   />
                 )}
                 {f.label}

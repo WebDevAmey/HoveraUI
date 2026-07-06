@@ -38,6 +38,7 @@ import PressButton from "@/components/buttons/PressButton";
 import PlayNowButton from "@/components/buttons/PlayNowButton";
 import RoseBorderButton from "@/components/buttons/RoseBorderButton";
 import VioletBorderButton from "@/components/buttons/VioletBorderButton";
+import MagneticButton from "@/components/buttons/MagneticButton";
 
 export const buttons: ButtonItem[] = [
   {
@@ -492,6 +493,75 @@ transition focus-visible:outline-2 focus-visible:outline-offset-2">
     code: `<button className="relative overflow-hidden bg-violet-950 border text-violet-400 border-violet-400 font-medium px-4 py-2 rounded-md hover:brightness-150 border-b-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:border-t-4 focus-visible:outline-2 focus-visible:outline-offset-2">
   Hover Me
 </button>`,
+  },
+  {
+    name: "Magnetic Button",
+    slug: "magnetic-button",
+    category: "primary",
+    component: MagneticButton as React.ComponentType,
+    description: "A button that leans toward the cursor on springs and snaps back on leave.",
+    dependencies: ["framer-motion"],
+    code: `"use client";
+
+import { useRef } from "react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+
+interface MagneticButtonProps {
+  children?: React.ReactNode;
+  /** How far the button leans toward the cursor, in px. */
+  strength?: number;
+  className?: string;
+  onClick?: () => void;
+}
+
+export default function MagneticButton({
+  children = "Magnetic Button",
+  strength = 14,
+  className = "",
+  onClick,
+}: MagneticButtonProps) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 300, damping: 22, mass: 0.5 });
+  const springY = useSpring(y, { stiffness: 300, damping: 22, mass: 0.5 });
+
+  // Mouse-only by design: touch devices never get the pull.
+  function handleMouseMove(e: React.MouseEvent<HTMLButtonElement>) {
+    if (prefersReducedMotion) return;
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const relX = (e.clientX - rect.left) / rect.width - 0.5;
+    const relY = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(relX * strength * 2);
+    y.set(relY * strength * 2);
   }
 
+  function handleMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <motion.button
+      ref={ref}
+      type="button"
+      onClick={onClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={prefersReducedMotion ? undefined : { x: springX, y: springY }}
+      whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
+      className={
+        "rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-950 shadow-lg shadow-black/20 transition-colors hover:bg-neutral-200 focus-visible:outline-2 focus-visible:outline-offset-2 " +
+        className
+      }
+    >
+      {children}
+    </motion.button>
+  );
+}`,
+  },
 ];

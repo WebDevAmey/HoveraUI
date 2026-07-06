@@ -27,6 +27,9 @@ const NEW_SLUGS = new Set([
   "aurora-flow",
   "beams",
   "particle-field",
+  "border-beam",
+  "magnetic-button",
+  "meteors",
 ]);
 
 function toNavItem(slug: string, name: string) {

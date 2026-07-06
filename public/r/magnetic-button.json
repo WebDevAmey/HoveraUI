@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-button",
+  "type": "registry:component",
+  "title": "Magnetic Button",
+  "description": "A button that leans toward the cursor on springs and snaps back on leave.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "magnetic-button.tsx",
+      "target": "components/ui/magnetic-button.tsx",
+      "content": "\"use client\";\n\nimport { useRef } from \"react\";\nimport { motion, useMotionValue, useReducedMotion, useSpring } from \"framer-motion\";\n\ninterface MagneticButtonProps {\n  children?: React.ReactNode;\n  /** How far the button leans toward the cursor, in px. */\n  strength?: number;\n  className?: string;\n  onClick?: () => void;\n}\n\nexport default function MagneticButton({\n  children = \"Magnetic Button\",\n  strength = 14,\n  className = \"\",\n  onClick,\n}: MagneticButtonProps) {\n  const ref = useRef<HTMLButtonElement>(null);\n  const prefersReducedMotion = useReducedMotion();\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n  const springX = useSpring(x, { stiffness: 300, damping: 22, mass: 0.5 });\n  const springY = useSpring(y, { stiffness: 300, damping: 22, mass: 0.5 });\n\n  // Mouse-only by design: touch devices never get the pull.\n  function handleMouseMove(e: React.MouseEvent<HTMLButtonElement>) {\n    if (prefersReducedMotion) return;\n    const el = ref.current;\n    if (!el) return;\n    const rect = el.getBoundingClientRect();\n    const relX = (e.clientX - rect.left) / rect.width - 0.5;\n    const relY = (e.clientY - rect.top) / rect.height - 0.5;\n    x.set(relX * strength * 2);\n    y.set(relY * strength * 2);\n  }\n\n  function handleMouseLeave() {\n    x.set(0);\n    y.set(0);\n  }\n\n  return (\n    <motion.button\n      ref={ref}\n      type=\"button\"\n      onClick={onClick}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n      style={prefersReducedMotion ? undefined : { x: springX, y: springY }}\n      whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}\n      className={\n        \"rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-950 shadow-lg shadow-black/20 transition-colors hover:bg-neutral-200 focus-visible:outline-2 focus-visible:outline-offset-2 \" +\n        className\n      }\n    >\n      {children}\n    </motion.button>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

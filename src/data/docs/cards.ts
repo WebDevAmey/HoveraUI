@@ -3,9 +3,11 @@ import { cards } from "@/data/card";
 import { classifyStack } from "@/lib/classify-stack";
 import SpotlightCardDemo from "@/components/cards/SpotlightCardDemo";
 import TiltCardDemo from "@/components/cards/TiltCardDemo";
+import BorderBeamDemo from "@/components/cards/BorderBeamDemo";
 
 const spotlightCard = cards.find((c) => c.slug === "spotlight-card")!;
 const tiltCard = cards.find((c) => c.slug === "tilt-card")!;
+const borderBeam = cards.find((c) => c.slug === "border-beam")!;
 
 export const cardDocs: ComponentDocEntry[] = [
   {
@@ -62,6 +64,35 @@ export function ProductCard() {
       { name: "children", type: "React.ReactNode", description: "Card content, floated 24px above the surface in 3D." },
       { name: "maxTilt", type: "number", default: "10", description: "Maximum rotation in degrees on each axis." },
       { name: "className", type: "string", default: '""', description: "Extra classes merged onto the card." },
+    ],
+  },
+{
+    slug: "border-beam",
+    name: "Border Beam",
+    description: borderBeam.description ?? "",
+    category: "cards",
+    stack: classifyStack(borderBeam.code),
+    isNew: true,
+    story:
+      "A single light runs laps around the card's border — violet head, cyan tail — drawing the eye to the boundary instead of the fill. It's one rotating conic gradient behind a masked inset, so the whole effect costs one composited transform.",
+    Preview: BorderBeamDemo,
+    code: borderBeam.code,
+    usage: `import BorderBeam from "@/components/ui/border-beam"
+
+export function FeatureCard() {
+  return (
+    <BorderBeam duration={8} className="w-72">
+      <h3 className="text-white">Pro plan</h3>
+    </BorderBeam>
+  )
+}`,
+    dependencies: [],
+    props: [
+      { name: "children", type: "React.ReactNode", description: "Card content inside the beam frame." },
+      { name: "duration", type: "number", default: "6", description: "Seconds per full lap." },
+      { name: "colorFrom", type: "string", default: '"#8b5cf6"', description: "Beam head color." },
+      { name: "colorTo", type: "string", default: '"#22d3ee"', description: "Beam tail color." },
+      { name: "className", type: "string", default: '""', description: "Extra classes on the outer frame." },
     ],
   },
 ];

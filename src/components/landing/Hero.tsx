@@ -3,26 +3,22 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import HeroGlowCanvas from "@/components/landing/HeroGlowCanvas";
-import HoveraFlagshipCard from "@/components/landing/HoveraFlagshipCard";
+import LightLines from "@/components/backgrounds/LightLines";
+import DisplacementText from "@/components/text/DisplacementText";
+import CopyButton from "@/components/CopyButton";
 import { MAGNETIC_SPRING } from "@/lib/motion";
 import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
-const HEADLINE = ["Interfaces", "that", "respond", "before", "you", "click."];
+const INSTALL = "npx shadcn@latest add @hovera/displacement-text";
 
 function entrance(delaySeconds: number): React.CSSProperties {
-  // CSS-driven entrance: hydration-identical markup, and the global
-  // prefers-reduced-motion kill-switch makes it effectively instant.
-  return {
-    animation: `fadeUp 0.55s var(--ease-flow) ${delaySeconds}s both`,
-  };
+  return { animation: `fadeUp 0.55s var(--ease-flow) ${delaySeconds}s both` };
 }
 
 /**
- * Cinematic hero: a self-contained dark glow panel in both themes (the inner
- * `dark` class re-scopes the monochrome tokens, so the flagship preview keeps
- * its dark styling even in light mode). The WebGL glow renders behind the
- * headline; the headline itself is plain DOM text and paints first (LCP).
+ * Monochrome hero: the headline IS a library component (DisplacementText)
+ * over another one (LightLines) — the products demo themselves. Scoped dark
+ * in both themes; text paints first, the streak field is pure CSS behind it.
  */
 export default function Hero() {
   const prefersReducedMotion = useReducedMotionSafe();
@@ -32,113 +28,75 @@ export default function Hero() {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section
       ref={sectionRef}
       className="dark relative overflow-hidden border-b border-border bg-[#09090b]"
     >
-      <HeroGlowCanvas />
+      <div aria-hidden className="absolute inset-0 opacity-60">
+        <LightLines />
+      </div>
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{ background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 40%, rgba(9,9,11,0.85))" }}
+      />
 
       <motion.div
         style={prefersReducedMotion ? undefined : { y: contentY, opacity: contentOpacity }}
-        className="relative mx-auto max-w-6xl px-4 pt-20 pb-24 md:px-8 md:pt-28 md:pb-32"
+        className="relative mx-auto flex min-h-[92vh] max-w-6xl flex-col items-center justify-center px-4 py-24 text-center md:px-8"
       >
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <div
-              style={entrance(0.05)}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-xs text-neutral-300 backdrop-blur-sm"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-              Hover-first component library
-            </div>
+        <div
+          style={entrance(0.05)}
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-xs text-neutral-300 backdrop-blur-sm"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
+          The monochrome effect library
+        </div>
 
-            <h1
-              className="mt-6 text-[length:var(--text-display-md)] font-semibold leading-[1.02] tracking-tight text-white sm:text-[length:var(--text-display-lg)]"
-              aria-label={HEADLINE.join(" ")}
-            >
-              {HEADLINE.map((word, i) => (
-                <span
-                  key={i}
-                  className="inline-block overflow-hidden pb-[0.08em] align-bottom"
-                  aria-hidden
-                >
-                  <span
-                    className="inline-block will-change-transform"
-                    style={{
-                      animation: `wordUp 0.6s var(--ease-flow) ${0.08 + i * 0.07}s both`,
-                    }}
-                  >
-                    {word === "respond" ? (
-                      <span className="rounded-sm bg-white px-2 text-neutral-950">{word}</span>
-                    ) : (
-                      word
-                    )}
-                    &nbsp;
-                  </span>
-                </span>
-              ))}
-            </h1>
+        <div style={entrance(0.15)} className="mt-8">
+          <DisplacementText
+            text="HOVERA"
+            strength={30}
+            radius={160}
+            className="text-[clamp(4rem,14vw,11rem)] leading-none tracking-tighter"
+          />
+        </div>
 
-            <p
-              style={entrance(0.5)}
-              className="mt-6 max-w-lg text-base leading-relaxed text-neutral-400 sm:text-lg"
-            >
-              Hovera UI is a shadcn-compatible library of buttons, loaders, navbars and
-              backgrounds built around the moment a cursor arrives, not just the moment
-              it clicks. Preview every interaction live, copy the code, or install it
-              straight from the registry.
-            </p>
+        <h1
+          style={entrance(0.4)}
+          className="mt-4 max-w-2xl text-xl font-medium leading-snug text-neutral-300 sm:text-2xl"
+        >
+          Interfaces that respond before you click — every effect in pure black and white.
+        </h1>
 
-            <div style={entrance(0.62)} className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <motion.div
-                whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
-                transition={MAGNETIC_SPRING}
-                className="inline-block"
-              >
-                <Link
-                  href="/docs"
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 shadow-[0_0_32px_rgba(255,255,255,0.18)] transition-opacity hover:opacity-90"
-                >
-                  Browse components
-                  <span aria-hidden="true">↗</span>
-                </Link>
-              </motion.div>
-              <motion.div
-                whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
-                transition={MAGNETIC_SPRING}
-                className="inline-block"
-              >
-                <Link
-                  href="https://github.com/WebDevAmey/HoveraUI"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/[0.08]"
-                >
-                  Star on GitHub
-                </Link>
-              </motion.div>
-            </div>
-          </div>
+        <p style={entrance(0.5)} className="mt-4 max-w-xl text-sm leading-relaxed text-neutral-500 sm:text-base">
+          No color, no gradients, no glow palettes. Thirty-six signature interactions built from
+          light, shadow, displacement and motion — each one a single file you install and own.
+        </p>
 
-          <div
-            style={entrance(0.45)}
-            className="relative flex min-h-[28rem] items-center justify-center rounded-[var(--radius-card)] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm"
+        <div style={entrance(0.6)} className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
+          <motion.div
+            whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
+            whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+            transition={MAGNETIC_SPRING}
+            className="inline-block"
           >
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-px rounded-[var(--radius-card)] opacity-40"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.22), transparent 40%, transparent 60%, rgba(255,255,255,0.14))",
-              }}
-            />
-            <HoveraFlagshipCard />
+            <Link
+              href="/components"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-medium text-neutral-950 shadow-[0_0_40px_rgba(255,255,255,0.15)] transition-opacity hover:opacity-90"
+            >
+              Browse the effects
+              <span aria-hidden="true">↗</span>
+            </Link>
+          </motion.div>
+          <div className="flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.03] py-1.5 pr-1.5 pl-4 font-mono text-xs text-neutral-400 backdrop-blur-sm">
+            <span className="hidden sm:inline">{INSTALL}</span>
+            <span className="sm:hidden">npx shadcn add @hovera/…</span>
+            <CopyButton code={INSTALL} label="Copy install command" />
           </div>
         </div>
       </motion.div>

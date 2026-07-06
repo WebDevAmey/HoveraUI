@@ -7,7 +7,8 @@ import StatsRow from "@/components/landing/StatsRow";
 import AnticipatoryScenes from "@/components/landing/AnticipatoryScenes";
 import DiscoverPaths from "@/components/landing/DiscoverPaths";
 import ShowcaseGrid from "@/components/landing/ShowcaseGrid";
-import NewArrivals from "@/components/landing/NewArrivals";
+import SignatureShowcase from "@/components/landing/SignatureShowcase";
+import QuickStart from "@/components/landing/QuickStart";
 import StoryStrip from "@/components/landing/StoryStrip";
 import Marquee from "@/components/landing/Marquee";
 import FinalCTA from "@/components/landing/FinalCTA";
@@ -27,11 +28,12 @@ export default function Home() {
       <TechStack />
       <StatsRow />
       <AnticipatoryScenes />
-      <DiscoverPaths />
+      <SignatureShowcase />
       <ShowcaseGrid />
-      <NewArrivals />
+      <DiscoverPaths />
       <StoryStrip />
       <Marquee />
+      <QuickStart />
       <FinalCTA />
       </main>
       <Footer />

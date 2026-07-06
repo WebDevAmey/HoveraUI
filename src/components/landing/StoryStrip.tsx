@@ -2,7 +2,7 @@ import Link from "next/link";
 import { docEntries } from "@/data/docs";
 import RevealSection from "@/components/docs/RevealSection";
 
-const STORY_SLUGS = ["glow-button", "x-ray-scanner-button", "aurora"];
+const STORY_SLUGS = ["x-ray-scanner-button", "chamber-door-button", "meteors"];
 
 export default function StoryStrip() {
   const entries = STORY_SLUGS

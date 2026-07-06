@@ -47,10 +47,7 @@ const STORIES: Record<string, string> = {
   "violet-border-button": "The same bottom-to-top border weight shift as Rose Border Button, in violet instead of rose.",
 };
 
-// glow-button is migrated separately in ./glow-button.ts (the original worked example).
-export const buttonDocs: ComponentDocEntry[] = buttons
-  .filter((btn) => btn.slug !== "glow-button")
-  .map((btn) => {
+export const buttonDocs: ComponentDocEntry[] = buttons.map((btn) => {
     const componentName = btn.name.replace(/[^a-zA-Z0-9]/g, "");
 
     return {

@@ -1,64 +1,24 @@
 import type React from "react";
 import type { ButtonItem } from "@/types";
 
-import GlowButton from "@/components/buttons/GlowButton";
-import BorderReveal from "@/components/buttons/BorderReveal";
 import RippleButton from "@/components/buttons/RippleButton";
 import DButton from "@/components/buttons/DButton";
-import NeonSwipe from "@/components/buttons/NeonSwipe";
-import SwipeButton from "@/components/buttons/SwipeButton";
-import NewButton from "@/components/buttons/NewButton";
-import LuminanceFlux from "@/components/buttons/LuminanceFlux";
-import FrostedGlass from "@/components/buttons/FrostedGlass";
 import Neumorphic from "@/components/buttons/Neumorphic";
-import ReadMore from "@/components/buttons/ReadMore";
-import ShimmerSwipe from "@/components/buttons/ShimmerSwipe";
-import LinkButton from "@/components/buttons/LinkButton";
-import SlideTextButton from "@/components/buttons/SlideTextButton";
-import GradientLinkButton from "@/components/buttons/GradientLinkButton";
-import UnderlineHover from "@/components/buttons/UnderlineHover";
-import SlideFillButton from "@/components/buttons/SlideFillButton";
-import BlobHoverButton from "@/components/buttons/BlobHoverButton";
 import LiquidFillButton from "@/components/buttons/LiquidFillButton";
 import SplitCurtainButton from "@/components/buttons/SplitCurtainButton";
 import RadialBloomButton from "@/components/buttons/RadialBloomButton";
 import XRayScannerButton from "@/components/buttons/XRayScannerButton";
 import ChamberDoorButton from "@/components/buttons/ChamberDoorButton";
 import ShredderButton from "@/components/buttons/ShredderButton";
-import OutlineButton from "@/components/buttons/OutlineButton";
 import MorseSignalButton from "@/components/buttons/MorseSignalButton";
 import ScanRingButton from "@/components/buttons/ScanRingButton";
 import EclipseButton from "@/components/buttons/EclipseButton";
 import TallyStrikeButton from "@/components/buttons/TallyStrikeButton";
 import CompassLockButton from "@/components/buttons/CompassLockButton";
 import PulseSeismographButton from "@/components/buttons/PulseSeismographButton";
-import RivetPressButton from "@/components/buttons/RivetPressButton";
-import HoverArrowButton from "@/components/buttons/HoverArrowButton";
-import PressButton from "@/components/buttons/PressButton";
-import PlayNowButton from "@/components/buttons/PlayNowButton";
-import RoseBorderButton from "@/components/buttons/RoseBorderButton";
-import VioletBorderButton from "@/components/buttons/VioletBorderButton";
 import MagneticButton from "@/components/buttons/MagneticButton";
 
 export const buttons: ButtonItem[] = [
-  {
-    name: "Glow Button",
-    slug: "glow-button",
-    category: "primary",
-    component: GlowButton as React.ComponentType<{ isHovered?: boolean }>,
-    code: `<button className="rounded-xl bg-violet-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.8)] focus-visible:outline-2 focus-visible:outline-offset-2">
-  Glow Button
-</button>`,
-  },
-  {
-    name: "Border Reveal",
-    slug: "border-reveal",
-    category: "primary",
-    component: BorderReveal as React.ComponentType,
-    code: `<button className="rounded-lg border-2 border-transparent bg-black px-8 py-3 text-white transition-all duration-300 hover:border-white focus-visible:outline-2 focus-visible:outline-offset-2">
-  Border Reveal
-</button>`,
-  },
   {
     name:"Ripple Button",
     slug:"ripple-button",
@@ -81,69 +41,6 @@ export const buttons: ButtonItem[] = [
 </button>`, 
   } ,
   {
-    name: "Neon Swipe Button",
-    slug: "neon-swipe-button",
-    category: "primary",
-    component: NeonSwipe as React.ComponentType,
-    code: `<button className="group relative px-8 py-3 text-white bg-indigo-600 rounded-lg overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2">
-  <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 -translate-x-full group-hover:translate-x-0 transition duration-500"></span>
-  <span className="relative z-10">Neon Swipe</span>
-</button>`, 
-  },
-  {
-    name: " Swipe Button",
-    slug: "swipe-button",
-    category: "primary",
-    component: SwipeButton as React.ComponentType,
-    code: `<button className="group relative px-8 py-3 rounded-lg bg-indigo-600 text-white overflow-hidden hover:scale-105 hover:-translate-y-1 active:translate-y-0 transform transition-all focus-visible:outline-2 focus-visible:outline-offset-2">
-    <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-blue-500 to-pink-500 -translate-x-full group-hover:translate-x-0 transition duration-500 hover:scale-105"></span>
-    <span className="relative z-10">Swipe Me </span>
-</button>`
-  },
-  {
-    name: " New Button",
-    slug: "new-button",
-    category: "primary",
-    component: NewButton as React.ComponentType,
-    code: `<button className="px-8 py-3 bg-emerald-600 rounded-xl text-white font-semibold hover:-translate-y-1 active:translate-y-0 hover:shadow-xl transform transition-all focus-visible:outline-2 focus-visible:outline-offset-2">
-Button
-</button>`
-  } ,
-    {
-    name: " Luminance Flux Button",
-    slug: "luminance-flux-button",
-    category: "primary",
-    component: LuminanceFlux as React.ComponentType,
-    code: `<button className="group relative px-14 py-4 rounded-2xl text-white font-semibold 
-bg-slate-900 overflow-hidden shadow-[0_0_30px_rgba(120,0,255,0.3)]
-transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2">
-
-  <span className="absolute inset-0 bg-gradient-to-r from-fuchsia-500 via-indigo-500 to-cyan-400
-               opacity-40 translate-x-[-30%]
-               group-hover:translate-x-[30%]
-               transition-all duration-1000 ease-out blur-xl"></span>
-
-  <span className="absolute inset-0 bg-white/10 mix-blend-overlay"></span>
-
-  <span className="absolute inset-0 rounded-2xl bg-fuchsia-500/20 blur-2xl opacity-0
-               group-hover:opacity-60 group-hover:blur-[40px]
-               transition-all duration-700"></span>
-
-  <span className="relative z-10">Luminance Flux</span>
-</button>`
-  },
-  {
-    name: " Frosted Glass Button",
-    slug: "frosted-glass-button",
-    category: "primary",
-    component: FrostedGlass as React.ComponentType,
-    code: `<button className="relative px-12 py-4 rounded-full text-white font-medium 
-bg-white/10 backdrop-blur-xl border border-white/20 
-hover:bg-white/20 hover:scale-105 transition focus-visible:outline-2 focus-visible:outline-offset-2">
-  Frosted Glass
-</button>`
-  } ,
-  {
     name: " Neumorphic Button",
     slug: "neumorphic-button",
     category: "primary",
@@ -155,112 +52,7 @@ transition focus-visible:outline-2 focus-visible:outline-offset-2">
   Neumorphic
 </button>`
   } ,
-  {
-    name: " Read More Button",
-    slug: "read-more-button",
-    category: "primary",
-    component: ReadMore as React.ComponentType,
-    code: ` <button className="group relative px-8 py-3 rounded-full text-white font-semibold 
-    bg-white/10 backdrop-blur-xl border border-white/20
-    shadow-[0_0_30px_rgba(255,0,150,0.6)] 
-    overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2">
 
-    <span className="absolute inset-0 bg-pink-500 opacity-30 blur-2xl group-hover:blur-3xl transition duration-500"></span>
-
-    <span className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent 
-        translate-x-[-20%] group-hover:translate-x-[20%]
-        transition duration-700 ease-out"></span>
-
-    <span className="relative z-10">Read More</span>
-</button>`
-  } ,
-
-  {
-    name: " Shimmer Swipe Button",
-    slug: "shimmer-swipe-button",
-    category: "primary",
-    component: ShimmerSwipe as React.ComponentType,
-    code: `<button className="relative px-10 py-4 rounded-xl bg-indigo-600 text-white font-semibold overflow-hidden group shadow-lg hover:shadow-indigo-500/40 transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2">
-
-  
-  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent
-               -translate-x-full group-hover:translate-x-full
-               transition duration-700 ease-out"></span>
-
-  <span className="relative z-10">Shimmer Swipe</span>
-</button>`
-  } ,
-  {
-    name: " Link Button",
-    slug: "link-button",
-    category: "primary",
-    component: LinkButton as React.ComponentType,
-    code: `<button
-        className="font-bold text-black font-black text-5xl px-4 py-2 rounded underline bg-clip-text bg-gradient-to-r from-black via-blue-600 to-indigo-500 cursor-pointer transition-all duration-500 ease-out  bg-[size:200%_100%] bg-[position:0%_0] hover:bg-[position:100%_0] hover:text-transparent focus-visible:outline-2 focus-visible:outline-offset-2"
-      >
-        Link
-      </button>`,
-    needsLightPreview: true,
-  },
-  {
-    name: "Slide Text Button",
-    slug: "slide-text-button",
-    category: "primary",
-    component: SlideTextButton as React.ComponentType,
-    code: `<button className="group cursor-pointer rounded-xl border-[1px] border-slate-500 bg-gradient-to-b from-indigo-500 to-pink-600 px-6 py-3 font-medium text-white shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] focus-visible:outline-2 focus-visible:outline-offset-2">
-  <div className="relative overflow-hidden">
-    <p className="duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-x-20">
-      Button
-    </p>
-    <p className="absolute top-0 left-20 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:left-0">
-      Button
-    </p>
-  </div>
-</button>`
-  },
-  {
-    name: "Gradient Link Button",
-    slug: "gradient-link-button",
-    category: "primary",
-    component: GradientLinkButton as React.ComponentType,
-    code: `<button className="relative inline-block cursor-pointer bg-gradient-to-r from-blue-600 via-blue-600 to-black bg-[size:200%_100%] bg-[position:100%_0] bg-clip-text text-5xl font-black text-transparent transition-all duration-700 ease-out hover:bg-[position:0%_0] focus-visible:outline-2 focus-visible:outline-offset-2">
-  Link
-</button>`,
-    needsLightPreview: true,
-  },
-  {
-    name: "Underline Hover Button",
-    slug: "underline-hover-button",
-    category: "primary",
-    component: UnderlineHover as React.ComponentType,
-    code: `<button className="group px-6 py-3 text-lg font-medium text-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2">
-  <span className="relative inline-block">
-    Hover Me
-    <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-indigo-600 transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
-  </span>
-</button>`,
-    needsLightPreview: true,
-  },
-  {
-    name: "Slide Fill Button",
-    slug: "slide-fill-button",
-    category: "primary",
-    component: SlideFillButton as React.ComponentType,
-    code: `<button className="relative z-10 overflow-hidden rounded border-2 border-black bg-amber-500 px-8 py-3 text-black transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:bg-emerald-500 before:translate-y-full before:transition-transform before:duration-300 hover:text-white hover:before:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2">
-  Get in touch
-</button>`,
-    needsLightPreview: true,
-  },
-  {
-    name: "Blob Hover Button",
-    slug: "blob-hover-button",
-    category: "primary",
-    component: BlobHoverButton as React.ComponentType,
-    code: `<button className="relative z-10 inline-block cursor-pointer overflow-hidden rounded-[4px] border border-[#4f4f4f] px-[24px] py-[12px] text-[19px] font-normal text-black transition-all duration-200 ease-in before:absolute before:left-1/2 before:top-[100%] before:z-[-1] before:block before:h-[180%] before:w-[140%] before:-translate-x-1/2 before:scale-x-[1.25] before:scale-y-[1] before:rounded-full before:bg-black/5 before:transition-all before:duration-500 before:delay-100 before:ease-[cubic-bezier(0.55,0,0.1,1)] before:content-[''] after:absolute after:left-[55%] after:top-[180%] after:z-[-1] after:block after:h-[190%] after:w-[160%] after:-translate-x-1/2 after:scale-x-[1.45] after:scale-y-[1] after:rounded-full after:bg-[#39bda7] after:transition-all after:duration-500 after:delay-100 after:ease-[cubic-bezier(0.55,0,0.1,1)] after:content-[''] hover:border-[#39bda7] hover:text-white hover:before:top-[-35%] hover:before:scale-x-[0.8] hover:before:scale-y-[1.3] hover:before:bg-[#39bda7] hover:after:top-[-45%] hover:after:scale-x-[0.8] hover:after:scale-y-[1.3] hover:after:bg-[#39bda7] focus-visible:outline-2 focus-visible:outline-offset-2">
-  Hover Me
-</button>`,
-    needsLightPreview: true,
-  },
   {
     name: "Liquid Fill Button",
     slug: "liquid-fill-button",
@@ -331,16 +123,6 @@ transition focus-visible:outline-2 focus-visible:outline-offset-2">
     SHREDDER
   </span>
 </button>`,
-  },
-  {
-    name: "Outline Button",
-    slug: "outline-button",
-    category: "primary",
-    component: OutlineButton as React.ComponentType,
-    code: `<button className="border border-black text-black-500 px-4 py-2 rounded-full hover:scale-105 hover:text-orange-600 hover:border-orange-600 transition-all duration-300 ease-in-out shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2">
-  Outline Button
-</button>`,
-    needsLightPreview: true,
   },
   {
     name: "Morse Signal Button",
@@ -427,71 +209,6 @@ transition focus-visible:outline-2 focus-visible:outline-offset-2">
     <span className="h-2 w-1 bg-emerald-500 transition-all delay-300 duration-300 group-hover:h-2" />
     <span className="h-2 w-1 bg-emerald-500 transition-all delay-[400ms] duration-300 group-hover:h-5" />
   </span>
-</button>`,
-  },
-  {
-    name: "Rivet Press Button",
-    slug: "rivet-press-button",
-    category: "primary",
-    component: RivetPressButton as React.ComponentType,
-    code: `<button className="group relative inline-flex h-14 w-44 items-center justify-center rounded-md border-2 border-neutral-700 bg-gradient-to-b from-neutral-800 to-neutral-900 font-bold tracking-wide text-neutral-300 focus-visible:outline-2 focus-visible:outline-offset-2">
-  <span className="absolute left-1.5 top-1.5 h-2 w-2 rounded-full bg-neutral-600 transition-all delay-0 duration-300 group-hover:bg-amber-400 group-hover:shadow-[0_0_6px_2px_rgba(251,191,36,0.8)]" />
-  <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-neutral-600 transition-all delay-75 duration-300 group-hover:bg-amber-400 group-hover:shadow-[0_0_6px_2px_rgba(251,191,36,0.8)]" />
-  <span className="absolute bottom-1.5 left-1.5 h-2 w-2 rounded-full bg-neutral-600 transition-all delay-150 duration-300 group-hover:bg-amber-400 group-hover:shadow-[0_0_6px_2px_rgba(251,191,36,0.8)]" />
-  <span className="absolute bottom-1.5 right-1.5 h-2 w-2 rounded-full bg-neutral-600 transition-all delay-200 duration-300 group-hover:bg-amber-400 group-hover:shadow-[0_0_6px_2px_rgba(251,191,36,0.8)]" />
-  <span className="relative z-10 transition-colors duration-300 group-hover:text-amber-300">
-    RIVETED
-  </span>
-</button>`,
-  },
-  {
-    name: "Hover Arrow Button",
-    slug: "hover-arrow-button",
-    category: "primary",
-    component: HoverArrowButton as React.ComponentType,
-    code: `<button className="group relative overflow-hidden border-2 border-blue-600 bg-white px-8 py-3 text-white rounded-full font-medium min-w-[120px] h-[52px] focus-visible:outline-2 focus-visible:outline-offset-2">
-  <span className="block transition-all duration-300 transform group-hover:translate-x-full group-hover:opacity-0 text-blue-600">
-    Hover
-  </span>
-
-  <span className="absolute inset-0 flex items-center justify-center transition-all duration-300 transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 text-white bg-blue-600">
-    →
-  </span>
-</button>`,
-    needsLightPreview: true,
-  },
-  {
-    name: "Press Button",
-    slug: "press-button",
-    category: "primary",
-    component: PressButton as React.ComponentType,
-    code: `<button className="relative overflow-hidden px-8 py-3 bg-pink-600 text-white rounded-full font-medium transition-all duration-100 transform active:translate-y-1 active:shadow-none shadow-[0_4px_0_0_#be185d] focus-visible:outline-2 focus-visible:outline-offset-2">
-  Press
-</button>`,
-  },
-  {
-    name: "Play Now Button",
-    slug: "play-now-button",
-    category: "primary",
-    component: PlayNowButton as React.ComponentType,
-    code: `<button className="relative overflow-hidden px-8 py-3 rounded-[24px] bg-gradient-to-r from-[#2891c5] to-[#13b6da] text-[1.9rem] font-bold flex cursor-pointer text-white hover:shadow-[0_15px_50px_-15px_#13b6da] focus-visible:outline-2 focus-visible:outline-offset-2">
-  Play Now
-</button>`,
-  },
-  {
-    name: "Rose Border Button",
-    slug: "rose-border-button",
-    category: "primary",
-    component: RoseBorderButton as React.ComponentType,
-    code: `<button className="bg-rose-950 text-rose-400 border border-rose-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group focus-visible:outline-2 focus-visible:outline-offset-2">Hover Me</button>`,
-  },
-  {
-    name: "Violet Border Button",
-    slug: "violet-border-button",
-    category: "primary",
-    component: VioletBorderButton as React.ComponentType,
-    code: `<button className="relative overflow-hidden bg-violet-950 border text-violet-400 border-violet-400 font-medium px-4 py-2 rounded-md hover:brightness-150 border-b-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:border-t-4 focus-visible:outline-2 focus-visible:outline-offset-2">
-  Hover Me
 </button>`,
   },
   {

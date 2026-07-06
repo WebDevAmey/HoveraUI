@@ -3,7 +3,6 @@ import type { ComponentItem } from "@/types";
 
 import TextReveal from "@/components/text/TextReveal";
 import Typewriter from "@/components/text/Typewriter";
-import GradientText from "@/components/text/GradientText";
 
 export const textEffects: ComponentItem[] = [
   {
@@ -147,47 +146,6 @@ export default function Typewriter({
         className="ml-0.5 inline-block h-[1.1em] w-[2px] translate-y-[0.15em] bg-violet-400 motion-reduce:opacity-100"
         style={{ animation: reduced ? undefined : "hovera-caret 1s steps(1) infinite" }}
       />
-    </span>
-  );
-}`,
-  },
-  {
-    name: "Gradient Text",
-    slug: "gradient-text",
-    category: "text",
-    component: GradientText as React.ComponentType,
-    description: "Text clipped to a panning gradient, paused automatically under reduced motion.",
-    code: `"use client";
-
-interface GradientTextProps {
-  children?: React.ReactNode;
-  /** CSS gradient the text is clipped to. */
-  gradient?: string;
-  /** Seconds per shimmer pass. Set 0 to disable the sweep. */
-  speed?: number;
-  className?: string;
-}
-
-export default function GradientText({
-  children = "Gradient in motion",
-  gradient = "linear-gradient(90deg, #8b5cf6, #22d3ee, #e879f9, #8b5cf6)",
-  speed = 5,
-  className = "",
-}: GradientTextProps) {
-  return (
-    <span
-      className={
-        "inline-block bg-clip-text text-2xl font-semibold text-transparent motion-reduce:[animation-play-state:paused] " +
-        className
-      }
-      style={{
-        backgroundImage: gradient,
-        backgroundSize: "200% 100%",
-        animation: speed > 0 ? "hovera-gradient-pan " + speed + "s linear infinite" : undefined,
-      }}
-    >
-      <style>{"@keyframes hovera-gradient-pan { to { background-position: -200% 0; } }"}</style>
-      {children}
     </span>
   );
 }`,

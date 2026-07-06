@@ -7,9 +7,8 @@ import RevealSection from "@/components/docs/RevealSection";
 import { CARD_HOVER_TRANSITION } from "@/lib/motion";
 import SpotlightCardDemo from "@/components/cards/SpotlightCardDemo";
 import AnimatedTabs from "@/components/tabs/AnimatedTabs";
-import GradientText from "@/components/text/GradientText";
-import Typewriter from "@/components/text/Typewriter";
-import SkeletonLoader from "@/components/loaders/SkeletonLoader";
+import BorderBeamDemo from "@/components/cards/BorderBeamDemo";
+import TiltCardDemo from "@/components/cards/TiltCardDemo";
 
 const TILES: { slug: string; label: string; span?: string; render: React.ReactNode }[] = [
   {
@@ -23,21 +22,14 @@ const TILES: { slug: string; label: string; span?: string; render: React.ReactNo
     render: <AnimatedTabs className="pointer-events-auto" />,
   },
   {
-    slug: "gradient-text",
-    label: "Gradient Text",
-    render: (
-      <div className="flex flex-col gap-2">
-        <GradientText className="text-3xl font-bold">Hovera UI</GradientText>
-        <span className="text-sm text-muted-foreground">
-          Now with <Typewriter words={["text effects", "3D cards", "live backgrounds", "a command menu"]} className="text-sm font-medium" />
-        </span>
-      </div>
-    ),
+    slug: "border-beam",
+    label: "Border Beam",
+    render: <BorderBeamDemo />,
   },
   {
-    slug: "skeleton-loader",
-    label: "Skeleton Loader",
-    render: <SkeletonLoader />,
+    slug: "tilt-card",
+    label: "Tilt Card",
+    render: <TiltCardDemo />,
   },
 ];
 

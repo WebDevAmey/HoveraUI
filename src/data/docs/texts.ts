@@ -3,7 +3,6 @@ import { textEffects } from "@/data/text";
 import { classifyStack } from "@/lib/classify-stack";
 import TextReveal from "@/components/text/TextReveal";
 import Typewriter from "@/components/text/Typewriter";
-import GradientText from "@/components/text/GradientText";
 
 function get(slug: string) {
   return textEffects.find((t) => t.slug === slug)!;
@@ -56,30 +55,6 @@ export function HeroLine() {
       { name: "typingSpeed", type: "number", default: "70", description: "Milliseconds per typed character." },
       { name: "deletingSpeed", type: "number", default: "40", description: "Milliseconds per deleted character." },
       { name: "holdTime", type: "number", default: "1400", description: "Milliseconds a completed phrase stays before deleting." },
-      { name: "className", type: "string", default: '""', description: "Extra classes merged onto the span." },
-    ],
-  },
-  {
-    slug: "gradient-text",
-    name: "Gradient Text",
-    description: get("gradient-text").description ?? "",
-    category: "text",
-    stack: classifyStack(get("gradient-text").code),
-    isNew: true,
-    story:
-      "The text is clipped to a gradient that pans continuously across it, so the color appears to travel through the letters rather than sit on them. The gradient loops seamlessly because it starts and ends on the same stop.",
-    Preview: GradientText,
-    code: get("gradient-text").code,
-    usage: `import GradientText from "@/components/ui/gradient-text"
-
-export function Brand() {
-  return <GradientText className="text-5xl font-bold">Hovera UI</GradientText>
-}`,
-    dependencies: [],
-    props: [
-      { name: "children", type: "React.ReactNode", description: "The text content." },
-      { name: "gradient", type: "string", description: "CSS gradient the text is clipped to. Repeat the first color last for a seamless loop." },
-      { name: "speed", type: "number", default: "5", description: "Seconds per pan. Set 0 to disable the sweep." },
       { name: "className", type: "string", default: '""', description: "Extra classes merged onto the span." },
     ],
   },

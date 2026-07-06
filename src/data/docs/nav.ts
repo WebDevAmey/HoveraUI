@@ -5,7 +5,6 @@ import { navbars } from "@/data/navbar";
 import { backgrounds } from "@/data/background";
 import { cards } from "@/data/card";
 import { tabs } from "@/data/tab";
-import { marquees } from "@/data/marquee";
 import { textEffects } from "@/data/text";
 import { sections } from "@/data/section";
 import { commands } from "@/data/command";
@@ -41,7 +40,6 @@ const loaderItems = loaders.map((l) => toNavItem(l.slug, l.name));
 const navbarItems = navbars.map((n) => toNavItem(n.slug, n.name));
 const cardItems = cards.map((c) => toNavItem(c.slug, c.name));
 const tabItems = tabs.map((t) => toNavItem(t.slug, t.name));
-const marqueeItems = marquees.map((m) => toNavItem(m.slug, m.name));
 const textItems = textEffects.map((t) => toNavItem(t.slug, t.name));
 const sectionItems = sections.map((sec) => toNavItem(sec.slug, sec.name));
 const commandItems = commands.map((c) => toNavItem(c.slug, c.name));
@@ -73,11 +71,6 @@ export const docsNav: DocNavGroup[] = [
     label: "Tabs",
     icon: "interactive",
     items: tabItems,
-  },
-  {
-    label: "Marquee",
-    icon: "motion",
-    items: marqueeItems,
   },
   {
     label: "Text",

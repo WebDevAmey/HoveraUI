@@ -148,6 +148,7 @@ function buildRegistryIndex(registryItems) {
 
 async function main() {
   const items = await loadDataArrays();
+  await rm(publicDir, { recursive: true, force: true });
   await mkdir(publicDir, { recursive: true });
 
   const registryItems = [];

@@ -4,32 +4,6 @@
   "homepage": "http://localhost:3000",
   "items": [
     {
-      "name": "aurora",
-      "type": "registry:component",
-      "title": "Aurora",
-      "description": "A full-bleed gradient background, aurora, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "aurora.tsx",
-          "target": "components/ui/aurora.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "aurora-warm",
-      "type": "registry:component",
-      "title": "Aurora Warm",
-      "description": "A full-bleed gradient background, aurora warm, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "aurora-warm.tsx",
-          "target": "components/ui/aurora-warm.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "spotlight",
       "type": "registry:component",
       "title": "Spotlight",
@@ -43,240 +17,6 @@
       ]
     },
     {
-      "name": "spotlight-2",
-      "type": "registry:component",
-      "title": "Spotlight 2",
-      "description": "A full-bleed gradient background, spotlight 2, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "spotlight-2.tsx",
-          "target": "components/ui/spotlight-2.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "dot-grid",
-      "type": "registry:component",
-      "title": "Dot Grid",
-      "description": "A full-bleed pattern background, dot grid, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "dot-grid.tsx",
-          "target": "components/ui/dot-grid.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "dot-matrix",
-      "type": "registry:component",
-      "title": "Dot Matrix",
-      "description": "A full-bleed pattern background, dot matrix, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "dot-matrix.tsx",
-          "target": "components/ui/dot-matrix.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "grid-pattern",
-      "type": "registry:component",
-      "title": "Grid Pattern",
-      "description": "A full-bleed pattern background, grid pattern, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "grid-pattern.tsx",
-          "target": "components/ui/grid-pattern.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "square-pattern",
-      "type": "registry:component",
-      "title": "Square Pattern",
-      "description": "A full-bleed pattern background, square pattern, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "square-pattern.tsx",
-          "target": "components/ui/square-pattern.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "diagonal-lines",
-      "type": "registry:component",
-      "title": "Diagonal Lines",
-      "description": "A full-bleed pattern background, diagonal lines, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "diagonal-lines.tsx",
-          "target": "components/ui/diagonal-lines.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "mesh-gradient",
-      "type": "registry:component",
-      "title": "Mesh Gradient",
-      "description": "A full-bleed gradient background, mesh gradient, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "mesh-gradient.tsx",
-          "target": "components/ui/mesh-gradient.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "spotlight-3",
-      "type": "registry:component",
-      "title": "Spotlight 3",
-      "description": "A full-bleed gradient background, spotlight 3, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "spotlight-3.tsx",
-          "target": "components/ui/spotlight-3.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "spotlight-4",
-      "type": "registry:component",
-      "title": "Spotlight 4",
-      "description": "A full-bleed gradient background, spotlight 4, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "spotlight-4.tsx",
-          "target": "components/ui/spotlight-4.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "spotlight-5",
-      "type": "registry:component",
-      "title": "Spotlight 5",
-      "description": "A full-bleed gradient background, spotlight 5, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "spotlight-5.tsx",
-          "target": "components/ui/spotlight-5.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "spotlight-6",
-      "type": "registry:component",
-      "title": "Spotlight 6",
-      "description": "A full-bleed gradient background, spotlight 6, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "spotlight-6.tsx",
-          "target": "components/ui/spotlight-6.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "hex-grid",
-      "type": "registry:component",
-      "title": "Hex Grid",
-      "description": "A full-bleed pattern background, hex grid, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "hex-grid.tsx",
-          "target": "components/ui/hex-grid.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "conic-swirl",
-      "type": "registry:component",
-      "title": "Conic Swirl",
-      "description": "A full-bleed gradient background, conic swirl, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "conic-swirl.tsx",
-          "target": "components/ui/conic-swirl.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "crosshatch",
-      "type": "registry:component",
-      "title": "Crosshatch",
-      "description": "A full-bleed pattern background, crosshatch, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "crosshatch.tsx",
-          "target": "components/ui/crosshatch.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "duotone-drift",
-      "type": "registry:component",
-      "title": "Duotone Drift",
-      "description": "A full-bleed gradient background, duotone drift, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "duotone-drift.tsx",
-          "target": "components/ui/duotone-drift.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "prism-spectrum",
-      "type": "registry:component",
-      "title": "Prism Spectrum",
-      "description": "A full-bleed gradient background, prism spectrum, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "prism-spectrum.tsx",
-          "target": "components/ui/prism-spectrum.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "ember-drift",
-      "type": "registry:component",
-      "title": "Ember Drift",
-      "description": "A full-bleed gradient background, ember drift, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "ember-drift.tsx",
-          "target": "components/ui/ember-drift.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "noise-veil",
-      "type": "registry:component",
-      "title": "Noise Veil",
-      "description": "A full-bleed pattern background, noise veil, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "noise-veil.tsx",
-          "target": "components/ui/noise-veil.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "sonar-arc",
       "type": "registry:component",
       "title": "Sonar Arc",
@@ -285,32 +25,6 @@
         {
           "path": "sonar-arc.tsx",
           "target": "components/ui/sonar-arc.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "glass-shard",
-      "type": "registry:component",
-      "title": "Glass Shard",
-      "description": "A full-bleed gradient background, glass shard, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "glass-shard.tsx",
-          "target": "components/ui/glass-shard.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "magma-vein",
-      "type": "registry:component",
-      "title": "Magma Vein",
-      "description": "A full-bleed pattern background, magma vein, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "magma-vein.tsx",
-          "target": "components/ui/magma-vein.tsx",
           "type": "registry:component"
         }
       ]
@@ -371,32 +85,6 @@
       ]
     },
     {
-      "name": "glow-button",
-      "type": "registry:component",
-      "title": "Glow Button",
-      "description": "A primary call-to-action button with a violet glow that intensifies on hover.",
-      "files": [
-        {
-          "path": "glow-button.tsx",
-          "target": "components/ui/glow-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "border-reveal",
-      "type": "registry:component",
-      "title": "Border Reveal",
-      "description": "A hover-driven primary button, border reveal.",
-      "files": [
-        {
-          "path": "border-reveal.tsx",
-          "target": "components/ui/border-reveal.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "ripple-button",
       "type": "registry:component",
       "title": "Ripple Button",
@@ -423,71 +111,6 @@
       ]
     },
     {
-      "name": "neon-swipe-button",
-      "type": "registry:component",
-      "title": "Neon Swipe Button",
-      "description": "A hover-driven primary button, neon swipe button.",
-      "files": [
-        {
-          "path": "neon-swipe-button.tsx",
-          "target": "components/ui/neon-swipe-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "swipe-button",
-      "type": "registry:component",
-      "title": " Swipe Button",
-      "description": "A hover-driven primary button, swipe button.",
-      "files": [
-        {
-          "path": "swipe-button.tsx",
-          "target": "components/ui/swipe-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "new-button",
-      "type": "registry:component",
-      "title": " New Button",
-      "description": "A hover-driven primary button, new button.",
-      "files": [
-        {
-          "path": "new-button.tsx",
-          "target": "components/ui/new-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "luminance-flux-button",
-      "type": "registry:component",
-      "title": " Luminance Flux Button",
-      "description": "A hover-driven primary button, luminance flux button.",
-      "files": [
-        {
-          "path": "luminance-flux-button.tsx",
-          "target": "components/ui/luminance-flux-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "frosted-glass-button",
-      "type": "registry:component",
-      "title": " Frosted Glass Button",
-      "description": "A hover-driven primary button, frosted glass button.",
-      "files": [
-        {
-          "path": "frosted-glass-button.tsx",
-          "target": "components/ui/frosted-glass-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "neumorphic-button",
       "type": "registry:component",
       "title": " Neumorphic Button",
@@ -496,110 +119,6 @@
         {
           "path": "neumorphic-button.tsx",
           "target": "components/ui/neumorphic-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "read-more-button",
-      "type": "registry:component",
-      "title": " Read More Button",
-      "description": "A hover-driven primary button, read more button.",
-      "files": [
-        {
-          "path": "read-more-button.tsx",
-          "target": "components/ui/read-more-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "shimmer-swipe-button",
-      "type": "registry:component",
-      "title": " Shimmer Swipe Button",
-      "description": "A hover-driven primary button, shimmer swipe button.",
-      "files": [
-        {
-          "path": "shimmer-swipe-button.tsx",
-          "target": "components/ui/shimmer-swipe-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "link-button",
-      "type": "registry:component",
-      "title": " Link Button",
-      "description": "A hover-driven primary button, link button.",
-      "files": [
-        {
-          "path": "link-button.tsx",
-          "target": "components/ui/link-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "slide-text-button",
-      "type": "registry:component",
-      "title": "Slide Text Button",
-      "description": "A hover-driven primary button, slide text button.",
-      "files": [
-        {
-          "path": "slide-text-button.tsx",
-          "target": "components/ui/slide-text-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "gradient-link-button",
-      "type": "registry:component",
-      "title": "Gradient Link Button",
-      "description": "A hover-driven primary button, gradient link button.",
-      "files": [
-        {
-          "path": "gradient-link-button.tsx",
-          "target": "components/ui/gradient-link-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "underline-hover-button",
-      "type": "registry:component",
-      "title": "Underline Hover Button",
-      "description": "A hover-driven primary button, underline hover button.",
-      "files": [
-        {
-          "path": "underline-hover-button.tsx",
-          "target": "components/ui/underline-hover-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "slide-fill-button",
-      "type": "registry:component",
-      "title": "Slide Fill Button",
-      "description": "A hover-driven primary button, slide fill button.",
-      "files": [
-        {
-          "path": "slide-fill-button.tsx",
-          "target": "components/ui/slide-fill-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "blob-hover-button",
-      "type": "registry:component",
-      "title": "Blob Hover Button",
-      "description": "A hover-driven primary button, blob hover button.",
-      "files": [
-        {
-          "path": "blob-hover-button.tsx",
-          "target": "components/ui/blob-hover-button.tsx",
           "type": "registry:component"
         }
       ]
@@ -683,19 +202,6 @@
       ]
     },
     {
-      "name": "outline-button",
-      "type": "registry:component",
-      "title": "Outline Button",
-      "description": "A hover-driven primary button, outline button.",
-      "files": [
-        {
-          "path": "outline-button.tsx",
-          "target": "components/ui/outline-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "morse-signal-button",
       "type": "registry:component",
       "title": "Morse Signal Button",
@@ -774,84 +280,6 @@
       ]
     },
     {
-      "name": "rivet-press-button",
-      "type": "registry:component",
-      "title": "Rivet Press Button",
-      "description": "A hover-driven primary button, rivet press button.",
-      "files": [
-        {
-          "path": "rivet-press-button.tsx",
-          "target": "components/ui/rivet-press-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "hover-arrow-button",
-      "type": "registry:component",
-      "title": "Hover Arrow Button",
-      "description": "A hover-driven primary button, hover arrow button.",
-      "files": [
-        {
-          "path": "hover-arrow-button.tsx",
-          "target": "components/ui/hover-arrow-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "press-button",
-      "type": "registry:component",
-      "title": "Press Button",
-      "description": "A hover-driven primary button, press button.",
-      "files": [
-        {
-          "path": "press-button.tsx",
-          "target": "components/ui/press-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "play-now-button",
-      "type": "registry:component",
-      "title": "Play Now Button",
-      "description": "A hover-driven primary button, play now button.",
-      "files": [
-        {
-          "path": "play-now-button.tsx",
-          "target": "components/ui/play-now-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "rose-border-button",
-      "type": "registry:component",
-      "title": "Rose Border Button",
-      "description": "A hover-driven primary button, rose border button.",
-      "files": [
-        {
-          "path": "rose-border-button.tsx",
-          "target": "components/ui/rose-border-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "violet-border-button",
-      "type": "registry:component",
-      "title": "Violet Border Button",
-      "description": "A hover-driven primary button, violet border button.",
-      "files": [
-        {
-          "path": "violet-border-button.tsx",
-          "target": "components/ui/violet-border-button.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "magnetic-button",
       "type": "registry:component",
       "title": "Magnetic Button",
@@ -868,32 +296,6 @@
       ]
     },
     {
-      "name": "spinner-loader",
-      "type": "registry:component",
-      "title": "Spinner Loader",
-      "description": "A simple indeterminate spinner with a status label, useful for inline loading states.",
-      "files": [
-        {
-          "path": "spinner-loader.tsx",
-          "target": "components/ui/spinner-loader.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "bouncing-dots-loader",
-      "type": "registry:component",
-      "title": "Bouncing Dots Loader",
-      "description": "A self-contained loading indicator, bouncing dots loader.",
-      "files": [
-        {
-          "path": "bouncing-dots-loader.tsx",
-          "target": "components/ui/bouncing-dots-loader.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "mercury-loader",
       "type": "registry:component",
       "title": "Mercury Loader",
@@ -902,58 +304,6 @@
         {
           "path": "mercury-loader.tsx",
           "target": "components/ui/mercury-loader.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "skeleton-loader",
-      "type": "registry:component",
-      "title": "Skeleton Loader",
-      "description": "A shimmering card skeleton with configurable lines and avatar.",
-      "files": [
-        {
-          "path": "skeleton-loader.tsx",
-          "target": "components/ui/skeleton-loader.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "aether-navbar",
-      "type": "registry:component",
-      "title": "Aether Navbar",
-      "description": "A floating navigation bar, aether navbar.",
-      "files": [
-        {
-          "path": "aether-navbar.tsx",
-          "target": "components/ui/aether-navbar.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "vertex-navbar",
-      "type": "registry:component",
-      "title": "Vertex Navbar",
-      "description": "A floating navigation bar, vertex navbar.",
-      "files": [
-        {
-          "path": "vertex-navbar.tsx",
-          "target": "components/ui/vertex-navbar.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "radical-navbar",
-      "type": "registry:component",
-      "title": "Radical Navbar",
-      "description": "A floating navigation bar, radical navbar.",
-      "files": [
-        {
-          "path": "radical-navbar.tsx",
-          "target": "components/ui/radical-navbar.tsx",
           "type": "registry:component"
         }
       ]
@@ -1037,19 +387,6 @@
       ]
     },
     {
-      "name": "marquee",
-      "type": "registry:component",
-      "title": "Marquee",
-      "description": "An infinite, seamless content marquee with hover-pause and reverse direction.",
-      "files": [
-        {
-          "path": "marquee.tsx",
-          "target": "components/ui/marquee.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "text-reveal",
       "type": "registry:component",
       "title": "Text Reveal",
@@ -1079,19 +416,6 @@
       ]
     },
     {
-      "name": "gradient-text",
-      "type": "registry:component",
-      "title": "Gradient Text",
-      "description": "Text clipped to a panning gradient, paused automatically under reduced motion.",
-      "files": [
-        {
-          "path": "gradient-text.tsx",
-          "target": "components/ui/gradient-text.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "bento-grid",
       "type": "registry:component",
       "title": "Bento Grid",
@@ -1103,38 +427,6 @@
         {
           "path": "bento-grid.tsx",
           "target": "components/ui/bento-grid.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "timeline",
-      "type": "registry:component",
-      "title": "Timeline",
-      "description": "A vertical timeline whose entries slide into place as they enter the viewport.",
-      "dependencies": [
-        "framer-motion"
-      ],
-      "files": [
-        {
-          "path": "timeline.tsx",
-          "target": "components/ui/timeline.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "testimonial-carousel",
-      "type": "registry:component",
-      "title": "Testimonial Carousel",
-      "description": "A directional fade-slide testimonial carousel, hand-rolled on Motion with no carousel dependency.",
-      "dependencies": [
-        "framer-motion"
-      ],
-      "files": [
-        {
-          "path": "testimonial-carousel.tsx",
-          "target": "components/ui/testimonial-carousel.tsx",
           "type": "registry:component"
         }
       ]

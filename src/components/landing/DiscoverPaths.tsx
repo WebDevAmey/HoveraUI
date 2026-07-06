@@ -10,19 +10,19 @@ const PATHS = [
   {
     title: "Forge the interaction",
     description: "Buttons that answer the cursor before the click, glows, ripples, sweeps and lifts.",
-    href: "/docs/glow-button",
+    href: "/docs/x-ray-scanner-button",
     cta: "Browse buttons",
   },
   {
     title: "Tune the motion",
     description: "Backgrounds and loaders that carry presence on their own, auroras, spotlights, drift.",
-    href: "/docs/aurora",
+    href: "/docs/aurora-flow",
     cta: "Browse motion",
   },
   {
     title: "Ship via registry",
     description: "One CLI command per component, resolved from your own registry URL, no copy paste required.",
-    href: "/docs/glow-button#installation",
+    href: "/docs/x-ray-scanner-button#installation",
     cta: "See installation",
   },
 ];

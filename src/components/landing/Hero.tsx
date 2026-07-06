@@ -66,14 +66,11 @@ export default function Hero() {
           />
         </div>
 
-        <h1
-          style={entrance(0.4)}
-          className="mt-4 max-w-2xl text-xl font-medium leading-snug text-neutral-300 sm:text-2xl"
-        >
+        <h1 className="mt-4 max-w-2xl text-xl font-medium leading-snug text-neutral-300 sm:text-2xl">
           Interfaces that respond before you click — every effect in pure black and white.
         </h1>
 
-        <p style={entrance(0.5)} className="mt-4 max-w-xl text-sm leading-relaxed text-neutral-500 sm:text-base">
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-neutral-500 sm:text-base">
           No color, no gradients, no glow palettes. Thirty-six signature interactions built from
           light, shadow, displacement and motion — each one a single file you install and own.
         </p>
@@ -96,7 +93,7 @@ export default function Hero() {
           <div className="flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.03] py-1.5 pr-1.5 pl-4 font-mono text-xs text-neutral-400 backdrop-blur-sm">
             <span className="hidden sm:inline">{INSTALL}</span>
             <span className="sm:hidden">npx shadcn add @hovera/…</span>
-            <CopyButton code={INSTALL} label="Copy install command" />
+            <CopyButton code={INSTALL} label="Copy" />
           </div>
         </div>
       </motion.div>

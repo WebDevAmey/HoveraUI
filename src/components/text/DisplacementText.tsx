@@ -69,8 +69,8 @@ export default function DisplacementText({
         "inline-flex cursor-default select-none py-6 text-4xl font-bold tracking-tight text-white " +
         className
       }
-      aria-label={text}
     >
+      <span className="sr-only">{text}</span>
       {text.split("").map((char, i) => (
         <span
           key={i}

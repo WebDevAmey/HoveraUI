@@ -2,6 +2,37 @@
 
 All notable changes to the Hovera UI registry and site.
 
+## 2026-07-06 — The Monochrome Cut (86 → 32 → 36 items)
+
+HoveraUI is now a curated monochrome effect library: every component expresses
+through light, shadow, blur, displacement and motion — never color.
+
+### Added (4 signature effects)
+
+`displacement-text`, `liquid-text`, `light-lines`, `pixel-trail` — all pure
+black/white, reduced-motion-safe, registry snippets byte-identical to the live
+components.
+
+### Removed (54 retired slugs — install URLs now 404)
+
+`aether-navbar`, `aurora`, `aurora-warm`, `blob-hover-button`, `border-reveal`, `bouncing-dots-loader`, `conic-swirl`, `crosshatch`, `diagonal-lines`, `dot-grid`, `dot-matrix`, `duotone-drift`, `ember-drift`, `frosted-glass-button`, `glass-shard`, `glow-button`, `gradient-link-button`, `gradient-text`, `grid-pattern`, `hex-grid`, `hover-arrow-button`, `link-button`, `luminance-flux-button`, `magma-vein`, `marquee`, `mesh-gradient`, `neon-swipe-button`, `new-button`, `noise-veil`, `outline-button`, `play-now-button`, `press-button`, `prism-spectrum`, `radical-navbar`, `read-more-button`, `rivet-press-button`, `rose-border-button`, `shimmer-swipe-button`, `skeleton-loader`, `slide-fill-button`, `slide-text-button`, `spinner-loader`, `spotlight-2`, `spotlight-3`, `spotlight-4`, `spotlight-5`, `spotlight-6`, `square-pattern`, `swipe-button`, `testimonial-carousel`, `timeline`, `underline-hover-button`, `vertex-navbar`, `violet-border-button`
+
+### Changed
+
+- All 32 surviving components converted to strict monochrome (chromatic hues →
+  neutral scale, colored glows → grayscale via max-channel; BorderBeam is now a
+  white-head/gray-tail comet). Registry snippets stayed byte-identical to sources.
+- Site IA: component pages moved to `/components/<slug>` (old `/docs/<slug>`
+  URLs 301 for survivors), gallery at `/components`, six real guide pages under
+  `/docs/*`, sidebar split into Documentation / Components.
+- Homepage rebuilt effect-forward: the hero headline IS the DisplacementText
+  component over the LightLines component; live signature bento; quick-start
+  with copy buttons. WebGL chrome (`ogl`) removed — the effects are the wow.
+- Glow/gradient color tokens removed from `globals.css`; chrome is pure B&W.
+- Lighthouse (prod): desktop 99 perf / 100 a11y; mobile 88 perf / 100 a11y
+  (FCP 0.9s, TBT 0ms, CLS 0; remaining mobile LCP gap is the webfont repaint
+  under 4G throttling).
+
 ## 2026-07-06 — Site redesign (glow identity)
 
 ### New components (3 → 86 items total)

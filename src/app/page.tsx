@@ -4,6 +4,7 @@ import CommandPaletteWithTrigger from "@/components/landing/CommandPaletteWithTr
 import Hero from "@/components/landing/Hero";
 import TechStack from "@/components/landing/TechStack";
 import StatsRow from "@/components/landing/StatsRow";
+import AnticipatoryScenes from "@/components/landing/AnticipatoryScenes";
 import DiscoverPaths from "@/components/landing/DiscoverPaths";
 import ShowcaseGrid from "@/components/landing/ShowcaseGrid";
 import NewArrivals from "@/components/landing/NewArrivals";
@@ -24,6 +25,7 @@ export default function Home() {
       <Hero />
       <TechStack />
       <StatsRow />
+      <AnticipatoryScenes />
       <DiscoverPaths />
       <ShowcaseGrid />
       <NewArrivals />

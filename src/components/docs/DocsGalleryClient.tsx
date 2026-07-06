@@ -154,6 +154,7 @@ export default function DocsGalleryClient() {
                   <div
                     role="link"
                     tabIndex={0}
+                    aria-label={`View ${entry.name} docs`}
                     onClick={() => router.push(`/docs/${entry.slug}`)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") router.push(`/docs/${entry.slug}`);

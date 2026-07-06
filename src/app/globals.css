@@ -206,6 +206,14 @@ body {
   to   { opacity: 1; }
 }
 
+/* Hero kinetic headline: per-word rise out of a clipped line. CSS-driven so
+   the markup is hydration-identical and the reduced-motion kill-switch above
+   makes it instant for free. */
+@keyframes wordUp {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+
 @keyframes mercury-center {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.4); }

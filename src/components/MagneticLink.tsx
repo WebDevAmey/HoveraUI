@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { MAGNETIC_SPRING } from "@/lib/motion";
 
 interface MagneticLinkProps {
@@ -13,7 +14,7 @@ interface MagneticLinkProps {
 
 /** Shared CTA link with a magnetic hover/tap scale, used by Hero and FinalCTA. */
 export default function MagneticLink({ href, children, primary, external }: MagneticLinkProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
 
   return (
     <motion.div

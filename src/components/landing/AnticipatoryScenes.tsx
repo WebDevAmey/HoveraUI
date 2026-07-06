@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import SpotlightCardDemo from "@/components/cards/SpotlightCardDemo";
 import AnimatedTabs from "@/components/tabs/AnimatedTabs";
 
@@ -59,9 +60,9 @@ function Beat({
         >
           {beat.index}
         </span>
-        <h3 className="mt-3 text-[length:var(--text-display-sm)] font-semibold tracking-tight text-foreground">
+        <h2 className="mt-3 text-[length:var(--text-display-sm)] font-semibold tracking-tight text-foreground">
           {beat.title}
-        </h3>
+        </h2>
         <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">{beat.copy}</p>
       </div>
       <div className="hidden items-center justify-center lg:flex">{visual}</div>
@@ -75,7 +76,7 @@ function Beat({
  * scroll progress. Reduced motion unpins everything into a static stack.
  */
 export default function AnticipatoryScenes() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
   const trackRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: trackRef,
@@ -106,9 +107,9 @@ export default function AnticipatoryScenes() {
             <div key={beat.index} className="grid items-center gap-10 lg:grid-cols-2">
               <div>
                 <span className="font-mono text-sm text-muted-foreground">{beat.index}</span>
-                <h3 className="mt-3 text-[length:var(--text-display-sm)] font-semibold tracking-tight text-foreground">
+                <h2 className="mt-3 text-[length:var(--text-display-sm)] font-semibold tracking-tight text-foreground">
                   {beat.title}
-                </h3>
+                </h2>
                 <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">{beat.copy}</p>
               </div>
               <div className="hidden items-center justify-center lg:flex">{visuals[i]}</div>

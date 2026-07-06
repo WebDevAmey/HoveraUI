@@ -2,12 +2,21 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import HeroGlowCanvas from "@/components/landing/HeroGlowCanvas";
 import HoveraFlagshipCard from "@/components/landing/HoveraFlagshipCard";
 import { MAGNETIC_SPRING } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 const HEADLINE = ["Interfaces", "that", "respond", "before", "you", "click."];
+
+function entrance(delaySeconds: number): React.CSSProperties {
+  // CSS-driven entrance: hydration-identical markup, and the global
+  // prefers-reduced-motion kill-switch makes it effectively instant.
+  return {
+    animation: `fadeUp 0.55s var(--ease-flow) ${delaySeconds}s both`,
+  };
+}
 
 /**
  * Cinematic hero: a self-contained dark glow panel in both themes (the inner
@@ -16,7 +25,7 @@ const HEADLINE = ["Interfaces", "that", "respond", "before", "you", "click."];
  * headline; the headline itself is plain DOM text and paints first (LCP).
  */
 export default function Hero() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
   const sectionRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -39,10 +48,8 @@ export default function Hero() {
       >
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <motion.div
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            <div
+              style={entrance(0.05)}
               className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-xs text-neutral-300 backdrop-blur-sm"
             >
               <span
@@ -51,23 +58,23 @@ export default function Hero() {
                 aria-hidden="true"
               />
               Hover-first component library
-            </motion.div>
+            </div>
 
             <h1
               className="mt-6 text-[length:var(--text-display-md)] font-semibold leading-[1.02] tracking-tight text-white sm:text-[length:var(--text-display-lg)]"
               aria-label={HEADLINE.join(" ")}
             >
               {HEADLINE.map((word, i) => (
-                <span key={i} className="inline-block overflow-hidden pb-[0.08em] align-bottom" aria-hidden>
-                  <motion.span
-                    initial={prefersReducedMotion ? false : { y: "110%" }}
-                    animate={{ y: "0%" }}
-                    transition={{
-                      duration: 0.6,
-                      delay: prefersReducedMotion ? 0 : 0.08 + i * 0.07,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
+                <span
+                  key={i}
+                  className="inline-block overflow-hidden pb-[0.08em] align-bottom"
+                  aria-hidden
+                >
+                  <span
                     className="inline-block will-change-transform"
+                    style={{
+                      animation: `wordUp 0.6s var(--ease-flow) ${0.08 + i * 0.07}s both`,
+                    }}
                   >
                     {word === "respond" ? (
                       <span
@@ -79,30 +86,23 @@ export default function Hero() {
                     ) : (
                       word
                     )}
-                    {" "}
-                  </motion.span>
+                    &nbsp;
+                  </span>
                 </span>
               ))}
             </h1>
 
-            <motion.p
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : 0.5, ease: [0.16, 1, 0.3, 1] }}
+            <p
+              style={entrance(0.5)}
               className="mt-6 max-w-lg text-base leading-relaxed text-neutral-400 sm:text-lg"
             >
               Hovera UI is a shadcn-compatible library of buttons, loaders, navbars and
               backgrounds built around the moment a cursor arrives, not just the moment
               it clicks. Preview every interaction live, copy the code, or install it
               straight from the registry.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : 0.62, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8 flex flex-col gap-3 sm:flex-row"
-            >
+            <div style={entrance(0.62)} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <motion.div
                 whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
                 whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
@@ -133,13 +133,11 @@ export default function Hero() {
                   Star on GitHub
                 </Link>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
 
-          <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: prefersReducedMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
+          <div
+            style={entrance(0.45)}
             className="relative flex min-h-[28rem] items-center justify-center rounded-[var(--radius-card)] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm"
           >
             <div
@@ -148,11 +146,10 @@ export default function Hero() {
               style={{
                 background:
                   "linear-gradient(135deg, rgba(139,92,246,0.25), transparent 40%, transparent 60%, rgba(34,211,238,0.18))",
-                maskImage: "linear-gradient(#fff, #fff), linear-gradient(#fff, #fff)",
               }}
             />
             <HoveraFlagshipCard />
-          </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>

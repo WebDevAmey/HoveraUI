@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { EASE_FLOW } from "@/lib/motion";
 
 const FEATURES = [
@@ -33,7 +34,7 @@ const FEATURES = [
  */
 export default function HoveraFlagshipCard() {
   const [open, setOpen] = useState(true);
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
 
   return (
     <AnimatePresence>

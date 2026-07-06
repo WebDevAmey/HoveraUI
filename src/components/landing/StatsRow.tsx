@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { backgrounds } from "@/data/background";
 import { buttons } from "@/data/button";
 import { loaders } from "@/data/loader";
@@ -18,7 +19,7 @@ import RevealSection from "@/components/docs/RevealSection";
 function CountUp({ target, duration = 1.2 }: { target: number; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
   const [value, setValue] = useState(0);
 
   useEffect(() => {

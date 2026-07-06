@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { CARD_HOVER_TRANSITION } from "@/lib/motion";
 
 interface CursorGlowCardProps {
@@ -9,7 +10,7 @@ interface CursorGlowCardProps {
 }
 
 export default function CursorGlowCard({ children, className }: CursorGlowCardProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
 
   return (
     <motion.div

@@ -22,6 +22,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <CommandPaletteWithTrigger />
+      <main>
       <Hero />
       <TechStack />
       <StatsRow />
@@ -32,6 +33,7 @@ export default function Home() {
       <StoryStrip />
       <Marquee />
       <FinalCTA />
+      </main>
       <Footer />
     </div>
   );

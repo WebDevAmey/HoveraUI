@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import GithubStars from "@/components/docs/GithubStars";
 
@@ -23,7 +24,7 @@ const NAV_LINKS = [
  * Replaces the previously separate TopNav (homepage) and DocsTopNav (docs) components.
  */
 export default function SiteNav({ onOpenSidebar, onOpenCommand }: SiteNavProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
   const iconHover = prefersReducedMotion ? undefined : { scale: 1.05 };
   const iconTap = prefersReducedMotion ? undefined : { scale: 0.95 };
 

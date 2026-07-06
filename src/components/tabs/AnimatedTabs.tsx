@@ -59,9 +59,9 @@ export default function AnimatedTabs({
         <Tabs.Content key={tab.value} value={tab.value} className="mt-4 text-sm text-neutral-300">
           <motion.div
             key={active}
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 4 }}
+            initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
             {tab.content}
           </motion.div>

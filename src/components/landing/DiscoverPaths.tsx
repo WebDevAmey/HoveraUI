@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import RevealSection from "@/components/docs/RevealSection";
 import { CARD_HOVER_TRANSITION } from "@/lib/motion";
 
@@ -27,7 +28,7 @@ const PATHS = [
 ];
 
 export default function DiscoverPaths() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
 
   return (
     <RevealSection id="discover" className="border-b border-border px-4 py-16 md:px-8">

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import RevealSection from "@/components/docs/RevealSection";
 import { CARD_HOVER_TRANSITION } from "@/lib/motion";
 import SpotlightCardDemo from "@/components/cards/SpotlightCardDemo";
@@ -41,7 +42,7 @@ const TILES: { slug: string; label: string; span?: string; render: React.ReactNo
 ];
 
 export default function NewArrivals() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
 
   return (
     <RevealSection id="new-arrivals" className="border-b border-border px-4 py-16 md:px-8">

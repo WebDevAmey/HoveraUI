@@ -1,23 +1,12 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-
 /**
  * Route transition boundary. template.tsx remounts on every navigation
- * (per node_modules/next/dist/docs — unlike layout, it gets a fresh key),
- * which is exactly the hook needed for an entrance sweep between routes.
- * Reduced motion renders instantly with no animation.
+ * (per node_modules/next/dist/docs — unlike layout, it gets a fresh key), so
+ * the CSS entrance replays on each route change. CSS-driven so server and
+ * client render identical markup, and the global prefers-reduced-motion
+ * kill-switch makes it instant.
  */
 export default function Template({ children }: { children: React.ReactNode }) {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
-    <motion.div
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.div>
+    <div style={{ animation: "fadeUp 0.45s var(--ease-flow) both" }}>{children}</div>
   );
 }

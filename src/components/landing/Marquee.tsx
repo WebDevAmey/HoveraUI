@@ -4,12 +4,12 @@ import {
   motion,
   useAnimationFrame,
   useMotionValue,
-  useReducedMotion,
-  useScroll,
+    useScroll,
   useSpring,
   useTransform,
   useVelocity,
 } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 // Placeholder example feedback, not real attributed quotes. Swap in real
 // testimonials once Hovera UI has them.
@@ -29,7 +29,7 @@ const BASE_SPEED = 2.6; // % of half-belt per second at rest
  * Reduced motion renders a static, scrollable row.
  */
 export default function Marquee() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionSafe();
   const baseX = useMotionValue(0);
 
   const { scrollY } = useScroll();

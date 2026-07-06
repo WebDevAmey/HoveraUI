@@ -55,9 +55,7 @@ function Beat({
     >
       <div>
         <span
-          className="font-mono text-sm bg-clip-text text-transparent"
-          style={{ backgroundImage: "var(--gradient-brand)" }}
-        >
+          className="font-mono text-sm text-muted-foreground">
           {beat.index}
         </span>
         <h2 className="mt-3 text-[length:var(--text-display-sm)] font-semibold tracking-tight text-foreground">
@@ -90,7 +88,7 @@ export default function AnticipatoryScenes() {
       key="v3"
       className="w-full max-w-sm rounded-xl border border-border bg-surface-1 p-4 font-mono text-xs leading-relaxed text-muted-foreground"
     >
-      <p className="text-glow-2">$ npx shadcn@latest add @hovera/spotlight-card</p>
+      <p className="text-foreground">$ npx shadcn@latest add @hovera/spotlight-card</p>
       <p className="mt-2">✔ Checking registry.</p>
       <p>✔ Installing dependencies.</p>
       <p>
@@ -127,7 +125,7 @@ export default function AnticipatoryScenes() {
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
-            style={{ background: "var(--gradient-glow)" }}
+            style={{ background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(127,127,127,0.08), transparent 70%)" }}
           />
           <div className="relative mx-auto h-[24rem] w-full max-w-6xl">
             <Beat beat={BEATS[0]} visual={visuals[0]} progress={scrollYProgress} range={[0, 0.38]} />

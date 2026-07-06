@@ -1,11 +1,11 @@
 "use client";
 
 const BEAMS = [
-  { left: "10%", delay: "0s", duration: "7s", width: "2px", color: "rgba(139,92,246,0.5)" },
-  { left: "30%", delay: "2.2s", duration: "9s", width: "1px", color: "rgba(34,211,238,0.45)" },
-  { left: "52%", delay: "1.1s", duration: "8s", width: "2px", color: "rgba(232,121,249,0.4)" },
-  { left: "72%", delay: "3.4s", duration: "10s", width: "1px", color: "rgba(139,92,246,0.45)" },
-  { left: "88%", delay: "0.6s", duration: "7.5s", width: "2px", color: "rgba(34,211,238,0.4)" },
+  { left: "10%", delay: "0s", duration: "7s", width: "2px", color: "rgba(246,246,246,0.5)" },
+  { left: "30%", delay: "2.2s", duration: "9s", width: "1px", color: "rgba(238,238,238,0.45)" },
+  { left: "52%", delay: "1.1s", duration: "8s", width: "2px", color: "rgba(249,249,249,0.4)" },
+  { left: "72%", delay: "3.4s", duration: "10s", width: "1px", color: "rgba(246,246,246,0.45)" },
+  { left: "88%", delay: "0.6s", duration: "7.5s", width: "2px", color: "rgba(238,238,238,0.4)" },
 ];
 
 export default function Beams() {
@@ -28,7 +28,7 @@ export default function Beams() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.12), transparent 60%)",
+          background: "radial-gradient(ellipse at 50% 0%, rgba(246,246,246,0.12), transparent 60%)",
         }}
       />
     </div>

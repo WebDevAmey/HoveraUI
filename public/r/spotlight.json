@@ -8,7 +8,7 @@
     {
       "path": "spotlight.tsx",
       "target": "components/ui/spotlight.tsx",
-      "content": "export default function Spotlight() {\n  return (\n    <div className=\"relative h-screen bg-black overflow-hidden\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background: `\n            radial-gradient(\n              80% 80% at 50% 0%,\n              rgba(168,85,247,.4),\n              transparent 60%\n            ),\n            radial-gradient(\n              80% 80% at 50% 100%,\n              rgba(59,130,246,.4),\n              transparent 60%\n            )\n          `,\n        }}\n      />\n    </div>\n  );\n}\n",
+      "content": "export default function Spotlight() {\n  return (\n    <div className=\"relative h-screen bg-black overflow-hidden\">\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          background: `\n            radial-gradient(\n              80% 80% at 50% 0%,\n              rgba(247,247,247,.4),\n              transparent 60%\n            ),\n            radial-gradient(\n              80% 80% at 50% 100%,\n              rgba(246,246,246,.4),\n              transparent 60%\n            )\n          `,\n        }}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

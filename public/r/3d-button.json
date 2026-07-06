@@ -8,7 +8,7 @@
     {
       "path": "3d-button.tsx",
       "target": "components/ui/3d-button.tsx",
-      "content": "export default function 3dButton() {\n  return (\n    <button className=\"px-8 py-3 bg-purple-600 text-white font-semibold rounded-xl shadow-lg transform transition-all hover:-translate-y-1 hover:shadow-xl active:translate-y-0 active:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2\">\n      3D Press\n    </button>\n  );\n}\n",
+      "content": "export default function 3dButton() {\n  return (\n    <button className=\"px-8 py-3 bg-neutral-600 text-white font-semibold rounded-xl shadow-lg transform transition-all hover:-translate-y-1 hover:shadow-xl active:translate-y-0 active:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2\">\n      3D Press\n    </button>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

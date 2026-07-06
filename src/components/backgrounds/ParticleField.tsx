@@ -66,7 +66,7 @@ export default function ParticleField() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.1), transparent 55%)",
+          background: "radial-gradient(ellipse at 50% 100%, rgba(246,246,246,0.1), transparent 55%)",
         }}
       />
     </div>

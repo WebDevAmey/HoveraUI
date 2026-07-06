@@ -9,7 +9,7 @@ export default function SonarArc() {
               circle at 50% 130%,
               transparent 0px,
               transparent 36px,
-              rgba(45,212,191,.22) 38px,
+              rgba(212,212,212,.22) 38px,
               transparent 40px
             )
           `,

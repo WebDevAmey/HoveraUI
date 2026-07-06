@@ -75,7 +75,7 @@ export default function CustomCursor() {
         <motion.div
           animate={{
             scale: hovering ? 2.1 : 1,
-            borderColor: hovering ? "var(--glow-1)" : "var(--foreground)",
+            borderColor: "var(--foreground)",
           }}
           transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="-ml-4 -mt-4 h-8 w-8 rounded-full border opacity-40"
@@ -87,7 +87,7 @@ export default function CustomCursor() {
       >
         <div
           className="-ml-[3px] -mt-[3px] h-1.5 w-1.5 rounded-full"
-          style={{ background: hovering ? "var(--glow-1)" : "var(--foreground)" }}
+          style={{ background: "var(--foreground)" }}
         />
       </motion.div>
     </div>

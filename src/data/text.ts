@@ -143,7 +143,7 @@ export default function Typewriter({
       {shown}
       <span
         aria-hidden
-        className="ml-0.5 inline-block h-[1.1em] w-[2px] translate-y-[0.15em] bg-violet-400 motion-reduce:opacity-100"
+        className="ml-0.5 inline-block h-[1.1em] w-[2px] translate-y-[0.15em] bg-neutral-400 motion-reduce:opacity-100"
         style={{ animation: reduced ? undefined : "hovera-caret 1s steps(1) infinite" }}
       />
     </span>

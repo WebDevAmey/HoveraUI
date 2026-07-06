@@ -35,7 +35,7 @@ export function SpotlightCardDemo() {
     props: [
       { name: "children", type: "React.ReactNode", description: "Card content, rendered above the glow layer." },
       { name: "className", type: "string", default: '""', description: "Extra classes merged onto the card container." },
-      { name: "spotlightColor", type: "string", default: '"rgba(139, 92, 246, 0.22)"', description: "CSS color of the cursor-following glow." },
+      { name: "spotlightColor", type: "string", default: '"rgba(255,255,255,0.16)"', description: "CSS color of the cursor-following glow." },
       { name: "spotlightRadius", type: "number", default: "260", description: "Radius of the glow circle in pixels." },
     ],
   },
@@ -90,8 +90,8 @@ export function FeatureCard() {
     props: [
       { name: "children", type: "React.ReactNode", description: "Card content inside the beam frame." },
       { name: "duration", type: "number", default: "6", description: "Seconds per full lap." },
-      { name: "colorFrom", type: "string", default: '"#8b5cf6"', description: "Beam head color." },
-      { name: "colorTo", type: "string", default: '"#22d3ee"', description: "Beam tail color." },
+      { name: "colorFrom", type: "string", default: '"#ffffff"', description: "Beam head color." },
+      { name: "colorTo", type: "string", default: '"#737373"', description: "Beam tail color." },
       { name: "className", type: "string", default: '""', description: "Extra classes on the outer frame." },
     ],
   },

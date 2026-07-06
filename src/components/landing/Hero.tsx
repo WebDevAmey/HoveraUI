@@ -52,11 +52,7 @@ export default function Hero() {
               style={entrance(0.05)}
               className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-xs text-neutral-300 backdrop-blur-sm"
             >
-              <span
-                className="h-1.5 w-1.5 rounded-full"
-                style={{ background: "var(--gradient-brand)" }}
-                aria-hidden="true"
-              />
+              <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
               Hover-first component library
             </div>
 
@@ -77,12 +73,7 @@ export default function Hero() {
                     }}
                   >
                     {word === "respond" ? (
-                      <span
-                        className="bg-clip-text text-transparent"
-                        style={{ backgroundImage: "var(--gradient-brand)" }}
-                      >
-                        {word}
-                      </span>
+                      <span className="rounded-sm bg-white px-2 text-neutral-950">{word}</span>
                     ) : (
                       word
                     )}
@@ -111,8 +102,7 @@ export default function Hero() {
               >
                 <Link
                   href="/docs"
-                  className="inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_32px_var(--glow-soft)] transition-opacity hover:opacity-90"
-                  style={{ background: "var(--gradient-brand)" }}
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 shadow-[0_0_32px_rgba(255,255,255,0.18)] transition-opacity hover:opacity-90"
                 >
                   Browse components
                   <span aria-hidden="true">↗</span>
@@ -145,7 +135,7 @@ export default function Hero() {
               className="pointer-events-none absolute -inset-px rounded-[var(--radius-card)] opacity-40"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(139,92,246,0.25), transparent 40%, transparent 60%, rgba(34,211,238,0.18))",
+                  "linear-gradient(135deg, rgba(255,255,255,0.22), transparent 40%, transparent 60%, rgba(255,255,255,0.14))",
               }}
             />
             <HoveraFlagshipCard />

@@ -89,8 +89,8 @@ export default function HeroGlowCanvas() {
           uniforms: {
             uTime: { value: 0 },
             uRes: { value: [1, 1] },
-            uColorA: { value: [0.545, 0.361, 0.965] }, // #8b5cf6
-            uColorB: { value: [0.133, 0.827, 0.933] }, // #22d3ee
+            uColorA: { value: [0.92, 0.92, 0.94] }, // near-white
+            uColorB: { value: [0.55, 0.55, 0.58] }, // mid gray
           },
         });
         const mesh = new Mesh(gl, { geometry, program });
@@ -161,8 +161,8 @@ export default function HeroGlowCanvas() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 55% 45% at 30% 70%, rgba(139,92,246,0.28), transparent 65%)," +
-            "radial-gradient(ellipse 50% 40% at 72% 30%, rgba(34,211,238,0.20), transparent 65%)," +
+            "radial-gradient(ellipse 55% 45% at 30% 70%, rgba(246,246,246,0.28), transparent 65%)," +
+            "radial-gradient(ellipse 50% 40% at 72% 30%, rgba(238,238,238,0.20), transparent 65%)," +
             "#09090b",
         }}
       />

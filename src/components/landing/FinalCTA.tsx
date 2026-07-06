@@ -4,17 +4,13 @@ import MagneticLink from "@/components/MagneticLink";
 export default function FinalCTA() {
   return (
     <RevealSection id="cta" className="relative px-4 py-24 md:px-8">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{ background: "var(--gradient-glow)" }}
-      />
       <div className="relative mx-auto max-w-3xl">
         <div
           className="rounded-[calc(var(--radius-card)+1px)] p-px"
           style={{
             background:
-              "linear-gradient(135deg, var(--glow-1), transparent 45%, transparent 55%, var(--glow-2))",
+              "linear-gradient(135deg, var(--foreground) , transparent 45%, transparent 55%, var(--foreground))",
+            opacity: 0.35,
           }}
         >
           <div className="rounded-[var(--radius-card)] bg-card px-8 py-12 text-center">

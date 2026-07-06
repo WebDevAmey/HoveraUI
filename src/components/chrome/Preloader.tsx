@@ -47,8 +47,7 @@ export default function Preloader() {
               initial={{ clipPath: "inset(0 100% 0 0)" }}
               animate={{ clipPath: "inset(0 0% 0 0)" }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="block bg-clip-text text-3xl font-semibold tracking-tight text-transparent"
-              style={{ backgroundImage: "var(--gradient-brand)" }}
+              className="block text-3xl font-semibold tracking-tight text-foreground"
             >
               Hovera UI
             </motion.span>

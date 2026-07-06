@@ -20,12 +20,12 @@ export const backgrounds: BackgroundItem[] = [
       background: \`
         radial-gradient(
           80% 80% at 50% 0%,
-          rgba(168,85,247,.4),
+          rgba(247,247,247,.4),
           transparent 60%
         ),
         radial-gradient(
           80% 80% at 50% 100%,
-          rgba(59,130,246,.4),
+          rgba(246,246,246,.4),
           transparent 60%
         )
       \`,
@@ -47,7 +47,7 @@ export const backgrounds: BackgroundItem[] = [
           circle at 50% 130%,
           transparent 0px,
           transparent 36px,
-          rgba(45,212,191,.22) 38px,
+          rgba(212,212,212,.22) 38px,
           transparent 40px
         )
       \`,
@@ -89,17 +89,17 @@ export default function AuroraFlow() {
       <motion.div
         aria-hidden
         animate={drift([0, 120, -60], [0, -80, 40], 18)}
-        className="absolute -top-1/4 left-1/4 h-[60vh] w-[60vh] rounded-full bg-violet-600/30 blur-[120px] will-change-transform"
+        className="absolute -top-1/4 left-1/4 h-[60vh] w-[60vh] rounded-full bg-neutral-600/30 blur-[120px] will-change-transform"
       />
       <motion.div
         aria-hidden
         animate={drift([0, -100, 80], [0, 60, -50], 22)}
-        className="absolute top-1/3 right-1/5 h-[50vh] w-[50vh] rounded-full bg-cyan-500/25 blur-[110px] will-change-transform"
+        className="absolute top-1/3 right-1/5 h-[50vh] w-[50vh] rounded-full bg-neutral-500/25 blur-[110px] will-change-transform"
       />
       <motion.div
         aria-hidden
         animate={drift([0, 70, -90], [0, -50, 70], 26)}
-        className="absolute bottom-0 left-1/3 h-[45vh] w-[45vh] rounded-full bg-fuchsia-500/20 blur-[100px] will-change-transform"
+        className="absolute bottom-0 left-1/3 h-[45vh] w-[45vh] rounded-full bg-neutral-500/20 blur-[100px] will-change-transform"
       />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(10,10,10,0.7))]" />
     </div>
@@ -115,11 +115,11 @@ export default function AuroraFlow() {
     code: `"use client";
 
 const BEAMS = [
-  { left: "10%", delay: "0s", duration: "7s", width: "2px", color: "rgba(139,92,246,0.5)" },
-  { left: "30%", delay: "2.2s", duration: "9s", width: "1px", color: "rgba(34,211,238,0.45)" },
-  { left: "52%", delay: "1.1s", duration: "8s", width: "2px", color: "rgba(232,121,249,0.4)" },
-  { left: "72%", delay: "3.4s", duration: "10s", width: "1px", color: "rgba(139,92,246,0.45)" },
-  { left: "88%", delay: "0.6s", duration: "7.5s", width: "2px", color: "rgba(34,211,238,0.4)" },
+  { left: "10%", delay: "0s", duration: "7s", width: "2px", color: "rgba(246,246,246,0.5)" },
+  { left: "30%", delay: "2.2s", duration: "9s", width: "1px", color: "rgba(238,238,238,0.45)" },
+  { left: "52%", delay: "1.1s", duration: "8s", width: "2px", color: "rgba(249,249,249,0.4)" },
+  { left: "72%", delay: "3.4s", duration: "10s", width: "1px", color: "rgba(246,246,246,0.45)" },
+  { left: "88%", delay: "0.6s", duration: "7.5s", width: "2px", color: "rgba(238,238,238,0.4)" },
 ];
 
 export default function Beams() {
@@ -142,7 +142,7 @@ export default function Beams() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.12), transparent 60%)",
+          background: "radial-gradient(ellipse at 50% 0%, rgba(246,246,246,0.12), transparent 60%)",
         }}
       />
     </div>
@@ -223,7 +223,7 @@ export default function ParticleField() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.1), transparent 55%)",
+          background: "radial-gradient(ellipse at 50% 100%, rgba(246,246,246,0.1), transparent 55%)",
         }}
       />
     </div>
@@ -275,7 +275,7 @@ export default function Meteors() {
           <span
             className="absolute top-1/2 left-0 h-px w-16 -translate-y-1/2"
             style={{
-              background: "linear-gradient(90deg, rgba(139,92,246,0.9), transparent)",
+              background: "linear-gradient(90deg, rgba(246,246,246,0.9), transparent)",
             }}
           />
         </span>
@@ -283,7 +283,7 @@ export default function Meteors() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at 50% 120%, rgba(139,92,246,0.12), transparent 60%)",
+          background: "radial-gradient(ellipse at 50% 120%, rgba(246,246,246,0.12), transparent 60%)",
         }}
       />
     </div>

@@ -30,7 +30,7 @@ interface SpotlightCardProps {
 export default function SpotlightCard({
   children,
   className = "",
-  spotlightColor = "rgba(139, 92, 246, 0.22)",
+  spotlightColor = "rgba(255,255,255,0.16)",
   spotlightRadius = 260,
 }: SpotlightCardProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -164,8 +164,8 @@ interface BorderBeamProps {
 export default function BorderBeam({
   children,
   duration = 6,
-  colorFrom = "#8b5cf6",
-  colorTo = "#22d3ee",
+  colorFrom = "#ffffff",
+  colorTo = "#737373",
   className = "",
 }: BorderBeamProps) {
   return (

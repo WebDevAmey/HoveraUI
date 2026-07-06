@@ -37,7 +37,7 @@ export default function Meteors() {
           <span
             className="absolute top-1/2 left-0 h-px w-16 -translate-y-1/2"
             style={{
-              background: "linear-gradient(90deg, rgba(139,92,246,0.9), transparent)",
+              background: "linear-gradient(90deg, rgba(246,246,246,0.9), transparent)",
             }}
           />
         </span>
@@ -45,7 +45,7 @@ export default function Meteors() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at 50% 120%, rgba(139,92,246,0.12), transparent 60%)",
+          background: "radial-gradient(ellipse at 50% 120%, rgba(246,246,246,0.12), transparent 60%)",
         }}
       />
     </div>

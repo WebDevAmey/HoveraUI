@@ -49,7 +49,7 @@ export default function SiteNav({ onOpenSidebar, onOpenCommand }: SiteNavProps) 
           )}
 
           <Link href="/" className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-md text-sm font-bold text-white" style={{ background: "var(--gradient-brand)" }}>
+            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-hovera text-sm font-bold text-hovera-foreground">
               H
             </span>
             <span className="text-base font-bold tracking-tight text-foreground">

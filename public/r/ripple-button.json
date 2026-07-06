@@ -8,7 +8,7 @@
     {
       "path": "ripple-button.tsx",
       "target": "components/ui/ripple-button.tsx",
-      "content": "export default function RippleButton() {\n  return (\n    <button className=\"relative overflow-hidden rounded-lg bg-blue-600 px-7 py-3 text-white group focus-visible:outline-2 focus-visible:outline-offset-2\">\n      <span className=\"absolute inset-0 scale-0 bg-white opacity-0 transition-transform duration-300 group-active:scale-150 group-active:opacity-20\" />\n      <span className=\"relative\">\n        Click Me\n      </span>\n    </button>\n  );\n}\n",
+      "content": "export default function RippleButton() {\n  return (\n    <button className=\"relative overflow-hidden rounded-lg bg-neutral-600 px-7 py-3 text-white group focus-visible:outline-2 focus-visible:outline-offset-2\">\n      <span className=\"absolute inset-0 scale-0 bg-white opacity-0 transition-transform duration-300 group-active:scale-150 group-active:opacity-20\" />\n      <span className=\"relative\">\n        Click Me\n      </span>\n    </button>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

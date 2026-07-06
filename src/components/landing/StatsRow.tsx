@@ -78,12 +78,7 @@ export default function StatsRow() {
           </p>
         </div>
         <div className="bg-card px-6 py-8 text-center">
-          <p
-            className="bg-clip-text text-3xl font-semibold text-transparent"
-            style={{ backgroundImage: "var(--gradient-brand)" }}
-          >
-            CLI Ready
-          </p>
+          <p className="text-3xl font-semibold text-foreground">CLI Ready</p>
           <p className="mt-1 font-mono text-xs uppercase tracking-wider text-muted-foreground">
             Registry
           </p>

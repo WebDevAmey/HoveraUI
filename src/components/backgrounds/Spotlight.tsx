@@ -7,12 +7,12 @@ export default function Spotlight() {
           background: `
             radial-gradient(
               80% 80% at 50% 0%,
-              rgba(168,85,247,.4),
+              rgba(247,247,247,.4),
               transparent 60%
             ),
             radial-gradient(
               80% 80% at 50% 100%,
-              rgba(59,130,246,.4),
+              rgba(246,246,246,.4),
               transparent 60%
             )
         

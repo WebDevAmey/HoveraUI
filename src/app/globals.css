@@ -35,124 +35,133 @@
   --color-surface-0: var(--surface-0);
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #09090b;
+  /* ───────────── Light theme: warm amber/terracotta ───────────── */
+  --background: #faf8f5;
+  --foreground: #1c1814;
   --card: #ffffff;
-  --card-foreground: #09090b;
-  --primary: #09090b;
+  --card-foreground: #1c1814;
+  --primary: #d97706;
   --primary-foreground: #ffffff;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #09090b;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
+  --secondary: #f5f0eb;
+  --secondary-foreground: #1c1814;
+  --muted: #f0ebe5;
+  --muted-foreground: #8c8279;
+  --accent: #f5f0eb;
+  --accent-foreground: #1c1814;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --accent: #f4f4f5;
-  --accent-foreground: #09090b;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #09090b;
+  --border: #e6ddd4;
+  --input: #e6ddd4;
+  --ring: #d97706;
 
-  /* Hovera brand accent: indigo-violet palette */
-  --hovera-accent: #6d28d9;
+  --hovera-accent: #d97706;
   --hovera-accent-foreground: #ffffff;
-  --hovera-accent-glow: rgba(109, 40, 217, 0.35);
-  --code-bg: #fafafa;
-  --code-foreground: #18181b;
-  --doc-radius: 0.75rem;
+  --hovera-accent-glow: rgba(217, 119, 6, 0.3);
+  --code-bg: #f5f0eb;
+  --code-foreground: #1c1814;
+  --doc-radius: 0rem;
 
-  /* Locked accent (single source of truth, same as --hovera-accent) */
-  --accent-locked: #6d28d9;
-  --accent-locked-glow: rgba(109, 40, 217, 0.35);
-  --accent-locked-muted: rgba(109, 40, 217, 0.08);
+  --accent-locked: #d97706;
+  --accent-locked-glow: rgba(217, 119, 6, 0.3);
+  --accent-locked-muted: rgba(217, 119, 6, 0.1);
 
-  /* Light mode has no real depth tiers, surfaces stay close to background */
   --surface-0: #ffffff;
-  --surface-1: #fafafa;
-  --surface-2: #f4f4f5;
+  --surface-1: #faf8f5;
+  --surface-2: #f5f0eb;
 
-  /* Display type scale (responsive, clamp-based, on top of Geist Sans) */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1c1814;
+  --sidebar-primary: #d97706;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f0eb;
+  --sidebar-accent-foreground: #1c1814;
+  --sidebar-border: #e6ddd4;
+  --sidebar-ring: #d97706;
+
   --text-display-sm: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
-  --text-display-md: clamp(2.25rem, 1.6rem + 2.5vw, 3.25rem);
-  --text-display-lg: clamp(2.75rem, 1.8rem + 3.5vw, 4.5rem);
+  --text-display-md: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --text-display-lg: clamp(3.25rem, 2.25rem + 4vw, 6rem);
 
-  --radius-card: 1rem;
-  --shadow-glow: 0 0 30px var(--accent-locked-glow);
+  --radius-card: 0rem;
+  --shadow-card: 0 4px 12px rgba(28, 24, 20, 0.08), 0 1px 3px rgba(28, 24, 20, 0.06);
+  --shadow-card-hover: 0 8px 24px rgba(28, 24, 20, 0.12), 0 2px 6px rgba(28, 24, 20, 0.08);
+  --shadow-elevated: 0 12px 36px rgba(28, 24, 20, 0.12), 0 3px 8px rgba(28, 24, 20, 0.06);
 
-  /* Motion tokens, consumed by CSS keyframes and src/lib/motion.ts */
   --ease-flow: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-fast: 150ms;
   --duration-base: 300ms;
   --duration-slow: 450ms;
-
 }
 
 .dark {
-  --background: #09090b;
-  --foreground: #ffffff;
-  --card: #09090b;
-  --card-foreground: #ffffff;
-  --primary: #ffffff;
-  --primary-foreground: #09090b;
-  --secondary: #27272a;
-  --secondary-foreground: #ffffff;
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
+  /* ───────────── Dark theme: violet/indigo ───────────── */
+  --background: #0f0d14;
+  --foreground: #f0edf5;
+  --card: #1a1723;
+  --card-foreground: #f0edf5;
+  --primary: #8b5cf6;
+  --primary-foreground: #ffffff;
+  --secondary: #1f1c2b;
+  --secondary-foreground: #f0edf5;
+  --muted: #1f1c2b;
+  --muted-foreground: #8f86a3;
+  --accent: #1f1c2b;
+  --accent-foreground: #f0edf5;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --accent: #27272a;
-  --accent-foreground: #ffffff;
-  --border: #27272a;
-  --input: #27272a;
-  --ring: #ffffff;
+  --border: #2d2940;
+  --input: #2d2940;
+  --ring: #8b5cf6;
 
-  /* Hovera brand accent, indigo-violet on dark */
   --hovera-accent: #8b5cf6;
   --hovera-accent-foreground: #ffffff;
-  --hovera-accent-glow: rgba(139, 92, 246, 0.4);
-  --code-bg: #18181b;
-  --code-foreground: #e4e4e7;
-  --doc-radius: 0.75rem;
+  --hovera-accent-glow: rgba(139, 92, 246, 0.35);
+  --code-bg: #1a1723;
+  --code-foreground: #e6e1f0;
+  --doc-radius: 0rem;
 
-  /* Locked accent (single source of truth, indigo-violet on dark) */
   --accent-locked: #8b5cf6;
-  --accent-locked-glow: rgba(139, 92, 246, 0.4);
-  --accent-locked-muted: rgba(139, 92, 246, 0.15);
+  --accent-locked-glow: rgba(139, 92, 246, 0.35);
+  --accent-locked-muted: rgba(139, 92, 246, 0.12);
 
-  /* Dark-first surface tiers: real depth instead of a single flat inversion */
-  --surface-0: #09090b;
-  --surface-1: #131316;
-  --surface-2: #1c1c21;
+  --surface-0: #0f0d14;
+  --surface-1: #14121c;
+  --surface-2: #1a1723;
 
-  --text-display-sm: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
-  --text-display-md: clamp(2.25rem, 1.6rem + 2.5vw, 3.25rem);
-  --text-display-lg: clamp(2.75rem, 1.8rem + 3.5vw, 4.5rem);
+  --sidebar: #14121c;
+  --sidebar-foreground: #f0edf5;
+  --sidebar-primary: #8b5cf6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1f1c2b;
+  --sidebar-accent-foreground: #f0edf5;
+  --sidebar-border: #2d2940;
+  --sidebar-ring: #8b5cf6;
 
-  --radius-card: 1rem;
-  --shadow-glow: 0 0 30px var(--accent-locked-glow);
-
-  --ease-flow: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-fast: 150ms;
-  --duration-base: 300ms;
-  --duration-slow: 450ms;
-
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-elevated: 0 12px 36px rgba(0, 0, 0, 0.4), 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Lenis smooth scroll (see SmoothScroll.tsx). Native smooth-behavior must
-   yield to Lenis's rAF-driven scroll while it is active. */
 html.lenis, html.lenis body { height: auto; }
 html.lenis { scroll-behavior: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 
-/* Custom cursor: hide the native cursor only while the replacement is live;
-   text fields keep their I-beam. */
 html.custom-cursor-active,
 html.custom-cursor-active * { cursor: none; }
 html.custom-cursor-active :is(input, textarea, select) { cursor: auto; }
@@ -162,24 +171,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 9999px; }
+::-webkit-scrollbar-thumb { background: #8f86a3; border-radius: 0; }
 
-/* Selection */
-::selection { background: rgb(109 40 217 / 0.15); }
-.dark ::selection { background: rgb(139 92 246 / 0.25); }
+::selection { background: rgba(217, 119, 6, 0.15); }
+.dark ::selection { background: rgba(139, 92, 246, 0.25); }
 
-/* Focus */
 :focus-visible {
   outline: 2px solid var(--accent-locked);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 .dark :focus-visible { outline-color: var(--accent-locked); }
 
-/* Keyframes */
+/* ─── Keyframes ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -190,9 +196,6 @@ body {
   to   { opacity: 1; }
 }
 
-/* Hero kinetic headline: per-word rise out of a clipped line. CSS-driven so
-   the markup is hydration-identical and the reduced-motion kill-switch above
-   makes it instant for free. */
 @keyframes wordUp {
   from { transform: translateY(110%); }
   to   { transform: translateY(0); }
@@ -227,24 +230,6 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-up {
-  animation: fadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: var(--stagger, 0ms);
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.2s ease both;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* Flow thread doc animation (clip-path reveal, distinct from fade/scale) */
 @keyframes clipRevealUp {
   from { clip-path: inset(0 0 100% 0); opacity: 0; }
   to   { clip-path: inset(0 0 0% 0); opacity: 1; }
@@ -255,19 +240,35 @@ body {
   50% { box-shadow: 0 0 0 6px var(--hovera-accent-glow); }
 }
 
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.45s var(--ease-flow) both;
+  animation-delay: var(--stagger, 0ms);
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.22s var(--ease-flow) both;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s var(--ease-flow) both;
+}
+
 .animate-clip-reveal {
-  animation: clipRevealUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: clipRevealUp 0.4s var(--ease-flow) both;
   animation-delay: var(--stagger, 0ms);
 }
 
 .flow-node-active {
   animation: flowNodePulse 1.8s ease-in-out infinite;
-}
-
-/* Testimonial marquee: continuous translateX loop, pausable on hover */
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
 }
 
 .animate-marquee {
@@ -300,7 +301,7 @@ body {
   }
 }
 
-::view-transition-old(root), ::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
 }

@@ -1,36 +1,32 @@
-import RevealSection from "@/components/docs/RevealSection";
-import MagneticLink from "@/components/MagneticLink";
+import Link from "next/link";
 
 export default function FinalCTA() {
   return (
-    <RevealSection id="cta" className="relative px-4 py-24 md:px-8">
-      <div className="relative mx-auto max-w-3xl">
-        <div
-          className="rounded-[calc(var(--radius-card)+1px)] p-px"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--foreground) , transparent 45%, transparent 55%, var(--foreground))",
-            opacity: 0.35,
-          }}
-        >
-          <div className="rounded-[var(--radius-card)] bg-card px-8 py-12 text-center">
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              Start with a component that already knows how to hover.
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              No account, no backend, no review queue. Pick one, copy it, ship it.
-            </p>
-            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <MagneticLink href="/docs" primary>
-                Browse components
-              </MagneticLink>
-              <MagneticLink href="https://github.com/WebDevAmey/HoveraUI" external>
-                Star on GitHub
-              </MagneticLink>
-            </div>
-          </div>
+    <section className="relative px-4 py-24 md:px-8">
+      <div className="mx-auto max-w-3xl text-center">
+        <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Get started</span>
+        <h2 className="mt-6 text-[length:var(--text-display-md)] font-semibold tracking-tight text-foreground">
+          Start with a component that already knows how to hover.
+        </h2>
+        <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted-foreground">
+          No account, no backend, no review queue. Pick one, copy it, ship it.
+        </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link
+            href="/components"
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-7 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90"
+          >
+            Browse components
+            <span aria-hidden="true">↗</span>
+          </Link>
+          <Link
+            href="https://github.com/WebDevAmey/HoveraUI"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-border px-7 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+          >
+            Star on GitHub
+          </Link>
         </div>
       </div>
-    </RevealSection>
+    </section>
   );
 }

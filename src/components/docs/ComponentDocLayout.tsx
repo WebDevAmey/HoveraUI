@@ -6,9 +6,6 @@ import { notFound } from "next/navigation";
 import { findDocEntry } from "@/data/docs";
 import { getRegistryUrl, getRegistryBaseUrl } from "@/lib/registry";
 import { PackageManagerProvider, usePackageManager } from "@/context/PackageManagerContext";
-import { useApp } from "@/context/AppContext";
-import SiteNav from "@/components/layout/SiteNav";
-import CommandPalette from "@/components/CommandPalette";
 import DocsSidebar from "@/components/docs/DocsSidebar";
 import TabToggle from "@/components/docs/TabToggle";
 import PackageManagerTabs from "@/components/docs/PackageManagerTabs";
@@ -18,7 +15,7 @@ import PropsTable from "@/components/docs/PropsTable";
 import FlowThreadTOC from "@/components/docs/FlowThreadTOC";
 import RevealSection from "@/components/docs/RevealSection";
 import CopyButton from "@/components/CopyButton";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/page-layout";
 import type { FlowThreadSection } from "@/components/docs/useFlowThreadProgress";
 
 const PAGE_SECTIONS: FlowThreadSection[] = [
@@ -64,7 +61,6 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [tocOpen, setTocOpen] = useState(false);
   const { packageManager } = usePackageManager();
-  const { setCommandOpen } = useApp();
 
   const registryUrl = getRegistryUrl(entry.slug);
   const baseUrl = getRegistryBaseUrl();
@@ -72,10 +68,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
   const Preview = entry.Preview;
 
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <SiteNav onOpenSidebar={() => setSidebarOpen(true)} onOpenCommand={() => setCommandOpen(true)} />
-      <CommandPalette />
-
+    <PageLayout>
       <div className="mx-auto flex w-full max-w-7xl flex-1 gap-8 px-4 py-8 md:px-8">
         {/* Left sidebar (desktop) */}
         <aside className="hidden w-56 shrink-0 lg:block">
@@ -101,7 +94,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
               <button
                 onClick={() => setSidebarOpen(false)}
                 aria-label="Close navigation"
-                className="mb-4 flex h-8 w-8 items-center justify-center self-end rounded-md text-muted-foreground hover:bg-secondary"
+                className="mb-4 flex h-8 w-8 items-center justify-center self-end text-muted-foreground hover:bg-secondary"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M18 6L6 18M6 6l12 12" />
@@ -126,7 +119,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
             <button
               onClick={() => setTocOpen((v) => !v)}
               aria-expanded={tocOpen}
-              className="flex w-full items-center justify-between rounded-md border border-border bg-secondary/40 px-3 py-2 text-sm text-foreground"
+              className="flex w-full items-center justify-between border border-border bg-secondary/40 px-3 py-2 text-sm text-foreground"
             >
               On this page
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={tocOpen ? "rotate-180" : ""}>
@@ -134,7 +127,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
               </svg>
             </button>
             {tocOpen && (
-              <div className="mt-2 rounded-md border border-border bg-card p-3">
+              <div className="mt-2 border border-border bg-card p-3">
                 <FlowThreadTOC sections={PAGE_SECTIONS} />
               </div>
             )}
@@ -144,7 +137,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
             <h1 className="text-2xl font-semibold tracking-tight text-foreground">
               {entry.name}
               {entry.isNew && (
-                <span className="ml-2 rounded-full bg-hovera px-2 py-0.5 text-[11px] font-semibold text-hovera-foreground align-middle">
+                <span className="ml-2 bg-hovera px-2 py-0.5 text-[11px] font-semibold text-hovera-foreground align-middle">
                   New
                 </span>
               )}
@@ -156,7 +149,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
           </RevealSection>
 
           <RevealSection id="preview" className="mb-12">
-            <div className="overflow-hidden rounded-[var(--doc-radius)] border border-border bg-card">
+            <div className="overflow-hidden border border-border bg-card">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-3 py-2">
                 <TabToggle
                   label="Preview or code"
@@ -175,7 +168,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
                 </code>
                 <CopyButton
                   code={installCommand}
-                  className="flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  className="flex shrink-0 items-center gap-1.5 px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
                 />
               </div>
 
@@ -184,7 +177,7 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
                   <Preview />
                 </PreviewCanvas>
               ) : (
-                <CodeBlock code={entry.code} filename={`${entry.slug}.tsx`} className="rounded-none border-none" />
+                <CodeBlock code={entry.code} filename={`${entry.slug}.tsx`} className="border-none" />
               )}
             </div>
           </RevealSection>
@@ -254,8 +247,6 @@ function ComponentDocLayoutInner({ entry }: { entry: NonNullable<ReturnType<type
           </div>
         </aside>
       </div>
-
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

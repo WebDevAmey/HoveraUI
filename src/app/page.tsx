@@ -4,13 +4,12 @@ import CommandPaletteWithTrigger from "@/components/landing/CommandPaletteWithTr
 import Hero from "@/components/landing/Hero";
 import TechStack from "@/components/landing/TechStack";
 import StatsRow from "@/components/landing/StatsRow";
-import AnticipatoryScenes from "@/components/landing/AnticipatoryScenes";
-import DiscoverPaths from "@/components/landing/DiscoverPaths";
-import ShowcaseGrid from "@/components/landing/ShowcaseGrid";
 import SignatureShowcase from "@/components/landing/SignatureShowcase";
-import QuickStart from "@/components/landing/QuickStart";
+import ShowcaseGrid from "@/components/landing/ShowcaseGrid";
+import AnticipatoryScenes from "@/components/landing/AnticipatoryScenes";
 import StoryStrip from "@/components/landing/StoryStrip";
 import Marquee from "@/components/landing/Marquee";
+import QuickStart from "@/components/landing/QuickStart";
 import FinalCTA from "@/components/landing/FinalCTA";
 
 export const metadata: Metadata = {
@@ -24,17 +23,16 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <CommandPaletteWithTrigger />
       <main>
-      <Hero />
-      <TechStack />
-      <StatsRow />
-      <AnticipatoryScenes />
-      <SignatureShowcase />
-      <ShowcaseGrid />
-      <DiscoverPaths />
-      <StoryStrip />
-      <Marquee />
-      <QuickStart />
-      <FinalCTA />
+        <Hero />
+        <TechStack />
+        <StatsRow />
+        <SignatureShowcase />
+        <ShowcaseGrid />
+        <AnticipatoryScenes />
+        <StoryStrip />
+        <Marquee />
+        <QuickStart />
+        <FinalCTA />
       </main>
       <Footer />
     </div>

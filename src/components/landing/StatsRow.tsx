@@ -14,7 +14,6 @@ import { textEffects } from "@/data/text";
 import { sections } from "@/data/section";
 import { commands } from "@/data/command";
 import { docsNav } from "@/data/docs/nav";
-import RevealSection from "@/components/docs/RevealSection";
 
 function CountUp({ target, duration = 1.2 }: { target: number; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -59,31 +58,33 @@ export default function StatsRow() {
   const families = docsNav.length;
 
   return (
-    <RevealSection id="stats" className="border-b border-border px-4 py-10 md:px-8">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-card)] border border-border bg-border sm:grid-cols-3">
-        <div className="bg-card px-6 py-8 text-center">
-          <p className="text-3xl font-semibold text-foreground tabular-nums">
-            <CountUp target={total} />
-          </p>
-          <p className="mt-1 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            Components
-          </p>
-        </div>
-        <div className="bg-card px-6 py-8 text-center">
-          <p className="text-3xl font-semibold text-foreground tabular-nums">
-            <CountUp target={families} />
-          </p>
-          <p className="mt-1 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            Families
-          </p>
-        </div>
-        <div className="bg-card px-6 py-8 text-center">
-          <p className="text-3xl font-semibold text-foreground">CLI Ready</p>
-          <p className="mt-1 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            Registry
-          </p>
+    <section className="border-b border-border px-4 py-16 md:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-card)] border border-border bg-border sm:grid-cols-3">
+          <div className="bg-card px-6 py-10 text-center">
+            <p className="text-4xl font-bold text-foreground tabular-nums">
+              <CountUp target={total} />
+            </p>
+            <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground">
+              Components
+            </p>
+          </div>
+          <div className="bg-card px-6 py-10 text-center">
+            <p className="text-4xl font-bold text-foreground tabular-nums">
+              <CountUp target={families} />
+            </p>
+            <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground">
+              Families
+            </p>
+          </div>
+          <div className="bg-card px-6 py-10 text-center">
+            <p className="text-4xl font-bold text-foreground">CLI</p>
+            <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted-foreground">
+              Registry
+            </p>
+          </div>
         </div>
       </div>
-    </RevealSection>
+    </section>
   );
 }

@@ -189,10 +189,9 @@ export const AnimatedThemeToggler = ({
       Math.max(y, viewportHeight - y)
     )
 
-    const applyTheme = () => {
-      const newTheme = !isDark
-      // Always toggle the class synchronously so the View Transitions API
-      // snapshots the new theme inside the startViewTransition callback.
+    const newTheme = !isDark
+
+    if (typeof document.startViewTransition !== "function") {
       document.documentElement.classList.toggle("dark")
       if (isControlled) {
         onThemeChange?.(newTheme ? "dark" : "light")
@@ -200,10 +199,6 @@ export const AnimatedThemeToggler = ({
         setInternalIsDark(newTheme)
         localStorage.setItem("theme", newTheme ? "dark" : "light")
       }
-    }
-
-    if (typeof document.startViewTransition !== "function") {
-      applyTheme()
       return
     }
 
@@ -222,8 +217,6 @@ export const AnimatedThemeToggler = ({
       "--magicui-theme-toggle-vt-duration",
       `${duration}ms`
     )
-    // Pin the collapsed clip-path via CSS so Firefox does not paint the new
-    // theme unclipped between snapshot and the ready.then() JS animation.
     root.style.setProperty("--magicui-theme-vt-clip-from", clipPath[0])
     const cleanup = () => {
       delete root.dataset.magicuiThemeVt
@@ -232,12 +225,29 @@ export const AnimatedThemeToggler = ({
     }
 
     const transition = document.startViewTransition(() => {
-      flushSync(applyTheme)
+      flushSync(() => {
+        document.documentElement.classList.toggle("dark")
+      })
     })
+
     if (typeof transition?.finished?.finally === "function") {
-      transition.finished.finally(cleanup)
+      transition.finished.finally(() => {
+        cleanup()
+        if (isControlled) {
+          onThemeChange?.(newTheme ? "dark" : "light")
+        } else {
+          setInternalIsDark(newTheme)
+          localStorage.setItem("theme", newTheme ? "dark" : "light")
+        }
+      })
     } else {
       cleanup()
+      if (isControlled) {
+        onThemeChange?.(newTheme ? "dark" : "light")
+      } else {
+        setInternalIsDark(newTheme)
+        localStorage.setItem("theme", newTheme ? "dark" : "light")
+      }
     }
 
     const ready = transition?.ready
@@ -245,12 +255,11 @@ export const AnimatedThemeToggler = ({
       ready.then(() => {
         document.documentElement.animate(
           {
-            clipPath,
+            clipPath: [clipPath[0], clipPath[1]],
           },
           {
             duration,
-            // Star: linear avoids easing overshoot that fights polygon interpolation at t→1; VT group duration is synced above.
-            easing: shape === "star" ? "linear" : "ease-in-out",
+            easing: shape === "star" ? "linear" : "cubic-bezier(0.16, 1, 0.3, 1)",
             fill: "forwards",
             pseudoElement: "::view-transition-new(root)",
           }

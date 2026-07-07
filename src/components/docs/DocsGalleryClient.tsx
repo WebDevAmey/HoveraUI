@@ -6,11 +6,10 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { docEntries } from "@/data/docs";
 import { useApp } from "@/context/AppContext";
-import SiteNav from "@/components/layout/SiteNav";
-import Footer from "@/components/layout/Footer";
 import CursorGlowCard from "@/components/CursorGlowCard";
 import LazyMount from "@/components/LazyMount";
 import { TRANSITION_FLOW } from "@/lib/motion";
+import PageLayout from "@/components/layout/page-layout";
 
 type FilterValue =
   | "all"
@@ -75,10 +74,8 @@ export default function DocsGalleryClient() {
   }, [filter, search, favorites]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <SiteNav />
-
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-12 md:px-8">
+    <PageLayout>
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 md:px-8">
         <h1 className="text-2xl font-semibold tracking-tight text-foreground">Components</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Browse every component, preview live, copy the code or install via the CLI.
@@ -88,7 +85,7 @@ export default function DocsGalleryClient() {
           <div
             role="tablist"
             aria-label="Filter by category"
-            className="flex flex-wrap items-center gap-1 rounded-lg border border-border bg-secondary/40 p-1"
+            className="flex flex-wrap items-center gap-1 border border-border bg-secondary/40 p-1"
           >
             {FILTERS.map((f) => (
               <button
@@ -96,7 +93,7 @@ export default function DocsGalleryClient() {
                 role="tab"
                 aria-selected={filter === f.value}
                 onClick={() => setFilter(f.value)}
-                className={`relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                className={`relative px-3 py-1.5 text-sm font-medium transition-colors ${
                   filter === f.value
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -106,7 +103,7 @@ export default function DocsGalleryClient() {
                   <motion.div
                     layoutId="active-filter-pill"
                     transition={TRANSITION_FLOW}
-                    className="absolute inset-0 -z-10 rounded-md bg-card shadow-sm ring-1 ring-inset ring-border"
+                    className="absolute inset-0 -z-10 bg-card shadow-[var(--shadow-card)]"
                   />
                 )}
                 {f.label}
@@ -117,7 +114,7 @@ export default function DocsGalleryClient() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2 rounded-md border border-border bg-secondary/40 px-3 py-2 sm:w-64">
+          <div className="flex items-center gap-2 border border-border bg-secondary/40 px-3 py-2 sm:w-64">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-muted-foreground" aria-hidden="true">
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -147,8 +144,6 @@ export default function DocsGalleryClient() {
               const favorited = isFavorite(entry.slug);
               return (
                 <CursorGlowCard key={entry.slug}>
-                  {/* Not a <Link>: some previews (e.g. navbar demos) render their own
-                      <a> tags, and nesting an anchor inside an anchor is invalid HTML. */}
                   <div
                     role="link"
                     tabIndex={0}
@@ -172,7 +167,7 @@ export default function DocsGalleryClient() {
                       <h2 className="truncate text-sm font-medium tracking-tight text-foreground hover:underline">
                         {entry.name}
                         {entry.isNew && (
-                          <span className="ml-2 rounded-full bg-hovera px-1.5 py-0.5 text-[10px] font-semibold text-hovera-foreground align-middle">
+                          <span className="ml-2 bg-hovera px-1.5 py-0.5 text-[10px] font-semibold text-hovera-foreground align-middle">
                             New
                           </span>
                         )}
@@ -186,7 +181,7 @@ export default function DocsGalleryClient() {
                       }}
                       aria-label={favorited ? `Remove ${entry.name} from favorites` : `Add ${entry.name} to favorites`}
                       aria-pressed={favorited}
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center transition-colors ${
                         favorited ? "text-rose-500" : "text-muted-foreground hover:text-rose-400"
                       }`}
                     >
@@ -200,9 +195,7 @@ export default function DocsGalleryClient() {
             })}
           </div>
         )}
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </PageLayout>
   );
 }

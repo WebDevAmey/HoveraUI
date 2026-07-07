@@ -21,6 +21,9 @@ export function ThemeToggle() {
     <AnimatedThemeToggler
       theme={isDark ? "dark" : "light"}
       onThemeChange={(theme) => setTheme(theme)}
+      fromCenter
+      variant="circle"
+      duration={700}
       className="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white"
     />
   );

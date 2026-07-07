@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { docEntries } from "@/data/docs";
-import CursorGlowCard from "@/components/CursorGlowCard";
 import LazyMount from "@/components/LazyMount";
 import RevealSection from "@/components/docs/RevealSection";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
+import { CARD_HOVER_TRANSITION } from "@/lib/motion";
 
 const FEATURED_SLUGS = [
   "glow-button",
@@ -24,54 +26,76 @@ const FEATURED_SLUGS = [
 
 export default function ShowcaseGrid() {
   const router = useRouter();
+  const prefersReducedMotion = useReducedMotionSafe();
   const entries = FEATURED_SLUGS
     .map((slug) => docEntries.find((e) => e.slug === slug))
     .filter((e): e is NonNullable<typeof e> => Boolean(e));
 
   return (
-    <RevealSection id="showcase" className="border-b border-border px-4 py-16 md:px-8">
+    <RevealSection id="showcase" className="border-b border-border px-4 py-20 md:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground">A few favorites</h2>
-        <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-          Hover any card. Click through for the live preview, the code, and the install command.
-        </p>
+        <div className="flex items-end justify-between">
+          <div>
+            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Components</span>
+            <h2 className="mt-3 text-[length:var(--text-display-sm)] font-semibold tracking-tight text-foreground">
+              Featured work
+            </h2>
+          </div>
+          <Link
+            href="/components"
+            className="hidden font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
+          >
+            View all ↗
+          </Link>
+        </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {entries.map((entry) => {
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {entries.map((entry, i) => {
             const Preview = entry.Preview;
             return (
-              <CursorGlowCard key={entry.slug}>
-                {/* Not a <Link>: some previews (e.g. navbar demos) render their own
-                    <a> tags, and nesting an anchor inside an anchor is invalid HTML. */}
+              <motion.div
+                key={entry.slug}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={prefersReducedMotion ? undefined : { y: -4, transition: CARD_HOVER_TRANSITION }}
+                onClick={() => router.push(`/components/${entry.slug}`)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") router.push(`/components/${entry.slug}`);
+                }}
+                role="link"
+                tabIndex={0}
+                className="group cursor-pointer overflow-hidden rounded-[var(--radius-card)] border border-border bg-card"
+              >
                 <div
-                  role="link"
-                  tabIndex={0}
-                  aria-label={`View ${entry.name} docs`}
-                  onClick={() => router.push(`/components/${entry.slug}`)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") router.push(`/components/${entry.slug}`);
-                  }}
-                  className="block cursor-pointer"
+                  className={`relative flex h-44 items-center justify-center overflow-hidden p-6 ${
+                    entry.needsLightPreview ? "bg-white" : "bg-[#0f0f13]"
+                  }`}
                 >
-                  <LazyMount
-                    className={`flex h-36 items-center justify-center overflow-hidden p-5 ${
-                      entry.needsLightPreview ? "bg-white" : "bg-secondary/20"
-                    }`}
-                  >
+                  <LazyMount>
                     <Preview />
                   </LazyMount>
+                  <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/60 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-white/70 backdrop-blur-sm">
+                    {entry.category}
+                  </div>
                 </div>
-                <div className="border-t border-border px-4 py-3">
-                  <Link href={`/components/${entry.slug}`}>
-                    <h3 className="truncate text-sm font-medium tracking-tight text-foreground hover:underline">
-                      {entry.name}
-                    </h3>
-                  </Link>
-                  <p className="truncate text-xs text-muted-foreground">{entry.category}</p>
+                <div className="border-t border-border px-4 py-3.5">
+                  <h3 className="text-sm font-medium text-foreground group-hover:text-[var(--accent-locked)]">
+                    {entry.name}
+                  </h3>
                 </div>
-              </CursorGlowCard>
+              </motion.div>
             );
           })}
+        </div>
+
+        <div className="mt-8 text-center sm:hidden">
+          <Link
+            href="/components"
+            className="font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
+          >
+            View all components ↗
+          </Link>
         </div>
       </div>
     </RevealSection>

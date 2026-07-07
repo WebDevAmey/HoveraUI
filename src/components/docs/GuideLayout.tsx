@@ -1,10 +1,7 @@
 "use client";
 
-import SiteNav from "@/components/layout/SiteNav";
-import Footer from "@/components/layout/Footer";
-import CommandPalette from "@/components/CommandPalette";
 import DocsSidebar from "@/components/docs/DocsSidebar";
-import { useApp } from "@/context/AppContext";
+import PageLayout from "@/components/layout/page-layout";
 
 interface GuideLayoutProps {
   slug: string;
@@ -15,12 +12,8 @@ interface GuideLayoutProps {
 
 /** Shared shell for the /docs/* guide pages: nav, sidebar, prose column. */
 export default function GuideLayout({ slug, title, lead, children }: GuideLayoutProps) {
-  const { setCommandOpen } = useApp();
-
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <SiteNav onOpenCommand={() => setCommandOpen(true)} />
-      <CommandPalette />
+    <PageLayout>
       <div className="mx-auto flex w-full max-w-7xl flex-1 gap-10 px-4 py-10 md:px-8">
         <DocsSidebar
           activeSlug={slug}
@@ -32,8 +25,7 @@ export default function GuideLayout({ slug, title, lead, children }: GuideLayout
           <div className="prose-hovera mt-10 flex flex-col gap-8">{children}</div>
         </main>
       </div>
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }
 
@@ -50,7 +42,7 @@ export function GuideSection({ title, children }: { title: string; children: Rea
 
 export function GuideCode({ children }: { children: string }) {
   return (
-    <pre className="overflow-x-auto rounded-lg border border-border bg-code-bg p-4 font-mono text-xs leading-relaxed text-code-foreground">
+    <pre className="overflow-x-auto border border-border bg-code-bg p-4 font-mono text-xs leading-relaxed text-code-foreground">
       {children}
     </pre>
   );

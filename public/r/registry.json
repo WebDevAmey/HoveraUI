@@ -322,6 +322,19 @@
       ]
     },
     {
+      "name": "skeleton-profile",
+      "type": "registry:component",
+      "title": "Skeleton Profile",
+      "description": "A self-contained loading indicator, skeleton profile.",
+      "files": [
+        {
+          "path": "skeleton-profile.tsx",
+          "target": "components/ui/skeleton-profile.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "mercury-loader",
       "type": "registry:component",
       "title": "Mercury Loader",

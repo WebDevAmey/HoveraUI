@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
 import CommandPaletteWithTrigger from "@/components/landing/CommandPaletteWithTrigger";
-import Hero from "@/components/landing/Hero";
+import { PixelHero } from "@/components/landing/PixelHero";
 import TechStack from "@/components/landing/TechStack";
 import StatsRow from "@/components/landing/StatsRow";
 import SignatureShowcase from "@/components/landing/SignatureShowcase";
@@ -23,7 +23,15 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <CommandPaletteWithTrigger />
       <main>
-        <Hero />
+        <PixelHero
+          word1="Hover"
+          word2="First."
+          description="Interfaces that respond before you click. Over thirty signature components built around hover, motion, and tasteful color accents."
+          primaryCta="Browse components"
+          primaryHref="/components"
+          secondaryCta="View GitHub"
+          githubUrl="https://github.com/WebDevAmey/HoveraUI"
+        />
         <TechStack />
         <StatsRow />
         <SignatureShowcase />

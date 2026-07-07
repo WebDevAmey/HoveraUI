@@ -45,6 +45,13 @@ export default function SiteNav({ onOpenCommand }: SiteNavProps) {
             </motion.button>
           )}
 
+          <Link
+            href="/docs"
+            className="hidden h-8 items-center px-3 text-sm text-foreground/60 transition-colors hover:bg-secondary hover:text-foreground sm:flex"
+          >
+            Docs
+          </Link>
+
           <motion.div whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }} whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}>
             <Link
               href="https://github.com/WebDevAmey/HoveraUI"

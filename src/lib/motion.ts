@@ -58,6 +58,14 @@ export const MAGNETIC_SPRING: Transition = {
   mass: 0.5,
 };
 
+/** Shared-layout spring — morphing pills, indicators between positions. */
+export const SPRING_LAYOUT: Transition = {
+  type: "spring",
+  stiffness: 360,
+  damping: 32,
+  mass: 0.6,
+};
+
 /** Cursor-follow glow card hover scale. */
 export const CARD_HOVER_TRANSITION: Transition = {
   duration: DURATION_BASE,

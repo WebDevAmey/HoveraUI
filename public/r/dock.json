@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dock",
+  "type": "registry:component",
+  "title": "Dock",
+  "description": "A macOS-style bottom dock with spring-active pill animation and glass backdrop.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "dock.tsx",
+      "target": "components/ui/dock.tsx",
+      "content": "\"use client\";\n\nimport { type ReactNode, useState } from \"react\";\nimport { motion, useReducedMotion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface DockItem {\n  icon: ReactNode;\n  label: string;\n}\n\ninterface DockProps {\n  items: (DockItem & { separatorAfter?: boolean })[];\n  defaultActive?: string;\n  className?: string;\n}\n\nexport default function Dock({ items, defaultActive, className }: DockProps) {\n  const [active, setActive] = useState(defaultActive ?? items[0]?.label);\n  const prefersReducedMotion = useReducedMotion();\n  const spring = { type: \"spring\" as const, stiffness: 360, damping: 32, mass: 0.6 };\n\n  return (\n    <div\n      className={cn(\n        \"mx-auto flex w-max items-end gap-1.5 rounded-2xl border border-white/10 bg-neutral-900/70 px-3 pb-2 pt-2.5 shadow-lg shadow-black/20 backdrop-blur-xl\",\n        className,\n      )}\n    >\n      {items.map((item) => (\n        <div key={item.label} className=\"flex items-end gap-1.5\">\n          <button\n            type=\"button\"\n            onClick={() => setActive(item.label)}\n            className=\"group relative flex flex-col items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2\"\n            aria-label={item.label}\n          >\n            <motion.div\n              layout\n              layoutId={prefersReducedMotion ? undefined : \"dock-active\"}\n              transition={prefersReducedMotion ? { duration: 0 } : spring}\n              className={cn(\n                \"flex items-center justify-center rounded-xl p-2.5 transition-colors\",\n                active === item.label\n                  ? \"bg-white text-neutral-900\"\n                  : \"text-neutral-400 hover:text-neutral-200\",\n              )}\n            >\n              {item.icon}\n            </motion.div>\n            <span className=\"pointer-events-none text-[10px] font-medium opacity-0 transition-all group-hover:opacity-100\">\n              {item.label}\n            </span>\n          </button>\n          {item.separatorAfter && <div className=\"h-8 w-px bg-white/10\" />}\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

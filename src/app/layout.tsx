@@ -6,6 +6,7 @@ import { Toaster } from "@/components/Toast";
 import SmoothScroll from "@/components/chrome/SmoothScroll";
 import Preloader from "@/components/chrome/Preloader";
 import CustomCursor from "@/components/chrome/CustomCursor";
+import SiteDock from "@/components/chrome/SiteDock";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -59,6 +60,7 @@ export default function RootLayout({
             <Preloader />
             <CustomCursor />
             {children}
+            <SiteDock />
             <Toaster />
           </AppProvider>
         </ThemeProvider>

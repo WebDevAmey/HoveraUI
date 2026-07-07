@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GUIDES } from "@/components/docs/DocsSidebar";
+import { GUIDES } from "@/data/guides";
 
 export const metadata: Metadata = {
   title: "Documentation",

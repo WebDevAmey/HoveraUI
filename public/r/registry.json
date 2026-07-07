@@ -364,6 +364,22 @@
       ]
     },
     {
+      "name": "dock",
+      "type": "registry:component",
+      "title": "Dock",
+      "description": "A macOS-style bottom dock with spring-active pill animation and glass backdrop.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "dock.tsx",
+          "target": "components/ui/dock.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "spotlight-card",
       "type": "registry:component",
       "title": "Spotlight Card",

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { docsNav } from "@/data/docs/nav";
+import { GUIDES } from "@/data/guides";
 import type { DocNavGroup } from "@/types/docs";
 
 const ICONS: Record<DocNavGroup["icon"], React.ReactNode> = {
@@ -25,15 +26,6 @@ const ICONS: Record<DocNavGroup["icon"], React.ReactNode> = {
     </svg>
   ),
 };
-
-export const GUIDES = [
-  { slug: "getting-started", name: "Getting started" },
-  { slug: "installation", name: "Installation" },
-  { slug: "theming", name: "Theming" },
-  { slug: "accessibility", name: "Accessibility" },
-  { slug: "contributing", name: "Contributing" },
-  { slug: "faq", name: "FAQ" },
-];
 
 interface DocsSidebarProps {
   activeSlug: string;

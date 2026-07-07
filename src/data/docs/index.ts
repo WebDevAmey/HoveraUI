@@ -9,6 +9,7 @@ import { textDocs } from "@/data/docs/texts";
 import { sectionDocs } from "@/data/docs/sections";
 import { commandDocs } from "@/data/docs/command";
 import { floatingNavbarDoc } from "@/data/docs/floating-navbar";
+import { dockDoc } from "@/data/docs/dock";
 
 export const docEntries: ComponentDocEntry[] = [
   ...buttonDocs,
@@ -16,6 +17,7 @@ export const docEntries: ComponentDocEntry[] = [
   ...backgroundDocs,
   ...navbarDocs,
   floatingNavbarDoc,
+  dockDoc,
   ...cardDocs,
   ...tabDocs,
   ...textDocs,

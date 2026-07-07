@@ -6,7 +6,6 @@ import TechStack from "@/components/landing/TechStack";
 import StatsRow from "@/components/landing/StatsRow";
 import SignatureShowcase from "@/components/landing/SignatureShowcase";
 import ShowcaseGrid from "@/components/landing/ShowcaseGrid";
-import AnticipatoryScenes from "@/components/landing/AnticipatoryScenes";
 import StoryStrip from "@/components/landing/StoryStrip";
 import Marquee from "@/components/landing/Marquee";
 import QuickStart from "@/components/landing/QuickStart";
@@ -36,7 +35,6 @@ export default function Home() {
         <StatsRow />
         <SignatureShowcase />
         <ShowcaseGrid />
-        <AnticipatoryScenes />
         <StoryStrip />
         <Marquee />
         <QuickStart />

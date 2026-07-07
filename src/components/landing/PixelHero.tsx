@@ -398,11 +398,11 @@ export function PixelHero({
       >
         <a
           href={primaryHref}
-          className="group relative inline-flex h-10 md:h-12 items-center justify-center gap-2 md:gap-3 rounded-full bg-primary px-4 md:px-7 text-xs md:text-sm font-semibold text-primary-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_2px_4px_rgba(0,0,0,0.15),0_12px_24px_rgba(0,0,0,0.15)] ring-1 ring-primary/20 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
+          className="group relative inline-flex h-10 md:h-12 items-center justify-center gap-2 md:gap-3 bg-primary px-4 md:px-7 text-xs md:text-sm font-semibold text-primary-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_2px_4px_rgba(0,0,0,0.15),0_12px_24px_rgba(0,0,0,0.15)] ring-1 ring-primary/20 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
         >
           <span className="inline md:hidden">{primaryCtaMobile}</span>
           <span className="hidden md:inline">{primaryCta}</span>
-          <span className="flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full bg-black/10 dark:bg-white/10 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[1px] group-hover:scale-105">
+          <span className="flex h-6 w-6 md:h-7 md:w-7 items-center justify-center bg-black/10 dark:bg-white/10 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[1px] group-hover:scale-105">
             <ArrowIcon className="w-3 h-3 md:w-3.5 md:h-3.5" />
           </span>
         </a>
@@ -410,7 +410,7 @@ export function PixelHero({
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative inline-flex h-10 md:h-12 items-center justify-center gap-2 md:gap-3 rounded-full bg-card px-4 md:px-7 text-xs md:text-sm font-semibold text-card-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_2px_4px_rgba(0,0,0,0.05),0_12px_24px_rgba(0,0,0,0.05)] ring-1 ring-border/50 backdrop-blur-md transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
+          className="group relative inline-flex h-10 md:h-12 items-center justify-center gap-2 md:gap-3 bg-card px-4 md:px-7 text-xs md:text-sm font-semibold text-card-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_2px_4px_rgba(0,0,0,0.05),0_12px_24px_rgba(0,0,0,0.05)] ring-1 ring-border/50 backdrop-blur-md transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
         >
           <GitHubIcon className="w-3.5 h-3.5 md:w-4 md:h-4" />
           <span className="inline md:hidden">{secondaryCtaMobile}</span>

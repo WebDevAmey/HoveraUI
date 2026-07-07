@@ -341,11 +341,11 @@ export function PixelHero({
     document.body.appendChild(div);
     div.className = "text-muted-foreground";
     const muted = getComputedStyle(div).color;
-    div.className = "text-primary";
-    const primary = getComputedStyle(div).color;
+    div.className = "text-foreground";
+    const fg = getComputedStyle(div).color;
     document.body.removeChild(div);
 
-    setThemeColors([muted, muted, muted, muted, primary]);
+    setThemeColors([muted, muted, muted, fg, muted]);
 
     const loadTimer = setTimeout(() => setIsLoaded(true), 50);
     return () => clearTimeout(loadTimer);

@@ -28,9 +28,9 @@ export default function MercuryLoader() {
         role="status"
         aria-live="polite"
       >
-        <div className="absolute h-8 w-8 animate-[mercury-left_2s_infinite_cubic-bezier(0.77,0,0.17,1)] rounded-full bg-zinc-800 blur-[6px]" />
-        <div className="absolute h-8 w-8 animate-[mercury-center_2s_infinite_ease-in-out] rounded-full bg-zinc-800 blur-[6px]" />
-        <div className="absolute h-8 w-8 animate-[mercury-right_2s_infinite_cubic-bezier(0.77,0,0.17,1)] rounded-full bg-zinc-800 blur-[6px] [animation-delay:0.15s]" />
+        <div className="absolute h-8 w-8 animate-[mercury-left_2s_infinite_cubic-bezier(0.77,0,0.17,1)] rounded-full bg-white blur-[6px]" />
+        <div className="absolute h-8 w-8 animate-[mercury-center_2s_infinite_ease-in-out] rounded-full bg-white blur-[6px]" />
+        <div className="absolute h-8 w-8 animate-[mercury-right_2s_infinite_cubic-bezier(0.77,0,0.17,1)] rounded-full bg-white blur-[6px] [animation-delay:0.15s]" />
       </div>
 
       <p className="text-sm font-medium uppercase tracking-wider text-zinc-500">Connecting...</p>

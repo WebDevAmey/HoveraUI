@@ -21,13 +21,13 @@ export default function SiteDock() {
   const isComponents = pathname.startsWith("/components");
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-6 z-40 flex justify-center px-4">
+    <div className="pointer-events-none fixed right-6 top-1/2 z-40 -translate-y-1/2">
       <div className="pointer-events-auto">
-        <Dock size={36} className="gap-0 border border-foreground/5 px-1.5">
+        <Dock size={36} className="flex-col gap-0 border border-foreground/5 px-1 py-1.5">
           <DockItem aria-label="Home" active={isHome}>
             <Tooltip
               content="Home"
-              side="top"
+              side="left"
               wrapperClassName="flex h-full w-full items-center justify-center"
             >
               <Link
@@ -42,7 +42,7 @@ export default function SiteDock() {
           <DockItem aria-label="Components" active={isComponents}>
             <Tooltip
               content="Components"
-              side="top"
+              side="left"
               wrapperClassName="flex h-full w-full items-center justify-center"
             >
               <Link
@@ -54,15 +54,14 @@ export default function SiteDock() {
               </Link>
             </Tooltip>
           </DockItem>
-          <DockSeparator className="mx-0.5 h-4" />
           <DockItem aria-label="GitHub">
             <Tooltip
               content="GitHub"
-              side="top"
+              side="left"
               wrapperClassName="flex h-full w-full items-center justify-center"
             >
               <Link
-                href="https://github.com/starc007/ui-components"
+                href="https://github.com/WebDevAmey/HoveraUI"
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="GitHub"
@@ -75,7 +74,7 @@ export default function SiteDock() {
           <DockItem aria-label="Theme">
             <Tooltip
               content={mounted ? "Toggle theme" : ""}
-              side="top"
+              side="left"
               wrapperClassName="flex h-full w-full items-center justify-center"
             >
               <ThemeToggle

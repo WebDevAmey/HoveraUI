@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface SiteNavProps {
   onOpenCommand?: () => void;
@@ -65,8 +64,6 @@ export default function SiteNav({ onOpenCommand }: SiteNavProps) {
               <span className="sr-only">GitHub</span>
             </Link>
           </motion.div>
-
-          <ThemeToggle />
         </div>
       </div>
     </header>

@@ -164,6 +164,7 @@ export default function DocsGalleryClient() {
                           </div>
                         ) : (
                           <div className="[&>*]:!max-w-full [&>*]:w-full">
+                            
                             <Preview />
                           </div>
                         )}

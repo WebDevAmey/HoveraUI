@@ -68,18 +68,18 @@ export default function ShowcaseGrid() {
                 className="group cursor-pointer overflow-hidden rounded-[var(--radius-card)] border border-border bg-card"
               >
                 <div
-                  className={`relative flex h-44 items-center justify-center overflow-hidden p-6 ${
+                  className={`relative flex h-44 items-center justify-center overflow-hidden p-4 ${
                     entry.needsLightPreview ? "bg-white" : "bg-[#0f0f13]"
                   }`}
                 >
                   <LazyMount>
                     <Preview />
                   </LazyMount>
-                  <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/60 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-white/70 backdrop-blur-sm">
+                  <div className="absolute right-2 top-2 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/60 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white/70 backdrop-blur-sm">
                     {entry.category}
                   </div>
                 </div>
-                <div className="border-t border-border px-4 py-3.5">
+                <div className="border-t border-border px-4 py-3">
                   <h3 className="text-sm font-medium text-foreground group-hover:text-[var(--accent-locked)]">
                     {entry.name}
                   </h3>

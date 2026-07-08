@@ -12,8 +12,7 @@ import SpotlightCardDemo from "@/components/cards/SpotlightCardDemo";
 import BorderBeamDemo from "@/components/cards/BorderBeamDemo";
 import TiltCardDemo from "@/components/cards/TiltCardDemo";
 import AnimatedTabs from "@/components/tabs/AnimatedTabs";
-import Meteors from "@/components/backgrounds/Meteors";
-import PixelTrail from "@/components/backgrounds/PixelTrail";
+
 
 interface Tile {
   slug: string;
@@ -36,12 +35,6 @@ const TILES: Tile[] = [
     render: <SpotlightCardDemo />,
   },
   {
-    slug: "pixel-trail",
-    label: "Pixel Trail",
-    fill: true,
-    render: <PixelTrail className="!h-full" />,
-  },
-  {
     slug: "displacement-text",
     label: "Displacement Text",
     span: "md:col-span-2",
@@ -56,12 +49,6 @@ const TILES: Tile[] = [
     slug: "animated-tabs",
     label: "Animated Tabs",
     render: <AnimatedTabs className="pointer-events-auto" />,
-  },
-  {
-    slug: "meteors",
-    label: "Meteors",
-    fill: true,
-    render: <Meteors />,
   },
   {
     slug: "tilt-card",

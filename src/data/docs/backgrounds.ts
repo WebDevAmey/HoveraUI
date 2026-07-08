@@ -7,12 +7,8 @@ function usageFor(slug: string, componentName: string) {
 }
 
 const STORIES: Record<string, string> = {
-  "light-lines": "Each streak is a single blurred line on its own timing curve, so the field reads as traffic of light rather than a loop.",
-  "pixel-trail": "The cursor leaves a decaying grid of lit cells behind it, a literal record of where attention just was.",
-  "meteors": "Streaks fall diagonally through a dotted field at staggered rhythms, so the sky reads alive without a single script.",
   "aurora-flow": "Three blurred color fields drift on independent orbits, mirroring back and forth so the sky never repeats or jumps.",
   "beams": "Thin light beams fall at different speeds and delays, like rain catching light — pure CSS, so it costs almost nothing.",
-  "particle-field": "Seventy particles drift on a canvas with wrap-around edges; under reduced motion the field renders once and holds still.",
   aurora: "Two soft radial glows drift toward opposite corners, the kind of backdrop that suggests motion without anything actually moving.",
   "aurora-warm": "Same aurora wash, swapped to amber and rust so a hero section reads warmer instead of cool and electric.",
   spotlight: "Two beams converge from top and bottom, framing whatever sits in the center like it was caught under stage light.",

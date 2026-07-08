@@ -104,6 +104,22 @@
       ]
     },
     {
+      "name": "navbar",
+      "type": "registry:component",
+      "title": "Navbar",
+      "description": "A fixed bottom navigation bar with spring-active pill indicator and glass backdrop. Can render in-flow with fixed={false}.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "navbar.tsx",
+          "target": "components/ui/navbar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "spotlight-card",
       "type": "registry:component",
       "title": "Spotlight Card",

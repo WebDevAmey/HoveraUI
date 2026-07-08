@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar",
+  "type": "registry:component",
+  "title": "Navbar",
+  "description": "A fixed bottom navigation bar with spring-active pill indicator and glass backdrop. Can render in-flow with fixed={false}.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "navbar.tsx",
+      "target": "components/ui/navbar.tsx",
+      "content": "\"use client\";\n\nimport { type ReactNode, useState } from \"react\";\nimport Link from \"next/link\";\nimport { motion, useReducedMotion } from \"framer-motion\";\n\ninterface NavItem {\n  icon: ReactNode;\n  label: string;\n  href?: string;\n  onClick?: () => void;\n}\n\ninterface NavbarProps {\n  items: (NavItem & { separatorAfter?: boolean })[];\n  defaultActive?: string;\n  fixed?: boolean;\n  className?: string;\n}\n\nconst SPRING = { type: \"spring\" as const, stiffness: 360, damping: 32, mass: 0.6 };\n\nexport default function Navbar({ items, defaultActive, fixed = true, className }: NavbarProps) {\n  const [active, setActive] = useState(defaultActive ?? items[0]?.label);\n  const reduce = useReducedMotion();\n\n  return (\n    <div\n      className={\n        (fixed\n          ? \"fixed inset-x-0 bottom-6 z-50 flex justify-center px-4 pointer-events-none\"\n          : \"flex w-full justify-center\") + \" \" + (className ?? \"\")\n      }\n    >\n      <div className=\"pointer-events-auto inline-flex items-center gap-1 rounded-2xl border border-white/[0.06] bg-neutral-900/80 px-3 py-2 shadow-lg shadow-black/20 backdrop-blur-2xl\">\n        {items.map((item) => {\n          const isActive = active === item.label;\n          const indicator = isActive ? (\n            <motion.span\n              layoutId={reduce ? undefined : \"navbar-active\"}\n              transition={reduce ? { duration: 0 } : SPRING}\n              className=\"absolute inset-0.5 -z-10 rounded-xl bg-white/10\"\n            />\n          ) : null;\n\n          const child = (\n            <span className=\"relative flex h-9 w-9 items-center justify-center rounded-full text-neutral-400 transition-colors hover:text-neutral-100\">\n              {indicator}\n              {item.icon}\n            </span>\n          );\n\n          return (\n            <div\n              key={item.label}\n              className=\"flex items-center gap-1\"\n            >\n              {item.href ? (\n                <Link\n                  href={item.href}\n                  onClick={() => setActive(item.label)}\n                  className=\"focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/30\"\n                  aria-label={item.label}\n                >\n                  {child}\n                </Link>\n              ) : (\n                <button\n                  type=\"button\"\n                  onClick={() => {\n                    setActive(item.label);\n                    item.onClick?.();\n                  }}\n                  className=\"focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/30\"\n                  aria-label={item.label}\n                >\n                  {child}\n                </button>\n              )}\n              {item.separatorAfter && (\n                <span className=\"mx-1 h-5 w-px bg-white/[0.06]\" aria-hidden />\n              )}\n            </div>\n          );\n        })}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

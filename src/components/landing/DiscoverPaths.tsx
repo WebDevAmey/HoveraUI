@@ -15,8 +15,8 @@ const PATHS = [
   },
   {
     title: "Tune the motion",
-    description: "Backgrounds and loaders that carry presence on their own, auroras, spotlights, drift.",
-    href: "/docs/aurora-flow",
+    description: "Backgrounds and loaders that carry presence on their own, grids, meshes, drift.",
+    href: "/docs/dot-grid",
     cta: "Browse motion",
   },
   {

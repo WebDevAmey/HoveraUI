@@ -1,4 +1,4 @@
-export type Category = "gradient" | "pattern";
+export type Category = "pattern";
 
 /**
  * shadcn registry-item metadata (https://ui.shadcn.com/schema/registry-item.json).

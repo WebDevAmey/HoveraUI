@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import LightLines from "@/components/backgrounds/LightLines";
 import CopyButton from "@/components/CopyButton";
 import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
@@ -28,15 +27,6 @@ export default function Hero() {
       ref={sectionRef}
       className="dark relative overflow-hidden border-b border-white/10 bg-[#09090b]"
     >
-      <div aria-hidden className="absolute inset-0 opacity-40">
-        <LightLines />
-      </div>
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{ background: "radial-gradient(ellipse 70% 50% at 50% 40%, transparent 30%, rgba(9,9,11,0.9))" }}
-      />
-
       <motion.div
         style={prefersReducedMotion ? undefined : { y: contentY }}
         className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-24 text-center md:px-8"

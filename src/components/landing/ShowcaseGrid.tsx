@@ -14,7 +14,6 @@ const FEATURED_SLUGS = [
   "x-ray-scanner-button",
   "spotlight-card",
   "animated-tabs",
-  "aurora-flow",
   "meteors",
   "liquid-text",
   "mercury-loader",

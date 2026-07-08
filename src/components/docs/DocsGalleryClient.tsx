@@ -21,7 +21,6 @@ type FilterValue =
   | "text"
   | "sections"
   | "command"
-  | "gradient"
   | "pattern"
   | "css"
   | "tailwind"
@@ -39,7 +38,6 @@ const FILTERS: { label: string; value: FilterValue }[] = [
   { label: "Text", value: "text" },
   { label: "Sections", value: "sections" },
   { label: "Command", value: "command" },
-  { label: "Gradients", value: "gradient" },
   { label: "Patterns", value: "pattern" },
   { label: "CSS", value: "css" },
   { label: "Tailwind", value: "tailwind" },

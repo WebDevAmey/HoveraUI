@@ -4,48 +4,6 @@
   "homepage": "http://localhost:3000",
   "items": [
     {
-      "name": "spotlight",
-      "type": "registry:component",
-      "title": "Spotlight",
-      "description": "A full-bleed gradient background, spotlight, built from layered CSS gradients.",
-      "files": [
-        {
-          "path": "spotlight.tsx",
-          "target": "components/ui/spotlight.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "aurora-flow",
-      "type": "registry:component",
-      "title": "Aurora Flow",
-      "description": "Three drifting aurora blobs in continuous motion, transform-only and reduced-motion safe.",
-      "dependencies": [
-        "framer-motion"
-      ],
-      "files": [
-        {
-          "path": "aurora-flow.tsx",
-          "target": "components/ui/aurora-flow.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "beams",
-      "type": "registry:component",
-      "title": "Beams",
-      "description": "Falling light beams on a dark field, pure CSS keyframes with a paused reduced-motion state.",
-      "files": [
-        {
-          "path": "beams.tsx",
-          "target": "components/ui/beams.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "skeleton-profile",
       "type": "registry:component",
       "title": "Skeleton Profile",
@@ -83,22 +41,6 @@
         {
           "path": "floating-navbar.tsx",
           "target": "components/ui/floating-navbar.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "dock",
-      "type": "registry:component",
-      "title": "Dock",
-      "description": "A macOS-style bottom dock with spring-active pill animation and glass backdrop.",
-      "dependencies": [
-        "framer-motion"
-      ],
-      "files": [
-        {
-          "path": "dock.tsx",
-          "target": "components/ui/dock.tsx",
           "type": "registry:component"
         }
       ]

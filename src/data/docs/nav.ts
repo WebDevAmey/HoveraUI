@@ -26,7 +26,6 @@ const tabItems = tabs.map((t) => toNavItem(t.slug, t.name));
 const textItems = textEffects.map((t) => toNavItem(t.slug, t.name));
 const sectionItems = sections.map((sec) => toNavItem(sec.slug, sec.name));
 const commandItems = commands.map((c) => toNavItem(c.slug, c.name));
-const gradientItems = backgrounds.filter((b) => b.category === "gradient").map((b) => toNavItem(b.slug, b.name));
 
 export const docsNav: DocNavGroup[] = [
   {
@@ -63,10 +62,5 @@ export const docsNav: DocNavGroup[] = [
     label: "Command",
     icon: "interactive",
     items: commandItems,
-  },
-  {
-    label: "Gradients",
-    icon: "motion",
-    items: gradientItems,
   },
 ];

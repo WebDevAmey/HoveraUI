@@ -13,10 +13,9 @@ const STORIES: Record<string, string> = {
 };
 
 // floating-navbar has a hand-written rich entry in ./floating-navbar.ts.
-// dock has a hand-written rich entry in ./dock.ts.
 // navbar has a hand-written rich entry in ./navbar.ts.
 export const navbarDocs: ComponentDocEntry[] = navbars
-  .filter((nav) => nav.slug !== "floating-navbar" && nav.slug !== "dock" && nav.slug !== "navbar")
+  .filter((nav) => nav.slug !== "floating-navbar" && nav.slug !== "navbar")
   .map((nav) => {
   const componentName = nav.name.replace(/[^a-zA-Z0-9]/g, "");
 

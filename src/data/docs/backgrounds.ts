@@ -7,16 +7,8 @@ function usageFor(slug: string, componentName: string) {
 }
 
 const STORIES: Record<string, string> = {
-  "aurora-flow": "Three blurred color fields drift on independent orbits, mirroring back and forth so the sky never repeats or jumps.",
-  "beams": "Thin light beams fall at different speeds and delays, like rain catching light — pure CSS, so it costs almost nothing.",
   aurora: "Two soft radial glows drift toward opposite corners, the kind of backdrop that suggests motion without anything actually moving.",
   "aurora-warm": "Same aurora wash, swapped to amber and rust so a hero section reads warmer instead of cool and electric.",
-  spotlight: "Two beams converge from top and bottom, framing whatever sits in the center like it was caught under stage light.",
-  "spotlight-2": "The same two-beam convergence, rotated to enter from the sides instead of top and bottom.",
-  "spotlight-3": "A single beam anchored to the left edge, useful when the focal content sits off-center.",
-  "spotlight-4": "A single beam anchored to the right edge, the mirror of Spotlight 3.",
-  "spotlight-5": "A single beam from the left, tuned slightly differently from Spotlight 3 for variety across a page.",
-  "spotlight-6": "A single beam rising from the bottom, good behind a footer CTA or closing section.",
   "dot-grid": "A quiet, evenly spaced dot field, the kind of texture that adds depth without competing for attention.",
   "dot-matrix": "A tighter dot grid than Dot Grid, reads denser and more technical at a glance.",
   "grid-pattern": "Two faint linear gradients cross into a grid, like graph paper lit from behind in violet and blue.",
@@ -40,7 +32,7 @@ export const backgroundDocs: ComponentDocEntry[] = backgrounds.map((bg) => {
   return {
     slug: bg.slug,
     name: bg.name,
-    description: `A full-bleed ${bg.category} background, ${bg.name.toLowerCase()}, built from layered CSS gradients.`,
+    description: `A full-bleed ${bg.category} background, ${bg.name.toLowerCase()}.`,
     category: bg.category,
     stack: classifyStack(bg.code),
     story: STORIES[bg.slug],

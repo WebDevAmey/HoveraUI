@@ -155,11 +155,21 @@ export default function DocsGalleryClient() {
                     className="block cursor-pointer"
                   >
                     <LazyMount
-                      className={`flex h-40 items-center justify-center overflow-hidden p-6 ${
+                      className={`flex h-52 items-center justify-center overflow-hidden p-6 ${
                         entry.needsLightPreview ? "bg-white" : "bg-secondary/20"
                       }`}
                     >
-                      <Preview />
+                      <div className="flex items-center justify-center">
+                        {entry.slug === "skeleton-profile" ? (
+                          <div className="scale-[0.45]">
+                            <Preview />
+                          </div>
+                        ) : (
+                          <div className="[&>*]:!max-w-full [&>*]:w-full">
+                            <Preview />
+                          </div>
+                        )}
+                      </div>
                     </LazyMount>
                   </div>
                   <div className="flex items-center justify-between border-t border-border px-4 py-3">

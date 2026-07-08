@@ -247,6 +247,15 @@ body {
 }
 
 @keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@utility animate-shimmer {
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer-text {
   0% { background-position: 200% center; }
   100% { background-position: 0% center; }
 }
@@ -301,7 +310,7 @@ body {
   background-clip: text;
   -webkit-text-stroke: 1.5px color-mix(in srgb, var(--foreground) 30%, transparent);
   filter: drop-shadow(0 15px 35px rgba(0,0,0,0.4)) drop-shadow(0 5px 10px rgba(0,0,0,0.2));
-  animation: shimmer 8s linear infinite;
+  animation: shimmer-text 8s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

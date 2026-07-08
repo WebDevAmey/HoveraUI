@@ -28,7 +28,6 @@ async function loadDataArrays() {
   const entryPath = path.join(outDir, "entry.mjs");
   const entrySource = `
 import { backgrounds } from "${path.join(rootDir, "src/data/background.ts").replace(/\\/g, "\\\\")}";
-import { buttons } from "${path.join(rootDir, "src/data/button.ts").replace(/\\/g, "\\\\")}";
 import { loaders } from "${path.join(rootDir, "src/data/loader.ts").replace(/\\/g, "\\\\")}";
 import { navbars } from "${path.join(rootDir, "src/data/navbar.ts").replace(/\\/g, "\\\\")}";
 import { cards } from "${path.join(rootDir, "src/data/card.ts").replace(/\\/g, "\\\\")}";
@@ -43,7 +42,7 @@ const docDescriptions = Object.fromEntries(
   docEntries.map((entry) => [entry.slug, entry.description])
 );
 
-globalThis.__REGISTRY_ITEMS__ = [...backgrounds, ...buttons, ...loaders, ...navbars, ...cards, ...tabs, ...marquees, ...textEffects, ...sections, ...commands].map((item) => ({
+globalThis.__REGISTRY_ITEMS__ = [...backgrounds, ...loaders, ...navbars, ...cards, ...tabs, ...marquees, ...textEffects, ...sections, ...commands].map((item) => ({
   slug: item.slug,
   name: item.name,
   code: item.code,

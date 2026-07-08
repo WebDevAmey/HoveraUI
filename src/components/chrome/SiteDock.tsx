@@ -1,60 +1,93 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Dock from "@/components/docks/Dock";
+import { Check, Copy, Home, LayoutGrid, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Dock, DockItem, DockSeparator } from "@/components/motion/dock";
+import { ActionSwapIcon } from "@/components/motion/action-swap";
+import { ThemeToggle } from "@/components/motion/theme-toggle";
+import { Tooltip } from "@/components/motion/tooltip";
+import { GithubIcon } from "@/components/app/icons";
 
 export default function SiteDock() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  const [emailHovered, setEmailHovered] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  const items = [
-    {
-      label: "Home",
-      href: "/",
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" />
-        </svg>
-      ),
-    },
-    {
-      label: "Components",
-      href: "/components",
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="7" height="7" />
-          <rect x="14" y="3" width="7" height="7" />
-          <rect x="14" y="14" width="7" height="7" />
-          <rect x="3" y="14" width="7" height="7" />
-        </svg>
-      ),
-    },
-    {
-      label: "Docs",
-      href: "/docs",
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-          <path d="M8 7h8" />
-          <path d="M8 11h6" />
-        </svg>
-      ),
-    },
-  ];
-
-  const defaultActive =
-    items.find((item) => {
-      if (item.href === "/") return pathname === "/";
-      return pathname.startsWith(item.href!);
-    })?.label ?? "Home";
+  const isHome = pathname === "/";
+  const isComponents = pathname.startsWith("/components");
 
   return (
-    <Dock
-      items={items}
-      defaultActive={defaultActive}
-      vertical
-      className="fixed right-5 top-1/2 z-50 -translate-y-1/2"
-    />
+    <div className="pointer-events-none fixed inset-x-0 bottom-6 z-40 flex justify-center px-4">
+      <div className="pointer-events-auto">
+        <Dock size={36} className="gap-0 border border-foreground/5 px-1.5">
+          <DockItem aria-label="Home" active={isHome}>
+            <Tooltip
+              content="Home"
+              side="top"
+              wrapperClassName="flex h-full w-full items-center justify-center"
+            >
+              <Link
+                href="/"
+                aria-label="Home"
+                className="flex h-full w-full items-center justify-center"
+              >
+                <Home className="h-4 w-4" />
+              </Link>
+            </Tooltip>
+          </DockItem>
+          <DockItem aria-label="Components" active={isComponents}>
+            <Tooltip
+              content="Components"
+              side="top"
+              wrapperClassName="flex h-full w-full items-center justify-center"
+            >
+              <Link
+                href="/components"
+                aria-label="Components"
+                className="flex h-full w-full items-center justify-center"
+              >
+                <LayoutGrid className="h-4 w-4" />
+              </Link>
+            </Tooltip>
+          </DockItem>
+          <DockSeparator className="mx-0.5 h-4" />
+          <DockItem aria-label="GitHub">
+            <Tooltip
+              content="GitHub"
+              side="top"
+              wrapperClassName="flex h-full w-full items-center justify-center"
+            >
+              <Link
+                href="https://github.com/starc007/ui-components"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="GitHub"
+                className="flex h-full w-full items-center justify-center"
+              >
+                <GithubIcon className="h-4 w-4" />
+              </Link>
+            </Tooltip>
+          </DockItem>
+          <DockItem aria-label="Theme">
+            <Tooltip
+              content={mounted ? "Toggle theme" : ""}
+              side="top"
+              wrapperClassName="flex h-full w-full items-center justify-center"
+            >
+              <ThemeToggle
+                variant="rectangle"
+                start="bottom-up"
+                className="flex h-full w-full items-center justify-center"
+                iconClassName="h-4 w-4"
+              />
+            </Tooltip>
+          </DockItem>
+        </Dock>
+      </div>
+    </div>
   );
 }

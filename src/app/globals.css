@@ -43,6 +43,8 @@
   --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
@@ -65,6 +67,8 @@
   --border: #e0e0e0;
   --input: #e0e0e0;
   --ring: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
 
   --hovera-accent: #111111;
   --hovera-accent-foreground: #ffffff;
@@ -124,6 +128,8 @@
   --border: #2d2d2d;
   --input: #2d2d2d;
   --ring: #f0f0f0;
+  --popover: #1a1a1a;
+  --popover-foreground: #f0f0f0;
 
   --hovera-accent: #f0f0f0;
   --hovera-accent-foreground: #111111;

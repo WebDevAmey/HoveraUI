@@ -78,10 +78,10 @@ export default function SignatureShowcase() {
     <RevealSection id="signature" className="border-b border-border px-4 py-20 md:px-8">
       <div className="mx-auto max-w-6xl">
         <h2 className="text-[length:var(--text-display-sm)] font-semibold tracking-tight text-foreground">
-          Signature effects, live.
+          NEW
         </h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-          Nothing here is a video. Hover, press, and move your cursor — then install the exact
+          The latest additions to Hovera UI. Hover, press, and move your cursor — then install the exact
           file you just played with.
         </p>
 

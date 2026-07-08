@@ -23,8 +23,8 @@ export default function Home() {
       <CommandPaletteWithTrigger />
       <main>
         <PixelHero
-          word1="Hover"
-          word2="First."
+          word1="Hovera"
+          word2="UI"
           description="Interfaces that respond before you click. Over thirty signature components built around hover, motion, and tasteful color accents."
           primaryCta="Browse components"
           primaryHref="/components"

@@ -46,14 +46,14 @@ export default function Hero() {
           className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs text-neutral-400"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-neutral-400" aria-hidden="true" />
-          Hover-first component library
+          Hovera UI
         </div>
 
         <h1
           style={entrance(0.15)}
           className="mt-10 text-[clamp(3.5rem,12vw,10rem)] font-bold leading-[0.85] tracking-tighter text-white"
         >
-          HOVERA
+          Hovera UI
         </h1>
 
         <p

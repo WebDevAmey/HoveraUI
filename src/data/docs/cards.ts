@@ -3,7 +3,7 @@ import { cards } from "@/data/card";
 import { classifyStack } from "@/lib/classify-stack";
 import SpotlightCardDemo from "@/components/cards/SpotlightCardDemo";
 import TiltCardDemo from "@/components/cards/TiltCardDemo";
-import BorderBeamDemo from "@/components/cards/BorderBeamDemo";
+import BorderBeam from "@/components/cards/BorderBeam";
 
 const spotlightCard = cards.find((c) => c.slug === "spotlight-card")!;
 const tiltCard = cards.find((c) => c.slug === "tilt-card")!;
@@ -74,8 +74,8 @@ export function ProductCard() {
     stack: classifyStack(borderBeam.code),
     isNew: true,
     story:
-      "A single light runs laps around the card's border — violet head, cyan tail — drawing the eye to the boundary instead of the fill. It's one rotating conic gradient behind a masked inset, so the whole effect costs one composited transform.",
-    Preview: BorderBeamDemo,
+      "A colorful beam runs laps around the card border using offset-path animation from magicui. The beam travels along the card's border path, creating a smooth, continuous glow effect.",
+    Preview: BorderBeam,
     code: borderBeam.code,
     usage: `import BorderBeam from "@/components/ui/border-beam"
 
@@ -89,9 +89,10 @@ export function FeatureCard() {
     dependencies: [],
     props: [
       { name: "children", type: "React.ReactNode", description: "Card content inside the beam frame." },
-      { name: "duration", type: "number", default: "6", description: "Seconds per full lap." },
-      { name: "colorFrom", type: "string", default: '"#ffffff"', description: "Beam head color." },
-      { name: "colorTo", type: "string", default: '"#737373"', description: "Beam tail color." },
+      { name: "duration", type: "number", default: "8", description: "Seconds per full lap." },
+      { name: "size", type: "number", default: "100", description: "Beam size in pixels." },
+      { name: "colorFrom", type: "string", default: '"#ffaa40"', description: "Start color of the beam gradient." },
+      { name: "colorTo", type: "string", default: '"#9c40ff"', description: "End color of the beam gradient." },
       { name: "className", type: "string", default: '""', description: "Extra classes on the outer frame." },
     ],
   },

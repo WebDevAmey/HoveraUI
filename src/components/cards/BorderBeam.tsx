@@ -1,41 +1,36 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+import { BorderBeam as MagicBorderBeam } from "@/components/ui/border-beam";
+
 interface BorderBeamProps {
   children?: React.ReactNode;
-  /** Seconds per full lap around the border. */
   duration?: number;
-  /** CSS colors for the beam's head and tail. */
+  size?: number;
+  className?: string;
   colorFrom?: string;
   colorTo?: string;
-  className?: string;
 }
 
 export default function BorderBeam({
-  children,
-  duration = 6,
-  colorFrom = "#ffffff",
-  colorTo = "#737373",
-  className = "",
+  children = (
+    <>
+      <p className="text-sm font-medium text-white">Border Beam</p>
+      <p className="mt-1 text-sm leading-relaxed text-neutral-400">
+        A colorful beam runs laps around the border.
+      </p>
+    </>
+  ),
+  duration = 8,
+  size = 100,
+  className,
+  colorFrom = "#ffaa40",
+  colorTo = "#9c40ff",
 }: BorderBeamProps) {
   return (
-    <div className={"relative overflow-hidden rounded-2xl p-px " + className}>
-      <style>{"@keyframes hovera-border-spin { to { transform: rotate(360deg); } }"}</style>
-      <div
-        aria-hidden
-        className="absolute -inset-[100%] motion-reduce:[animation-play-state:paused]"
-        style={{
-          background:
-            "conic-gradient(from 0deg, transparent 0deg 300deg, " +
-            colorFrom +
-            " 330deg, " +
-            colorTo +
-            " 360deg)",
-          animation: "hovera-border-spin " + duration + "s linear infinite",
-        }}
-      />
-      <div className="relative rounded-[calc(1rem-1px)] border border-white/5 bg-neutral-950 p-6">
-        {children}
-      </div>
+    <div className={cn("relative overflow-hidden rounded-2xl border border-white/5 bg-neutral-950 p-6", className)}>
+      {children}
+      <MagicBorderBeam duration={duration} size={size} colorFrom={colorFrom} colorTo={colorTo} />
     </div>
   );
 }

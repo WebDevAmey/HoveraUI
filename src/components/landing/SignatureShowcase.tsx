@@ -9,7 +9,7 @@ import { CARD_HOVER_TRANSITION } from "@/lib/motion";
 import LiquidText from "@/components/text/LiquidText";
 import DisplacementText from "@/components/text/DisplacementText";
 import SpotlightCardDemo from "@/components/cards/SpotlightCardDemo";
-import BorderBeamDemo from "@/components/cards/BorderBeamDemo";
+import BorderBeam from "@/components/cards/BorderBeam";
 import TiltCardDemo from "@/components/cards/TiltCardDemo";
 import AnimatedTabs from "@/components/tabs/AnimatedTabs";
 
@@ -43,7 +43,7 @@ const TILES: Tile[] = [
   {
     slug: "border-beam",
     label: "Border Beam",
-    render: <BorderBeamDemo />,
+    render: <BorderBeam />,
   },
   {
     slug: "animated-tabs",

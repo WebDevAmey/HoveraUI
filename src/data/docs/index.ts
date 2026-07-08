@@ -1,6 +1,5 @@
 import type { ComponentDocEntry } from "@/types/docs";
 import { backgroundDocs } from "@/data/docs/backgrounds";
-import { buttonDocs } from "@/data/docs/buttons";
 import { loaderDocs } from "@/data/docs/loaders";
 import { navbarDocs } from "@/data/docs/navbars";
 import { cardDocs } from "@/data/docs/cards";
@@ -12,7 +11,6 @@ import { floatingNavbarDoc } from "@/data/docs/floating-navbar";
 import { dockDoc } from "@/data/docs/dock";
 
 export const docEntries: ComponentDocEntry[] = [
-  ...buttonDocs,
   ...loaderDocs,
   ...backgroundDocs,
   ...navbarDocs,

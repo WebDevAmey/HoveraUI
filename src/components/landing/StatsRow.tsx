@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { backgrounds } from "@/data/background";
-import { buttons } from "@/data/button";
 import { loaders } from "@/data/loader";
 import { navbars } from "@/data/navbar";
 import { cards } from "@/data/card";
@@ -46,7 +45,6 @@ function CountUp({ target, duration = 1.2 }: { target: number; duration?: number
 export default function StatsRow() {
   const total =
     backgrounds.length +
-    buttons.length +
     loaders.length +
     navbars.length +
     cards.length +

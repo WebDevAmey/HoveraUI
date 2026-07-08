@@ -1,5 +1,4 @@
 import type { DocNavGroup } from "@/types/docs";
-import { buttons } from "@/data/button";
 import { loaders } from "@/data/loader";
 import { navbars } from "@/data/navbar";
 import { backgrounds } from "@/data/background";
@@ -20,7 +19,6 @@ function toNavItem(slug: string, name: string) {
   return { slug, name: name.trim(), isNew: NEW_SLUGS.has(slug) };
 }
 
-const buttonItems = buttons.map((b) => toNavItem(b.slug, b.name));
 const loaderItems = loaders.map((l) => toNavItem(l.slug, l.name));
 const navbarItems = navbars.map((n) => toNavItem(n.slug, n.name));
 const cardItems = cards.map((c) => toNavItem(c.slug, c.name));
@@ -32,11 +30,6 @@ const gradientItems = backgrounds.filter((b) => b.category === "gradient").map((
 const patternItems = backgrounds.filter((b) => b.category === "pattern").map((b) => toNavItem(b.slug, b.name));
 
 export const docsNav: DocNavGroup[] = [
-  {
-    label: "Buttons",
-    icon: "buttons",
-    items: buttonItems,
-  },
   {
     label: "Loaders",
     icon: "motion",

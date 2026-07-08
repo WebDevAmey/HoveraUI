@@ -42,16 +42,6 @@ export interface BackgroundItem extends RegistryMeta {
 }
 
 
-export interface ButtonItem extends RegistryMeta {
-  name: string;
-  slug: string;
-  category: string;
-  component: React.ComponentType<{ isHovered?: boolean }>;
-  code: string;
-  needsLightPreview?: boolean;
-}
-
-
 export interface LoaderItem extends RegistryMeta {
   name: string;
   slug: string;

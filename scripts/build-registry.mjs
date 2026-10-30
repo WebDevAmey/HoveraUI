@@ -1,176 +1,127 @@
-// Builds static shadcn registry files into public/r/:
-//   - one registry-item JSON per component  -> public/r/<slug>.json
-//   - a registry index                      -> public/r/registry.json
-// Reads the same data arrays that render the site (src/data/*.ts), so the
-// docs pages and the installable registry never drift out of sync.
+// Builds the copy-paste registry from the component folders themselves.
+//
+//   public/r/<slug>.json      shadcn-compatible item: the component and its CSS module
+//   public/r/base.json        tokens.css and the cn helper every component shares
+//   public/r/registry.json    index of all items
+//   src/registry/sizes.json   minified + gzipped size of each component
+//
+// Nothing is duplicated by hand, so the registry cannot drift from the source.
 import { build } from "esbuild";
-import { mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile, rm } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { gzipSync } from "node:zlib";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const outDir = path.join(rootDir, ".registry-build");
-const publicDir = path.join(rootDir, "public", "r");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const uiDir = path.join(root, "src/components/ui");
+const outDir = path.join(root, "public/r");
+const tmpDir = path.join(root, ".registry-build");
+const host = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
 
-const REGISTRY_NAME = "hovera";
-const HOMEPAGE = process.env.NEXT_PUBLIC_REGISTRY_URL || "http://localhost:3000";
-
-function slugToComponentName(slug) {
-  return slug
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join("");
-}
-
-async function loadDataArrays() {
-  await mkdir(outDir, { recursive: true });
-
-  const entryPath = path.join(outDir, "entry.mjs");
-  const entrySource = `
-import { backgrounds } from "${path.join(rootDir, "src/data/background.ts").replace(/\\/g, "\\\\")}";
-import { loaders } from "${path.join(rootDir, "src/data/loader.ts").replace(/\\/g, "\\\\")}";
-import { navbars } from "${path.join(rootDir, "src/data/navbar.ts").replace(/\\/g, "\\\\")}";
-import { cards } from "${path.join(rootDir, "src/data/card.ts").replace(/\\/g, "\\\\")}";
-import { tabs } from "${path.join(rootDir, "src/data/tab.ts").replace(/\\/g, "\\\\")}";
-import { marquees } from "${path.join(rootDir, "src/data/marquee.ts").replace(/\\/g, "\\\\")}";
-import { textEffects } from "${path.join(rootDir, "src/data/text.ts").replace(/\\/g, "\\\\")}";
-import { sections } from "${path.join(rootDir, "src/data/section.ts").replace(/\\/g, "\\\\")}";
-import { commands } from "${path.join(rootDir, "src/data/command.ts").replace(/\\/g, "\\\\")}";
-import { docEntries } from "${path.join(rootDir, "src/data/docs/index.ts").replace(/\\/g, "\\\\")}";
-
-const docDescriptions = Object.fromEntries(
-  docEntries.map((entry) => [entry.slug, entry.description])
-);
-
-globalThis.__REGISTRY_ITEMS__ = [...backgrounds, ...loaders, ...navbars, ...cards, ...tabs, ...marquees, ...textEffects, ...sections, ...commands].map((item) => ({
-  slug: item.slug,
-  name: item.name,
-  code: item.code,
-  description: item.description ?? docDescriptions[item.slug],
-  dependencies: item.dependencies,
-  registryDependencies: item.registryDependencies,
-  cssVars: item.cssVars,
-  tailwind: item.tailwind,
-}));
-`;
-  await writeFile(entryPath, entrySource, "utf8");
-
-  const bundlePath = path.join(outDir, "bundle.cjs");
+async function loadMetas(slugs) {
+  const entry = path.join(tmpDir, "metas.ts");
+  const lines = slugs.map((slug, i) => `import m${i} from ${JSON.stringify(path.join(uiDir, slug, "meta.ts"))};`);
+  lines.push(`export default [${slugs.map((_, i) => `m${i}`).join(", ")}];`);
+  await writeFile(entry, lines.join("\n"));
+  const outfile = path.join(tmpDir, "metas.mjs");
   await build({
-    entryPoints: [entryPath],
+    entryPoints: [entry],
     bundle: true,
     platform: "node",
-    format: "cjs",
-    outfile: bundlePath,
-    jsx: "transform",
-    loader: { ".ts": "ts", ".tsx": "tsx" },
+    format: "esm",
+    outfile,
     logLevel: "silent",
-    alias: { "@": path.join(rootDir, "src") },
+    alias: { "@": path.join(root, "src") },
   });
-
-  const { createRequire } = await import("node:module");
-  const req = createRequire(import.meta.url);
-  req(bundlePath);
-
-  const items = globalThis.__REGISTRY_ITEMS__;
-  delete globalThis.__REGISTRY_ITEMS__;
-  return items;
+  return (await import(`${outfile}?t=${Date.now()}`)).default;
 }
 
-function buildFileContent(item) {
-  // Snippets that are already a complete module (imports, hooks, named
-  // exports) ship verbatim; bare-JSX snippets get wrapped in a component.
-  if (item.code.includes("export default") || item.code.includes("export function")) {
-    return item.code.endsWith("\n") ? item.code : item.code + "\n";
-  }
-
-  const componentName = slugToComponentName(item.slug);
-  const indentedCode = item.code
-    .split("\n")
-    .map((line) => `    ${line}`)
-    .join("\n");
-
-  return `export default function ${componentName}() {
-  return (
-${indentedCode}
-  );
-}
-`;
-}
-
-function buildRegistryItem(item) {
-  const registryItem = {
-    $schema: "https://ui.shadcn.com/schema/registry-item.json",
-    name: item.slug,
-    type: "registry:component",
-    title: item.name,
-  };
-
-  if (item.description) registryItem.description = item.description;
-  if (item.dependencies?.length) registryItem.dependencies = item.dependencies;
-  if (item.registryDependencies?.length) {
-    registryItem.registryDependencies = item.registryDependencies;
-  }
-
-  registryItem.files = [
-    {
-      path: `${item.slug}.tsx`,
-      target: `components/ui/${item.slug}.tsx`,
-      content: buildFileContent(item),
-      type: "registry:component",
-    },
-  ];
-
-  if (item.cssVars && Object.keys(item.cssVars).length) registryItem.cssVars = item.cssVars;
-  if (item.tailwind && Object.keys(item.tailwind).length) registryItem.tailwind = item.tailwind;
-
-  return registryItem;
-}
-
-function buildRegistryIndex(registryItems) {
-  return {
-    $schema: "https://ui.shadcn.com/schema/registry.json",
-    name: REGISTRY_NAME,
-    homepage: HOMEPAGE,
-    items: registryItems.map((item) => {
-      const rest = { ...item };
-      delete rest.$schema;
-      rest.files = item.files.map((file) => {
-        const f = { ...file };
-        delete f.content;
-        return f;
-      });
-      return rest;
-    }),
-  };
+async function measure(slug) {
+  const result = await build({
+    entryPoints: [path.join(uiDir, slug, `${slug}.tsx`)],
+    bundle: true,
+    minify: true,
+    write: false,
+    format: "esm",
+    outdir: path.join(tmpDir, slug),
+    external: ["react", "react-dom", "react/jsx-runtime"],
+    loader: { ".module.css": "local-css" },
+    alias: { "@": path.join(root, "src") },
+    jsx: "automatic",
+    logLevel: "silent",
+  });
+  let bytes = 0;
+  for (const file of result.outputFiles) bytes += gzipSync(file.contents, { level: 9 }).length;
+  return bytes;
 }
 
 async function main() {
-  const items = await loadDataArrays();
-  await rm(publicDir, { recursive: true, force: true });
-  await mkdir(publicDir, { recursive: true });
+  await rm(tmpDir, { recursive: true, force: true });
+  await mkdir(tmpDir, { recursive: true });
+  await rm(outDir, { recursive: true, force: true });
+  await mkdir(outDir, { recursive: true });
 
-  const registryItems = [];
-  for (const item of items) {
-    const registryItem = buildRegistryItem(item);
-    registryItems.push(registryItem);
-    const filePath = path.join(publicDir, `${item.slug}.json`);
-    await writeFile(filePath, JSON.stringify(registryItem, null, 2) + "\n", "utf8");
+  const slugs = (await readdir(uiDir, { withFileTypes: true }))
+    .filter((d) => d.isDirectory() && existsSync(path.join(uiDir, d.name, `${d.name}.tsx`)))
+    .map((d) => d.name)
+    .sort();
+
+  const metas = await loadMetas(slugs);
+  const sizes = {};
+
+  const base = {
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: "base",
+    type: "registry:lib",
+    title: "HoveraUI base",
+    description: "Design tokens and the cn helper shared by every HoveraUI component.",
+    files: [
+      { path: "lib/cn.ts", type: "registry:lib", target: "lib/cn.ts", content: await readFile(path.join(root, "src/lib/cn.ts"), "utf8") },
+      { path: "styles/tokens.css", type: "registry:file", target: "styles/hovera-tokens.css", content: await readFile(path.join(root, "src/styles/tokens.css"), "utf8") },
+    ],
+  };
+  await writeFile(path.join(outDir, "base.json"), JSON.stringify(base, null, 2));
+
+  const items = [];
+  for (const meta of metas) {
+    const { slug } = meta;
+    const files = [];
+    for (const name of [`${slug}.tsx`, `${slug}.module.css`]) {
+      const file = path.join(uiDir, slug, name);
+      if (!existsSync(file)) continue;
+      files.push({
+        path: `components/ui/${slug}/${name}`,
+        type: "registry:ui",
+        target: `components/ui/${slug}/${name}`,
+        content: await readFile(file, "utf8"),
+      });
+    }
+    sizes[slug] = await measure(slug);
+    const item = {
+      $schema: "https://ui.shadcn.com/schema/registry-item.json",
+      name: slug,
+      type: "registry:ui",
+      title: meta.name,
+      description: meta.description,
+      categories: [meta.category],
+      registryDependencies: [`${host}/r/base.json`],
+      files,
+    };
+    items.push({ name: slug, type: item.type, title: item.title, description: item.description });
+    await writeFile(path.join(outDir, `${slug}.json`), JSON.stringify(item, null, 2));
   }
 
-  const indexPath = path.join(publicDir, "registry.json");
   await writeFile(
-    indexPath,
-    JSON.stringify(buildRegistryIndex(registryItems), null, 2) + "\n",
-    "utf8"
+    path.join(outDir, "registry.json"),
+    JSON.stringify({ $schema: "https://ui.shadcn.com/schema/registry.json", name: "hoveraui", homepage: host, items }, null, 2),
   );
-
-  await rm(outDir, { recursive: true, force: true });
-
-  console.log(`Wrote ${items.length} registry item(s) + registry.json to public/r/`);
+  await writeFile(path.join(root, "src/registry/sizes.json"), JSON.stringify(sizes, null, 2) + "\n");
+  await rm(tmpDir, { recursive: true, force: true });
+  console.log(`registry: ${items.length} components`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exitCode = 1;
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
 });

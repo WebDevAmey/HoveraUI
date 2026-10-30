@@ -1,46 +1,8 @@
-import type { Metadata } from "next";
-import Footer from "@/components/layout/Footer";
-import CommandPaletteWithTrigger from "@/components/landing/CommandPaletteWithTrigger";
-import { PixelHero } from "@/components/landing/PixelHero";
-import TechStack from "@/components/landing/TechStack";
-import StatsRow from "@/components/landing/StatsRow";
-import SignatureShowcase from "@/components/landing/SignatureShowcase";
-import ShowcaseGrid from "@/components/landing/ShowcaseGrid";
-import StoryStrip from "@/components/landing/StoryStrip";
-import Marquee from "@/components/landing/Marquee";
-import QuickStart from "@/components/landing/QuickStart";
-import FinalCTA from "@/components/landing/FinalCTA";
-
-export const metadata: Metadata = {
-  title: "Hovera UI — Hover-first React component library",
-  description:
-    "A shadcn-compatible library of hover-first buttons, loaders, navbars and backgrounds. Preview live, copy the code, or install via the CLI.",
-};
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <CommandPaletteWithTrigger />
-      <main>
-        <PixelHero
-          word1="Hovera"
-          word2="UI"
-          description="Interfaces that respond before you click. Over thirty signature components built around hover, motion, and tasteful color accents."
-          primaryCta="Browse components"
-          primaryHref="/components"
-          secondaryCta="View GitHub"
-          githubUrl="https://github.com/WebDevAmey/HoveraUI"
-        />
-        <TechStack />
-        <StatsRow />
-        <SignatureShowcase />
-        <ShowcaseGrid />
-        <StoryStrip />
-        <Marquee />
-        <QuickStart />
-        <FinalCTA />
-      </main>
-      <Footer />
-    </div>
+    <main className="mx-auto max-w-3xl px-4 py-24">
+      <p className="label">HoveraUI</p>
+      <h1 className="mt-4 font-serif text-5xl tracking-tight">Foundations</h1>
+    </main>
   );
 }

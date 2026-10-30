@@ -1,0 +1,108 @@
+/*
+ * HoveraUI tokens. Copy this file once; every component reads from it.
+ * Put data-theme="light" or data-theme="dark" on any element to scope a theme.
+ * Without the attribute, the system color scheme decides.
+ */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  --hv-canvas: #f3f2ee;
+  --hv-surface: #fbfaf8;
+  --hv-raised: #ffffff;
+  --hv-sunken: #eae8e3;
+  --hv-ink: #141412;
+  --hv-ink-2: #5b5852;
+  --hv-ink-3: #8e8a83;
+  --hv-line: #e1ded7;
+  --hv-line-strong: #cbc7be;
+
+  --hv-accent: #2e3fe0;
+  --hv-accent-ink: #ffffff;
+
+  --hv-neu-hi: #ffffff;
+  --hv-neu-lo: #d2cec6;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --hv-canvas: #0d0d0c;
+  --hv-surface: #151513;
+  --hv-raised: #1c1c1a;
+  --hv-sunken: #090908;
+  --hv-ink: #edebe6;
+  --hv-ink-2: #a19d95;
+  --hv-ink-3: #6b6862;
+  --hv-line: #2a2926;
+  --hv-line-strong: #3a3934;
+
+  --hv-accent: #8b96ff;
+  --hv-accent-ink: #0d0d0c;
+
+  --hv-neu-hi: #262623;
+  --hv-neu-lo: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --hv-canvas: #0d0d0c;
+    --hv-surface: #151513;
+    --hv-raised: #1c1c1a;
+    --hv-sunken: #090908;
+    --hv-ink: #edebe6;
+    --hv-ink-2: #a19d95;
+    --hv-ink-3: #6b6862;
+    --hv-line: #2a2926;
+    --hv-line-strong: #3a3934;
+
+    --hv-accent: #8b96ff;
+    --hv-accent-ink: #0d0d0c;
+
+    --hv-neu-hi: #262623;
+    --hv-neu-lo: #000000;
+  }
+}
+
+:root {
+  /* Expressive palette: used inside components, never for site chrome. */
+  --hv-gilt: #b4935a;
+  --hv-gilt-hi: #e9d6a6;
+  --hv-gilt-lo: #6e5228;
+  --hv-ether-1: #cfc8f5;
+  --hv-ether-2: #f6d5c4;
+  --hv-ether-3: #bfe0e6;
+  --hv-sky-hi: #7fa7db;
+  --hv-sky-lo: #f2d5c2;
+  --hv-oxblood: #6b1f2a;
+  --hv-phosphor: #7ce8a0;
+  --hv-amber: #ffb547;
+
+  /* Type */
+  --hv-font-sans: var(--font-geist-sans, "Geist"), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hv-font-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --hv-font-serif: var(--font-instrument-serif, "Instrument Serif"), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+
+  /* Shape */
+  --hv-r-1: 4px;
+  --hv-r-2: 8px;
+  --hv-r-3: 12px;
+  --hv-r-4: 20px;
+  --hv-r-pill: 999px;
+
+  /* Motion */
+  --hv-dur-1: 150ms;
+  --hv-dur-2: 220ms;
+  --hv-dur-3: 300ms;
+  --hv-dur-ambient: 18s;
+  --hv-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --hv-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --hv-ease-spring: linear(
+    0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017 19.4%,
+    1.067, 1.099 24.3%, 1.108 26%, 1.1, 1.085 30.2%, 1.006 39.2%, 0.991 42.3%,
+    0.984 45.5%, 0.997 58.1%, 1.002 66.9%, 1
+  );
+}

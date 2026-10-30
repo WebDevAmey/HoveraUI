@@ -1,70 +1,50 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "next-themes";
-import { AppProvider } from "@/context/AppContext";
-import { Toaster } from "@/components/Toast";
-import SmoothScroll from "@/components/chrome/SmoothScroll";
-import Preloader from "@/components/chrome/Preloader";
-import CustomCursor from "@/components/chrome/CustomCursor";
-import SiteDock from "@/components/chrome/SiteDock";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const serif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Hovera UI — CSS Background Patterns",
-    template: "%s | Hovera UI",
+    default: "HoveraUI — a small library of original components",
+    template: "%s · HoveraUI",
   },
   description:
-    "A curated library of production-ready CSS and Tailwind background patterns. Preview live, copy the code, drop it in your project.",
-  metadataBase: new URL("https://backlab.dev"),
-  openGraph: {
-    title: "Hovera UI — CSS Background Patterns",
-    description:
-      "Preview and copy beautiful CSS background patterns for your next project.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+    "Thirty-one original React components, each built around one idea. Copy the source, keep the craft.",
+  openGraph: { type: "website", siteName: "HoveraUI" },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f3f2ee" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0c" },
+  ],
+};
+
+// Runs before first paint so a saved theme never flashes the wrong colors.
+const themeScript = `(function(){try{var t=localStorage.getItem("hv-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}})()`;
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
     >
-      <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <AppProvider>
-            <SmoothScroll />
-            <Preloader />
-            <CustomCursor />
-            {children}
-            <SiteDock />
-            <Toaster />
-          </AppProvider>
-        </ThemeProvider>
-      </body>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

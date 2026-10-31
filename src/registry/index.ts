@@ -1,6 +1,8 @@
 import type { ComponentType } from "react";
 import type { ComponentMeta } from "./types";
 
+import morphButtonMeta from "@/components/ui/morph-button/meta";
+import morphButtonDemo from "@/components/ui/morph-button/demo";
 import depthKeyMeta from "@/components/ui/depth-key/meta";
 import depthKeyDemo from "@/components/ui/depth-key/demo";
 import ditherFillMeta from "@/components/ui/dither-fill/meta";
@@ -69,6 +71,7 @@ import anchorPopoverDemo from "@/components/ui/anchor-popover/demo";
 export type Entry = { meta: ComponentMeta; Demo: ComponentType };
 
 export const registry: Entry[] = [
+  { meta: morphButtonMeta, Demo: morphButtonDemo },
   { meta: depthKeyMeta, Demo: depthKeyDemo },
   { meta: ditherFillMeta, Demo: ditherFillDemo },
   { meta: pillowPressMeta, Demo: pillowPressDemo },

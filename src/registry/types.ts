@@ -1,4 +1,5 @@
 export const categories = [
+  { id: "essentials", label: "Essentials" },
   { id: "buttons", label: "Buttons" },
   { id: "cards", label: "Cards" },
   { id: "effects", label: "Effects" },
@@ -24,7 +25,8 @@ export type Material =
   | "Terminal"
   | "Ethereal"
   | "Elastic"
-  | "Mechanical";
+  | "Mechanical"
+  | "Essential";
 
 export type PropDoc = {
   name: string;

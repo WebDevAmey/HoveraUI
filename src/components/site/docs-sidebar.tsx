@@ -7,6 +7,7 @@ import type { SidebarGroup } from "./nav";
 
 const icons: Record<string, React.ReactNode> = {
   "Get started": <path d="M3 2.5h6l4 4v7H3zM9 2.5v4h4" />,
+  Essentials: <path d="M8 2.5 13.5 8 8 13.5 2.5 8z" />,
   Buttons: <rect x="2" y="5" width="12" height="6" rx="3" />,
   Cards: (
     <>

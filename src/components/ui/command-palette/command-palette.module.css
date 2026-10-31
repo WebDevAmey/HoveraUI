@@ -1,0 +1,263 @@
+.panel {
+  --glass: color-mix(in oklab, var(--hv-surface) 64%, transparent);
+  --edge: color-mix(in oklab, var(--hv-ink) 12%, transparent);
+  --rim: color-mix(in oklab, white 55%, transparent);
+  --row: color-mix(in oklab, var(--hv-ink) 7%, transparent);
+
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 480px);
+  max-height: inherit;
+  overflow: hidden;
+  border: 1px solid var(--edge);
+  border-radius: var(--hv-r-3);
+  background:
+    linear-gradient(to bottom, color-mix(in oklab, white 14%, transparent), transparent 120px),
+    var(--glass);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow:
+    inset 0 1px 0 var(--rim),
+    0 1px 2px color-mix(in oklab, black 8%, transparent),
+    0 24px 48px -16px color-mix(in oklab, black 28%, transparent);
+  color: var(--hv-ink);
+  font: 400 14px / 1.4 var(--hv-font-sans);
+  letter-spacing: -0.005em;
+}
+
+[data-theme="dark"] .panel {
+  --glass: color-mix(in oklab, var(--hv-surface) 76%, transparent);
+  --edge: color-mix(in oklab, white 12%, transparent);
+  --rim: color-mix(in oklab, white 14%, transparent);
+  --row: color-mix(in oklab, white 8%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .panel {
+    --glass: color-mix(in oklab, var(--hv-surface) 76%, transparent);
+    --edge: color-mix(in oklab, white 12%, transparent);
+    --rim: color-mix(in oklab, white 14%, transparent);
+    --row: color-mix(in oklab, white 8%, transparent);
+  }
+}
+
+.panel kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border: 1px solid var(--edge);
+  border-radius: var(--hv-r-1);
+  background: color-mix(in oklab, var(--hv-raised) 50%, transparent);
+  color: var(--hv-ink-2);
+  font: 500 10px / 1 var(--hv-font-mono);
+}
+
+.search {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--edge);
+}
+
+.icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--hv-ink-2);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.input::placeholder {
+  color: var(--hv-ink-3);
+}
+
+/* The input owns focus for the whole panel, so the ring goes on the panel. */
+.panel:has(.input:focus-visible) {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+.esc {
+  flex: none;
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 4px 8px 8px;
+  scroll-padding: 32px 0 8px;
+  scrollbar-width: thin;
+}
+
+.group + .group {
+  margin-top: 4px;
+}
+
+.heading {
+  padding: 12px 8px 6px;
+  color: var(--hv-ink-2);
+  font: 500 10px / 1 var(--hv-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 8px;
+  border-radius: var(--hv-r-2);
+  color: var(--hv-ink);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.option[aria-selected="true"] {
+  background: var(--row);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--hv-ink) 6%, transparent);
+  color: var(--hv-ink);
+}
+
+.label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.label mark {
+  background: none;
+  color: var(--hv-accent);
+  font-weight: 600;
+}
+
+.hint {
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+  color: var(--hv-ink-2);
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.shortcut {
+  display: inline-flex;
+  flex: none;
+  gap: 4px;
+  margin-inline-start: auto;
+}
+
+.empty {
+  padding: 32px 16px;
+  color: var(--hv-ink-2);
+  font-size: 13px;
+  text-align: center;
+}
+
+.empty q {
+  color: var(--hv-ink-2);
+}
+
+.footer {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 16px;
+  height: 36px;
+  padding: 0 16px;
+  border-top: 1px solid var(--edge);
+  color: var(--hv-ink-2);
+  font: 400 11px / 1 var(--hv-font-mono);
+  white-space: nowrap;
+}
+
+.footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.count {
+  margin-inline-start: auto;
+}
+
+.dialog {
+  width: min(calc(100% - 32px), 520px);
+  max-width: none;
+  max-height: min(440px, calc(100dvh - 96px));
+  margin: 12vh auto auto;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+  background: transparent;
+  color: var(--hv-ink);
+}
+
+/* Inside the modal the panel is the only thing on screen; no ring needed. */
+.dialog .panel:has(.input:focus-visible) {
+  outline: none;
+}
+
+.dialog .panel {
+  width: 100%;
+  max-height: min(440px, calc(100dvh - 96px));
+}
+
+.dialog::backdrop {
+  background: color-mix(in oklab, black 28%, transparent);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.dialog[open] .panel {
+  animation: rise var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.dialog[open]::backdrop {
+  animation: fade var(--hv-dur-2) var(--hv-ease-out);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    scale: 0.98;
+    translate: 0 -6px;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] .panel {
+    animation-name: fade;
+  }
+}

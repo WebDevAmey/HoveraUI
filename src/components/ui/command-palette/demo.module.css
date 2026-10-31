@@ -1,0 +1,87 @@
+.stage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: min(100%, 480px);
+  padding: 16px;
+  isolation: isolate;
+}
+
+/* A soft colour field behind the glass so the frosting has something to blur. */
+.field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--hv-r-4);
+  background:
+    radial-gradient(circle at 18% 72%, color-mix(in oklab, var(--hv-amber) 70%, transparent), transparent 34%),
+    radial-gradient(circle at 82% 38%, color-mix(in oklab, var(--hv-accent) 60%, transparent), transparent 36%),
+    radial-gradient(circle at 52% 102%, color-mix(in oklab, var(--hv-ether-3) 90%, transparent), transparent 42%),
+    radial-gradient(circle at 40% 10%, color-mix(in oklab, var(--hv-ether-2) 80%, transparent), transparent 40%);
+  opacity: 0.85;
+  filter: blur(20px);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 6px 0 12px;
+  border: 1px solid color-mix(in oklab, var(--hv-ink) 14%, transparent);
+  border-radius: var(--hv-r-2);
+  background: color-mix(in oklab, var(--hv-surface) 70%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--hv-ink);
+  font: 500 13px / 1 var(--hv-font-sans);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  flex: none;
+  cursor: pointer;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+.keys {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.keys kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border: 1px solid color-mix(in oklab, var(--hv-ink) 12%, transparent);
+  border-radius: var(--hv-r-1);
+  color: var(--hv-ink-2);
+  font: 500 10px / 1 var(--hv-font-mono);
+}
+
+.last {
+  overflow: hidden;
+  min-width: 0;
+  color: var(--hv-ink-2);
+  font: 400 11px / 1 var(--hv-font-mono);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* A fixed height keeps the tile still while results filter. */
+.stage .inline {
+  height: 280px;
+}

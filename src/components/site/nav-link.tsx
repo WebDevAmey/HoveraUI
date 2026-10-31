@@ -15,7 +15,7 @@ export function NavLink({ href, children }: { href: string; children: ReactNode 
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className="shrink-0 rounded-full px-3 py-1.5 text-[13.5px] text-ink-2 transition-colors duration-150 hover:text-ink aria-[current=page]:bg-sunken aria-[current=page]:text-ink"
+      className="inline-flex h-9 shrink-0 items-center rounded-full px-3 text-[13.5px] text-ink-2 transition-colors duration-150 hover:text-ink aria-[current=page]:bg-sunken aria-[current=page]:text-ink"
     >
       {children}
     </Link>

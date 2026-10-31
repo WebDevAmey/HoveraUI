@@ -73,7 +73,7 @@ export function GlideTabs({ tabs, value, defaultValue, onValueChange, label, cla
               role="tab"
               data-value={tab.value}
               aria-selected={tab.value === active}
-              aria-controls={`${id}-panel`}
+              aria-controls={tab.content !== undefined ? `${id}-panel` : undefined}
               tabIndex={tab.value === active ? 0 : -1}
               onClick={() => select(tab.value)}
               onKeyDown={onKeyDown}

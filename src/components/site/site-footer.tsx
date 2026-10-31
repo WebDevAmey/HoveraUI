@@ -54,12 +54,18 @@ export function SiteFooter({ count }: { count: number }) {
         <span>MIT licensed</span>
         <span className="sm:ml-auto">© {new Date().getFullYear()} HoveraUI</span>
       </div>
-      <p
-        aria-hidden="true"
-        className="display pointer-events-none select-none overflow-hidden whitespace-nowrap px-2 text-center text-[clamp(64px,17vw,260px)] leading-[0.8] text-ink/[0.06]"
-      >
-        HoveraUI
-      </p>
+      {/* Decorative wordmark, drawn as SVG so it scales with the page and stays out of the reading order. */}
+      <svg aria-hidden="true" viewBox="0 0 1000 190" className="pointer-events-none block w-full select-none px-2">
+        <text
+          x="500"
+          y="170"
+          textAnchor="middle"
+          className="fill-ink/[0.06]"
+          style={{ font: "400 236px var(--hv-font-serif)", letterSpacing: "-0.03em" }}
+        >
+          HoveraUI
+        </text>
+      </svg>
     </footer>
   );
 }

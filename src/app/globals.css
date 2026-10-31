@@ -196,17 +196,18 @@
 .code-scroll pre:focus-visible {
   outline: none;
 }
+/* Vitesse is pale on a warm surface; pull every token toward ink so all pass AA. */
 .shiki span {
-  color: var(--shiki-light);
+  color: color-mix(in srgb, var(--shiki-light) 60%, #1c1b1a);
 }
 [data-theme="dark"] .shiki span {
-  color: var(--shiki-dark);
+  color: color-mix(in srgb, var(--shiki-dark) 82%, #ffffff);
 }
 [data-theme="light"] .shiki span {
-  color: var(--shiki-light);
+  color: color-mix(in srgb, var(--shiki-light) 60%, #1c1b1a);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .shiki span {
-    color: var(--shiki-dark);
+    color: color-mix(in srgb, var(--shiki-dark) 82%, #ffffff);
   }
 }

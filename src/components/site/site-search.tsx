@@ -41,7 +41,6 @@ export function SiteSearch({ groups }: { groups: SearchGroup[] }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Search components"
         aria-keyshortcuts="Meta+K Control+K"
         className="press flex h-9 items-center gap-2 rounded-full border border-line bg-surface pl-3 pr-1.5 text-[13px] text-ink-2 transition-[color,border-color,transform] hover:border-line-strong hover:text-ink sm:w-52"
       >
@@ -49,8 +48,8 @@ export function SiteSearch({ groups }: { groups: SearchGroup[] }) {
           <circle cx="7" cy="7" r="4.5" />
           <path d="m10.5 10.5 3 3" strokeLinecap="round" />
         </svg>
-        <span className="hidden sm:inline">Search</span>
-        <kbd className="ml-auto hidden h-6 items-center rounded-full border border-line bg-raised px-2 font-sans text-[11px] text-ink-2 sm:inline-flex">
+        <span className="sr-only sm:not-sr-only">Search</span>
+        <kbd aria-hidden="true" className="ml-auto hidden h-6 items-center rounded-full border border-line bg-raised px-2 font-sans text-[11px] text-ink-2 sm:inline-flex">
           ⌘K
         </kbd>
       </button>

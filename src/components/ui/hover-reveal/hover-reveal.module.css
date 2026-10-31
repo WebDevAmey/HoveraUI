@@ -1,0 +1,173 @@
+.root {
+  --img-w: 260px;
+  --img-ratio: 4 / 3;
+
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hv-line);
+}
+
+.item {
+  border-bottom: 1px solid var(--hv-line);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 18px 4px;
+  color: var(--hv-ink);
+  text-decoration: none;
+  cursor: default;
+  outline: none;
+  transition: opacity var(--hv-dur-3) var(--hv-ease-out);
+}
+
+a.row {
+  cursor: pointer;
+}
+
+/* While one row is lit, the rest step back. */
+.root[data-active] .row:not([data-current]) {
+  opacity: 0.38;
+}
+
+.row:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: -2px;
+  border-radius: var(--hv-r-1);
+}
+
+.index {
+  font: 500 11px / 1 var(--hv-font-mono);
+  letter-spacing: 0.06em;
+  color: var(--hv-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  font: 400 clamp(26px, 4.4vw, 40px) / 1.05 var(--hv-font-serif);
+  letter-spacing: -0.015em;
+  transition: translate 420ms var(--hv-ease-out);
+}
+
+.row[data-current] .title {
+  translate: 10px 0;
+}
+
+.meta {
+  font: 500 10px / 1 var(--hv-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+  white-space: nowrap;
+}
+
+/* The photo lives in a zero-size anchor so its spring transform is relative to the list. */
+.anchor {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.float {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.frame {
+  position: absolute;
+  width: var(--img-w);
+  aspect-ratio: var(--img-ratio);
+  /* Sit a little up and right of the pointer so the row title stays readable. */
+  translate: -28% -58%;
+  overflow: hidden;
+  border-radius: var(--hv-r-2);
+  background: var(--hv-sunken);
+  box-shadow:
+    0 1px 2px color-mix(in oklab, black 12%, transparent),
+    0 24px 48px -20px color-mix(in oklab, black 50%, transparent);
+  opacity: 0;
+  scale: 0.72;
+  filter: blur(6px);
+  transition:
+    opacity 260ms var(--hv-ease-out),
+    scale 520ms var(--hv-ease-spring),
+    filter 320ms var(--hv-ease-out);
+}
+
+.frame[data-visible] {
+  opacity: 1;
+  scale: 1;
+  filter: blur(0);
+}
+
+/* Layers wipe vertically: rows above the current one exit upward, rows below wait underneath. */
+.layer {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 560ms var(--hv-ease-out);
+}
+
+.layer[data-state="above"] {
+  clip-path: inset(0 0 100% 0);
+}
+
+.layer[data-state="in"] {
+  clip-path: inset(0 0 0 0);
+  z-index: 1;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scale: 1.14;
+  transition: scale 900ms var(--hv-ease-out);
+  user-select: none;
+}
+
+.layer[data-state="in"] .img {
+  scale: 1;
+}
+
+@media (max-width: 520px) {
+  .row {
+    grid-template-columns: 2rem 1fr;
+  }
+
+  .meta {
+    grid-column: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .title,
+  .layer,
+  .img {
+    transition: none;
+  }
+
+  .row[data-current] .title,
+  .img {
+    translate: none;
+    scale: 1;
+  }
+
+  .frame {
+    scale: 1;
+    filter: none;
+    transition: opacity var(--hv-dur-1) linear;
+  }
+}

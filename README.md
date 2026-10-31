@@ -61,7 +61,7 @@ Set `NEXT_PUBLIC_SITE_URL` (see `.env.example`) to the deployed origin so regist
 
 ```
 src/components/ui/<slug>/   <slug>.tsx, <slug>.module.css, demo.tsx, meta.ts
-src/components/site/        site chrome: header, footer, preview, gallery
+src/components/site/        site chrome: header, sidebar, search, footer, preview, code view
 src/registry/               index of every component, source reader, types
 src/styles/tokens.css       the only shared stylesheet
 scripts/build-registry.mjs  writes public/r/*.json and per-component sizes

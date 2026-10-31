@@ -2,6 +2,19 @@
 
 All notable changes to the Hovera UI registry and site.
 
+## 2026-10-31 — Essentials and a calmer site
+
+### Added
+
+An Essentials category with six everyday components: `morph-button`, `glide-tabs`, `soft-switch`, `quiet-tooltip`, `rolling-number` and `copy-field`. Each ships with a live demo, props, accessibility notes and a registry item.
+
+### Changed
+
+- Warmer neutrals, and Newsreader replaces Instrument Serif as `--hv-font-serif`.
+- The docs sidebar has a filter, group icons and counts, and a highlight that glides between items.
+- Header search (⌘K) built on the Command Palette. Code is highlighted at build time.
+- The landing page is now a centred hero, a curated bento of six live components, an install section and the FAQ.
+
 ## 2026-10-30 — A smaller, stranger library
 
 Rebuilt from first principles. All previous components and their registry URLs are retired.

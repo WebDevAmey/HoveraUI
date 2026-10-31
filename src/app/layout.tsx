@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s · HoveraUI",
   },
   description:
-    "Thirty-one original React components, each built around one idea. Copy the source, keep the craft.",
+    "Original React components, each built around one idea. Copy the source, keep the craft.",
   openGraph: { type: "website", siteName: "HoveraUI" },
 };
 

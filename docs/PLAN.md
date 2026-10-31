@@ -1,6 +1,6 @@
 # Plan
 
-HoveraUI becomes 31 copy-paste React components, each with one idea, shown on a calm near-monochrome site. The site stays quiet so the components can be loud in their own materials: pixels, paper, glass, soft clay, gilt and sky.
+HoveraUI becomes 31 copy-paste React components (plus six Essentials added in the second pass), each with one idea, shown on a calm near-monochrome site. The site stays quiet so the components can be loud in their own materials: pixels, paper, glass, soft clay, gilt and sky.
 
 ## Components
 
@@ -39,6 +39,17 @@ Every component lists the material it explores. Items marked with † replace a 
 | 29 | Stack Toast | Feedback | Glass | Toasts stack with depth and fan out on hover or focus. |
 | 30 | LED Meter | Feedback | Pixel | Segmented LED level meter, determinate or indeterminate. |
 | 31 | Anchor Popover | Feedback | Paper | One popover whose arrow travels between anchors. Uses CSS anchor positioning where available. |
+
+### Essentials (second pass)
+
+| # | Component | Idea |
+| --- | --- | --- |
+| 32 | Morph Button | Idle, loading and done labels share one grid cell; the outgoing one lifts and blurs while the next settles. |
+| 33 | Glide Tabs | An inked copy of the tab row is clipped to the active tab, so fill and text colour move together. |
+| 34 | Soft Switch | A settings row whose thumb stretches toward its destination while pressed. |
+| 35 | Quiet Tooltip | Grouped tooltips: the first waits, neighbours then open instantly and without motion. |
+| 36 | Rolling Number | Tabular digits on wheels that turn to their new value, lowest place first. |
+| 37 | Copy Field | A read-only value whose copy glyph blurs into a check while a small note rises. |
 
 ## File structure
 

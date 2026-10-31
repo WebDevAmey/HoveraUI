@@ -22,8 +22,8 @@ const groups = [
     title: "Craft",
     items: [
       {
-        q: "Why only thirty-one components?",
-        a: "Every piece has to carry an idea you will not find in other libraries. When one turned out to be a familiar effect with a new name, it was cut or rethought.",
+        q: "Why so few components?",
+        a: "Every piece has to earn its place. The Essentials are the everyday controls done carefully; the rest each carry an idea you will not find elsewhere. Anything that turned out to be a familiar effect with a new name was cut or rethought.",
       },
       {
         q: "How do they behave with reduced motion?",

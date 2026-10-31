@@ -1,0 +1,228 @@
+.root {
+  /* Half the native thumb width: the input's thumb centre and the visual scale share this inset. */
+  --inset: 8px;
+  --cap-w: 16px;
+  --cap-h: 28px;
+  --groove-bg: color-mix(in oklab, var(--hv-ink) 16%, var(--hv-sunken));
+  --cap-top: color-mix(in oklab, white 30%, var(--hv-raised));
+  --cap-bottom: color-mix(in oklab, var(--hv-ink) 9%, var(--hv-raised));
+  --settle: var(--hv-dur-3) var(--hv-ease-spring);
+
+  width: 100%;
+  min-width: 160px;
+  padding-top: 28px;
+  color: var(--hv-ink);
+  font: 400 12px / 1 var(--hv-font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+[data-theme="dark"] .root {
+  --cap-top: color-mix(in oklab, white 12%, var(--hv-raised));
+  --cap-bottom: color-mix(in oklab, black 30%, var(--hv-raised));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .root {
+    --cap-top: color-mix(in oklab, white 12%, var(--hv-raised));
+    --cap-bottom: color-mix(in oklab, black 30%, var(--hv-raised));
+  }
+}
+
+.track {
+  position: relative;
+  height: 58px;
+}
+
+/* A machined slot: sunken, with a lit lower lip. */
+.groove {
+  position: absolute;
+  top: calc(var(--cap-h) / 2 - 2px);
+  left: calc(var(--inset) - 3px);
+  right: calc(var(--inset) - 3px);
+  height: 4px;
+  border-radius: var(--hv-r-pill);
+  background: var(--groove-bg);
+  box-shadow:
+    inset 0 1px 1px color-mix(in oklab, black 22%, transparent),
+    0 1px 0 color-mix(in oklab, var(--hv-neu-hi) 70%, transparent);
+}
+
+.fill {
+  position: absolute;
+  inset: 1px 3px;
+  border-radius: inherit;
+  background: var(--hv-accent);
+  transform-origin: left;
+  scale: var(--p) 1;
+  transition: scale var(--settle);
+}
+
+.scale {
+  position: absolute;
+  top: calc(var(--cap-h) + 4px);
+  left: var(--inset);
+  right: var(--inset);
+  height: 26px;
+}
+
+.tick,
+.mark {
+  position: absolute;
+  top: 0;
+  left: calc(var(--at) * 100%);
+  width: 1px;
+  translate: -50% 0;
+}
+
+.tick {
+  height: 4px;
+  background: var(--hv-line-strong);
+}
+
+.tick[data-on] {
+  background: var(--hv-ink-3);
+}
+
+.mark {
+  height: 8px;
+  background: var(--hv-ink-3);
+}
+
+.mark[data-on] {
+  background: var(--hv-ink-2);
+}
+
+.markLabel {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  translate: -50% 0;
+  color: var(--hv-ink-2);
+  font: 500 10px / 1 var(--hv-font-mono);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transition: color var(--hv-dur-1) var(--hv-ease-out);
+}
+
+.mark[data-here] {
+  background: var(--hv-accent);
+}
+
+.mark[data-here] .markLabel {
+  color: var(--hv-accent);
+}
+
+/* The carriage spans the scale, so translating it by --p × 100% lands the cap on the value. */
+.carriage {
+  position: absolute;
+  top: 0;
+  left: var(--inset);
+  right: var(--inset);
+  height: var(--cap-h);
+  pointer-events: none;
+  translate: calc(var(--p) * 100%) 0;
+  transition: translate var(--settle);
+}
+
+/* A fader cap with an index line and fine grip ridges. */
+.cap {
+  position: absolute;
+  top: 0;
+  left: calc(var(--cap-w) / -2);
+  width: var(--cap-w);
+  height: var(--cap-h);
+  border: 1px solid color-mix(in oklab, var(--hv-ink) 18%, transparent);
+  border-radius: 5px;
+  background:
+    linear-gradient(var(--hv-accent), var(--hv-accent)) center / 100% 2px no-repeat,
+    repeating-linear-gradient(to bottom, transparent 0 2px, color-mix(in oklab, var(--hv-ink) 12%, transparent) 2px 3px)
+      center / 8px 18px no-repeat,
+    linear-gradient(to bottom, var(--cap-top), var(--cap-bottom));
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 50%, transparent),
+    0 1px 1px color-mix(in oklab, black 14%, transparent),
+    0 4px 8px -2px color-mix(in oklab, black 22%, transparent);
+  transition: scale var(--hv-dur-1) var(--hv-ease-out);
+}
+
+.readout {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  padding: 4px 6px;
+  border-radius: var(--hv-r-1);
+  background: var(--hv-ink);
+  color: var(--hv-canvas);
+  font: 500 11px / 1 var(--hv-font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  opacity: 0;
+  translate: -50% 4px;
+  transition:
+    opacity var(--hv-dur-1) var(--hv-ease-out),
+    translate var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.root[data-dragging] .readout,
+.root:has(.input:focus-visible) .readout {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+.root[data-dragging] .cap {
+  scale: 0.96;
+}
+
+.root:has(.input:focus-visible) .cap {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+/* The native range stays on top for pointer, touch and keys; only its paint is hidden. */
+.input {
+  position: absolute;
+  inset: -4px 0 auto;
+  width: 100%;
+  height: calc(var(--cap-h) + 12px);
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.root[data-dragging] .input {
+  cursor: grabbing;
+}
+
+.input::-webkit-slider-thumb {
+  width: var(--cap-w);
+  height: var(--cap-h);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::-moz-range-thumb {
+  width: var(--cap-w);
+  height: var(--cap-h);
+  border: 0;
+}
+
+.root[data-disabled] {
+  opacity: 0.5;
+}
+
+.root[data-disabled] .input {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .carriage,
+  .cap,
+  .readout {
+    transition: none;
+  }
+}

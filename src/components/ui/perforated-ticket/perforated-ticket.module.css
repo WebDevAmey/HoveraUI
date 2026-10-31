@@ -1,0 +1,274 @@
+@property --pt-tear {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.ticket {
+  --stub-w: 84px;
+  --notch: 10px;
+  --radius: 10px;
+  --pull: 0;
+  --pt-tear: calc(var(--pull) * 0.6);
+  --paper: light-dark(#f4ecdc, #24211c);
+  --stub-paper: light-dark(#efe4cf, #2a2620);
+  --mark: light-dark(var(--hv-oxblood), var(--hv-gilt));
+
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--stub-w);
+  min-height: 152px;
+  color: var(--hv-ink);
+  /* drop-shadow follows the notches and torn edge, unlike box-shadow. */
+  filter: drop-shadow(0 1px 1px light-dark(rgb(60 40 10 / 0.12), rgb(0 0 0 / 0.6)))
+    drop-shadow(0 12px 18px light-dark(rgb(60 40 10 / 0.12), rgb(0 0 0 / 0.5)));
+  transition: --pt-tear 240ms var(--hv-ease-out);
+}
+
+.ticket[data-pulling] {
+  transition: none;
+}
+
+.ticket[data-torn] {
+  --pt-tear: 1;
+}
+
+
+.body {
+  position: relative;
+  padding: 20px 20px 18px 22px;
+  border-radius: var(--radius) 0 0 var(--radius);
+  background:
+    radial-gradient(120% 100% at 0% 0%, light-dark(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.03)), transparent 60%),
+    var(--paper);
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 100% 0, #0000 calc(var(--notch) - 0.5px), #000 var(--notch)),
+    radial-gradient(circle var(--notch) at 100% 100%, #0000 calc(var(--notch) - 0.5px), #000 var(--notch));
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle var(--notch) at 100% 0, #0000 calc(var(--notch) - 0.5px), #000 var(--notch)),
+    radial-gradient(circle var(--notch) at 100% 100%, #0000 calc(var(--notch) - 0.5px), #000 var(--notch));
+  mask-composite: intersect;
+}
+
+.eyebrow {
+  margin: 0;
+  font: 500 10px / 1.4 var(--hv-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mark);
+}
+
+.title {
+  margin: 14px 0 0;
+  font: 400 32px / 0.95 var(--hv-font-serif);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.details {
+  margin-top: 16px;
+  padding-top: 10px;
+  border-top: 1px solid light-dark(rgb(60 40 10 / 0.14), rgb(255 255 255 / 0.1));
+  font: 500 10px / 1.4 var(--hv-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+}
+
+.slot {
+  position: relative;
+  display: grid;
+}
+
+.stub {
+  position: relative;
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 0;
+  border: 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--stub-paper);
+  color: var(--hv-ink);
+  cursor: grab;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 0 0, #0000 calc(var(--notch) - 0.5px), #000 var(--notch)),
+    radial-gradient(circle var(--notch) at 0 100%, #0000 calc(var(--notch) - 0.5px), #000 var(--notch));
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle var(--notch) at 0 0, #0000 calc(var(--notch) - 0.5px), #000 var(--notch)),
+    radial-gradient(circle var(--notch) at 0 100%, #0000 calc(var(--notch) - 0.5px), #000 var(--notch));
+  mask-composite: intersect;
+  /* Hinged at the bottom of the perforation: pulling lifts the top away first. */
+  transform-origin: 0 100%;
+  rotate: calc(var(--pull) * 9deg);
+  translate: calc(var(--pull) * 6px) 0;
+  transition:
+    rotate var(--hv-dur-2) var(--hv-ease-out),
+    translate var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.ticket[data-pulling] .stub {
+  cursor: grabbing;
+  transition: none;
+}
+
+/* The perforation: a column of small punched dots along the stub's edge. */
+.stub::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(var(--notch) + 4px);
+  bottom: calc(var(--notch) + 4px);
+  width: 3px;
+  background: radial-gradient(circle at 50% 50%, light-dark(rgb(60 40 10 / 0.38), rgb(255 255 255 / 0.22)) 1.1px, transparent 1.5px)
+    0 0 / 3px 7px repeat-y;
+  transition: opacity var(--hv-dur-1);
+}
+
+.ticket[data-torn] .stub::before,
+.ticket[data-pulling] .stub::before {
+  opacity: 0;
+}
+
+.stub:focus-visible {
+  outline: none;
+}
+
+/* The mask would clip an outline, so focus is drawn on the slot instead. */
+.slot:has(.stub:focus-visible)::after {
+  content: "";
+  position: absolute;
+  inset: -4px -4px -4px 4px;
+  border: 2px solid var(--hv-accent);
+  border-radius: 0 calc(var(--radius) + 4px) calc(var(--radius) + 4px) 0;
+  pointer-events: none;
+}
+
+.stubLabel,
+.serial {
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+  font: 500 10px / 1 var(--hv-font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.stubLabel {
+  color: var(--mark);
+}
+
+.serial {
+  color: var(--hv-ink-2);
+  letter-spacing: 0.1em;
+}
+
+.ticket[data-torn] .stub {
+  pointer-events: none;
+  animation: fall 760ms var(--hv-ease-in-out) forwards;
+}
+
+.stub[data-returned] {
+  animation: reattach var(--hv-dur-3) var(--hv-ease-out);
+}
+
+@keyframes fall {
+  0% {
+    rotate: calc(var(--pull) * 9deg);
+    translate: calc(var(--pull) * 6px) 0;
+  }
+  35% {
+    rotate: 13deg;
+    translate: 10px 2px;
+    opacity: 1;
+  }
+  100% {
+    rotate: 24deg;
+    translate: 26px 110px;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes reattach {
+  from {
+    rotate: 7deg;
+    translate: 14px -8px;
+    opacity: 0;
+  }
+}
+
+.reattach {
+  grid-area: 1 / 1;
+  margin: 0 0 0 4px;
+  border: 1px dashed light-dark(rgb(60 40 10 / 0.3), rgb(255 255 255 / 0.2));
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: transparent;
+  font: 500 10px / 1 var(--hv-font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--hv-dur-2) var(--hv-ease-out),
+    visibility 0s var(--hv-dur-2);
+}
+
+.ticket[data-torn] .reattach {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--hv-dur-3) var(--hv-ease-out) 420ms,
+    visibility 0s;
+}
+
+@media (hover: hover) {
+  .reattach:hover {
+    color: var(--hv-ink);
+    border-color: light-dark(rgb(60 40 10 / 0.5), rgb(255 255 255 / 0.4));
+  }
+}
+
+.reattach:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+.live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket,
+  .stub,
+  .reattach,
+  .ticket[data-torn] .reattach {
+    transition: none;
+  }
+
+  .stub {
+    rotate: none;
+    translate: none;
+  }
+
+  .ticket[data-torn] .stub {
+    animation: none;
+    visibility: hidden;
+  }
+
+  .stub[data-returned] {
+    animation: none;
+  }
+}

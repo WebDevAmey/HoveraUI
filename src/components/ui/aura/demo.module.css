@@ -1,0 +1,63 @@
+.stage {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.aura {
+  max-width: 230px;
+}
+
+.word {
+  display: block;
+  font: 400 italic 30px / 1 var(--hv-font-serif);
+  letter-spacing: -0.01em;
+}
+
+.caption {
+  display: block;
+  margin-top: 8px;
+  font: 500 9px / 1 var(--hv-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--hv-ink) 72%, transparent);
+}
+
+.palettes {
+  display: flex;
+  gap: 4px;
+}
+
+.swatch {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.swatch::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--chip);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--hv-ink) 12%, transparent),
+    0 0 0 3px var(--ring, transparent);
+  transition: box-shadow var(--hv-dur-1) var(--hv-ease-out);
+}
+
+.swatch[aria-checked="true"] {
+  --ring: color-mix(in oklab, var(--hv-ink) 22%, transparent);
+}
+
+.swatch:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 0;
+}

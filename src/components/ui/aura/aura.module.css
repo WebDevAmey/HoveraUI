@@ -1,0 +1,134 @@
+.root {
+  --aura-size: 240px;
+  --aura-k: 0.8;
+  --c1: var(--hv-ether-1);
+  --c2: var(--hv-ether-2);
+  --c3: var(--hv-ether-3);
+  /* Pastels vanish on a light page, so they gain chroma there and keep their glow on dark. */
+  --a1: light-dark(oklch(from var(--c1) calc(l - 0.06) calc(c * 2) h), oklch(from var(--c1) calc(l - 0.14) calc(c * 1.8) h));
+  --a2: light-dark(oklch(from var(--c2) calc(l - 0.04) calc(c * 2) h), oklch(from var(--c2) calc(l - 0.14) calc(c * 1.8) h));
+  --a3: light-dark(oklch(from var(--c3) calc(l - 0.06) calc(c * 2) h), oklch(from var(--c3) calc(l - 0.14) calc(c * 1.8) h));
+  --breath: 10s;
+  --ease-breath: cubic-bezier(0.45, 0, 0.55, 1);
+
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(var(--aura-size), 100%);
+  aspect-ratio: 1;
+  isolation: isolate;
+  color: var(--hv-ink);
+}
+
+.root[data-palette="dusk"] {
+  --c1: var(--hv-sky-hi);
+  --c2: var(--hv-sky-lo);
+  --c3: var(--hv-ether-1);
+}
+
+.root[data-palette="accent"] {
+  --c1: color-mix(in oklab, var(--hv-accent) 70%, white);
+  --c2: var(--hv-ether-1);
+  --c3: var(--hv-ether-3);
+}
+
+.glow,
+.halo,
+.wisp,
+.line {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  /* Every layer breathes on the same 10s cycle: four seconds in, six out. */
+  animation: breathe var(--breath) var(--ease-breath) infinite;
+}
+
+/* Three offset pools of colour and a pale core: the body of the light. */
+.glow {
+  inset: 6%;
+  background:
+    radial-gradient(circle at 50% 50%, light-dark(rgb(255 255 255 / 0.9), rgb(255 255 255 / 0.12)) 0, transparent 26%),
+    radial-gradient(circle at 38% 40%, var(--a1) 0, transparent 50%),
+    radial-gradient(circle at 64% 42%, var(--a2) 0, transparent 48%),
+    radial-gradient(circle at 50% 66%, var(--a3) 0, transparent 48%);
+  -webkit-mask: radial-gradient(closest-side, #000 30%, transparent 92%);
+  mask: radial-gradient(closest-side, #000 30%, transparent 92%);
+}
+
+/* An iridescent ring that turns too slowly to notice, faded at both edges. */
+.halo {
+  inset: 0;
+  background: conic-gradient(from 20deg, var(--a1), var(--a2), var(--a3), var(--a1), var(--a2), var(--a1));
+  -webkit-mask: radial-gradient(closest-side, transparent 48%, #000 64%, #000 70%, transparent 96%);
+  mask: radial-gradient(closest-side, transparent 48%, #000 64%, #000 70%, transparent 96%);
+  animation:
+    breathe var(--breath) var(--ease-breath) infinite,
+    turn 80s linear infinite;
+}
+
+/* Thin wisps turning the other way, so the light never looks like a printed ring. */
+.wisp {
+  inset: 4%;
+  background: conic-gradient(
+    from 90deg,
+    transparent 0 6%,
+    var(--a2) 14%,
+    transparent 26% 44%,
+    var(--a3) 54%,
+    transparent 66% 78%,
+    var(--a1) 88%,
+    transparent 98%
+  );
+  -webkit-mask: radial-gradient(closest-side, transparent 30%, #000 60%, transparent 92%);
+  mask: radial-gradient(closest-side, transparent 30%, #000 60%, transparent 92%);
+  animation:
+    breathe var(--breath) var(--ease-breath) -0.6s infinite,
+    turn 120s linear reverse infinite;
+}
+
+/* One precise hairline, trailing the breath slightly. */
+.line {
+  inset: 23%;
+  box-shadow: inset 0 0 0 1px light-dark(rgb(255 255 255 / 0.9), rgb(255 255 255 / 0.2));
+  animation-delay: -9.4s;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 50%;
+  text-align: center;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    scale: 0.9;
+    opacity: calc(var(--aura-k) * 0.62);
+  }
+  40% {
+    scale: 1.03;
+    opacity: var(--aura-k);
+  }
+}
+
+@keyframes turn {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.root[data-paused] :is(.glow, .halo, .wisp, .line) {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow,
+  .halo,
+  .wisp,
+  .line {
+    animation: none;
+    scale: 0.97;
+    opacity: calc(var(--aura-k) * 0.85);
+  }
+}

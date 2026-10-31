@@ -1,0 +1,159 @@
+.pill {
+  --surface: var(--hv-canvas);
+  --d: 5px;
+  --h: 44px;
+  --pad: 0 22px;
+  --type: 14px;
+  /* Lifted slightly so the lit side still reads on dark surfaces. */
+  --hi: color-mix(in oklab, white 7%, var(--hv-neu-hi));
+
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-items: center;
+  height: var(--h);
+  padding: var(--pad);
+  /* A hairline edge keeps the shape legible where the shadows fade out. */
+  border: 1px solid color-mix(in oklab, var(--hv-ink) 11%, var(--surface));
+  border-radius: var(--hv-r-pill);
+  background: var(--surface);
+  color: var(--hv-ink-2);
+  font: 500 var(--type) / 1 var(--hv-font-sans);
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.pill[data-size="sm"] {
+  --d: 4px;
+  --h: 36px;
+  --pad: 0 16px;
+  --type: 13px;
+}
+
+/* Both shadow states are painted once; pressing only crossfades them. */
+.pill::before,
+.pill::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: opacity var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.pill::before {
+  background: linear-gradient(
+    150deg,
+    color-mix(in oklab, var(--hi) 60%, var(--surface)),
+    var(--surface) 55%,
+    color-mix(in oklab, var(--hv-neu-lo) 18%, var(--surface))
+  );
+  box-shadow:
+    calc(var(--d) * -1) calc(var(--d) * -1) calc(var(--d) * 2.4) var(--hi),
+    var(--d) var(--d) calc(var(--d) * 2.4) color-mix(in oklab, var(--hv-neu-lo) 90%, transparent),
+    inset 0 1px 0 color-mix(in oklab, var(--hi) 80%, transparent);
+}
+
+.pill::after {
+  opacity: 0;
+  background: color-mix(in oklab, var(--hv-neu-lo) 12%, var(--surface));
+  box-shadow:
+    inset calc(var(--d) * 0.8) calc(var(--d) * 0.8) calc(var(--d) * 1.6) var(--hv-neu-lo),
+    inset calc(var(--d) * -0.8) calc(var(--d) * -0.8) calc(var(--d) * 1.6) var(--hi);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition:
+    translate var(--hv-dur-2) var(--hv-ease-out),
+    opacity var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  color: var(--hv-ink-3);
+  transition: color var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (hover: hover) {
+  .pill:hover {
+    color: var(--hv-ink);
+  }
+}
+
+.pill:active::before,
+.pill[data-down]::before,
+.pill[aria-pressed="true"]::before {
+  opacity: 0;
+}
+
+.pill:active::after,
+.pill[data-down]::after,
+.pill[aria-pressed="true"]::after {
+  opacity: 1;
+}
+
+.pill:active .label,
+.pill[data-down] .label {
+  translate: 0 1px;
+  opacity: 0.72;
+}
+
+.pill:active::before,
+.pill:active::after,
+.pill:active .label,
+.pill[data-down]::before,
+.pill[data-down]::after,
+.pill[data-down] .label {
+  transition-duration: 70ms;
+}
+
+.pill[aria-pressed="true"] {
+  color: var(--hv-ink);
+}
+
+.pill[aria-pressed="true"] .label {
+  translate: 0 1px;
+}
+
+.pill[aria-pressed="true"] .icon {
+  color: var(--hv-accent);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 4px;
+}
+
+.pill:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pill:disabled::before {
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill,
+  .pill::before,
+  .pill::after,
+  .label,
+  .icon {
+    transition-duration: 0ms !important;
+  }
+}

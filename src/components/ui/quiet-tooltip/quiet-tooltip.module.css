@@ -1,0 +1,78 @@
+.anchor {
+  position: relative;
+  display: inline-flex;
+}
+
+.tip {
+  position: absolute;
+  left: 50%;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--hv-ink);
+  color: var(--hv-canvas);
+  font: 500 12.5px / 1.2 var(--hv-font-sans);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.14);
+  opacity: 0;
+  visibility: hidden;
+  translate: -50% 0;
+  transform: scale(0.97);
+  transition:
+    opacity 125ms var(--hv-ease-out),
+    transform 125ms var(--hv-ease-out),
+    visibility 0s linear 125ms;
+}
+
+/* Grow out of the trigger, not out of the middle of the bubble. */
+.tip[data-side="top"] {
+  bottom: calc(100% + 8px);
+  transform-origin: 50% 100%;
+}
+
+.tip[data-side="bottom"] {
+  top: calc(100% + 8px);
+  transform-origin: 50% 0;
+}
+
+.tip[data-open] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 125ms var(--hv-ease-out),
+    transform 125ms var(--hv-ease-out),
+    visibility 0s;
+}
+
+/* Once one tooltip is open, its neighbours appear with no delay and no motion. */
+.tip[data-instant] {
+  transition-duration: 0ms;
+}
+
+.keys {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.key {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 4px;
+  background: color-mix(in oklab, var(--hv-canvas) 18%, transparent);
+  color: color-mix(in oklab, var(--hv-canvas) 80%, transparent);
+  font: 500 11px / 1 var(--hv-font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tip {
+    transform: none;
+  }
+}

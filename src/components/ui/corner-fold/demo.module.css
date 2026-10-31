@@ -1,0 +1,39 @@
+.card {
+  width: min(100%, 300px);
+}
+
+.body {
+  padding: 20px 20px 28px;
+}
+
+.eyebrow {
+  margin: 0;
+  font: 500 10px / 1 var(--hv-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+}
+
+.title {
+  margin: 16px 0 8px;
+  font: 400 30px / 1 var(--hv-font-serif);
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  font-style: italic;
+}
+
+.text {
+  margin: 0;
+  max-width: 26ch;
+  font: 400 13px / 1.5 var(--hv-font-sans);
+  color: var(--hv-ink-2);
+}
+
+.noteHead {
+  display: block;
+  margin-bottom: 4px;
+  font: 400 italic 15px / 1 var(--hv-font-serif);
+  letter-spacing: 0;
+}

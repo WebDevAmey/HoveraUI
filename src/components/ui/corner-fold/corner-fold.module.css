@@ -1,0 +1,148 @@
+@property --cf-fold {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 20px;
+}
+
+.root {
+  --peek: 140px;
+  --rest: 20px;
+  --hint: 48px;
+  --cf-fold: var(--rest);
+  --front: light-dark(#fdfbf6, #262521);
+  --back-hi: light-dark(#f6f1e6, #46433c);
+  --back: light-dark(#e9e2d2, #37352f);
+  --back-lo: light-dark(#d6cdb9, #282622);
+  --sheet: light-dark(#ece0cb, #2e2519);
+
+  position: relative;
+  border-radius: 4px;
+  color: var(--hv-ink);
+  transition: --cf-fold 420ms var(--hv-ease-spring);
+}
+
+@media (hover: hover) {
+  .root:hover {
+    --cf-fold: var(--hint);
+  }
+}
+
+.root:has(.toggle:focus-visible) {
+  --cf-fold: var(--hint);
+}
+
+.root[data-open] {
+  --cf-fold: var(--peek);
+}
+
+/* The second sheet: always full size, so it carries the card's shadow and outline. */
+.under {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 15px, light-dark(rgb(110 82 40 / 0.12), rgb(233 214 166 / 0.07)) 15px 16px),
+    var(--sheet);
+  box-shadow:
+    0 1px 2px light-dark(rgb(40 30 10 / 0.12), rgb(0 0 0 / 0.5)),
+    0 14px 30px -18px light-dark(rgb(40 30 10 / 0.4), rgb(0 0 0 / 0.9));
+  overflow: hidden;
+}
+
+/* Shadow the lifted paper casts onto the sheet just past the crease. */
+.crease {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--cf-fold);
+  height: var(--cf-fold);
+  background: linear-gradient(to bottom right, transparent 50%, rgb(0 0 0 / 0.22) 50%, transparent 64%);
+}
+
+.note {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  width: calc(var(--peek) * 0.66);
+  text-align: right;
+  font: 500 10px / 1.45 var(--hv-font-mono);
+  letter-spacing: 0.04em;
+  color: var(--hv-ink);
+  transition: opacity var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.root:not([data-open]) .note {
+  opacity: 0;
+}
+
+.paper {
+  position: relative;
+  border-radius: inherit;
+  background:
+    radial-gradient(140% 90% at 0% 0%, light-dark(rgb(255 255 255 / 0.8), rgb(255 255 255 / 0.03)), transparent 60%),
+    var(--front);
+  box-shadow: inset 0 0 0 1px light-dark(rgb(0 0 0 / 0.05), rgb(255 255 255 / 0.05));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--cf-fold)),
+    calc(100% - var(--cf-fold)) 100%,
+    0 100%
+  );
+}
+
+/* The flap is the cut corner mirrored over the crease, painted as the underside of the paper. */
+.flapShadow {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--cf-fold);
+  height: var(--cf-fold);
+  pointer-events: none;
+  filter: drop-shadow(-2px -3px 4px rgb(0 0 0 / 0.18));
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  border-top-left-radius: 6px;
+  background: linear-gradient(
+    to bottom right,
+    var(--back-hi) 0%,
+    var(--back) 26%,
+    var(--back-hi) 38%,
+    var(--back) 44%,
+    var(--back-lo) 50%
+  );
+}
+
+.toggle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: max(48px, calc(var(--cf-fold) * 0.6));
+  height: max(48px, calc(var(--cf-fold) * 0.6));
+  padding: 0;
+  border: 0;
+  border-radius: 0 0 4px;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .note {
+    transition: none;
+  }
+}

@@ -1,0 +1,110 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 12px 0;
+}
+
+.row[data-disabled] {
+  opacity: 0.5;
+}
+
+.text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.label {
+  color: var(--hv-ink);
+  font: 500 14px / 1.4 var(--hv-font-sans);
+  cursor: pointer;
+}
+
+.row[data-disabled] .label {
+  cursor: not-allowed;
+}
+
+.description {
+  color: var(--hv-ink-2);
+  font: 13px / 1.45 var(--hv-font-sans);
+}
+
+.switch {
+  --w: 40px;
+  --h: 24px;
+  --pad: 3px;
+  --thumb: calc(var(--h) - var(--pad) * 2);
+  position: relative;
+  flex: none;
+  width: var(--w);
+  height: var(--h);
+  padding: 0;
+  border: 0;
+  border-radius: var(--hv-r-pill);
+  background: var(--hv-line-strong);
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.switch::before {
+  /* A 44px touch target without changing the visual size. */
+  content: "";
+  position: absolute;
+  inset: -10px -4px;
+}
+
+.switch[data-on] {
+  background: var(--hv-ink);
+}
+
+.switch:disabled {
+  cursor: not-allowed;
+}
+
+.switch:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+.thumb {
+  position: absolute;
+  top: var(--pad);
+  left: var(--pad);
+  width: var(--thumb);
+  height: var(--thumb);
+  border-radius: var(--hv-r-pill);
+  background: #fff;
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.18),
+    0 0 0 0.5px rgb(0 0 0 / 0.06);
+  transition:
+    transform 240ms var(--hv-ease-out),
+    width 160ms var(--hv-ease-out);
+}
+
+.switch[data-on] .thumb {
+  transform: translateX(calc(var(--w) - var(--thumb) - var(--pad) * 2));
+}
+
+/* While pressed, the thumb stretches toward the side it will travel to. */
+.switch:active:not(:disabled) .thumb {
+  width: calc(var(--thumb) + 6px);
+}
+
+.switch[data-on]:active:not(:disabled) .thumb {
+  transform: translateX(calc(var(--w) - var(--thumb) - 6px - var(--pad) * 2));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb {
+    transition: none;
+  }
+  .switch:active:not(:disabled) .thumb {
+    width: var(--thumb);
+  }
+  .switch[data-on]:active:not(:disabled) .thumb {
+    transform: translateX(calc(var(--w) - var(--thumb) - var(--pad) * 2));
+  }
+}

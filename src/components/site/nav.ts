@@ -9,7 +9,11 @@ export const mainNav = [
   { href: "/docs/changelog", label: "Changelog" },
 ];
 
-export type SidebarGroup = { title: string; items: { href: string; label: string }[] };
+export type SidebarItem = { href: string; label: string; badge?: string };
+export type SidebarGroup = { title: string; items: SidebarItem[] };
+
+/** Components shipped in the latest release; the sidebar marks them "New". */
+const fresh = new Set(["morph-button", "glide-tabs", "soft-switch", "quiet-tooltip", "rolling-number", "copy-field", "hover-reveal"]);
 
 export const docsNav: SidebarGroup[] = [
   {
@@ -31,7 +35,11 @@ export function sidebarGroups(): SidebarGroup[] {
       title: category.label,
       items: registry
         .filter((entry) => entry.meta.category === category.id)
-        .map((entry) => ({ href: `/components/${entry.meta.slug}`, label: entry.meta.name })),
+        .map((entry) => ({
+          href: `/components/${entry.meta.slug}`,
+          label: entry.meta.name,
+          badge: fresh.has(entry.meta.slug) ? "New" : undefined,
+        })),
     })),
   ];
 }

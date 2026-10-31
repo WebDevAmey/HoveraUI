@@ -10,11 +10,8 @@ export function DocsShell({ children }: { children: ReactNode }) {
   const groups = sidebarGroups();
   return (
     <div className="mx-auto flex max-w-[1440px] px-4 sm:px-6">
-      <aside
-        data-sidebar-scroll
-        className="sticky top-16 hidden h-[calc(100dvh-4rem)] w-[248px] shrink-0 overflow-y-auto overscroll-contain border-r border-line py-8 pr-5 [scrollbar-width:thin] [scrollbar-color:var(--hv-line-strong)_transparent] lg:block"
-      >
-        <DocsSidebar groups={groups} />
+      <aside className="sticky top-16 hidden h-[calc(100dvh-4rem)] w-[272px] shrink-0 py-4 lg:block">
+        <DocsSidebar groups={groups} panel />
       </aside>
       <div className="min-w-0 flex-1 py-8 lg:py-14 lg:pl-12 xl:pl-16">
         <details className="group mb-8 rounded-xl border border-line bg-surface lg:hidden">
@@ -31,7 +28,7 @@ export function DocsShell({ children }: { children: ReactNode }) {
             </svg>
           </summary>
           <div className="max-h-[60dvh] overflow-y-auto border-t border-line px-2 py-4">
-            <DocsSidebar groups={groups} filterable={false} />
+            <DocsSidebar groups={groups} />
           </div>
         </details>
         {children}

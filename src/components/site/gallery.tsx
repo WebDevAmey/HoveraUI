@@ -1,26 +1,30 @@
 "use client";
 
-import { useDeferredValue, useEffect, useState } from "react";
+import { useDeferredValue, useState, useSyncExternalStore } from "react";
 import { registry } from "@/registry";
 import { categories, type Category } from "@/registry/types";
 import { Tile } from "./tile";
 
 type Filter = Category | "all";
 
+const noopSubscribe = () => () => {};
+
+function readCategory(): Category | null {
+  const value = new URLSearchParams(window.location.search).get("category");
+  return categories.some((c) => c.id === value) ? (value as Category) : null;
+}
+
 export function Gallery({ syncUrl = false }: { syncUrl?: boolean }) {
-  const [filter, setFilter] = useState<Filter>("all");
+  const [chosen, setChosen] = useState<Filter | null>(null);
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
 
-  // Read ?category= once on mount; the server always renders the full grid.
-  useEffect(() => {
-    if (!syncUrl) return;
-    const value = new URLSearchParams(window.location.search).get("category");
-    if (categories.some((c) => c.id === value)) setFilter(value as Category);
-  }, [syncUrl]);
+  // The server renders the full grid; ?category= applies after hydration.
+  const fromUrl = useSyncExternalStore(noopSubscribe, readCategory, () => null);
+  const filter: Filter = chosen ?? (syncUrl && fromUrl ? fromUrl : "all");
 
   const choose = (next: Filter) => {
-    setFilter(next);
+    setChosen(next);
     if (!syncUrl) return;
     const url = new URL(window.location.href);
     if (next === "all") url.searchParams.delete("category");

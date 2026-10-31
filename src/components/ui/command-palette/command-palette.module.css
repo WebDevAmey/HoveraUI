@@ -89,7 +89,7 @@
 }
 
 .input::placeholder {
-  color: var(--hv-ink-3);
+  color: var(--hv-ink-2);
 }
 
 /* The input owns focus for the whole panel, so the ring goes on the panel. */

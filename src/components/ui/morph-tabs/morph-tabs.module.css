@@ -61,7 +61,7 @@
   min-width: 1.1em;
   font: italic 400 20px / 1 var(--hv-font-serif);
   letter-spacing: 0;
-  color: var(--hv-ink-3);
+  color: var(--hv-ink-2);
   transition: color var(--hv-dur-2) var(--hv-ease-out);
 }
 

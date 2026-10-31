@@ -25,7 +25,7 @@ export default function Demo() {
         onValueChange={setPicked}
         cards={swatches.map((swatch, index) => ({
           id: swatch.id,
-          label: `${swatch.name}, ${swatch.kind.toLowerCase()}`,
+          label: `${swatch.name} ${String(index + 1).padStart(2, "0")} ${swatch.kind}`,
           content: (
             <>
               <div className={styles.swatch} style={{ background: swatch.fill }} />

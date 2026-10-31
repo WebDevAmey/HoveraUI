@@ -46,7 +46,7 @@
   width: 8px;
   font: 600 10px / 1 var(--hv-font-mono);
   text-align: center;
-  color: var(--hv-ink-3);
+  color: var(--hv-ink-2);
   text-shadow: 0 1px 0 var(--hi);
   transition: color var(--hv-dur-2) var(--hv-ease-out);
 }

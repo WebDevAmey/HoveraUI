@@ -1,0 +1,208 @@
+.root {
+  --px: 0;
+  --py: 0;
+  --hole-h: 136px;
+  --ratio: 4 / 5;
+  --sky-top: oklch(from var(--hv-sky-hi) calc(l - 0.12) calc(c * 1.25) h);
+  --sky-mid: var(--hv-sky-hi);
+  --sky-low: color-mix(in oklab, var(--hv-sky-hi) 38%, white);
+  --sky-warm: color-mix(in oklab, var(--hv-sky-lo) 70%, white);
+
+  position: relative;
+  display: grid;
+  gap: 20px;
+  padding: 24px 20px 20px;
+  border-radius: var(--hv-r-3);
+  background:
+    radial-gradient(120% 70% at 0% 0%, light-dark(rgb(255 255 255 / 0.6), rgb(255 255 255 / 0.025)), transparent 60%),
+    var(--hv-surface);
+  box-shadow:
+    inset 0 0 0 1px var(--hv-line),
+    0 1px 2px light-dark(rgb(40 30 10 / 0.06), rgb(0 0 0 / 0.4)),
+    0 16px 32px -20px light-dark(rgb(40 30 10 / 0.3), rgb(0 0 0 / 0.8));
+  color: var(--hv-ink);
+  touch-action: pan-y;
+}
+
+/* Keyboard focus inside the card leans the view as if the reader stepped to the left. */
+.root:focus-within:not([data-tracking]) {
+  --px: -0.5;
+  --py: -0.3;
+}
+
+.opening {
+  display: grid;
+  justify-items: center;
+}
+
+.hole {
+  position: relative;
+  height: var(--hole-h);
+  max-width: 100%;
+  aspect-ratio: var(--ratio);
+  overflow: hidden;
+  container-type: inline-size;
+  -webkit-mask: var(--shape) center / 100% 100% no-repeat;
+  mask: var(--shape) center / 100% 100% no-repeat;
+}
+
+/* Layers are oversized so the parallax never shows an edge. */
+.sky,
+.far,
+.near {
+  position: absolute;
+  inset: -16%;
+  transition: translate 900ms var(--hv-ease-out);
+}
+
+.root[data-tracking] :is(.sky, .far, .near) {
+  transition-duration: 200ms;
+}
+
+/* The far layer moves least, the near clouds most: depth from parallax alone. */
+.sky {
+  background:
+    radial-gradient(40% 30% at 74% 22%, rgb(255 255 255 / 0.55), transparent 70%),
+    linear-gradient(to bottom, var(--sky-top), var(--sky-mid) 42%, var(--sky-low) 78%, var(--sky-warm));
+  translate: calc(var(--px) * -6px) calc(var(--py) * -4px);
+}
+
+.far {
+  translate: calc(var(--px) * -12px) calc(var(--py) * -8px);
+  opacity: 0.7;
+}
+
+.near {
+  translate: calc(var(--px) * -22px) calc(var(--py) * -14px);
+}
+
+/* A cloud is three soft puffs and a flat base, all radial gradients. */
+.cloud {
+  position: absolute;
+  left: 0;
+  width: 80cqw;
+  aspect-ratio: 5 / 2;
+  background:
+    radial-gradient(closest-side, rgb(255 255 255 / 0.95), rgb(255 255 255 / 0.5) 55%, transparent) 8% 70% / 46% 62% no-repeat,
+    radial-gradient(closest-side, rgb(255 255 255 / 1), rgb(255 255 255 / 0.55) 55%, transparent) 42% 20% / 50% 100% no-repeat,
+    radial-gradient(closest-side, rgb(255 255 255 / 0.9), rgb(255 255 255 / 0.45) 55%, transparent) 86% 60% / 40% 70% no-repeat,
+    radial-gradient(closest-side, rgb(236 240 248 / 0.8), transparent) 50% 100% / 100% 44% no-repeat;
+  animation: drift var(--dur, 80s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.far .cloud {
+  width: 46cqw;
+}
+
+.far .cloud:nth-child(1) {
+  top: 24%;
+  --dur: 140s;
+  --delay: -30s;
+}
+
+.far .cloud:nth-child(2) {
+  top: 46%;
+  --dur: 160s;
+  --delay: -110s;
+}
+
+.near .cloud:nth-child(1) {
+  top: 16%;
+  --dur: 70s;
+  --delay: -12s;
+}
+
+.near .cloud:nth-child(2) {
+  top: 56%;
+  width: 100cqw;
+  --dur: 90s;
+  --delay: -58s;
+}
+
+.near .cloud:nth-child(3) {
+  top: 70%;
+  width: 64cqw;
+  --dur: 76s;
+  --delay: -40s;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(-110cqw);
+  }
+  to {
+    transform: translateX(150cqw);
+  }
+}
+
+.root[data-offscreen] .cloud {
+  animation-play-state: paused;
+}
+
+/*
+ * The cut has a wall. Each rim is the opening minus a shifted copy of itself,
+ * which leaves a thin crescent: shade along the top left, a lit lip at the bottom right.
+ */
+.rim {
+  position: absolute;
+  inset: 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0),
+    var(--shape) var(--dx) var(--dy) / 100% 100% no-repeat;
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) exclude,
+    var(--shape) var(--dx) var(--dy) / 100% 100% no-repeat;
+}
+
+.rim[data-rim="shade"] {
+  --dx: 2px;
+  --dy: 4px;
+
+  background: light-dark(rgb(30 36 54 / 0.32), rgb(0 0 0 / 0.5));
+}
+
+.rim[data-rim="lip"] {
+  --dx: -1.5px;
+  --dy: -1.5px;
+
+  background: light-dark(rgb(255 255 255 / 0.85), rgb(255 255 255 / 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root:focus-within:not([data-tracking]) {
+    --px: 0;
+    --py: 0;
+  }
+
+  .sky,
+  .far,
+  .near {
+    transition: none;
+  }
+
+  .cloud {
+    animation: none;
+  }
+
+  .far .cloud:nth-child(1) {
+    transform: translateX(4cqw);
+  }
+
+  .far .cloud:nth-child(2) {
+    transform: translateX(60cqw);
+  }
+
+  .near .cloud:nth-child(1) {
+    transform: translateX(-30cqw);
+  }
+
+  .near .cloud:nth-child(2) {
+    transform: translateX(20cqw);
+  }
+
+  .near .cloud:nth-child(3) {
+    transform: translateX(-20cqw);
+  }
+}

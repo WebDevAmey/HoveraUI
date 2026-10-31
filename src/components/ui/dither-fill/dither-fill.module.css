@@ -1,4 +1,4 @@
-@property --t {
+@property --df-t {
   syntax: "<integer>";
   inherits: true;
   initial-value: 0;
@@ -9,7 +9,7 @@
   --tile: calc(var(--cell) * 4);
   --tone: var(--hv-ink);
   --tone-ink: var(--hv-canvas);
-  --t: 0;
+  --df-t: 0;
 
   position: relative;
   display: inline-grid;
@@ -26,7 +26,7 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   /* An integer custom property interpolates in whole steps: 16 thresholds. */
-  transition: --t calc(var(--hv-dur-3) - 12ms) linear;
+  transition: --df-t calc(var(--hv-dur-3) - 12ms) linear;
 }
 
 .button[data-variant="accent"] {
@@ -45,7 +45,7 @@
 }
 
 /* The inverted face. Each mask layer is one Bayer threshold, a 4×4 tile with a
-   single lit cell; a layer shows once --t passes its rank. */
+   single lit cell; a layer shows once --df-t passes its rank. */
 .fill {
   background: var(--tone);
   color: var(--tone-ink);
@@ -67,36 +67,36 @@
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='2' y='1' width='1' height='1'/%3E%3C/svg%3E"),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3C/svg%3E");
   mask-size:
-    calc(clamp(0, var(--t) - 0, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 1, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 2, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 3, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 4, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 5, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 6, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 7, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 8, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 9, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 10, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 11, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 12, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 13, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 14, 1) * var(--tile)),
-    calc(clamp(0, var(--t) - 15, 1) * var(--tile));
+    calc(clamp(0, var(--df-t) - 0, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 1, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 2, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 3, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 4, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 5, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 6, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 7, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 8, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 9, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 10, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 11, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 12, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 13, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 14, 1) * var(--tile)),
+    calc(clamp(0, var(--df-t) - 15, 1) * var(--tile));
   mask-repeat: repeat;
   mask-position: 0 0;
 }
 
 @media (hover: hover) {
   .button:hover {
-    --t: 16;
+    --df-t: 16;
   }
 }
 
 .button:focus-visible,
 .button:active,
 .button[aria-pressed="true"] {
-  --t: 16;
+  --df-t: 16;
 }
 
 .button:focus-visible {
@@ -110,7 +110,7 @@
 }
 
 .button:disabled {
-  --t: 0;
+  --df-t: 0;
   cursor: not-allowed;
   opacity: 0.45;
 }

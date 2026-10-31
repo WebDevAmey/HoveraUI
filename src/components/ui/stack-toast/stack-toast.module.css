@@ -1,0 +1,225 @@
+.region {
+  --width: min(356px, calc(100% - 32px));
+  --glass: color-mix(in oklab, var(--hv-raised) 68%, transparent);
+  --edge: color-mix(in oklab, var(--hv-ink) 11%, transparent);
+  --sheen: light-dark(rgb(255 255 255 / 0.7), rgb(255 255 255 / 0.07));
+  --move: 420ms;
+
+  position: fixed;
+  z-index: 50;
+  bottom: 16px;
+  right: 16px;
+  width: var(--width);
+  font-family: var(--hv-font-sans);
+  color: var(--hv-ink);
+  pointer-events: none;
+}
+
+.region[data-contained] {
+  position: absolute;
+  z-index: 2;
+}
+
+.region[data-position="bottom-left"] {
+  right: auto;
+  left: 16px;
+}
+
+.region[data-position="bottom-center"] {
+  right: auto;
+  left: 50%;
+  translate: -50% 0;
+}
+
+.stack {
+  position: relative;
+}
+
+.toast {
+  --dx: 0px;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 12px 12px 12px 14px;
+  border-radius: var(--hv-r-3);
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  box-shadow:
+    inset 0 0 0 1px var(--edge),
+    inset 0 1px 0 var(--sheen),
+    0 1px 2px color-mix(in oklab, black 6%, transparent),
+    0 12px 28px -14px color-mix(in oklab, black 34%, transparent);
+  transform-origin: 50% 100%;
+  translate: var(--dx) var(--y, 0);
+  scale: var(--s, 1);
+  clip-path: inset(var(--clip, 0px) 0 0 0 round var(--hv-r-3));
+  pointer-events: auto;
+  touch-action: pan-y;
+  user-select: none;
+  transition:
+    translate var(--move) var(--hv-ease-out),
+    scale var(--move) var(--hv-ease-out),
+    clip-path var(--move) var(--hv-ease-out),
+    opacity var(--hv-dur-2) var(--hv-ease-out);
+}
+
+@starting-style {
+  .toast {
+    opacity: 0;
+    translate: 0 calc(var(--y, 0px) + 24px);
+    scale: 0.96;
+  }
+}
+
+.toast[data-dragging] {
+  transition: none;
+  cursor: grabbing;
+}
+
+.toast[data-behind] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast[data-leaving] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast[data-leaving="up"] {
+  translate: var(--dx) calc(var(--y, 0px) + 12px);
+  scale: calc(var(--s, 1) * 0.96);
+}
+
+.toast[data-leaving="right"] {
+  translate: calc(var(--dx) + 140px) var(--y, 0);
+}
+
+.toast[data-leaving="left"] {
+  translate: calc(var(--dx) - 140px) var(--y, 0);
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: opacity var(--hv-dur-2) var(--hv-ease-out);
+}
+
+/* Cards behind the front one show only their glass edge. */
+.toast:not([data-front]) .body {
+  opacity: 0;
+}
+
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-inline: 2px 0;
+  border-radius: 50%;
+  --led: light-dark(color-mix(in oklab, var(--hv-phosphor) 62%, #0b3d1e), var(--hv-phosphor));
+  background: var(--led);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--led) 18%, transparent),
+    0 0 10px color-mix(in oklab, var(--led) 60%, transparent);
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.006em;
+}
+
+.description {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--hv-ink-2);
+}
+
+.action {
+  flex: none;
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--hv-r-pill);
+  background: var(--hv-ink);
+  font: 500 12px / 1 var(--hv-font-sans);
+  color: var(--hv-canvas);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: scale var(--hv-dur-1) var(--hv-ease-out);
+}
+
+.action:active {
+  scale: 0.96;
+}
+
+.close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: -2px -2px -2px -4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--hv-ink-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background-color var(--hv-dur-1) var(--hv-ease-out),
+    color var(--hv-dur-1) var(--hv-ease-out);
+}
+
+.close svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+@media (hover: hover) {
+  .close:hover {
+    background: color-mix(in oklab, var(--hv-ink) 8%, transparent);
+    color: var(--hv-ink);
+  }
+}
+
+.action:focus-visible,
+.close:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .region {
+    --move: 0ms;
+  }
+
+  @starting-style {
+    .toast {
+      translate: 0 var(--y, 0);
+      scale: var(--s, 1);
+    }
+  }
+
+  .toast[data-leaving] {
+    translate: var(--dx) var(--y, 0);
+  }
+}

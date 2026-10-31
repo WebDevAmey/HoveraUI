@@ -1,0 +1,154 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.slab {
+  width: min(calc(50% - 12px), 150px);
+}
+
+/* Terrazzo: chip layers tiled at co-prime sizes so the pattern never visibly repeats. */
+.terrazzo {
+  --chip-white: #fbf8f2;
+  --chip-grey: #a39d94;
+  --chip-black: #3f3b36;
+  --chip-ter: #b4674f;
+  --chip-sage: #8d9c86;
+  --chip-sand: #c4ad84;
+
+  background:
+    radial-gradient(ellipse 5px 3.5px at 30% 40%, var(--chip-ter) 90%, transparent) 0 0 / 67px 61px,
+    radial-gradient(ellipse 3.5px 5px at 70% 20%, var(--chip-sage) 90%, transparent) 0 0 / 53px 71px,
+    radial-gradient(ellipse 4px 2.5px at 20% 70%, var(--chip-white) 90%, transparent) 0 0 / 41px 37px,
+    radial-gradient(ellipse 6px 4px at 60% 55%, var(--chip-white) 90%, transparent) 0 0 / 59px 47px,
+    radial-gradient(ellipse 3px 2px at 45% 15%, var(--chip-grey) 90%, transparent) 0 0 / 31px 27px,
+    radial-gradient(ellipse 2px 3px at 80% 75%, var(--chip-black) 90%, transparent) 0 0 / 37px 43px,
+    radial-gradient(ellipse 2.5px 1.8px at 15% 25%, var(--chip-ter) 90%, transparent) 0 0 / 29px 23px,
+    radial-gradient(circle 1px at 50% 50%, var(--chip-grey) 90%, transparent) 3px 5px / 13px 17px,
+    radial-gradient(circle 1px at 20% 30%, var(--chip-black) 90%, transparent) 0 0 / 17px 11px,
+    radial-gradient(circle 1.2px at 80% 60%, var(--chip-white) 90%, transparent) 0 0 / 19px 23px,
+    radial-gradient(circle 1.6px at 65% 35%, var(--chip-sand) 90%, transparent) 0 0 / 23px 19px,
+    linear-gradient(160deg, #e9e3d8, #dcd5c8);
+}
+
+.tileFront {
+  display: grid;
+  align-content: end;
+  aspect-ratio: 3 / 4;
+  padding: 10px;
+}
+
+.plate {
+  padding: 10px 10px 9px;
+  border-radius: 3px;
+  background: #fbf9f5;
+  box-shadow: 0 1px 2px rgb(40 30 10 / 0.18);
+  color: #1b1a17;
+}
+
+.kicker {
+  display: block;
+  font: 500 9px / 1 var(--hv-font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5b5852;
+}
+
+.name {
+  display: block;
+  margin-top: 6px;
+  font: 400 20px / 1 var(--hv-font-serif);
+  letter-spacing: -0.015em;
+}
+
+.name em {
+  font-style: italic;
+}
+
+.tileBack {
+  display: grid;
+  align-content: space-between;
+  aspect-ratio: 3 / 4;
+  padding: 14px 12px;
+  background:
+    radial-gradient(circle 1px at 50% 50%, rgb(0 0 0 / 0.08) 92%, transparent) 0 0 / 5px 7px,
+    linear-gradient(160deg, #d9d3c8, #c8c1b4);
+  color: #1b1a17;
+}
+
+.specs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 500 9px / 1.7 var(--hv-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3d3a35;
+}
+
+.backNote {
+  font: 400 italic 15px / 1.2 var(--hv-font-serif);
+}
+
+/* Duplexed cotton card: ivory face, oxblood back. */
+.cardFront {
+  display: grid;
+  place-content: center;
+  aspect-ratio: 3 / 4;
+  padding: 14px;
+  text-align: center;
+  background:
+    radial-gradient(120% 80% at 30% 0%, rgb(255 255 255 / 0.7), transparent 60%),
+    #f4efe5;
+  color: #6b1f2a;
+}
+
+/* Letterpress: ink sits below the surface, so it catches a highlight on its lower lip. */
+.deboss {
+  font: 400 26px / 0.95 var(--hv-font-serif);
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 1px 0 rgb(255 255 255 / 0.9),
+    0 -1px 0 rgb(60 20 20 / 0.25);
+}
+
+.deboss em {
+  display: block;
+  font-style: italic;
+}
+
+.trade {
+  margin-top: 12px;
+  font: 500 9px / 1 var(--hv-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7a5a4f;
+}
+
+.cardBack {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  aspect-ratio: 3 / 4;
+  padding: 16px 14px;
+  text-align: center;
+  background:
+    radial-gradient(120% 80% at 30% 0%, rgb(255 255 255 / 0.1), transparent 60%),
+    #6b1f2a;
+  color: #f3e6d6;
+}
+
+.cardBack p {
+  margin: 0;
+  font: 400 italic 15px / 1.25 var(--hv-font-serif);
+}
+
+.cardBack span {
+  font: 500 9px / 1.5 var(--hv-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e3c9b4;
+}

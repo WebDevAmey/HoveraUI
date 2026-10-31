@@ -1,0 +1,148 @@
+@property --gf-x {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 67.5%;
+}
+
+.frame {
+  --paper: light-dark(#faf6ec, #11100d);
+  --gilt-text: light-dark(var(--hv-gilt-lo), var(--hv-gilt));
+  --foil: linear-gradient(
+    110deg,
+    var(--hv-gilt-lo) 4%,
+    var(--hv-gilt) 40%,
+    var(--hv-gilt-hi) 47.5%,
+    light-dark(#fff3d2, #fff8e6) 50%,
+    var(--hv-gilt-hi) 52.5%,
+    var(--hv-gilt) 60%,
+    var(--hv-gilt-lo) 96%
+  );
+
+  position: relative;
+  display: block;
+  padding: 14px;
+  border-radius: 3px;
+  background:
+    radial-gradient(120% 80% at 50% 0%, light-dark(rgb(255 255 255 / 0.7), rgb(233 214 166 / 0.05)), transparent 70%),
+    var(--paper);
+  box-shadow:
+    0 1px 2px light-dark(rgb(60 40 10 / 0.08), rgb(0 0 0 / 0.5)),
+    0 18px 40px -24px light-dark(rgb(60 40 10 / 0.35), rgb(0 0 0 / 0.9));
+  color: var(--hv-ink);
+  text-align: center;
+  transition: --gf-x 900ms var(--hv-ease-out);
+}
+
+.frame[data-tracking] {
+  transition-duration: 160ms;
+}
+
+/* Keyboard focus anywhere inside draws one slow sheen along the frame. */
+.frame:focus-within {
+  animation: sheen 2.4s var(--hv-ease-in-out) 1;
+}
+
+@keyframes sheen {
+  from {
+    --gf-x: 100%;
+  }
+  to {
+    --gf-x: 0%;
+  }
+}
+
+/* Each ring is a gilt-filled box masked down to its 1px border, so the foil only lives on the strokes. */
+.rule {
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--foil);
+  background-size: 300% 100%;
+  background-position: var(--gf-x) 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+.rule[data-ring="inner"] {
+  inset: 6px;
+  border-radius: 1px;
+}
+
+.body {
+  position: relative;
+  padding: 24px 16px 20px;
+}
+
+.eyebrow,
+.footer {
+  margin: 0;
+  font: 500 10px / 1.4 var(--hv-font-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gilt-text);
+}
+
+.numeral {
+  margin: 12px 0 0;
+  font: 400 64px / 0.9 var(--hv-font-serif);
+  letter-spacing: -0.03em;
+  background: linear-gradient(
+    170deg,
+    light-dark(var(--hv-gilt), var(--hv-gilt-hi)) 10%,
+    light-dark(var(--hv-gilt-lo), var(--hv-gilt)) 60%,
+    light-dark(#4e3a1c, var(--hv-gilt-lo)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.title {
+  margin: 12px 0 0;
+  font: 400 italic 24px / 1.1 var(--hv-font-serif);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.text {
+  margin-top: 8px;
+  font: 400 13px / 1.5 var(--hv-font-sans);
+  color: var(--hv-ink-2);
+  text-wrap: pretty;
+}
+
+.footer {
+  position: relative;
+  margin-top: 20px;
+  padding-top: 14px;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 40px;
+  height: 1px;
+  translate: -50% 0;
+  background: linear-gradient(90deg, transparent, var(--hv-gilt), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame,
+  .frame[data-tracking] {
+    transition: none;
+  }
+
+  .frame:focus-within {
+    animation: none;
+    --gf-x: 45%;
+  }
+}

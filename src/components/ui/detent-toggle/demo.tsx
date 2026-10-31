@@ -12,13 +12,11 @@ export default function Demo() {
           paddingBottom: 12,
           marginBottom: 4,
           borderBottom: "1px solid var(--hv-line)",
-          font: "500 11px/1 var(--hv-font-mono)",
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
+          font: "500 13px/1.3 var(--hv-font-sans)",
           color: "var(--hv-ink-2)",
         }}
       >
-        Input 2 · Condenser
+        Condenser mic
       </span>
       <DetentToggle label="Phantom power" defaultChecked style={row} />
       <DetentToggle label="Low cut" style={row} />

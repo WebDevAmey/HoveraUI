@@ -35,3 +35,16 @@ export function sidebarGroups(): SidebarGroup[] {
     })),
   ];
 }
+
+/** Everything the header search can jump to: guides first, then components by category. */
+export function searchGroups() {
+  return [
+    { label: "Guides", items: docsNav[0].items },
+    ...categories.map((category) => ({
+      label: category.label,
+      items: registry
+        .filter((entry) => entry.meta.category === category.id)
+        .map((entry) => ({ href: `/components/${entry.meta.slug}`, label: entry.meta.name, hint: entry.meta.material })),
+    })),
+  ];
+}

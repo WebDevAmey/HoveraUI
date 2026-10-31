@@ -61,11 +61,11 @@ export function FaqGroups({ level = 3 }: { level?: 2 | 3 }) {
 export function Faq() {
   return (
     <section id="faq" aria-labelledby="faq-title" className="border-t border-line">
-      <div className="mx-auto max-w-[760px] px-4 py-24 sm:px-6">
-        <p className="label text-center">03 · Questions</p>
-        <h2 id="faq-title" className="mt-3 text-center text-[clamp(26px,3.4vw,36px)] font-medium tracking-[-0.03em]">
-          Asked, <span className="font-serif text-[1.12em] font-normal italic tracking-[-0.01em]">answered</span>
+      <div className="mx-auto max-w-[760px] px-4 py-28 sm:px-6">
+        <h2 id="faq-title" className="display text-center text-[clamp(34px,4.4vw,52px)]">
+          Questions, answered
         </h2>
+        <p className="mt-4 text-center text-[16px] text-ink-2">The short version of what people ask before they copy a file.</p>
         <div className="mt-14">
           <FaqGroups />
         </div>

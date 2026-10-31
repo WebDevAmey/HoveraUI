@@ -20,8 +20,8 @@ export function Logo() {
           )),
         )}
       </svg>
-      <span className="text-[15px] font-medium tracking-[-0.02em]">
-        Hovera<span className="text-ink-2">UI</span>
+      <span className="font-serif text-[21px] leading-none tracking-[-0.02em]">
+        HoveraUI
       </span>
     </Link>
   );

@@ -63,11 +63,32 @@
 
 @layer utilities {
   .label {
-    font-family: var(--hv-font-mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-size: 12.5px;
+    font-weight: 500;
     color: var(--hv-ink-2);
+  }
+
+  /* Headlines: Newsreader at display optical size, tracked in as it grows. */
+  .display {
+    font-family: var(--hv-font-serif);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+  }
+
+  /* Press feedback for anything clickable: a short, physical dip. */
+  .press {
+    transition: transform 160ms var(--hv-ease-out);
+  }
+  .press:active {
+    transform: scale(0.97);
+  }
+
+  /* One orchestrated entrance for the landing hero, staggered by --i. */
+  .rise {
+    animation: hv-rise 640ms var(--hv-ease-out) both;
+    animation-delay: calc(var(--i, 0) * 70ms + 60ms);
   }
 
   .hairline {
@@ -75,9 +96,31 @@
   }
 }
 
+@keyframes hv-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+}
+
+@keyframes hv-fade {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .press:active {
+    transform: none;
+  }
+  /* Keep the fade, drop the movement. */
+  .rise {
+    animation-name: hv-fade;
+    animation-duration: 300ms;
   }
 }
 
@@ -88,11 +131,12 @@
     line-height: 1.7;
   }
   .prose-docs h2 {
-    margin: 2.5rem 0 0.75rem;
+    margin: 2.75rem 0 0.75rem;
     color: var(--hv-ink);
-    font-size: 1.375rem;
-    font-weight: 500;
-    line-height: 1.2;
+    font-family: var(--hv-font-serif);
+    font-size: 1.625rem;
+    font-weight: 400;
+    line-height: 1.15;
     letter-spacing: -0.02em;
   }
   .prose-docs h3 {
@@ -136,5 +180,33 @@
   }
   .prose-docs > :first-child {
     margin-top: 0;
+  }
+}
+
+/* Build-time highlighted code (shiki): both palettes ship, the page theme picks one. */
+.code-scroll pre {
+  margin: 0;
+  padding: 16px 18px;
+  background: transparent !important;
+  font-family: var(--hv-font-mono);
+  font-size: 12.5px;
+  line-height: 1.75;
+  tab-size: 2;
+}
+.code-scroll pre:focus-visible {
+  outline: none;
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+[data-theme="dark"] .shiki span {
+  color: var(--shiki-dark);
+}
+[data-theme="light"] .shiki span {
+  color: var(--shiki-light);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .shiki span {
+    color: var(--shiki-dark);
   }
 }

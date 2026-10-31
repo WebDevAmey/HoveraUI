@@ -47,9 +47,9 @@ export function cn(...classes: ClassValue[]): string {
 
       <h2>Fonts</h2>
       <p>
-        Fonts are optional. The tokens fall back to system stacks, and pick up Geist, Geist Mono and Instrument Serif when
+        Fonts are optional. The tokens fall back to system stacks, and pick up Geist, Geist Mono and Newsreader when
         they are loaded through <code>next/font</code> with the variables <code>--font-geist-sans</code>,{" "}
-        <code>--font-geist-mono</code> and <code>--font-instrument-serif</code>.
+        <code>--font-geist-mono</code> and <code>--font-newsreader</code>.
       </p>
     </DocPage>
   );

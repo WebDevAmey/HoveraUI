@@ -43,7 +43,7 @@ export default function TokensPage() {
           <code>--hv-font-mono</code>: Geist Mono, for labels, metadata and code.
         </li>
         <li>
-          <code>--hv-font-serif</code>: Instrument Serif, for display moments and the luxury and editorial components.
+          <code>--hv-font-serif</code>: Newsreader, for headlines moments and the luxury and editorial components.
         </li>
       </ul>
 

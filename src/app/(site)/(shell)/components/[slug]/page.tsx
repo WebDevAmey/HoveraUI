@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CodeBlock } from "@/components/site/code-block";
 import { Preview } from "@/components/site/preview";
 import { SourceTabs } from "@/components/site/source-tabs";
+import { highlight, langFor } from "@/lib/highlight";
 import { getEntry, registry } from "@/registry";
 import { formatBytes, getSize, getSource } from "@/registry/source";
 import { categories } from "@/registry/types";
@@ -26,9 +27,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hoveraui.vercel.app
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-20 pt-14">
-      <h2 className="text-lg font-medium tracking-[-0.02em]">{title}</h2>
-      <div className="mt-4">{children}</div>
+    <section id={id} className="scroll-mt-24 pt-16">
+      <h2 className="display text-[26px]">{title}</h2>
+      <div className="mt-5">{children}</div>
     </section>
   );
 }
@@ -39,51 +40,46 @@ export default async function ComponentPage({ params }: Props) {
   if (!entry) notFound();
 
   const { meta, Demo } = entry;
-  const files = getSource(slug);
+  const files = await Promise.all(
+    getSource(slug).map(async (file) => ({ ...file, html: await highlight(file.code, langFor(file.name)) })),
+  );
   const size = getSize(slug);
   const category = categories.find((c) => c.id === meta.category);
   const index = registry.findIndex((e) => e.meta.slug === slug);
   const prev = registry[index - 1]?.meta;
   const next = registry[index + 1]?.meta;
 
-
   return (
     <article className="max-w-[860px]">
-      <nav aria-label="Breadcrumb" className="font-mono text-[11px] text-ink-2">
-        <ol className="flex items-center gap-2">
+      <nav aria-label="Breadcrumb" className="text-[13px] text-ink-2">
+        <ol className="flex items-center gap-1.5">
           <li>
-            <Link href="/components" className="hover:text-ink">
+            <Link href="/components" className="transition-colors hover:text-ink">
               Components
             </Link>
           </li>
-          <li aria-hidden="true">/</li>
-          <li>
-            <Link href={`/components#cat-${meta.category}`} className="hover:text-ink">
-              {category?.label}
-            </Link>
+          <li aria-hidden="true" className="text-ink-3">
+            /
           </li>
+          <li>{category?.label}</li>
         </ol>
       </nav>
-      <h1 className="mt-4 text-[clamp(32px,5vw,44px)] font-medium leading-[1.05] tracking-[-0.035em]">{meta.name}</h1>
-      <p className="mt-3 max-w-xl text-[17px] text-ink-2">{meta.description}.</p>
-      <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-2 font-mono text-[11px] text-ink-2">
-        <div className="flex gap-2">
-          <dt>Material</dt>
-          <dd className="text-ink">{meta.material}</dd>
-        </div>
-        <div className="flex gap-2">
-          <dt>Dependencies</dt>
-          <dd className="text-ink">React only</dd>
-        </div>
-        {size !== undefined && (
-          <div className="flex gap-2">
-            <dt>Size</dt>
-            <dd className="text-ink">{formatBytes(size)} gzip</dd>
+      <h1 className="display mt-4 text-[clamp(40px,5.4vw,56px)]">{meta.name}</h1>
+      <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-ink-2">{meta.description}.</p>
+      <dl className="mt-6 flex flex-wrap gap-2 text-[12.5px]">
+        {[
+          ["Material", meta.material],
+          ["Dependencies", "React only"],
+          ...(size !== undefined ? [["Size", `${formatBytes(size)} gzip`]] : []),
+        ].map(([term, value]) => (
+          <div key={term} className="flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1">
+            <dt className="text-ink-2">{term}</dt>
+            <dd className="font-medium text-ink">{value}</dd>
           </div>
-        )}
+        ))}
       </dl>
 
-      <section id="preview" className="scroll-mt-20 pt-10" aria-labelledby="preview-title">
+      <section id="preview" className="scroll-mt-24 pt-10" aria-labelledby="preview-title">
         <h2 id="preview-title" className="sr-only">
           Preview
         </h2>
@@ -94,9 +90,12 @@ export default async function ComponentPage({ params }: Props) {
 
       <Section id="installation" title="Installation">
         <p className="mb-4 max-w-2xl text-ink-2">
-          Copy both files into <code className="font-mono text-[13px] text-ink">components/ui/{slug}/</code>. They need the
-          shared <Link href="/docs/tokens" className="text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">tokens</Link> and the
-          tiny <code className="font-mono text-[13px] text-ink">cn</code> helper. Or fetch everything with the shadcn CLI:
+          Fetch the component, its styles, the shared{" "}
+          <Link href="/docs/tokens" className="text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">
+            tokens
+          </Link>{" "}
+          and the <code className="font-mono text-[13px] text-ink">cn</code> helper with the shadcn CLI. Or copy both files
+          below into <code className="font-mono text-[13px] text-ink">components/ui/{slug}/</code>.
         </p>
         <CodeBlock title="Terminal" code={`npx shadcn@latest add ${siteUrl}/r/${slug}.json`} />
         <div className="mt-4">
@@ -109,14 +108,14 @@ export default async function ComponentPage({ params }: Props) {
       </Section>
 
       <Section id="props" title="Props">
-        <div className="overflow-x-auto rounded-xl border border-line">
+        <div className="overflow-x-auto rounded-2xl border border-line">
           <table className="w-full min-w-[560px] border-collapse text-left text-[13px]">
-            <thead className="bg-surface font-mono text-[11px] text-ink-2">
+            <thead className="bg-surface text-[12.5px] text-ink-2">
               <tr>
-                <th scope="col" className="px-4 py-2.5 font-normal">Prop</th>
-                <th scope="col" className="px-4 py-2.5 font-normal">Type</th>
-                <th scope="col" className="px-4 py-2.5 font-normal">Default</th>
-                <th scope="col" className="px-4 py-2.5 font-normal">Description</th>
+                <th scope="col" className="px-4 py-2.5 font-medium">Prop</th>
+                <th scope="col" className="px-4 py-2.5 font-medium">Type</th>
+                <th scope="col" className="px-4 py-2.5 font-medium">Default</th>
+                <th scope="col" className="px-4 py-2.5 font-medium">Description</th>
               </tr>
             </thead>
             <tbody>
@@ -157,19 +156,25 @@ export default async function ComponentPage({ params }: Props) {
         </ul>
       </Section>
 
-      <nav aria-label="More components" className="mt-20 grid gap-3 border-t border-line pt-8 sm:grid-cols-2">
+      <nav aria-label="More components" className="mt-24 grid gap-3 border-t border-line pt-8 sm:grid-cols-2">
         {prev ? (
-          <Link href={`/components/${prev.slug}`} className="rounded-xl border border-line p-4 transition-colors hover:border-line-strong">
-            <span className="label">Previous</span>
-            <span className="mt-1 block font-medium">{prev.name}</span>
+          <Link
+            href={`/components/${prev.slug}`}
+            className="press group rounded-2xl border border-line p-5 transition-[border-color,background-color,transform] hover:border-line-strong hover:bg-surface"
+          >
+            <span className="text-[12.5px] text-ink-2">Previous</span>
+            <span className="display mt-1 block text-[22px]">{prev.name}</span>
           </Link>
         ) : (
           <span />
         )}
         {next && (
-          <Link href={`/components/${next.slug}`} className="rounded-xl border border-line p-4 text-right transition-colors hover:border-line-strong">
-            <span className="label">Next</span>
-            <span className="mt-1 block font-medium">{next.name}</span>
+          <Link
+            href={`/components/${next.slug}`}
+            className="press group rounded-2xl border border-line p-5 text-right transition-[border-color,background-color,transform] hover:border-line-strong hover:bg-surface"
+          >
+            <span className="text-[12.5px] text-ink-2">Next</span>
+            <span className="display mt-1 block text-[22px]">{next.name}</span>
           </Link>
         )}
       </nav>

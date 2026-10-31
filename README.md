@@ -28,7 +28,7 @@ Every component is also a shadcn-compatible registry item, generated from the sa
 npx shadcn@latest add https://<your-host>/r/depth-key.json
 ```
 
-Fonts are optional. The tokens use Geist, Geist Mono and Instrument Serif (all OFL) when they are loaded through `next/font` with the variables `--font-geist-sans`, `--font-geist-mono` and `--font-instrument-serif`, and fall back to system stacks otherwise.
+Fonts are optional. The tokens use Geist, Geist Mono and Newsreader (all OFL) when they are loaded through `next/font` with the variables `--font-geist-sans`, `--font-geist-mono` and `--font-newsreader`, and fall back to system stacks otherwise.
 
 ## Theming
 

@@ -3,15 +3,17 @@
 import { useId, useState } from "react";
 import { CopyButton } from "./copy-button";
 
-export function SourceTabs({ files }: { files: { name: string; code: string }[] }) {
+export type SourceFile = { name: string; code: string; html: string };
+
+export function SourceTabs({ files }: { files: SourceFile[] }) {
   const [active, setActive] = useState(0);
   const id = useId();
   const file = files[active];
 
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-surface">
-      <div className="flex h-10 items-center justify-between border-b border-line pl-1.5 pr-1.5">
-        <div role="tablist" aria-label="Source files" className="flex gap-1">
+    <div className="overflow-hidden rounded-2xl border border-line bg-surface">
+      <div className="flex h-11 items-center justify-between border-b border-line px-1.5">
+        <div role="tablist" aria-label="Source files" className="flex gap-0.5">
           {files.map((f, i) => (
             <button
               key={f.name}
@@ -27,23 +29,22 @@ export function SourceTabs({ files }: { files: { name: string; code: string }[] 
                 setActive(next);
                 document.getElementById(`${id}-tab-${next}`)?.focus();
               }}
-              className="rounded-md px-2.5 py-1 font-mono text-[11px] text-ink-2 transition-colors hover:text-ink aria-selected:bg-sunken aria-selected:text-ink"
+              className="rounded-lg px-2.5 py-1.5 text-[12.5px] text-ink-2 transition-colors hover:text-ink aria-selected:bg-sunken aria-selected:text-ink"
             >
               {f.name}
             </button>
           ))}
         </div>
-        <CopyButton text={file.code} label="Copy file" />
+        <CopyButton text={file.code} label={`Copy ${file.name}`} />
       </div>
-      <pre
+      <div
         id={`${id}-panel`}
         role="tabpanel"
         aria-labelledby={`${id}-tab-${active}`}
         tabIndex={0}
-        className="max-h-[520px] overflow-auto p-4 font-mono text-[12.5px] leading-[1.7] text-ink"
-      >
-        <code>{file.code}</code>
-      </pre>
+        className="code-scroll max-h-[520px] overflow-auto"
+        dangerouslySetInnerHTML={{ __html: file.html }}
+      />
     </div>
   );
 }

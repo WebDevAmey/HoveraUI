@@ -8,15 +8,15 @@
 [data-theme="light"] {
   color-scheme: light;
 
-  --hv-canvas: #f3f2ee;
-  --hv-surface: #fbfaf8;
+  --hv-canvas: #f4f3f1;
+  --hv-surface: #faf9f7;
   --hv-raised: #ffffff;
-  --hv-sunken: #eae8e3;
-  --hv-ink: #141412;
-  --hv-ink-2: #5b5852;
-  --hv-ink-3: #8e8a83;
-  --hv-line: #e1ded7;
-  --hv-line-strong: #cbc7be;
+  --hv-sunken: #eceae7;
+  --hv-ink: #1c1b1a;
+  --hv-ink-2: #67645f;
+  --hv-ink-3: #9a968f;
+  --hv-line: #e4e1dc;
+  --hv-line-strong: #d3cfc8;
 
   --hv-accent: #2e3fe0;
   --hv-accent-ink: #ffffff;
@@ -28,15 +28,15 @@
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --hv-canvas: #0d0d0c;
-  --hv-surface: #151513;
+  --hv-canvas: #0e0e0d;
+  --hv-surface: #151514;
   --hv-raised: #1c1c1a;
-  --hv-sunken: #090908;
-  --hv-ink: #edebe6;
-  --hv-ink-2: #a19d95;
-  --hv-ink-3: #6b6862;
-  --hv-line: #2a2926;
-  --hv-line-strong: #3a3934;
+  --hv-sunken: #0a0a09;
+  --hv-ink: #eeece7;
+  --hv-ink-2: #a3a09a;
+  --hv-ink-3: #6d6a65;
+  --hv-line: #252422;
+  --hv-line-strong: #353430;
 
   --hv-accent: #8b96ff;
   --hv-accent-ink: #0d0d0c;
@@ -49,15 +49,15 @@
   :root:not([data-theme="light"]) {
     color-scheme: dark;
 
-    --hv-canvas: #0d0d0c;
-    --hv-surface: #151513;
+    --hv-canvas: #0e0e0d;
+    --hv-surface: #151514;
     --hv-raised: #1c1c1a;
-    --hv-sunken: #090908;
-    --hv-ink: #edebe6;
-    --hv-ink-2: #a19d95;
-    --hv-ink-3: #6b6862;
-    --hv-line: #2a2926;
-    --hv-line-strong: #3a3934;
+    --hv-sunken: #0a0a09;
+    --hv-ink: #eeece7;
+    --hv-ink-2: #a3a09a;
+    --hv-ink-3: #6d6a65;
+    --hv-line: #252422;
+    --hv-line-strong: #353430;
 
     --hv-accent: #8b96ff;
     --hv-accent-ink: #0d0d0c;
@@ -84,7 +84,7 @@
   /* Type */
   --hv-font-sans: var(--font-geist-sans, "Geist"), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --hv-font-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --hv-font-serif: var(--font-instrument-serif, "Instrument Serif"), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --hv-font-serif: var(--font-newsreader, "Newsreader"), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
 
   /* Shape */
   --hv-r-1: 4px;

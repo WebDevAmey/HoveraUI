@@ -9,7 +9,7 @@ const meta: ComponentMeta = {
   exports: ["SplitLabel"],
   props: [
     { name: "label", type: "string", description: "Resting label in sans. Also the button's accessible name." },
-    { name: "reveal", type: "string", description: "The verb revealed between the halves, set in Instrument Serif italic. Decorative." },
+    { name: "reveal", type: "string", description: "The verb revealed between the halves, set in the serif italic. Decorative." },
     { name: "variant", type: '"outline" | "solid"', default: '"outline"', description: "Hairline outline or a solid ink fill." },
     { name: "shape", type: '"pill" | "square"', default: '"pill"', description: "Fully rounded or a near-square editorial edge." },
     { name: "...props", type: "ButtonHTMLAttributes", description: "Passed to the native button. children is not accepted; use label and reveal." },

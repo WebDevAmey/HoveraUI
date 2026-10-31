@@ -35,7 +35,7 @@ export function ThemeToggle() {
         } catch {}
       }}
       aria-label={theme ? `Switch to ${next} theme` : "Toggle theme"}
-      className="grid size-9 place-items-center rounded-full text-ink-2 transition-colors hover:bg-sunken hover:text-ink"
+      className="press grid size-9 place-items-center rounded-full text-ink-2 transition-[color,background-color,transform] hover:bg-sunken hover:text-ink"
     >
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
         <circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" strokeWidth="1.5" />

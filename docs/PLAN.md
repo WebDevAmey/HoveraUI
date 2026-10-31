@@ -66,15 +66,15 @@ Components import only React, `cn` and their own CSS module. Docs pages read the
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--hv-canvas` | `#F3F2EE` | `#0D0D0C` | Page |
-| `--hv-surface` | `#FBFAF8` | `#151513` | Tiles, panels |
+| `--hv-canvas` | `#F4F3F1` | `#0E0E0D` | Page |
+| `--hv-surface` | `#FAF9F7` | `#151514` | Tiles, panels |
 | `--hv-raised` | `#FFFFFF` | `#1C1C1A` | Popovers, inputs |
-| `--hv-sunken` | `#EAE8E3` | `#090908` | Wells, tracks |
-| `--hv-ink` | `#141412` | `#EDEBE6` | Primary text (16.5:1, 16.3:1) |
-| `--hv-ink-2` | `#5B5852` | `#A19D95` | Secondary text (6.3:1, 7.2:1) |
-| `--hv-ink-3` | `#8E8A83` | `#6B6862` | Icons and large labels only (3:1+) |
-| `--hv-line` | `#E1DED7` | `#2A2926` | Hairlines |
-| `--hv-line-strong` | `#CBC7BE` | `#3A3934` | Control borders |
+| `--hv-sunken` | `#ECEAE7` | `#0A0A09` | Wells, tracks |
+| `--hv-ink` | `#1C1B1A` | `#EEECE7` | Primary text (15.5:1) |
+| `--hv-ink-2` | `#67645F` | `#A3A09A` | Secondary text (5.3:1, 7.4:1) |
+| `--hv-ink-3` | `#9A968F` | `#6D6A65` | Icons and large labels only (3:1+) |
+| `--hv-line` | `#E4E1DC` | `#252422` | Hairlines |
+| `--hv-line-strong` | `#D3CFC8` | `#353430` | Control borders |
 
 ### Accent (the only chroma on the site)
 
@@ -100,7 +100,7 @@ Components import only React, `cn` and their own CSS module. Docs pages read the
 | --- | --- | --- |
 | `--hv-font-sans` | Geist (OFL) | UI and prose |
 | `--hv-font-mono` | Geist Mono (OFL) | Labels, metadata, code |
-| `--hv-font-serif` | Instrument Serif (OFL), regular and italic | Display moments, luxury and editorial components |
+| `--hv-font-serif` | Newsreader (OFL), variable with optical sizes, regular and italic | Headlines, display moments, luxury and editorial components |
 
 Scale: 12, 13, 15, 18, 24, 36, and display `clamp(40px, 6vw, 76px)`. Headlines track at `-0.02em` to `-0.035em`; prose sits at 1.6 line-height.
 
@@ -126,3 +126,15 @@ Theme: `data-theme="light|dark"` on any element re-scopes every token, so previe
 Docs and component pages share one layout: a header with Components, Docs and Changelog, and a sticky sidebar (Get started, then each category) that stays mounted between pages.
 
 Distribution: copy-paste first. `npm run build:registry` writes shadcn-compatible items to `public/r/<slug>.json`, so `npx shadcn add <host>/r/<slug>.json` also works.
+
+## Site design (second pass)
+
+- Headlines use Newsreader at display optical size; UI and prose stay in Geist. Labels are sentence case, not tracked capitals.
+- Surfaces are flat and warm: canvas, a slightly deeper panel for showcases, white cards inside it. Shadows only where depth is the component's idea.
+- Code is highlighted at build time with shiki (vitesse light and dark), so pages ship no highlighter.
+- Motion on the site is limited to four moves, all from the existing easing tokens and all reduced under `prefers-reduced-motion`:
+  1. The sidebar highlight and the preview's segmented thumbs glide to the new selection (220ms, ease-in-out).
+  2. Buttons and link cards dip to 0.97 on press (160ms, ease-out).
+  3. The copy button morphs its icon with a blur crossfade (200ms, ease-out).
+  4. The landing hero enters once, staggered by 70ms (640ms, ease-out, fade only under reduced motion).
+- The header search reuses the library's own Command Palette (⌘K).

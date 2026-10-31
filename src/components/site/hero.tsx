@@ -1,57 +1,60 @@
 import Link from "next/link";
-import { DitherField } from "@/components/ui/dither-field/dither-field";
-import OrbitDemo from "@/components/ui/orbit-gallery/demo";
 import { registry } from "@/registry";
+import { CopyButton } from "./copy-button";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hoveraui.vercel.app";
 
 export function Hero() {
+  const install = `npx shadcn@latest add ${siteUrl.replace(/^https?:\/\//, "")}/r/depth-key.json`;
   return (
-    <section aria-labelledby="hero-title" className="relative overflow-hidden border-b border-line">
-      <div className="mx-auto flex max-w-[1240px] justify-between px-4 pt-6 font-mono text-[11px] text-ink-2 sm:px-6">
-        <span>Index of {registry.length} components</span>
-        <span className="hidden sm:inline">React · CSS · no runtime dependencies</span>
-        <span>Edition 01</span>
-      </div>
-
-      <div className="mx-auto grid min-h-[min(760px,calc(100dvh-8rem))] max-w-[1240px] items-center gap-8 px-4 pb-40 pt-12 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:pt-4">
-        <div className="max-w-xl">
-          <p className="label">HoveraUI</p>
-          <h1
-            id="hero-title"
-            className="mt-5 text-[clamp(42px,6.4vw,80px)] font-medium leading-[0.98] tracking-[-0.045em]"
+    <section aria-labelledby="hero-title" className="px-4 pb-16 pt-20 sm:px-6 sm:pt-28">
+      <div className="mx-auto flex max-w-[880px] flex-col items-center text-center">
+        <Link
+          href="/docs/changelog"
+          style={{ "--i": 0 } as React.CSSProperties}
+          className="rise press inline-flex items-center gap-2 rounded-full border border-line bg-surface py-1 pl-1.5 pr-3.5 text-[13px] text-ink-2 transition-[color,border-color,transform] hover:border-line-strong hover:text-ink"
+        >
+          <span className="rounded-full bg-ink px-2 py-0.5 text-[11.5px] font-medium text-canvas">New</span>
+          {registry.length} components, rebuilt docs
+        </Link>
+        <h1
+          id="hero-title"
+          style={{ "--i": 1 } as React.CSSProperties}
+          className="rise display mt-8 text-[clamp(48px,8vw,96px)] leading-[0.98] tracking-[-0.035em]"
+        >
+          Components with one idea each.
+        </h1>
+        <p
+          style={{ "--i": 2 } as React.CSSProperties}
+          className="rise mt-7 max-w-[34rem] text-[17px] leading-relaxed text-ink-2 sm:text-[18px]"
+        >
+          Original React pieces in glass, paper, pixels and gilt. Copy the source into your project and own every
+          line, with no package to install.
+        </p>
+        <div style={{ "--i": 3 } as React.CSSProperties} className="rise mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/components/depth-key"
+            className="press rounded-full bg-ink px-6 py-3 text-[14.5px] font-medium text-canvas transition-[opacity,transform] hover:opacity-90"
           >
-            Components with{" "}
-            <span className="font-serif text-[1.08em] font-normal italic tracking-[-0.02em]">one idea</span> each.
-          </h1>
-          <p className="mt-6 max-w-md text-[17px] leading-relaxed text-ink-2">
-            Original React pieces in pixel, glass, paper, gilt and light. Copy the source into your project. There is
-            nothing to install and nothing to keep updated.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Link
-              href="/components"
-              className="rounded-full bg-ink px-5 py-2.5 text-[14px] font-medium text-canvas transition-opacity hover:opacity-85"
-            >
-              Browse the index
-            </Link>
-            <Link
-              href="/docs/introduction"
-              className="rounded-full border border-line-strong px-5 py-2.5 text-[14px] text-ink transition-colors hover:bg-sunken"
-            >
-              Read the guide
-            </Link>
-          </div>
+            Browse components
+          </Link>
+          <Link
+            href="/docs/introduction"
+            className="press rounded-full border border-line-strong bg-surface px-6 py-3 text-[14.5px] text-ink transition-[background-color,transform] hover:bg-raised"
+          >
+            Read the docs
+          </Link>
         </div>
-        <div className="grid min-h-[420px] place-items-center">
-          <OrbitDemo />
+        <div
+          style={{ "--i": 4 } as React.CSSProperties}
+          className="rise mt-8 flex max-w-full items-center gap-3 rounded-full border border-line bg-surface py-1 pl-4 pr-1"
+        >
+          <code className="truncate font-mono text-[12.5px] text-ink-2">
+            <span className="select-none text-ink-3">$ </span>
+            {install}
+          </code>
+          <CopyButton text={install} label="Copy install command" />
         </div>
-      </div>
-
-      {/* A dithered horizon: the one live texture on the page. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-36 [mask-image:linear-gradient(to_bottom,transparent,black_70%)]"
-      >
-        <DitherField className="size-full" pixelSize={3} speed={0.6} />
       </div>
     </section>
   );

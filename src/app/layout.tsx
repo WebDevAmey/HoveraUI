@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import { SiteHeader } from "@/components/site/site-header";
 import "./globals.css";
 
 const sans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const serif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  weight: "400",
+const serif = Newsreader({
+  variable: "--font-newsreader",
   style: ["normal", "italic"],
+  axes: ["opsz"],
   subsets: ["latin"],
 });
 
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f2ee" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d0d0c" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f3f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e0e0d" },
   ],
 };
 

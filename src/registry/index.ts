@@ -9,6 +9,8 @@ import softSwitchMeta from "@/components/ui/soft-switch/meta";
 import softSwitchDemo from "@/components/ui/soft-switch/demo";
 import quietTooltipMeta from "@/components/ui/quiet-tooltip/meta";
 import quietTooltipDemo from "@/components/ui/quiet-tooltip/demo";
+import rollingNumberMeta from "@/components/ui/rolling-number/meta";
+import rollingNumberDemo from "@/components/ui/rolling-number/demo";
 import depthKeyMeta from "@/components/ui/depth-key/meta";
 import depthKeyDemo from "@/components/ui/depth-key/demo";
 import ditherFillMeta from "@/components/ui/dither-fill/meta";
@@ -81,6 +83,7 @@ export const registry: Entry[] = [
   { meta: glideTabsMeta, Demo: glideTabsDemo },
   { meta: softSwitchMeta, Demo: softSwitchDemo },
   { meta: quietTooltipMeta, Demo: quietTooltipDemo },
+  { meta: rollingNumberMeta, Demo: rollingNumberDemo },
   { meta: depthKeyMeta, Demo: depthKeyDemo },
   { meta: ditherFillMeta, Demo: ditherFillDemo },
   { meta: pillowPressMeta, Demo: pillowPressDemo },

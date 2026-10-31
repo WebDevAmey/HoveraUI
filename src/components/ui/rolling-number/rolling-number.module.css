@@ -1,0 +1,50 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  --h: 1.15em;
+  font-variant-numeric: tabular-nums;
+  line-height: var(--h);
+}
+
+.row {
+  display: inline-flex;
+}
+
+.wheel {
+  display: inline-block;
+  height: var(--h);
+  overflow: hidden;
+}
+
+.strip {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(calc(var(--n) * -10%));
+  transition: transform 640ms cubic-bezier(0.32, 0.72, 0, 1);
+  /* Lower places turn first, each a beat ahead of the one to its left. */
+  transition-delay: calc(var(--o) * 40ms);
+}
+
+.strip > span {
+  height: var(--h);
+  text-align: center;
+}
+
+.sep {
+  display: inline-block;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip {
+    transition: none;
+  }
+}

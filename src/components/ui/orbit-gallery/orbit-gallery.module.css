@@ -1,0 +1,292 @@
+.root {
+  --duration: 90s;
+
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-inline: auto;
+  container-type: inline-size;
+  font-family: var(--hv-font-sans);
+  color: var(--hv-ink);
+}
+
+.stage {
+  --thumb: clamp(36px, 12.5cqi, 52px);
+  /* Radius tracks the container so the ring always fits. */
+  --r: calc(50cqi - var(--thumb) / 2 - 6px);
+
+  position: relative;
+  aspect-ratio: 1;
+  isolation: isolate;
+}
+
+.aura {
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side at 38% 40%, light-dark(color-mix(in oklab, var(--hv-ether-1) 85%, transparent), color-mix(in oklab, var(--hv-ether-1) 30%, transparent)), transparent),
+    radial-gradient(closest-side at 64% 58%, light-dark(color-mix(in oklab, var(--hv-ether-2) 75%, transparent), color-mix(in oklab, var(--hv-ether-2) 22%, transparent)), transparent),
+    radial-gradient(closest-side at 50% 72%, light-dark(color-mix(in oklab, var(--hv-ether-3) 75%, transparent), color-mix(in oklab, var(--hv-ether-3) 26%, transparent)), transparent);
+  filter: blur(18px);
+  z-index: -1;
+}
+
+.track {
+  position: absolute;
+  inset: calc(50% - var(--r));
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--hv-ink) 9%, transparent);
+}
+
+.track::after {
+  content: "";
+  position: absolute;
+  inset: 16%;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in oklab, var(--hv-ink) 7%, transparent);
+}
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.mark,
+.preview {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  transition:
+    opacity var(--hv-dur-3) var(--hv-ease-out),
+    scale var(--hv-dur-3) var(--hv-ease-out),
+    filter var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.mark {
+  font: italic 400 clamp(26px, 10cqi, 40px) / 1 var(--hv-font-serif);
+  letter-spacing: -0.02em;
+}
+
+.preview {
+  opacity: 0;
+  scale: 0.94;
+}
+
+.root[data-previewing] .mark {
+  opacity: 0;
+  scale: 0.96;
+  filter: blur(4px);
+}
+
+.root[data-previewing] .preview {
+  opacity: 1;
+  scale: 1;
+}
+
+.card {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  animation: settle var(--hv-dur-3) var(--hv-ease-out);
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    translate: 0 4px;
+  }
+}
+
+.cardThumb {
+  width: clamp(64px, 26cqi, 104px);
+  aspect-ratio: 1;
+  border-radius: 28%;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--hv-ink) 8%, transparent),
+    0 14px 30px -18px color-mix(in oklab, var(--hv-ink) 50%, transparent);
+}
+
+.cardThumb > :is(svg, img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.caption {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font: 400 10.5px / 1.3 var(--hv-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--hv-ink-2);
+}
+
+.name {
+  font: italic 400 17px / 1 var(--hv-font-serif);
+  letter-spacing: -0.005em;
+  text-transform: none;
+  color: var(--hv-ink);
+}
+
+.sep {
+  color: var(--hv-ink-3);
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: orbit var(--duration) linear infinite;
+}
+
+.slot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--thumb);
+  height: var(--thumb);
+  margin: calc(var(--thumb) / -2) 0 0 calc(var(--thumb) / -2);
+  /* Out to the ring, then turned back so the item starts upright. */
+  transform: rotate(var(--a)) translate(var(--r)) rotate(calc(var(--a) * -1));
+}
+
+.item {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 30%;
+  background: var(--hv-raised);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  /* Counter-spin at the ring's rate so each item stays upright while the ring turns. */
+  animation: orbit var(--duration) linear infinite reverse;
+}
+
+.thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--hv-ink) 9%, transparent),
+    0 6px 14px -8px color-mix(in oklab, var(--hv-ink) 45%, transparent);
+  transition:
+    scale var(--hv-dur-2) var(--hv-ease-out),
+    opacity var(--hv-dur-2) var(--hv-ease-out),
+    box-shadow var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.thumb > :is(svg, img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.root[data-previewing] .thumb {
+  opacity: 0.55;
+}
+
+.root[data-previewing] .item[data-active] .thumb {
+  opacity: 1;
+  scale: 1.14;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--hv-gilt) 70%, transparent),
+    0 0 0 4px color-mix(in oklab, var(--hv-gilt) 16%, transparent),
+    0 10px 20px -10px color-mix(in oklab, var(--hv-ink) 50%, transparent);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 4px;
+}
+
+.root[data-paused] :is(.ring, .item) {
+  animation-play-state: paused;
+}
+
+@keyframes orbit {
+  to {
+    rotate: 1turn;
+  }
+}
+
+.toggle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--hv-raised) 70%, transparent);
+  box-shadow: inset 0 0 0 1px var(--hv-line-strong);
+  color: var(--hv-ink-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: color var(--hv-dur-1) var(--hv-ease-out);
+}
+
+.toggle svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.toggle .fill {
+  fill: currentColor;
+  stroke-width: 1;
+}
+
+@media (hover: hover) {
+  .toggle:hover {
+    color: var(--hv-ink);
+  }
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring,
+  .item {
+    animation: none;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .mark,
+  .preview,
+  .thumb {
+    transition-property: opacity;
+  }
+
+  .card {
+    animation: none;
+  }
+}

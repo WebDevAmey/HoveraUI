@@ -1,0 +1,203 @@
+.rail {
+  --date: 104px;
+  --gutter: 28px;
+  --node: 9px;
+  /* Distance from the top of an entry to the middle of the headline's first line. */
+  --node-y: 14px;
+
+  container-type: inline-size;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--hv-font-sans);
+  color: var(--hv-ink);
+}
+
+.entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--date) var(--gutter) minmax(0, 1fr);
+  grid-template-areas: "date node content";
+  column-gap: 12px;
+  padding-bottom: 28px;
+}
+
+.entry:last-child {
+  padding-bottom: 0;
+}
+
+/* The rail: a hairline from this node down to the next one. */
+.entry::before {
+  content: "";
+  position: absolute;
+  top: var(--node-y);
+  bottom: calc(var(--node-y) * -1);
+  left: calc(var(--date) + 12px + var(--gutter) / 2);
+  width: 1px;
+  translate: -50% 0;
+  background: var(--hv-line-strong);
+}
+
+.entry:last-child::before {
+  bottom: auto;
+  height: 32px;
+  background: linear-gradient(var(--hv-line-strong), transparent);
+}
+
+.date {
+  grid-area: date;
+  padding-top: 8px;
+  font: 400 11px / 1.4 var(--hv-font-mono);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: end;
+  color: var(--hv-ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.node {
+  grid-area: node;
+  justify-self: center;
+  position: relative;
+  width: var(--node);
+  height: var(--node);
+  margin-top: calc(var(--node-y) - var(--node) / 2);
+  border-radius: 50%;
+  background: var(--hv-canvas);
+  box-shadow: inset 0 0 0 1px var(--hv-ink-3);
+}
+
+.entry[data-latest] .node {
+  background: var(--hv-accent);
+  box-shadow:
+    0 0 0 4px color-mix(in oklab, var(--hv-accent) 16%, transparent),
+    0 0 0 1px var(--hv-canvas);
+}
+
+.entry[data-latest] .date {
+  color: var(--hv-ink);
+}
+
+.content {
+  grid-area: content;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font: 400 24px / 1.15 var(--hv-font-serif);
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--hv-dur-2) var(--hv-ease-out);
+}
+
+@media (hover: hover) {
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.body {
+  margin: 6px 0 0;
+  max-width: 56ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--hv-ink-2);
+  text-wrap: pretty;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  padding: 3px 8px;
+  border-radius: var(--hv-r-pill);
+  box-shadow: inset 0 0 0 1px var(--hv-line-strong);
+  font: 400 10.5px / 1.4 var(--hv-font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+}
+
+/* Reveal on scroll: only active after the effect sets data-reveal. */
+.rail[data-reveal] > .entry > :is(.date, .content) {
+  opacity: 0;
+  translate: 0 6px;
+  transition:
+    opacity 500ms var(--hv-ease-out),
+    translate 600ms var(--hv-ease-out);
+  transition-delay: calc(min(var(--i, 0), 4) * 60ms);
+}
+
+.rail[data-reveal] > .entry > .node {
+  scale: 0.4;
+  opacity: 0;
+  transition:
+    scale 400ms var(--hv-ease-out),
+    opacity 300ms var(--hv-ease-out);
+  transition-delay: calc(min(var(--i, 0), 4) * 60ms);
+}
+
+.rail[data-reveal] > .entry[data-visible] > * {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+
+@container (max-width: 440px) {
+  .entry {
+    grid-template-columns: 16px minmax(0, 1fr);
+    grid-template-areas:
+      "node date"
+      ". content";
+    column-gap: 14px;
+    padding-bottom: 24px;
+  }
+
+  .entry::before {
+    left: 8px;
+    top: 9px;
+    bottom: -9px;
+  }
+
+  .node {
+    margin-top: calc(9px - var(--node) / 2);
+  }
+
+  .date {
+    padding-top: 2px;
+    text-align: start;
+  }
+
+  .title {
+    margin-top: 4px;
+    font-size: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

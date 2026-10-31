@@ -1,0 +1,122 @@
+/* Registered so the two edges can interpolate independently. */
+@property --ss-l {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+@property --ss-r {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+.root {
+  --pad: 3px;
+  --h: 40px;
+  --type: 14px;
+  --lead: 360ms;
+  --trail: 420ms;
+  --trail-ease: cubic-bezier(0.55, 0, 0.25, 1);
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  padding: var(--pad);
+  border: 1px solid var(--hv-line);
+  border-radius: var(--hv-r-pill);
+  background: var(--hv-sunken);
+  box-shadow: inset 0 1px 2px color-mix(in oklab, black 6%, transparent);
+}
+
+.root[data-size="sm"] {
+  --h: 32px;
+  --type: 13px;
+}
+
+.shadow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* The thumb is clipped, so its shadow comes from a filter on the parent. */
+  filter: drop-shadow(0 1px 1.5px color-mix(in oklab, black 14%, transparent))
+    drop-shadow(0 3px 6px color-mix(in oklab, black 6%, transparent));
+}
+
+.thumb {
+  position: absolute;
+  inset: 0;
+  background: var(--hv-raised);
+  /* Left and right edges come from two custom properties; the edge that leads moves first. */
+  clip-path: inset(
+    var(--pad) calc(100% - var(--ss-r) - 1px) var(--pad) calc(var(--ss-l) - 1px) round var(--hv-r-pill)
+  );
+  opacity: 0;
+}
+
+.root[data-ready] .thumb {
+  opacity: 1;
+}
+
+.root[data-ready][data-dir="right"] .thumb {
+  transition:
+    --ss-r var(--lead) var(--hv-ease-spring),
+    --ss-l var(--trail) var(--trail-ease);
+}
+
+.root[data-ready][data-dir="left"] .thumb {
+  transition:
+    --ss-l var(--lead) var(--hv-ease-spring),
+    --ss-r var(--trail) var(--trail-ease);
+}
+
+:global([data-theme="dark"]) .thumb {
+  background: color-mix(in oklab, white 6%, var(--hv-raised));
+}
+
+.option {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--h);
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--hv-r-pill);
+  background: transparent;
+  color: var(--hv-ink-2);
+  font: 500 var(--type) / 1 var(--hv-font-sans);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.option[aria-checked="true"] {
+  color: var(--hv-ink);
+}
+
+/* Before measurement (and without JS) the checked segment carries the thumb itself. */
+.root:not([data-ready]) .option[aria-checked="true"] {
+  background: var(--hv-raised);
+  box-shadow: 0 1px 1.5px color-mix(in oklab, black 14%, transparent);
+}
+
+@media (hover: hover) {
+  .option:hover {
+    color: var(--hv-ink);
+  }
+}
+
+.option:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root[data-ready][data-dir] .thumb {
+    transition: none;
+  }
+}

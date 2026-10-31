@@ -1,0 +1,59 @@
+.wipe {
+  --block: var(--hv-ink);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.content {
+  height: 100%;
+}
+
+.blocks {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell));
+  grid-auto-rows: var(--cell);
+  pointer-events: none;
+}
+
+.blocks > span {
+  background: var(--block);
+  /* A near-zero duration with fill both turns each block into a single step. */
+  animation: 1ms steps(1, end) both;
+  animation-delay: calc(var(--o) * var(--half));
+}
+
+.wipe[data-phase="cover"] .blocks > span {
+  animation-name: cover;
+}
+
+.wipe[data-phase="reveal"] .blocks > span {
+  animation-name: reveal;
+}
+
+@keyframes cover {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blocks {
+    display: none;
+  }
+}

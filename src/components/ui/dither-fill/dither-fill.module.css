@@ -1,0 +1,122 @@
+@property --t {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.button {
+  --cell: 3px;
+  --tile: calc(var(--cell) * 4);
+  --tone: var(--hv-ink);
+  --tone-ink: var(--hv-canvas);
+  --t: 0;
+
+  position: relative;
+  display: inline-grid;
+  padding: 0;
+  border: 1px solid var(--tone);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--tone);
+  font: 500 12px / 1 var(--hv-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  isolation: isolate;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  /* An integer custom property interpolates in whole steps: 16 thresholds. */
+  transition: --t calc(var(--hv-dur-3) - 12ms) linear;
+}
+
+.button[data-variant="accent"] {
+  --tone: var(--hv-accent);
+  --tone-ink: var(--hv-accent-ink);
+}
+
+.face,
+.fill {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 20px 12px;
+}
+
+/* The inverted face. Each mask layer is one Bayer threshold, a 4×4 tile with a
+   single lit cell; a layer shows once --t passes its rank. */
+.fill {
+  background: var(--tone);
+  color: var(--tone-ink);
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='0' y='2' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='3' y='3' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='3' y='1' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='1' y='3' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='1' y='0' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='3' y='2' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='1' y='2' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='0' y='1' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='2' y='3' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='2' y='1' width='1' height='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3C/svg%3E");
+  mask-size:
+    calc(clamp(0, var(--t) - 0, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 1, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 2, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 3, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 4, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 5, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 6, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 7, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 8, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 9, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 10, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 11, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 12, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 13, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 14, 1) * var(--tile)),
+    calc(clamp(0, var(--t) - 15, 1) * var(--tile));
+  mask-repeat: repeat;
+  mask-position: 0 0;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    --t: 16;
+  }
+}
+
+.button:focus-visible,
+.button:active,
+.button[aria-pressed="true"] {
+  --t: 16;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+.button:active .face,
+.button:active .fill {
+  translate: 0 1px;
+}
+
+.button:disabled {
+  --t: 0;
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

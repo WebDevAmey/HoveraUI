@@ -132,7 +132,8 @@ export function HoverReveal({
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLElement>, index: number) => {
-    if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+    // Anything but touch follows: some synthetic and assistive pointers report an empty type.
+    if (event.pointerType === "touch") return;
     if (active !== index) setActive(index);
     const point = local(event.clientX, event.clientY);
     moveTo(point.x, point.y);

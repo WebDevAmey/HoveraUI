@@ -16,6 +16,7 @@ export default function ComponentsPage() {
         Each tile is the real component, running. Open one for its source, props and accessibility notes.
       </p>
       <div className="mt-10">
+        <h2 className="sr-only">All components</h2>
         <Gallery syncUrl />
       </div>
     </div>

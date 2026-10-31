@@ -21,6 +21,7 @@ export default function ChangelogPage() {
       </h1>
       <p className="mt-4 max-w-md text-ink-2">Releases, cuts and redesigns, newest first.</p>
       <div className="mt-16">
+        <h2 className="sr-only">Releases</h2>
         <TimelineRail
           items={releases.map((r) => ({ date: formatDate(r.date), dateTime: r.date, title: r.title, body: r.body, tags: r.tags }))}
         />

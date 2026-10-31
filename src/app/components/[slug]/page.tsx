@@ -93,7 +93,10 @@ export default async function ComponentPage({ params }: Props) {
           )}
         </dl>
 
-        <section id="preview" className="scroll-mt-20 pt-10" aria-label="Preview">
+        <section id="preview" className="scroll-mt-20 pt-10" aria-labelledby="preview-title">
+          <h2 id="preview-title" className="sr-only">
+            Preview
+          </h2>
           <Preview tall={meta.tall}>
             <Demo />
           </Preview>

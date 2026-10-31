@@ -130,7 +130,6 @@ export function PerforatedTicket({
           className={styles.stub}
           data-returned={returned || undefined}
           style={{ clipPath: stubClip }}
-          aria-label={`Tear stub ${serial}`}
           tabIndex={isTorn ? -1 : undefined}
           aria-hidden={isTorn || undefined}
           onPointerDown={handleDown}
@@ -149,6 +148,7 @@ export function PerforatedTicket({
             setTorn(true);
           }}
         >
+          <span className={styles.hidden}>Tear off </span>
           <span className={styles.stubLabel}>{stubLabel}</span>
           <span className={styles.serial}>{serial}</span>
         </button>

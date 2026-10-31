@@ -1,0 +1,39 @@
+.resolve {
+  --ar-ink: var(--hv-ink-2);
+  --ar-bg: var(--hv-canvas);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Hidden only visually, and only until the run starts: it stays in the
+   accessibility tree the whole time. */
+.resolve[data-phase="waiting"] .content {
+  opacity: 0;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  color: var(--ar-ink);
+  /* Carries the field colour so script can read it resolved; never drawn. */
+  outline: 0 none var(--ar-bg);
+  font-family: var(--hv-font-mono);
+  pointer-events: none;
+}
+
+.resolve[data-phase="done"] .canvas {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resolve[data-phase="waiting"] .content {
+    opacity: 1;
+  }
+
+  .canvas {
+    display: none;
+  }
+}

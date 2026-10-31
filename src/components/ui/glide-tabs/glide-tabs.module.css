@@ -1,0 +1,96 @@
+.root {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.rail {
+  position: relative;
+  max-width: 100%;
+  padding: 4px;
+  border-radius: var(--hv-r-pill);
+  background: var(--hv-sunken);
+  box-shadow: inset 0 0 0 1px var(--hv-line);
+}
+
+.list,
+.ink {
+  display: flex;
+  gap: 2px;
+}
+
+.ink {
+  position: absolute;
+  inset: 4px;
+  pointer-events: none;
+  border-radius: var(--hv-r-pill);
+  background: var(--hv-ink);
+  clip-path: inset(0 100% 0 0 round 999px);
+}
+
+/* Instant on first paint, then the clip glides between tabs. */
+.ink[data-ready] {
+  transition: clip-path 260ms var(--hv-ease-in-out);
+}
+
+.tab {
+  flex: none;
+  padding: 7px 16px;
+  border: 0;
+  border-radius: var(--hv-r-pill);
+  background: none;
+  color: var(--hv-ink-2);
+  font: 500 13.5px / 1.2 var(--hv-font-sans);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.inkTab {
+  color: var(--hv-canvas);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button.tab:hover {
+    color: var(--hv-ink);
+  }
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+.panel {
+  width: 100%;
+  border-radius: var(--hv-r-3);
+  color: var(--hv-ink-2);
+  font: 14px / 1.6 var(--hv-font-sans);
+  animation: enter 220ms var(--hv-ease-out);
+}
+
+.panel:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 4px;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink[data-ready] {
+    transition: none;
+  }
+  .panel {
+    animation-name: fade;
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+}

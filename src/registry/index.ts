@@ -3,6 +3,8 @@ import type { ComponentMeta } from "./types";
 
 import morphButtonMeta from "@/components/ui/morph-button/meta";
 import morphButtonDemo from "@/components/ui/morph-button/demo";
+import glideTabsMeta from "@/components/ui/glide-tabs/meta";
+import glideTabsDemo from "@/components/ui/glide-tabs/demo";
 import depthKeyMeta from "@/components/ui/depth-key/meta";
 import depthKeyDemo from "@/components/ui/depth-key/demo";
 import ditherFillMeta from "@/components/ui/dither-fill/meta";
@@ -72,6 +74,7 @@ export type Entry = { meta: ComponentMeta; Demo: ComponentType };
 
 export const registry: Entry[] = [
   { meta: morphButtonMeta, Demo: morphButtonDemo },
+  { meta: glideTabsMeta, Demo: glideTabsDemo },
   { meta: depthKeyMeta, Demo: depthKeyDemo },
   { meta: ditherFillMeta, Demo: ditherFillDemo },
   { meta: pillowPressMeta, Demo: pillowPressDemo },

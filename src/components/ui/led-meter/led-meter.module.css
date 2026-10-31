@@ -1,0 +1,112 @@
+.meter {
+  --gap: 3px;
+  --h: 16px;
+  --scan: 1600ms;
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font: 500 11px / 1 var(--hv-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.label {
+  color: var(--hv-ink-2);
+}
+
+.readout {
+  color: var(--hv-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* An always-dark housing: LEDs need a black field to read as light. */
+.bezel {
+  display: grid;
+  grid-template-columns: repeat(var(--count), 1fr);
+  gap: var(--gap);
+  padding: 5px;
+  border-radius: 6px;
+  background:
+    linear-gradient(to bottom, #050605, #111311);
+  box-shadow:
+    inset 0 1px 2px rgb(0 0 0 / 0.8),
+    0 0 0 1px color-mix(in oklab, var(--hv-ink) 14%, transparent),
+    0 1px 0 color-mix(in oklab, white 6%, transparent);
+}
+
+.led {
+  --on: var(--hv-phosphor);
+  position: relative;
+  height: var(--h);
+  border-radius: 1.5px;
+  background: color-mix(in oklab, var(--on) 13%, #0b0c0b);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+}
+
+.led[data-zone="amber"] {
+  --on: var(--hv-amber);
+}
+
+.led[data-zone="red"] {
+  --on: #ff5747;
+}
+
+/* The lit state lives on a pseudo layer so it can fade with opacity alone. */
+.led::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(to bottom, color-mix(in oklab, white 45%, var(--on)), var(--on) 45%, color-mix(in oklab, black 12%, var(--on)));
+  box-shadow:
+    0 0 6px color-mix(in oklab, var(--on) 70%, transparent),
+    0 0 14px color-mix(in oklab, var(--on) 35%, transparent);
+  opacity: 0;
+  transition: opacity 90ms linear;
+}
+
+.led[data-lit]::after {
+  opacity: 1;
+  transition-duration: 30ms;
+}
+
+.meter[data-indeterminate] .led::after {
+  animation: scan var(--scan) linear infinite;
+  animation-delay: calc(var(--i) * var(--scan) / var(--count) * 0.6 - var(--scan));
+}
+
+@keyframes scan {
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .led::after {
+    transition: none;
+  }
+
+  /* A steady half-lit band says "working" without movement. */
+  .meter[data-indeterminate] .led::after {
+    animation: none;
+    opacity: 0.35;
+  }
+}

@@ -1,0 +1,42 @@
+.field {
+  --df-ink: color-mix(in oklab, var(--hv-ink) 26%, var(--hv-canvas));
+  --df-paper: var(--hv-canvas);
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--df-paper);
+}
+
+.canvas {
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 0;
+  display: block;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+/* Invisible swatches: the browser resolves the colour, the canvas reads it. */
+.probeInk,
+.probePaper {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.probeInk {
+  color: var(--df-ink);
+}
+
+.probePaper {
+  color: var(--df-paper);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}

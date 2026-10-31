@@ -20,7 +20,7 @@ Snapshot of `main` at `a3d67fd`, taken before the revamp.
 | Redirects | `next.config.ts` carries ~80 permanent redirects for slugs that were removed in earlier cuts. |
 | API | `/api/github-stars` falls back to a hard-coded star count when GitHub is unreachable, which shows invented data. |
 | Dependencies | `framer-motion` and `motion` (two copies of the same library), `lenis`, `cmdk`, `@radix-ui/react-slot`, `@radix-ui/react-tabs`, `class-variance-authority`, `lucide-react`, `next-themes`, `clsx`, `tailwind-merge`. |
-| Other | `.github/screens` (screenshots of the old site), `CHANGELOG.md` (history of earlier cuts), `CONTRIBUTING.md`, and editor tooling in `.agents/`, `AGENTS.md`, `CLAUDE.md`, `skills-lock.json`. |
+| Other | `.github/screens` (screenshots of the old site), `CHANGELOG.md` (history of earlier cuts), `CONTRIBUTING.md`, and editor tooling in `.agents/`, `skills-lock.json` and two root instruction files. |
 
 ## Keep
 
@@ -28,7 +28,7 @@ Snapshot of `main` at `a3d67fd`, taken before the revamp.
 - The idea of a static, build-time registry in `public/r`, rewritten so it reads the component files directly instead of duplicated strings.
 - Geist and Geist Mono through `next/font`.
 - `CHANGELOG.md` history, extended with the revamp entry. The new changelog page renders from typed data.
-- Editor tooling (`.agents/`, `AGENTS.md`, `CLAUDE.md`, `skills-lock.json`). It is the owner's local workflow, not part of the library, so it is left untouched.
+- Editor tooling (`.agents/`, `skills-lock.json` and the root instruction files). It is the owner's local workflow, not part of the library, so it is left untouched.
 
 ## Delete
 
@@ -36,5 +36,5 @@ Snapshot of `main` at `a3d67fd`, taken before the revamp.
 - Site chrome that fights the calm brief: preloader, custom cursor, Lenis smooth scroll, dock, marquee, stats row.
 - `/api/github-stars` and its invented fallback number.
 - The redirect table for slugs that no longer exist.
-- Dependencies that the new library does not need: `framer-motion`, `motion`, `lenis`, `cmdk`, `@radix-ui/*`, `class-variance-authority`, `lucide-react`, `next-themes`, `clsx`, `tailwind-merge`, `babel-plugin-react-compiler`. Components use CSS for motion and a ten-line `cn` helper.
+- Dependencies that the new library does not need: `framer-motion`, `motion`, `lenis`, `cmdk`, `@radix-ui/*`, `class-variance-authority`, `lucide-react`, `next-themes`, `clsx`, `tailwind-merge`, `babel-plugin-react-compiler`. Components use CSS for motion and a six-line `cn` helper.
 - `.github/screens`, `components.json` (pointed at a third-party registry) and `tailwind.config.js` (a v3 leftover that only set `darkMode`).

@@ -98,7 +98,13 @@ export function MorphTabs({
   useIsoLayoutEffect(() => {
     measure(true);
     const tab = selected ? tabRefs.current.get(selected) : undefined;
-    tab?.scrollIntoView({ block: "nearest", inline: "nearest" });
+    // Keep the active tab visible by scrolling the tab strip only, never the page.
+    const list = listRef.current;
+    if (tab && list) {
+      const left = tab.offsetLeft - list.scrollLeft;
+      if (left < 0) list.scrollLeft += left;
+      else if (left + tab.offsetWidth > list.clientWidth) list.scrollLeft += left + tab.offsetWidth - list.clientWidth;
+    }
   }, [measure]);
 
   useEffect(() => {

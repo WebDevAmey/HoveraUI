@@ -1,0 +1,51 @@
+.stage {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.swatch {
+  height: 88px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, black 8%, transparent);
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px 2px 0;
+}
+
+.name {
+  font: 400 17px / 1 var(--hv-font-serif);
+  letter-spacing: -0.01em;
+}
+
+.num {
+  font: 400 italic 15px / 1 var(--hv-font-serif);
+  color: var(--hv-ink-2);
+}
+
+.kind {
+  display: block;
+  padding: 6px 2px 0;
+  font: 500 9px / 1 var(--hv-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+}
+
+.readout {
+  margin: 0;
+  font: 500 11px / 1 var(--hv-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+}
+
+.readout b {
+  font-weight: 500;
+  color: var(--hv-ink);
+}

@@ -1,0 +1,94 @@
+.deck {
+  --card-w: 104px;
+  --card-h: 148px;
+  --spread: 9deg;
+  --rest: 0.6deg;
+  --angle: var(--rest);
+
+  position: relative;
+  display: grid;
+  width: var(--card-w);
+  height: var(--card-h);
+  /* Room for the fan to swing out and for a picked card to rise. */
+  margin: 32px auto 32px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.deck[data-open],
+.deck:has(:focus-visible) {
+  --angle: var(--spread);
+}
+
+@media (hover: hover) {
+  .deck:hover {
+    --angle: var(--spread);
+  }
+}
+
+/* Every card pivots around one point far below the deck, so they fan like a hand. */
+.card {
+  --offset: calc(var(--i) - var(--mid));
+  --lift: 0px;
+
+  grid-area: 1 / 1;
+  box-sizing: border-box;
+  width: var(--card-w);
+  height: var(--card-h);
+  padding: 6px;
+  border-radius: 10px;
+  background: var(--hv-raised);
+  border: 1px solid color-mix(in oklab, var(--hv-ink) 10%, transparent);
+  box-shadow:
+    0 1px 0 color-mix(in oklab, white 60%, transparent) inset,
+    0 1px 2px color-mix(in oklab, black 10%, transparent),
+    0 10px 24px -14px color-mix(in oklab, black 45%, transparent);
+  color: var(--hv-ink);
+  cursor: pointer;
+  outline: none;
+  transform-origin: 50% 280%;
+  transform: rotate(calc(var(--offset) * var(--angle))) translateY(var(--lift));
+  transition:
+    transform var(--hv-dur-3) var(--hv-ease-spring),
+    scale var(--hv-dur-2) var(--hv-ease-out),
+    opacity var(--hv-dur-2) var(--hv-ease-out);
+}
+
+/* A picked card rises out of the fan along its own axis; the others settle. */
+.card[aria-selected="true"] {
+  --lift: -14px;
+}
+
+.deck[data-open] .card[aria-selected="true"],
+.deck:has(:focus-visible) .card[aria-selected="true"] {
+  --lift: -26px;
+}
+
+.deck[data-picked] .card[aria-selected="false"] {
+  scale: 0.97;
+}
+
+@media (hover: hover) {
+  .deck:hover .card[aria-selected="true"] {
+    --lift: -26px;
+  }
+
+  .deck:hover .card[aria-selected="false"]:hover {
+    --lift: -8px;
+  }
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+.card:focus-visible[aria-selected="false"] {
+  --lift: -8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

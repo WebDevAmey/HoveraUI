@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { Faq } from "@/components/site/faq";
-import { Gallery } from "@/components/site/gallery";
 import { Hero } from "@/components/site/hero";
 import { Tile } from "@/components/site/tile";
-import { getEntry } from "@/registry";
+import { getEntry, registry } from "@/registry";
 
 const featured: { slug: string; className: string }[] = [
   { slug: "glass-specimen", className: "md:col-span-4 md:row-span-2" },
@@ -48,11 +47,15 @@ export default function Home() {
                 Everything, live
               </h2>
             </div>
-            <Link href="/docs#components" className="text-[13px] text-ink-2 underline decoration-line-strong underline-offset-4 hover:text-ink">
+            <Link href="/components" className="text-[13px] text-ink-2 underline decoration-line-strong underline-offset-4 hover:text-ink">
               Open the full index
             </Link>
           </div>
-          <Gallery />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {registry.map(({ meta, Demo }) => (
+              <Tile key={meta.slug} meta={meta} Demo={Demo} />
+            ))}
+          </div>
         </div>
       </section>
 

@@ -5,24 +5,23 @@ import { Logo } from "./logo";
 const columns = [
   {
     title: "Library",
-    links: categories.map((c) => ({ href: `/docs?category=${c.id}#components`, label: c.label })),
+    links: categories.map((c) => ({ href: `/components#cat-${c.id}`, label: c.label })),
   },
   {
     title: "Guides",
     links: [
-      { href: "/docs#install", label: "Install" },
-      { href: "/docs#tokens", label: "Tokens" },
-      { href: "/docs#theming", label: "Theming" },
-      { href: "/docs#registry", label: "Registry" },
+      { href: "/docs/introduction", label: "Introduction" },
+      { href: "/docs/installation", label: "Installation" },
+      { href: "/docs/tokens", label: "Tokens" },
+      { href: "/docs/faq", label: "FAQ" },
     ],
   },
   {
     title: "Project",
     links: [
-      { href: "/changelog", label: "Changelog" },
+      { href: "/docs/changelog", label: "Changelog" },
       { href: "https://github.com/WebDevAmey/HoveraUI", label: "Source" },
       { href: "https://github.com/WebDevAmey/HoveraUI/issues", label: "Issues" },
-      { href: "/#faq", label: "FAQ" },
     ],
   },
 ];

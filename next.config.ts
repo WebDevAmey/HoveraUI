@@ -5,8 +5,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
-      { source: "/components", destination: "/docs#components", permanent: true },
-      { source: "/components/:slug", destination: "/docs/:slug", permanent: true },
+      { source: "/docs", destination: "/docs/introduction", permanent: false },
+      { source: "/docs/:slug((?!introduction|installation|tokens|faq|changelog)[^/]+)", destination: "/components/:slug", permanent: true },
+      { source: "/changelog", destination: "/docs/changelog", permanent: true },
     ];
   },
 };

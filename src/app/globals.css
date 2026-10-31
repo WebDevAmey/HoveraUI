@@ -26,6 +26,7 @@
 
 @layer base {
   html {
+    scroll-padding-top: 80px;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
   }
@@ -77,5 +78,63 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+@layer components {
+  .prose-docs {
+    color: var(--hv-ink-2);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .prose-docs h2 {
+    margin: 2.5rem 0 0.75rem;
+    color: var(--hv-ink);
+    font-size: 1.375rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .prose-docs h3 {
+    margin: 1.75rem 0 0.5rem;
+    color: var(--hv-ink);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .prose-docs p {
+    margin: 0.75rem 0;
+  }
+  .prose-docs ul {
+    margin: 0.75rem 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+  .prose-docs li {
+    margin: 0.25rem 0;
+  }
+  .prose-docs a {
+    color: var(--hv-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--hv-line-strong);
+    text-underline-offset: 3px;
+  }
+  .prose-docs a:hover {
+    text-decoration-color: currentColor;
+  }
+  .prose-docs code:not(pre code) {
+    padding: 0.1em 0.35em;
+    border: 1px solid var(--hv-line);
+    border-radius: 6px;
+    background: var(--hv-surface);
+    color: var(--hv-ink);
+    font-family: var(--hv-font-mono);
+    font-size: 0.85em;
+  }
+  .prose-docs strong {
+    color: var(--hv-ink);
+    font-weight: 500;
+  }
+  .prose-docs > :first-child {
+    margin-top: 0;
   }
 }

@@ -37,6 +37,27 @@ const groups = [
   },
 ];
 
+/** Grouped questions with hairline rows; heading levels follow the page they sit in. */
+export function FaqGroups({ level = 3 }: { level?: 2 | 3 }) {
+  const GroupHeading = level === 2 ? "h2" : "h3";
+  return (
+    <>
+      {groups.map((group) => (
+        <div key={group.title} className="mt-12 first:mt-0">
+          <GroupHeading className="label mb-2">{group.title}</GroupHeading>
+          <Accordion headingLevel={(level + 1) as 3 | 4}>
+            {group.items.map((item) => (
+              <AccordionItem key={item.q} value={item.q} title={item.q}>
+                {item.a}
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      ))}
+    </>
+  );
+}
+
 export function Faq() {
   return (
     <section id="faq" aria-labelledby="faq-title" className="border-t border-line">
@@ -45,18 +66,9 @@ export function Faq() {
         <h2 id="faq-title" className="mt-3 text-center text-[clamp(26px,3.4vw,36px)] font-medium tracking-[-0.03em]">
           Asked, <span className="font-serif text-[1.12em] font-normal italic tracking-[-0.01em]">answered</span>
         </h2>
-        {groups.map((group) => (
-          <div key={group.title} className="mt-14">
-            <h3 className="label mb-2">{group.title}</h3>
-            <Accordion headingLevel={4}>
-              {group.items.map((item) => (
-                <AccordionItem key={item.q} value={item.q} title={item.q}>
-                  {item.a}
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        ))}
+        <div className="mt-14">
+          <FaqGroups />
+        </div>
       </div>
     </section>
   );

@@ -118,9 +118,11 @@ Theme: `data-theme="light|dark"` on any element re-scopes every token, so previe
 
 | Route | Content |
 | --- | --- |
-| `/` | Calm hero with a live Dither Field and Orbit Gallery focal piece, a bento of featured components, the full gallery, FAQ (built with Plus-Minus Accordion), footer |
-| `/docs/[slug]` | Sidebar by category, article (title, line, live preview with theme and width toggles, source with copy, props, usage, accessibility, size), right TOC with scroll-spy |
-| `/docs` | One docs page: the component gallery (category filter, search, live tiles), then install, tokens, theming, motion and registry. `/components` redirects here |
-| `/changelog` | Timeline Rail of releases |
+| `/` | Calm hero with a live Dither Field and Orbit Gallery focal piece, a bento of featured components, every component live, FAQ, footer |
+| `/components` | Index grouped by category: name, material and one line per component |
+| `/components/[slug]` | Live preview with theme and width toggles, source with copy, props, usage, accessibility, size |
+| `/docs/introduction`, `/installation`, `/tokens`, `/faq`, `/changelog` | Guides, prose and the Timeline Rail changelog |
+
+Docs and component pages share one layout: a header with Components, Docs and Changelog, and a sticky sidebar (Get started, then each category) that stays mounted between pages.
 
 Distribution: copy-paste first. `npm run build:registry` writes shadcn-compatible items to `public/r/<slug>.json`, so `npx shadcn add <host>/r/<slug>.json` also works.

@@ -1,36 +1,32 @@
 import type { ReactNode } from "react";
-import { registry } from "@/registry";
-import { categories } from "@/registry/types";
-import { DocsSidebar, type SidebarGroup } from "./docs-sidebar";
-import { Toc } from "./toc";
+import { DocsSidebar } from "./docs-sidebar";
+import { sidebarGroups } from "./nav";
 
-const groups: SidebarGroup[] = [
-  {
-    label: "Guides",
-    items: [
-      { href: "/docs", label: "Overview" },
-      { href: "/changelog", label: "Changelog" },
-    ],
-  },
-  ...categories.map((category) => ({
-    label: category.label,
-    items: registry
-      .filter((entry) => entry.meta.category === category.id)
-      .map((entry) => ({ href: `/docs/${entry.meta.slug}`, label: entry.meta.name })),
-  })),
-];
-
-/** Three-zone docs layout: sticky sidebar, article, sticky table of contents. */
-export function DocsShell({ toc, children }: { toc: { id: string; label: string }[]; children: ReactNode }) {
+/**
+ * Sidebar plus content column, shared by docs and component pages.
+ * Rendered from a layout, so the sidebar stays mounted (and keeps its scroll) between pages.
+ */
+export function DocsShell({ children }: { children: ReactNode }) {
+  const groups = sidebarGroups();
   return (
-    <div className="mx-auto grid max-w-[1240px] gap-10 px-4 sm:px-6 lg:grid-cols-[200px_minmax(0,1fr)] xl:grid-cols-[200px_minmax(0,1fr)_180px]">
-      <aside className="sticky top-14 hidden h-[calc(100dvh-3.5rem)] overflow-y-auto py-10 pr-2 lg:block">
+    <div className="mx-auto flex max-w-[1400px] gap-10 px-4 sm:px-6">
+      <aside className="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-56 shrink-0 overflow-y-auto overscroll-contain py-8 [scrollbar-width:none] lg:block">
         <DocsSidebar groups={groups} />
       </aside>
-      <div className="min-w-0 py-10 lg:py-14">{children}</div>
-      <aside className="sticky top-14 hidden h-[calc(100dvh-3.5rem)] py-14 xl:block">
-        <Toc items={toc} />
-      </aside>
+      <div className="min-w-0 flex-1 py-8 lg:py-12">
+        <details className="group mb-8 rounded-xl border border-line lg:hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
+            Browse
+            <span aria-hidden="true" className="text-ink-2 transition-transform duration-200 group-open:rotate-45">
+              +
+            </span>
+          </summary>
+          <div className="max-h-[60dvh] overflow-y-auto border-t border-line px-2 py-4">
+            <DocsSidebar groups={groups} />
+          </div>
+        </details>
+        {children}
+      </div>
     </div>
   );
 }

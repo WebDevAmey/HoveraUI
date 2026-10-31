@@ -32,7 +32,7 @@ Fonts are optional. The tokens use Geist, Geist Mono and Instrument Serif (all O
 
 ## Theming
 
-With no attribute, the system colour scheme decides. Set `data-theme="light"` or `data-theme="dark"` on `<html>` to force a theme, or on any element to theme just that subtree. Every token is listed in [`docs/PLAN.md`](docs/PLAN.md) and on the `/docs` page.
+With no attribute, the system colour scheme decides. Set `data-theme="light"` or `data-theme="dark"` on `<html>` to force a theme, or on any element to theme just that subtree. Every token is listed in [`docs/PLAN.md`](docs/PLAN.md) and on the `/docs/tokens` page.
 
 ## Components
 

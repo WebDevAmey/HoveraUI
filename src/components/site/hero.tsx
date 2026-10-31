@@ -28,13 +28,13 @@ export function Hero() {
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
-              href="/docs#components"
+              href="/components"
               className="rounded-full bg-ink px-5 py-2.5 text-[14px] font-medium text-canvas transition-opacity hover:opacity-85"
             >
               Browse the index
             </Link>
             <Link
-              href="/docs"
+              href="/docs/introduction"
               className="rounded-full border border-line-strong px-5 py-2.5 text-[14px] text-ink transition-colors hover:bg-sunken"
             >
               Read the guide

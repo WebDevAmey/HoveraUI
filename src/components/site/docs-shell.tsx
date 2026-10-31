@@ -8,8 +8,7 @@ const groups: SidebarGroup[] = [
   {
     label: "Guides",
     items: [
-      { href: "/docs", label: "Getting started" },
-      { href: "/components", label: "All components" },
+      { href: "/docs", label: "Overview" },
       { href: "/changelog", label: "Changelog" },
     ],
   },
@@ -17,7 +16,7 @@ const groups: SidebarGroup[] = [
     label: category.label,
     items: registry
       .filter((entry) => entry.meta.category === category.id)
-      .map((entry) => ({ href: `/components/${entry.meta.slug}`, label: entry.meta.name })),
+      .map((entry) => ({ href: `/docs/${entry.meta.slug}`, label: entry.meta.name })),
   })),
 ];
 

@@ -20,7 +20,7 @@ export function Tile({
         <Demo />
       </div>
       <Link
-        href={`/components/${meta.slug}`}
+        href={`/docs/${meta.slug}`}
         className="flex items-center justify-between gap-3 border-t border-line px-4 py-3 text-[13px] transition-colors hover:bg-sunken/60"
       >
         <span className="font-medium tracking-[-0.01em] text-ink">{meta.name}</span>

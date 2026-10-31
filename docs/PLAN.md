@@ -119,9 +119,8 @@ Theme: `data-theme="light|dark"` on any element re-scopes every token, so previe
 | Route | Content |
 | --- | --- |
 | `/` | Calm hero with a live Dither Field and Orbit Gallery focal piece, a bento of featured components, the full gallery, FAQ (built with Plus-Minus Accordion), footer |
-| `/components` | Gallery: category filter, search, 3/2/1 column tiles with live mini-demos |
-| `/components/[slug]` | Sidebar by category, article (title, line, live preview with theme and width toggles, source with copy, props, usage, accessibility, size), right TOC with scroll-spy |
-| `/docs` | Install, tokens, theming, copy-paste and registry usage |
+| `/docs/[slug]` | Sidebar by category, article (title, line, live preview with theme and width toggles, source with copy, props, usage, accessibility, size), right TOC with scroll-spy |
+| `/docs` | One docs page: the component gallery (category filter, search, live tiles), then install, tokens, theming, motion and registry. `/components` redirects here |
 | `/changelog` | Timeline Rail of releases |
 
 Distribution: copy-paste first. `npm run build:registry` writes shadcn-compatible items to `public/r/<slug>.json`, so `npx shadcn add <host>/r/<slug>.json` also works.

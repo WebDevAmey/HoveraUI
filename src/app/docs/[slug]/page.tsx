@@ -62,13 +62,13 @@ export default async function ComponentPage({ params }: Props) {
         <nav aria-label="Breadcrumb" className="font-mono text-[11px] text-ink-2">
           <ol className="flex items-center gap-2">
             <li>
-              <Link href="/components" className="hover:text-ink">
+              <Link href="/docs#components" className="hover:text-ink">
                 Components
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href={`/components?category=${meta.category}`} className="hover:text-ink">
+              <Link href={`/docs?category=${meta.category}#components`} className="hover:text-ink">
                 {category?.label}
               </Link>
             </li>
@@ -169,7 +169,7 @@ export default async function ComponentPage({ params }: Props) {
 
         <nav aria-label="More components" className="mt-20 grid gap-3 border-t border-line pt-8 sm:grid-cols-2">
           {prev ? (
-            <Link href={`/components/${prev.slug}`} className="rounded-xl border border-line p-4 transition-colors hover:border-line-strong">
+            <Link href={`/docs/${prev.slug}`} className="rounded-xl border border-line p-4 transition-colors hover:border-line-strong">
               <span className="label">Previous</span>
               <span className="mt-1 block font-medium">{prev.name}</span>
             </Link>
@@ -177,7 +177,7 @@ export default async function ComponentPage({ params }: Props) {
             <span />
           )}
           {next && (
-            <Link href={`/components/${next.slug}`} className="rounded-xl border border-line p-4 text-right transition-colors hover:border-line-strong">
+            <Link href={`/docs/${next.slug}`} className="rounded-xl border border-line p-4 text-right transition-colors hover:border-line-strong">
               <span className="label">Next</span>
               <span className="mt-1 block font-medium">{next.name}</span>
             </Link>

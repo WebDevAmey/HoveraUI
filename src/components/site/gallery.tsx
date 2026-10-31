@@ -14,7 +14,7 @@ function readCategory(): Category | null {
   return categories.some((c) => c.id === value) ? (value as Category) : null;
 }
 
-export function Gallery({ syncUrl = false }: { syncUrl?: boolean }) {
+export function Gallery({ syncUrl = false, compact = false }: { syncUrl?: boolean; compact?: boolean }) {
   const [chosen, setChosen] = useState<Filter | null>(null);
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
@@ -43,7 +43,7 @@ export function Gallery({ syncUrl = false }: { syncUrl?: boolean }) {
 
   return (
     <div>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className={compact ? "flex flex-col gap-3" : "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"}>
         <div role="group" aria-label="Filter by category" className="-mx-1 flex flex-wrap gap-1.5">
           {tags.map((tag) => {
             const count = tag.id === "all" ? registry.length : registry.filter((e) => e.meta.category === tag.id).length;
@@ -80,7 +80,7 @@ export function Gallery({ syncUrl = false }: { syncUrl?: boolean }) {
         {items.length} components shown
       </p>
       {items.length > 0 ? (
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={compact ? "mt-6 grid gap-4 sm:grid-cols-2" : "mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"}>
           {items.map(({ meta, Demo }) => (
             <Tile key={meta.slug} meta={meta} Demo={Demo} />
           ))}

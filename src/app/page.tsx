@@ -48,7 +48,7 @@ export default function Home() {
                 Everything, live
               </h2>
             </div>
-            <Link href="/components" className="text-[13px] text-ink-2 underline decoration-line-strong underline-offset-4 hover:text-ink">
+            <Link href="/docs#components" className="text-[13px] text-ink-2 underline decoration-line-strong underline-offset-4 hover:text-ink">
               Open the full index
             </Link>
           </div>

@@ -5,7 +5,7 @@ import { Logo } from "./logo";
 const columns = [
   {
     title: "Library",
-    links: categories.map((c) => ({ href: `/components?category=${c.id}`, label: c.label })),
+    links: categories.map((c) => ({ href: `/docs?category=${c.id}#components`, label: c.label })),
   },
   {
     title: "Guides",

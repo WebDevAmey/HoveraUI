@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CodeBlock } from "@/components/site/code-block";
 import { DocsShell } from "@/components/site/docs-shell";
+import { Gallery } from "@/components/site/gallery";
+import { registry } from "@/registry";
 
 export const metadata: Metadata = {
-  title: "Getting started",
-  description: "Install HoveraUI components by copying source or with the shadcn CLI.",
+  title: "Docs",
+  description: "Every HoveraUI component, live, plus how to install, theme and copy them.",
 };
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hoveraui.vercel.app";
 
 const toc = [
+  { id: "components", label: "Components" },
   { id: "philosophy", label: "Philosophy" },
   { id: "install", label: "Install" },
   { id: "tokens", label: "Tokens" },
@@ -40,11 +43,17 @@ export default function DocsPage() {
   return (
     <DocsShell toc={toc}>
       <article>
-        <p className="label">Guide</p>
-        <h1 className="mt-3 text-[clamp(32px,5vw,44px)] font-medium leading-[1.05] tracking-[-0.035em]">Getting started</h1>
+        <p className="label">Docs · {registry.length} components</p>
+        <h1 className="mt-3 text-[clamp(32px,5vw,44px)] font-medium leading-[1.05] tracking-[-0.035em]">Docs</h1>
         <p className="mt-3 max-w-xl text-[17px] text-ink-2">
-          HoveraUI is source you copy, not a package you install. Two shared files, then one folder per component.
+          HoveraUI is source you copy, not a package you install. Pick a component below, or read on for setup.
         </p>
+
+        <H2 id="components">Components</H2>
+        <p className={prose}>Each tile is the real component, running. Open one for its source, props and accessibility notes.</p>
+        <div className="mt-6">
+          <Gallery syncUrl compact />
+        </div>
 
         <H2 id="philosophy">Philosophy</H2>
         <p className={prose}>
@@ -73,7 +82,7 @@ export function cn(...classes: ClassValue[]): string {
           />
         </div>
         <p className={prose}>
-          Then open any <Link href="/components" className="text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">component</Link>,
+          Then open any <Link href="#components" className="text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">component</Link>,
           copy its <code className={code}>.tsx</code> and <code className={code}>.module.css</code> into{" "}
           <code className={code}>components/ui/&lt;name&gt;/</code>, and import it. The components expect the path alias{" "}
           <code className={code}>@/lib/cn</code>; change the import if your project uses another.

@@ -3,7 +3,6 @@ import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 
 const links = [
-  { href: "/components", label: "Components" },
   { href: "/docs", label: "Docs" },
   { href: "/changelog", label: "Changelog" },
 ];
@@ -57,7 +56,7 @@ export function SiteHeader() {
             </nav>
           </details>
           <Link
-            href="/components"
+            href="/docs#components"
             className="ml-1 hidden rounded-full sm:inline-block bg-ink px-4 py-2 text-[13px] font-medium text-canvas transition-opacity hover:opacity-85"
           >
             Browse

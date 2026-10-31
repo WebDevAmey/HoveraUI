@@ -1,0 +1,176 @@
+.accordion {
+  --toggle: 30px;
+  --ink: var(--hv-ink);
+  --paper: var(--hv-canvas);
+
+  width: 100%;
+  border-top: 1px solid var(--hv-line);
+  font-family: var(--hv-font-sans);
+  color: var(--hv-ink);
+}
+
+.item {
+  border-bottom: 1px solid var(--hv-line);
+}
+
+.heading {
+  margin: 0;
+  font: inherit;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 0;
+  border: 0;
+  background: none;
+  font: 500 15px / 1.35 var(--hv-font-sans);
+  letter-spacing: -0.012em;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+  border-radius: var(--hv-r-1);
+}
+
+.title {
+  min-width: 0;
+}
+
+.toggle {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--toggle);
+  height: var(--toggle);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--hv-line-strong);
+  color: var(--paper);
+  transition: color var(--hv-dur-3) var(--hv-ease-out);
+}
+
+/* The fill is a separate disc so it can drain toward the centre instead of fading. */
+.toggle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--ink);
+  transition: scale var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.glyph {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  overflow: visible;
+}
+
+.stem {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: rotate var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.item[data-state="open"] .toggle {
+  color: var(--ink);
+}
+
+.item[data-state="open"] .toggle::before {
+  scale: 0;
+}
+
+/* The vertical stroke folds down onto the horizontal one. */
+.item[data-state="open"] .stem {
+  rotate: 90deg;
+}
+
+@media (hover: hover) {
+  .trigger:hover .toggle::before {
+    scale: 1.08;
+  }
+
+  .item[data-state="open"] .trigger:hover .toggle {
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+
+  .item[data-state="open"] .trigger:hover .toggle::before {
+    scale: 0;
+  }
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.item[data-state="open"] .panel {
+  grid-template-rows: 1fr;
+}
+
+.clip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.body {
+  padding: 0 calc(var(--toggle) + 16px) 20px 0;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--hv-ink-2);
+  opacity: 0;
+  translate: 0 -4px;
+  transition:
+    opacity var(--hv-dur-2) var(--hv-ease-out),
+    translate var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.body > :first-child {
+  margin-top: 0;
+}
+
+.body > :last-child {
+  margin-bottom: 0;
+}
+
+.item[data-state="open"] .body {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 60ms;
+}
+
+@media (max-width: 420px) {
+  .body {
+    padding-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .toggle,
+  .toggle::before,
+  .stem {
+    transition: none;
+  }
+
+  .body {
+    translate: none;
+    transition: opacity var(--hv-dur-1) linear;
+  }
+}

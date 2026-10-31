@@ -1,0 +1,228 @@
+.root {
+  --ap-gap: 13px;
+  --ap-arrow: 12px;
+  --ap-paper: color-mix(in oklab, var(--hv-raised) 93%, var(--hv-ether-2));
+  --ap-edge: color-mix(in oklab, var(--hv-ink) 14%, transparent);
+  --ap-w: min(var(--ap-width, 240px), calc(100% - 16px));
+  --ap-glide: 320ms;
+
+  position: relative;
+}
+
+.term {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--hv-ink-3);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  cursor: help;
+  border-radius: 2px;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    text-decoration-color var(--hv-dur-2) var(--hv-ease-out),
+    background-color var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.term[data-active] {
+  text-decoration-style: solid;
+  text-decoration-color: var(--hv-ink);
+  background-color: color-mix(in oklab, var(--hv-gilt) 16%, transparent);
+}
+
+.term:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+.popover {
+  position: absolute;
+  z-index: 2;
+  width: var(--ap-w);
+  box-sizing: border-box;
+  padding: 12px 14px 13px;
+  border-radius: var(--hv-r-2);
+  background: var(--ap-paper);
+  box-shadow:
+    0 0 0 1px var(--ap-edge),
+    0 1px 1px color-mix(in oklab, black 6%, transparent),
+    0 8px 20px -12px color-mix(in oklab, black 30%, transparent);
+  font: 400 13px / 1.5 var(--hv-font-sans);
+  letter-spacing: 0;
+  text-align: start;
+  color: var(--hv-ink-2);
+  opacity: 0;
+  scale: 0.97;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--hv-dur-1) var(--hv-ease-out),
+    scale var(--hv-dur-2) var(--hv-ease-out),
+    visibility 0s linear var(--hv-dur-1);
+}
+
+/* Paper tooth: a faint fixed noise, never animated. */
+.popover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .4 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.arrow {
+  position: absolute;
+  z-index: 3;
+  width: var(--ap-arrow);
+  height: var(--ap-arrow);
+  background: var(--ap-paper);
+  box-shadow: inset -1px -1px 0 var(--ap-edge);
+  rotate: 45deg;
+  /* Only the half outside the card shows, so the card's own hairline stays unbroken elsewhere. */
+  clip-path: polygon(115% -15%, 115% 115%, -15% 115%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--hv-dur-1) var(--hv-ease-out),
+    visibility 0s linear var(--hv-dur-1);
+}
+
+.root[data-side="bottom"] .arrow {
+  rotate: 225deg;
+}
+
+.root[data-open] :is(.popover, .arrow) {
+  opacity: 1;
+  scale: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.root[data-open] .popover {
+  pointer-events: auto;
+}
+
+.content {
+  position: relative;
+  animation: swap var(--hv-dur-2) var(--hv-ease-out);
+}
+
+@keyframes swap {
+  from {
+    opacity: 0;
+  }
+}
+
+.heading {
+  margin: 0 0 2px;
+  font: italic 400 18px / 1.2 var(--hv-font-serif);
+  letter-spacing: -0.005em;
+  color: var(--hv-ink);
+}
+
+.tip {
+  text-wrap: pretty;
+}
+
+/* Native path: the browser tracks the anchor; JS only names which anchor and which side. */
+@supports (anchor-name: --a) {
+  .term {
+    anchor-name: var(--ap-name);
+  }
+
+  .popover,
+  .arrow {
+    position-anchor: var(--ap-anchor);
+  }
+
+  .popover {
+    left: clamp(8px, calc(anchor(center) - var(--ap-w) / 2), calc(100% - var(--ap-w) - 8px));
+    bottom: calc(anchor(top) + var(--ap-gap));
+  }
+
+  .arrow {
+    left: clamp(
+      calc(var(--hv-r-2) + 10px),
+      calc(anchor(center) - var(--ap-arrow) / 2),
+      calc(100% - var(--hv-r-2) - 10px - var(--ap-arrow))
+    );
+    bottom: calc(anchor(top) + var(--ap-gap) - var(--ap-arrow) / 2);
+  }
+
+  .root[data-side="bottom"] .popover {
+    bottom: auto;
+    top: calc(anchor(bottom) + var(--ap-gap));
+  }
+
+  .root[data-side="bottom"] .arrow {
+    bottom: auto;
+    top: calc(anchor(bottom) + var(--ap-gap) - var(--ap-arrow) / 2);
+  }
+
+  .root[data-open]:not([data-instant]) .popover {
+    transition:
+      opacity var(--hv-dur-1) var(--hv-ease-out),
+      scale var(--hv-dur-2) var(--hv-ease-out),
+      left var(--ap-glide) var(--hv-ease-out),
+      top var(--ap-glide) var(--hv-ease-out),
+      bottom var(--ap-glide) var(--hv-ease-out);
+  }
+
+  /* The arrow arrives a touch early, so it reads as sliding along the edge. */
+  .root[data-open]:not([data-instant]) .arrow {
+    transition:
+      opacity var(--hv-dur-1) var(--hv-ease-out),
+      left calc(var(--ap-glide) * 0.75) var(--hv-ease-out),
+      top var(--ap-glide) var(--hv-ease-out),
+      bottom var(--ap-glide) var(--hv-ease-out);
+  }
+}
+
+/* Fallback path: JS measures and writes translate values that the same glide animates. */
+@supports not (anchor-name: --a) {
+  .popover,
+  .arrow {
+    top: 0;
+    left: 0;
+  }
+
+  .popover {
+    translate: var(--ap-x, 0) var(--ap-y, 0);
+  }
+
+  .arrow {
+    translate: calc(var(--ap-ax, 0px) - var(--ap-arrow) / 2) calc(var(--ap-ay, 0px) - var(--ap-arrow) / 2);
+  }
+
+  .root[data-open]:not([data-instant]) .popover {
+    transition:
+      opacity var(--hv-dur-1) var(--hv-ease-out),
+      scale var(--hv-dur-2) var(--hv-ease-out),
+      translate var(--ap-glide) var(--hv-ease-out);
+  }
+
+  .root[data-open]:not([data-instant]) .arrow {
+    transition:
+      opacity var(--hv-dur-1) var(--hv-ease-out),
+      translate calc(var(--ap-glide) * 0.75) var(--hv-ease-out);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    --ap-glide: 0ms;
+  }
+
+  .popover {
+    scale: 1;
+  }
+}

@@ -1,0 +1,68 @@
+.wrap {
+  width: min(100%, 320px);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  font: 500 10px / 1 var(--hv-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+}
+
+.title {
+  margin: 20px 0 6px;
+  font: 400 36px / 1 var(--hv-font-serif);
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  font-style: italic;
+}
+
+.note {
+  margin: 0;
+  font: 400 13px / 1.5 var(--hv-font-sans);
+  color: var(--hv-ink-2);
+  max-width: 24ch;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  white-space: nowrap;
+  padding-top: 12px;
+  border-top: 1px solid color-mix(in oklab, var(--hv-ink) 12%, transparent);
+  font: 500 10px / 1 var(--hv-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hv-ink-2);
+}
+
+.next {
+  padding: 6px 10px;
+  margin: -6px -10px;
+  border: 0;
+  border-radius: var(--hv-r-pill);
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--hv-ink);
+  cursor: pointer;
+}
+
+.next:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .next:hover {
+    background: color-mix(in oklab, var(--hv-ink) 8%, transparent);
+  }
+}

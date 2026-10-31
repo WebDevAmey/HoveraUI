@@ -1,0 +1,155 @@
+.root {
+  --nx: 0;
+  --ny: 0;
+  --max-tilt: 10deg;
+  --c1: var(--hv-ether-1);
+  --c2: var(--hv-ether-2);
+  --c3: var(--hv-ether-3);
+  /* Field colours: deepened from the pastel source so the frosting has something to diffuse. */
+  --f1: light-dark(oklch(from var(--c1) calc(l - 0.12) calc(c * 2.4) h), oklch(from var(--c1) 0.5 calc(c * 2.2) h));
+  --f2: light-dark(oklch(from var(--c2) calc(l - 0.08) calc(c * 2.2) h), oklch(from var(--c2) 0.56 calc(c * 1.6) h));
+  --f3: light-dark(oklch(from var(--c3) calc(l - 0.1) calc(c * 2.2) h), oklch(from var(--c3) 0.48 calc(c * 2) h));
+  --base: light-dark(color-mix(in oklab, var(--c1) 34%, var(--hv-surface)), color-mix(in oklab, var(--f1) 14%, var(--hv-surface)));
+
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 8%, 32px) clamp(16px, 7%, 28px);
+  border-radius: var(--hv-r-4);
+  background: var(--base);
+  overflow: hidden;
+  isolation: isolate;
+  perspective: 900px;
+  touch-action: pan-y;
+  color: var(--hv-ink);
+}
+
+.root[data-field="dusk"] {
+  --c1: var(--hv-sky-hi);
+  --c2: var(--hv-sky-lo);
+  --c3: var(--hv-ether-1);
+}
+
+.root[data-field="accent"] {
+  --c1: color-mix(in oklab, var(--hv-accent) 60%, white);
+  --c2: var(--hv-ether-3);
+  --c3: var(--hv-ether-1);
+}
+
+/* With no pointer, keyboard focus leans the pane gently toward the top left. */
+.root:focus-within:not([data-tilting]) {
+  --nx: -0.45;
+  --ny: -0.4;
+}
+
+/* The field slides against the tilt, which reads as refraction through the pane. */
+.field {
+  position: absolute;
+  inset: -16px;
+  z-index: -1;
+  translate: calc(var(--nx) * -10px) calc(var(--ny) * -10px);
+  transition: translate 700ms var(--hv-ease-out);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.blob:nth-child(1) {
+  width: 62%;
+  aspect-ratio: 1;
+  left: -6%;
+  top: -12%;
+  background: radial-gradient(closest-side, var(--f1), color-mix(in oklab, var(--f1) 50%, transparent) 55%, transparent);
+}
+
+.blob:nth-child(2) {
+  width: 58%;
+  aspect-ratio: 1;
+  right: -8%;
+  top: 18%;
+  background: radial-gradient(closest-side, var(--f2), color-mix(in oklab, var(--f2) 45%, transparent) 60%, transparent);
+}
+
+.blob:nth-child(3) {
+  width: 52%;
+  aspect-ratio: 1;
+  left: 22%;
+  bottom: -30%;
+  background: radial-gradient(closest-side, var(--f3), color-mix(in oklab, var(--f3) 40%, transparent) 60%, transparent);
+}
+
+/* A crisp disc half under the pane: sharp outside the glass, frosted inside it. */
+.disc {
+  position: absolute;
+  width: 30%;
+  aspect-ratio: 1;
+  right: 7%;
+  top: 7%;
+  border-radius: 50%;
+  background: linear-gradient(200deg, var(--f2), var(--f1));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4);
+}
+
+.pane {
+  position: relative;
+  width: 100%;
+  border-radius: var(--hv-r-3);
+  overflow: hidden;
+  background: linear-gradient(
+    150deg,
+    light-dark(rgb(255 255 255 / 0.42), rgb(255 255 255 / 0.1)),
+    light-dark(rgb(255 255 255 / 0.16), rgb(255 255 255 / 0.03))
+  );
+  border: 1px solid light-dark(rgb(255 255 255 / 0.7), rgb(255 255 255 / 0.14));
+  box-shadow:
+    inset 0 1px 0 light-dark(rgb(255 255 255 / 0.9), rgb(255 255 255 / 0.18)),
+    inset 0 -1px 0 light-dark(rgb(255 255 255 / 0.25), rgb(0 0 0 / 0.3)),
+    0 24px 48px -24px light-dark(rgb(40 30 80 / 0.35), rgb(0 0 0 / 0.7)),
+    0 2px 6px -2px light-dark(rgb(40 30 80 / 0.12), rgb(0 0 0 / 0.4));
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  transform: rotateX(calc(var(--ny) * var(--max-tilt) * -1)) rotateY(calc(var(--nx) * var(--max-tilt)));
+  transition: transform 700ms var(--hv-ease-out);
+}
+
+/* A wide diagonal highlight that slides with the tilt, like a window reflected in glass. */
+.sheen {
+  position: absolute;
+  inset: -40% -60%;
+  pointer-events: none;
+  background: linear-gradient(
+    112deg,
+    transparent 38%,
+    light-dark(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.12)) 47%,
+    light-dark(rgb(255 255 255 / 0.15), rgb(255 255 255 / 0.04)) 52%,
+    transparent 60%
+  );
+  translate: calc(var(--nx) * 22%) calc(var(--ny) * 8%);
+  transition: translate 700ms var(--hv-ease-out);
+}
+
+.root[data-tilting] .pane,
+.root[data-tilting] .sheen,
+.root[data-tilting] .field {
+  transition-duration: 160ms;
+}
+
+.content {
+  position: relative;
+  padding: 20px 20px 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root:focus-within:not([data-tilting]) {
+    --nx: 0;
+    --ny: 0;
+  }
+
+  .pane,
+  .sheen,
+  .field {
+    transition: none;
+  }
+}

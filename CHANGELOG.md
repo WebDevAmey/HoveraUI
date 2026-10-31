@@ -2,6 +2,18 @@
 
 All notable changes to the Hovera UI registry and site.
 
+## 2026-10-30 — A smaller, stranger library
+
+Rebuilt from first principles. All previous components and their registry URLs are retired.
+
+### Added
+
+31 original components across buttons, cards, effects, inputs, navigation and feedback, each with a live demo, props table, accessibility notes and gzipped size. New token system (warm neutrals, one ultramarine accent, an expressive material palette), flash-free theming, and a registry generated directly from component source.
+
+### Removed
+
+Every earlier component, Framer Motion, Lenis, cmdk, Radix, lucide, next-themes, class-variance-authority, the preloader, custom cursor, smooth scroll and dock.
+
 ## 2026-07-06 — The Monochrome Cut (86 → 32 → 36 items)
 
 HoveraUI is now a curated monochrome effect library: every component expresses

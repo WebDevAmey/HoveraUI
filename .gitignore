@@ -43,5 +43,5 @@ next-env.d.ts
 
 # generated registry
 /public/r/
-/src/registry/sizes.json
+/src/registry/generated.json
 /.registry-build/

@@ -3,7 +3,7 @@
 //   public/r/<slug>.json      shadcn-compatible item: the component and its CSS module
 //   public/r/base.json        tokens.css and the cn helper every component shares
 //   public/r/registry.json    index of all items
-//   src/registry/sizes.json   minified + gzipped size of each component
+//   src/registry/generated.json  source files and minified + gzipped size per component
 //
 // Nothing is duplicated by hand, so the registry cannot drift from the source.
 import { build } from "esbuild";
@@ -68,7 +68,7 @@ async function main() {
     .sort();
 
   const metas = await loadMetas(slugs);
-  const sizes = {};
+  const generated = {};
 
   const base = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -97,7 +97,7 @@ async function main() {
         content: await readFile(file, "utf8"),
       });
     }
-    sizes[slug] = await measure(slug);
+    generated[slug] = { size: await measure(slug), files: files.map((f) => ({ name: path.basename(f.path), code: f.content })) };
     const item = {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
       name: slug,
@@ -116,7 +116,7 @@ async function main() {
     path.join(outDir, "registry.json"),
     JSON.stringify({ $schema: "https://ui.shadcn.com/schema/registry.json", name: "hoveraui", homepage: host, items }, null, 2),
   );
-  await writeFile(path.join(root, "src/registry/sizes.json"), JSON.stringify(sizes, null, 2) + "\n");
+  await writeFile(path.join(root, "src/registry/generated.json"), JSON.stringify(generated) + "\n");
   await rm(tmpDir, { recursive: true, force: true });
   console.log(`registry: ${items.length} components`);
 }

@@ -1,24 +1,20 @@
-import { existsSync, readFileSync } from "node:fs";
-import path from "node:path";
-
-const uiDir = path.join(process.cwd(), "src/components/ui");
+// Written by scripts/build-registry.mjs from the real component files,
+// so the docs always show exactly what ships.
+import generated from "./generated.json";
 
 export type SourceFile = { name: string; code: string };
 
-/** Reads the real component files, so the docs always show what ships. */
+type Generated = Record<string, { size: number; files: SourceFile[] }>;
+
+const data = generated as Generated;
+
 export function getSource(slug: string): SourceFile[] {
-  return [`${slug}.tsx`, `${slug}.module.css`]
-    .map((name) => ({ name, file: path.join(uiDir, slug, name) }))
-    .filter(({ file }) => existsSync(file))
-    .map(({ name, file }) => ({ name, code: readFileSync(file, "utf8") }));
+  return data[slug]?.files ?? [];
 }
 
-/** Minified + gzipped size written by scripts/build-registry.mjs. */
+/** Minified + gzipped size in bytes. */
 export function getSize(slug: string): number | undefined {
-  const file = path.join(process.cwd(), "src/registry/sizes.json");
-  if (!existsSync(file)) return undefined;
-  const sizes = JSON.parse(readFileSync(file, "utf8")) as Record<string, number>;
-  return sizes[slug];
+  return data[slug]?.size;
 }
 
 export function formatBytes(bytes: number): string {

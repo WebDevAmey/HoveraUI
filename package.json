@@ -15,6 +15,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "pretypecheck": "npm run build:registry",
     "typecheck": "tsc --noEmit",
     "build:registry": "node scripts/build-registry.mjs"
   },

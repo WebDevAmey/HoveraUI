@@ -103,7 +103,7 @@ export default async function ComponentPage({ params }: Props) {
           <p className="mb-4 max-w-2xl text-ink-2">
             Copy both files into <code className="font-mono text-[13px] text-ink">components/ui/{slug}/</code>. They need the
             shared <Link href="/docs#tokens" className="text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">tokens</Link> and the
-            three-line <code className="font-mono text-[13px] text-ink">cn</code> helper. Or fetch everything with the shadcn CLI:
+            tiny <code className="font-mono text-[13px] text-ink">cn</code> helper. Or fetch everything with the shadcn CLI:
           </p>
           <CodeBlock title="Terminal" code={`npx shadcn@latest add ${siteUrl}/r/${slug}.json`} />
           <div className="mt-4">

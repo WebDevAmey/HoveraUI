@@ -35,13 +35,11 @@ const meta = { font: "400 11px/1.2 var(--hv-font-mono)", color: "var(--hv-ink-2)
 
 export default function Demo() {
   const focalId = useId();
-  const vignetteId = useId();
   const [focal, setFocal] = useState(50);
-  const [vignette, setVignette] = useState(30);
   const nearest = lenses.reduce((a, b) => (Math.abs(b.value - focal) < Math.abs(a.value - focal) ? b : a));
 
   return (
-    <div style={{ display: "grid", gap: 28, width: "min(100%, 400px)", padding: "0 4px" }}>
+    <div style={{ width: "min(100%, 400px)", padding: "0 4px" }}>
       <div>
         <div style={row}>
           <span id={focalId}>Focal length</span>
@@ -55,22 +53,6 @@ export default function Demo() {
           onValueChange={setFocal}
           format={(v) => `${v} mm`}
           marks={lenses}
-        />
-      </div>
-      <div style={{ width: "min(100%, 240px)" }}>
-        <div style={row}>
-          <span id={vignetteId}>Vignette</span>
-          <span style={meta}>{vignette}%</span>
-        </div>
-        <DetentSlider
-          aria-labelledby={vignetteId}
-          min={0}
-          max={100}
-          step={10}
-          value={vignette}
-          onValueChange={setVignette}
-          format={(v) => `${v}%`}
-          marks={[0, 50, 100]}
         />
       </div>
     </div>

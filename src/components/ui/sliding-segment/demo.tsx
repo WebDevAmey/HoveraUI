@@ -12,7 +12,7 @@ export default function Demo() {
   const [range, setRange] = useState("week");
 
   return (
-    <div style={{ display: "grid", gap: 28, width: "min(100%, 320px)" }}>
+    <div style={{ display: "grid", width: "min(100%, 320px)" }}>
       <div style={{ display: "grid", gap: 10 }}>
         <span id="ss-range" style={caption}>
           Calendar range
@@ -28,22 +28,6 @@ export default function Demo() {
             { value: "year", label: "Year" },
           ]}
           style={{ width: "100%" }}
-        />
-      </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-        <span id="ss-speed" style={caption}>
-          Speed
-        </span>
-        <SlidingSegment
-          aria-labelledby="ss-speed"
-          size="sm"
-          defaultValue="1"
-          options={[
-            { value: "0.5", label: "0.5×" },
-            { value: "1", label: "1×" },
-            { value: "1.5", label: "1.5×" },
-            { value: "2", label: "2×" },
-          ]}
         />
       </div>
     </div>

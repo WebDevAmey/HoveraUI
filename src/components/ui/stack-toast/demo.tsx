@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useRef, type CSSProperties } from "react";
 import { Toaster, useToaster } from "./stack-toast";
 
 const button: CSSProperties = {
@@ -15,8 +15,21 @@ const button: CSSProperties = {
   cursor: "pointer",
 };
 
+const notes = [
+  { title: "Draft saved", description: "Your changes are kept on this device." },
+  { title: "Draft saved again", description: "Two versions are kept on this device." },
+  { title: "Synced", description: "Your drafts are now on every device." },
+];
+
 export default function Demo() {
   const toaster = useToaster();
+  const count = useRef(0);
+
+  // One button; each press stacks the next note so the pile builds up.
+  const show = () => {
+    const note = notes[count.current++ % notes.length];
+    toaster.toast(note.title, { description: note.description });
+  };
 
   return (
     <div
@@ -31,24 +44,9 @@ export default function Demo() {
           "radial-gradient(60% 70% at 18% 30%, color-mix(in oklab, var(--hv-ether-1) 70%, transparent), transparent 70%), radial-gradient(50% 60% at 85% 80%, color-mix(in oklab, var(--hv-ether-3) 70%, transparent), transparent 70%), radial-gradient(40% 50% at 70% 20%, color-mix(in oklab, var(--hv-ether-2) 60%, transparent), transparent 70%), var(--hv-surface)",
       }}
     >
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, padding: 16 }}>
-        <button type="button" style={button} onClick={() => toaster.toast("Draft saved", { description: "Your changes are kept on this device." })}>
+      <div style={{ padding: 16 }}>
+        <button type="button" style={button} onClick={show}>
           Save
-        </button>
-        <button type="button" style={button} onClick={() => toaster.toast("Published", { tone: "success", description: "The page is live for everyone." })}>
-          Publish
-        </button>
-        <button
-          type="button"
-          style={button}
-          onClick={() =>
-            toaster.toast("Moved to archive", {
-              action: { label: "Undo", onClick: () => toaster.toast("Restored from archive", { duration: 2500 }) },
-              duration: 7000,
-            })
-          }
-        >
-          Archive
         </button>
       </div>
       <Toaster toaster={toaster} contained />

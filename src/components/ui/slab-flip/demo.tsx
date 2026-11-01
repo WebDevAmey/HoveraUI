@@ -5,7 +5,6 @@ import styles from "./demo.module.css";
 
 const stoneEdge =
   "radial-gradient(circle 0.9px at 50% 50%, #b4674f 90%, transparent) 0 0 / 9px 7px, radial-gradient(circle 0.9px at 30% 30%, #3f3b36 90%, transparent) 0 0 / 5px 6px, radial-gradient(circle 1px at 70% 60%, #fbf8f2 90%, transparent) 0 0 / 7px 5px, #cfc7b8";
-const duplexEdge = "linear-gradient(0deg, #6b1f2a 0 46%, #e8dfcf 46%)";
 
 export default function Demo() {
   return (
@@ -33,28 +32,6 @@ export default function Demo() {
               <li>14 mm slab</li>
             </ul>
             <span className={styles.backNote}>Cool underfoot.</span>
-          </div>
-        }
-      />
-      <SlabFlip
-        className={styles.slab}
-        axis="x"
-        thickness={8}
-        edge={duplexEdge}
-        flipOnHover
-        label="Turn the calling card over"
-        front={
-          <div className={styles.cardFront}>
-            <span className={styles.deboss}>
-              Wren <em>Halloway</em>
-            </span>
-            <span className={styles.trade}>Bookbinder</span>
-          </div>
-        }
-        back={
-          <div className={styles.cardBack}>
-            <p>Rebinding, repairs and slipcases.</p>
-            <span>Tue – Fri · by appointment</span>
           </div>
         }
       />

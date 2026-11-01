@@ -28,13 +28,8 @@ export default function Demo() {
   }, []);
 
   return (
-    <div style={{ width: "min(100%, 340px)", display: "grid", gap: 20 }}>
-      <div style={{ display: "grid", gap: 6 }}>
-        <LedMeter label="Input L" value={level(t, 0)} segments={20} />
-        <LedMeter value={level(t, 1.3)} segments={20} aria-label="Input R" />
-      </div>
-      <LedMeter label="Render" value={64} readout segments={20} tone="phosphor" />
-      <LedMeter label="Listening" segments={20} />
+    <div style={{ width: "min(100%, 340px)" }}>
+      <LedMeter label="Input" value={level(t, 0)} segments={20} />
     </div>
   );
 }

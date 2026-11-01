@@ -20,18 +20,6 @@ export default function Demo() {
       >
         Archive project
       </HoldToConfirm>
-      <HoldToConfirm
-        tone="danger"
-        icon={
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M2.5 4.5h11M6.5 4.5V3h3v1.5M4 4.5l.7 8.6a1 1 0 0 0 1 .9h4.6a1 1 0 0 0 1-.9l.7-8.6" />
-          </svg>
-        }
-        confirmedLabel="Deleted"
-        onConfirm={() => setLog("3 drafts deleted")}
-      >
-        Delete 3 drafts
-      </HoldToConfirm>
       <p
         aria-hidden="true"
         style={{

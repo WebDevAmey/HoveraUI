@@ -25,39 +25,3 @@
   font: 400 13px / 1.5 var(--hv-font-sans);
   color: var(--hv-ink-2);
 }
-
-.shapes {
-  display: flex;
-  gap: 4px;
-  margin: 14px -8px -6px;
-  padding-top: 10px;
-  border-top: 1px solid var(--hv-line);
-}
-
-.shape {
-  padding: 6px 8px;
-  border: 0;
-  border-radius: var(--hv-r-pill);
-  background: transparent;
-  font: 500 10px / 1 var(--hv-font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--hv-ink-2);
-  cursor: pointer;
-}
-
-.shape[aria-pressed="true"] {
-  color: var(--hv-ink);
-  background: color-mix(in oklab, var(--hv-ink) 7%, transparent);
-}
-
-.shape:focus-visible {
-  outline: 2px solid var(--hv-accent);
-  outline-offset: 2px;
-}
-
-@media (hover: hover) {
-  .shape:hover {
-    color: var(--hv-ink);
-  }
-}

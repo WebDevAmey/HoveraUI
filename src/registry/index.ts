@@ -65,6 +65,8 @@ import orbitGalleryMeta from "@/components/ui/orbit-gallery/meta";
 import orbitGalleryDemo from "@/components/ui/orbit-gallery/demo";
 import hoverRevealMeta from "@/components/ui/hover-reveal/meta";
 import hoverRevealDemo from "@/components/ui/hover-reveal/demo";
+import pebbleTabsMeta from "@/components/ui/pebble-tabs/meta";
+import pebbleTabsDemo from "@/components/ui/pebble-tabs/demo";
 import plusMinusAccordionMeta from "@/components/ui/plus-minus-accordion/meta";
 import plusMinusAccordionDemo from "@/components/ui/plus-minus-accordion/demo";
 import timelineRailMeta from "@/components/ui/timeline-rail/meta";
@@ -113,6 +115,7 @@ export const registry: Entry[] = [
   { meta: commandPaletteMeta, Demo: commandPaletteDemo },
   { meta: orbitGalleryMeta, Demo: orbitGalleryDemo },
   { meta: hoverRevealMeta, Demo: hoverRevealDemo },
+  { meta: pebbleTabsMeta, Demo: pebbleTabsDemo },
   { meta: plusMinusAccordionMeta, Demo: plusMinusAccordionDemo },
   { meta: timelineRailMeta, Demo: timelineRailDemo },
   { meta: morphTabsMeta, Demo: morphTabsDemo },

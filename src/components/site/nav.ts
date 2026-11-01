@@ -13,7 +13,7 @@ export type SidebarItem = { href: string; label: string; badge?: string };
 export type SidebarGroup = { title: string; items: SidebarItem[] };
 
 /** Components shipped in the latest release; the sidebar marks them "New". */
-const fresh = new Set(["morph-button", "glide-tabs", "soft-switch", "quiet-tooltip", "rolling-number", "copy-field", "hover-reveal"]);
+const fresh = new Set(["morph-button", "glide-tabs", "soft-switch", "quiet-tooltip", "rolling-number", "copy-field", "hover-reveal", "pebble-tabs"]);
 
 export const docsNav: SidebarGroup[] = [
   {

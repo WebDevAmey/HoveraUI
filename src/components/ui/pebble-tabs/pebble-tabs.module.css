@@ -1,0 +1,185 @@
+.root {
+  --pad: 4px;
+  --h: 40px;
+  --type: 15px;
+  --radius: var(--hv-r-3);
+  --track: color-mix(in oklab, var(--hv-sunken) 82%, var(--hv-line-strong));
+  --pill: var(--hv-raised);
+  --rest: var(--hv-ink-2);
+
+  display: inline-grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.root[data-size="sm"] {
+  --pad: 3px;
+  --h: 32px;
+  --type: 13px;
+  --radius: 10px;
+}
+
+/* The well: a sunken track with a soft inner shadow and a lit lower lip. */
+.track {
+  min-width: 0;
+  padding: var(--pad);
+  border-radius: var(--radius);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, black 3%, var(--track)),
+    var(--track)
+  );
+  box-shadow:
+    inset 0 1px 2px color-mix(in oklab, black 9%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, black 4%, transparent),
+    0 1px 0 color-mix(in oklab, white 85%, transparent);
+}
+
+:global([data-theme="dark"]) .track {
+  --track: color-mix(in oklab, var(--hv-sunken) 70%, var(--hv-surface));
+  box-shadow:
+    inset 0 1px 3px color-mix(in oklab, black 60%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, white 3%, transparent),
+    0 1px 0 color-mix(in oklab, white 6%, transparent);
+}
+
+.list {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border-radius: calc(var(--radius) - var(--pad));
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Position and width are written by the spring; the shadow is static so nothing repaints but the pill. */
+.pill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 0;
+  border-radius: calc(var(--radius) - var(--pad));
+  background: var(--pill);
+  box-shadow:
+    0 1px 1px color-mix(in oklab, black 8%, transparent),
+    0 2px 6px -1px color-mix(in oklab, black 10%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, black 4%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, width;
+}
+
+.list[data-ready] .pill {
+  opacity: 1;
+}
+
+:global([data-theme="dark"]) .pill {
+  --pill: color-mix(in oklab, white 9%, var(--hv-raised));
+  box-shadow:
+    0 1px 2px color-mix(in oklab, black 50%, transparent),
+    0 4px 10px -2px color-mix(in oklab, black 40%, transparent),
+    inset 0 1px 0 color-mix(in oklab, white 7%, transparent);
+}
+
+.tab {
+  /* 0 at rest, 1 under the pill; the spring writes fractions in between. */
+  --pt-ink: 0;
+  --pt-lift: 0;
+
+  position: relative;
+  /* Natural widths when the root hugs its tabs; shared extra space when it is given a width. */
+  flex: 1 0 auto;
+  height: var(--h);
+  padding: 0 16px;
+  border: 0;
+  border-radius: calc(var(--radius) - var(--pad));
+  background: transparent;
+  color: color-mix(
+    in oklab,
+    var(--hv-ink) calc(max(var(--pt-ink), var(--pt-lift)) * 100%),
+    var(--rest)
+  );
+  font: 500 var(--type) / 1 var(--hv-font-sans);
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: --pt-lift var(--hv-dur-2) var(--hv-ease-out);
+}
+
+.root[data-size="sm"] .tab {
+  padding: 0 12px;
+}
+
+.tab[aria-selected="true"] {
+  --pt-ink: 1;
+}
+
+/* Before measurement (and without JS) the selected tab carries the pill itself. */
+.list:not([data-ready]) .tab[aria-selected="true"] {
+  background: var(--pill);
+  box-shadow: 0 1px 2px color-mix(in oklab, black 10%, transparent);
+}
+
+@property --pt-lift {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@media (hover: hover) {
+  .tab:hover {
+    --pt-lift: 0.55;
+  }
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: -2px;
+}
+
+.panel {
+  padding: 0 4px;
+  color: var(--hv-ink-2);
+  font: 400 14px / 1.55 var(--hv-font-sans);
+  animation: pt-panel var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.panel:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 4px;
+  border-radius: var(--hv-r-1);
+}
+
+@keyframes pt-panel {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab {
+    transition: none;
+  }
+
+  .panel {
+    animation-name: pt-panel-fade;
+  }
+}
+
+@keyframes pt-panel-fade {
+  from {
+    opacity: 0;
+  }
+}

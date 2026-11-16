@@ -2,6 +2,20 @@
 
 All notable changes to the Hovera UI registry and site.
 
+## 2026-11-17 — A quieter, clearer site
+
+### Changed
+
+- Docs and component pages sit on one raised sheet; the sidebar is a flat list with a gliding active state and a search button.
+- The components index shows every demo live, with category filters that also follow `#cat-<id>` links.
+- Component pages: Preview and Code tabs share one frame, installation offers CLI (npm, pnpm, yarn, bun) or manual steps, long code folds, and an "On this page" guide tracks your place.
+- Search opens from the sidebar, the hero, ⌘K or `/`, and matches descriptions and categories as well as names. `command-palette` gains an optional `keywords` field on items.
+- Calmer motion: a shorter navbar morph, a quicker palette entrance, and no spring overshoot on `hover-reveal`. Copy icons swap from 80% scale instead of 50%.
+
+### Fixed
+
+- The navbar shell no longer clips the GitHub button when web fonts load after the first measure.
+
 ## 2026-11-16 — Fewer, finer components
 
 ### Added

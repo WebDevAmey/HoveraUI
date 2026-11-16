@@ -3,8 +3,8 @@ import type { ComponentMeta } from "@/registry/types";
 const meta: ComponentMeta = {
   slug: "plus-minus-accordion",
   name: "Plus-Minus Accordion",
-  description: "Disclosure rows whose round toggle folds a plus into a minus while its fill drains away",
-  category: "navigation",
+  description: "Disclosure rows whose round toggle folds a plus into a minus while its fill drains, over a height that eases open",
+  category: "accordions",
   material: "Editorial",
   exports: ["Accordion", "AccordionItem"],
   props: [
@@ -31,6 +31,7 @@ const meta: ComponentMeta = {
     "Each row is a native button inside a heading, with aria-expanded and aria-controls pointing at its panel.",
     "Panels are regions labelled by their button. Collapsed panels stay in the DOM but are inert, so screen readers and Tab skip them.",
     "Enter and Space toggle a row; Tab moves between rows.",
+    "Rows can be toggled as fast as you like: height and icon transitions reverse from wherever they are.",
     "With reduced motion the panel opens instantly and the answer simply fades in.",
   ],
   variants: [

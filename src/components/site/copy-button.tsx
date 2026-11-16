@@ -38,7 +38,7 @@ export function CopyButton({ text, label = "Copy" }: { text: string; label?: str
         fill="none"
         stroke="currentColor"
         strokeWidth="1.4"
-        className={`${icon} ${copied ? "scale-50 opacity-0 blur-[3px]" : "scale-100 opacity-100 blur-0"}`}
+        className={`${icon} ${copied ? "scale-[0.8] opacity-0 blur-[2px]" : "scale-100 opacity-100 blur-0"}`}
       >
         <rect x="5.5" y="5.5" width="8" height="8" rx="2" />
         <path d="M10.5 3.5v-.25A1.25 1.25 0 0 0 9.25 2H3.75A1.25 1.25 0 0 0 2.5 3.25v5.5A1.25 1.25 0 0 0 3.75 10h.25" />
@@ -53,7 +53,7 @@ export function CopyButton({ text, label = "Copy" }: { text: string; label?: str
         strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className={`${icon} text-ink ${copied ? "scale-100 opacity-100 blur-0" : "scale-50 opacity-0 blur-[3px]"}`}
+        className={`${icon} text-ink ${copied ? "scale-100 opacity-100 blur-0" : "scale-[0.8] opacity-0 blur-[2px]"}`}
       >
         <path d="m3.5 8.5 3 3 6-7" />
       </svg>

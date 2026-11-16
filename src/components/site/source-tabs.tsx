@@ -1,22 +1,26 @@
 "use client";
 
 import { useId, useState } from "react";
+import { cn } from "@/lib/cn";
+import { CodeView } from "./code-view";
 import { CopyButton } from "./copy-button";
 
 export type SourceFile = { name: string; code: string; html: string };
 
-export function SourceTabs({ files }: { files: SourceFile[] }) {
+/** One frame for a component's files: a tab per file, a copy button, and folded long code. */
+export function SourceTabs({ files, bare = false }: { files: SourceFile[]; bare?: boolean }) {
   const [active, setActive] = useState(0);
   const id = useId();
   const file = files[active];
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-surface">
-      <div className="flex h-11 items-center justify-between border-b border-line px-1.5">
-        <div role="tablist" aria-label="Source files" className="flex gap-0.5">
+    <div className={cn("overflow-hidden", !bare && "rounded-2xl bg-surface ring-1 ring-line")}>
+      <div className="flex h-11 items-center justify-between gap-2 border-b border-line px-1.5">
+        <div role="tablist" aria-label="Source files" className="flex min-w-0 gap-0.5 overflow-x-auto [scrollbar-width:none]">
           {files.map((f, i) => (
             <button
               key={f.name}
+              type="button"
               role="tab"
               id={`${id}-tab-${i}`}
               aria-selected={i === active}
@@ -29,7 +33,7 @@ export function SourceTabs({ files }: { files: SourceFile[] }) {
                 setActive(next);
                 document.getElementById(`${id}-tab-${next}`)?.focus();
               }}
-              className="rounded-lg px-2.5 py-1.5 text-[12.5px] text-ink-2 transition-colors hover:text-ink aria-selected:bg-sunken aria-selected:text-ink"
+              className="shrink-0 rounded-lg px-2.5 py-1.5 font-mono text-[12px] text-ink-3 transition-colors duration-150 hover:text-ink-2 aria-selected:bg-raised aria-selected:text-ink aria-selected:shadow-[0_0_0_1px_var(--hv-line)]"
             >
               {f.name}
             </button>
@@ -37,14 +41,7 @@ export function SourceTabs({ files }: { files: SourceFile[] }) {
         </div>
         <CopyButton text={file.code} label={`Copy ${file.name}`} />
       </div>
-      <div
-        id={`${id}-panel`}
-        role="tabpanel"
-        aria-labelledby={`${id}-tab-${active}`}
-        tabIndex={0}
-        className="code-scroll max-h-[520px] overflow-auto"
-        dangerouslySetInnerHTML={{ __html: file.html }}
-      />
+      <CodeView html={file.html} id={`${id}-panel`} labelledBy={`${id}-tab-${active}`} />
     </div>
   );
 }

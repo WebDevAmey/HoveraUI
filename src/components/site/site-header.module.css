@@ -19,8 +19,8 @@
   --u: 8px;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-morph: cubic-bezier(0.32, 0.72, 0, 1);
-  --t: 560ms;
-  --t-exit: 320ms;
+  --t: 440ms;
+  --t-exit: 260ms;
   --r: 18px;
   --ink: #f4f3ef;
   --ink-2: rgb(244 243 239 / 0.62);
@@ -35,7 +35,9 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.nav :focus-visible {
+/* Scoped to the bar and panels, so the search dialog (rendered inside the nav) keeps its own focus style. */
+.bar :focus-visible:not(dialog *),
+.stage :focus-visible {
   outline: 2px solid #8fb3ff;
   outline-offset: 2px;
   border-radius: 10px;
@@ -76,9 +78,11 @@
   background: var(--shell);
 }
 
+/* Sized by its content, never by the nav, so a late font swap is measured correctly. */
 .bar {
   position: relative;
   display: flex;
+  width: max-content;
   align-items: center;
   gap: 4px;
   height: calc(var(--u) * 7);

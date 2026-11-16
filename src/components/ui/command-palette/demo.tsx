@@ -10,7 +10,7 @@ const groups: CommandGroup[] = [
       { id: "exposure", label: "Exposure", hint: "Light", shortcut: ["E"] },
       { id: "white-balance", label: "White balance", hint: "Color", shortcut: ["W"] },
       { id: "straighten", label: "Straighten horizon", hint: "Geometry" },
-      { id: "grain", label: "Add film grain", hint: "Effects" },
+      { id: "noise", label: "Add noise", hint: "Filters" },
     ],
   },
   {

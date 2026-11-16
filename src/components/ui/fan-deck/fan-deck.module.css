@@ -1,94 +1,114 @@
 .deck {
-  --card-w: 104px;
-  --card-h: 148px;
-  --spread: 9deg;
-  --rest: 0.6deg;
-  --angle: var(--rest);
+  --card-w: 150px;
+  --card-h: calc(var(--card-w) * 4 / 3);
+  --spread: 5deg;
+  --open: 0;
+  --move: 620ms;
 
   position: relative;
-  display: grid;
-  width: var(--card-w);
-  height: var(--card-h);
-  /* Room for the fan to swing out and for a picked card to rise. */
-  margin: 32px auto 32px;
+  width: 100%;
+  max-width: calc(var(--card-w) * (1 + (var(--count) - 1) * 0.6) + 48px);
+  height: calc(var(--card-h) + 72px);
+  margin-inline: auto;
+  container-type: inline-size;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
 
 .deck[data-open],
 .deck:has(:focus-visible) {
-  --angle: var(--spread);
+  --open: 1;
 }
 
 @media (hover: hover) {
   .deck:hover {
-    --angle: var(--spread);
+    --open: 1;
   }
 }
 
-/* Every card pivots around one point far below the deck, so they fan like a hand. */
+/*
+ * Every card has one transform list in every state, so the browser interpolates it piece by piece:
+ * slide along the arc, sink by its distance from the centre, turn, then lift along its own axis.
+ * Gathered, the cards keep a hint of the arc so the stack reads as a deck rather than one card.
+ */
 .card {
-  --offset: calc(var(--i) - var(--mid));
+  --step: min(calc(var(--card-w) * 0.6), calc((100cqw - var(--card-w) - 24px) / max(var(--count) - 1, 1)));
+  --x: calc(var(--offset) * (4px + var(--open) * (var(--step) - 4px)));
+  --y: calc(var(--abs) * var(--abs) * (1px + var(--open) * 5px));
+  --r: calc(var(--offset) * (1.2deg + var(--open) * (var(--spread) - 1.2deg)));
   --lift: 0px;
 
-  grid-area: 1 / 1;
+  position: absolute;
+  top: 36px;
+  left: calc(50% - var(--card-w) / 2);
   box-sizing: border-box;
   width: var(--card-w);
   height: var(--card-h);
-  padding: 6px;
-  border-radius: 10px;
+  overflow: hidden;
+  border-radius: 14px;
   background: var(--hv-raised);
-  border: 1px solid color-mix(in oklab, var(--hv-ink) 10%, transparent);
   box-shadow:
-    0 1px 0 color-mix(in oklab, white 60%, transparent) inset,
-    0 1px 2px color-mix(in oklab, black 10%, transparent),
-    0 10px 24px -14px color-mix(in oklab, black 45%, transparent);
+    0 0 0 1px color-mix(in oklab, var(--hv-ink) 8%, transparent),
+    0 1px 2px color-mix(in oklab, black 6%, transparent),
+    0 8px 18px -12px color-mix(in oklab, black 30%, transparent);
   color: var(--hv-ink);
   cursor: pointer;
   outline: none;
-  transform-origin: 50% 280%;
-  transform: rotate(calc(var(--offset) * var(--angle))) translateY(var(--lift));
+  transform-origin: 50% 100%;
+  transform: translate(var(--x), var(--y)) rotate(var(--r)) translateY(var(--lift));
   transition:
-    transform var(--hv-dur-3) var(--hv-ease-spring),
-    scale var(--hv-dur-2) var(--hv-ease-out),
-    opacity var(--hv-dur-2) var(--hv-ease-out);
+    transform var(--move) var(--hv-ease-smooth),
+    box-shadow var(--hv-dur-3) var(--hv-ease-out);
 }
 
-/* A picked card rises out of the fan along its own axis; the others settle. */
+/* Spreading out, the outer cards leave a beat later than the centre ones. */
+.deck[data-open] .card,
+.deck:has(:focus-visible) .card {
+  transition-delay: calc(var(--abs) * 22ms), 0ms;
+}
+
+@media (hover: hover) {
+  .deck:hover .card {
+    transition-delay: calc(var(--abs) * 22ms), 0ms;
+  }
+
+  .deck:hover .card:hover {
+    --lift: -12px;
+    transition-delay: 0ms;
+    transition-duration: 380ms, var(--hv-dur-3);
+  }
+}
+
 .card[aria-selected="true"] {
-  --lift: -14px;
+  --lift: -8px;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--hv-ink) 14%, transparent),
+    0 2px 4px color-mix(in oklab, black 6%, transparent),
+    0 16px 30px -16px color-mix(in oklab, black 40%, transparent);
 }
 
 .deck[data-open] .card[aria-selected="true"],
 .deck:has(:focus-visible) .card[aria-selected="true"] {
-  --lift: -26px;
-}
-
-.deck[data-picked] .card[aria-selected="false"] {
-  scale: 0.97;
+  --lift: -20px;
 }
 
 @media (hover: hover) {
   .deck:hover .card[aria-selected="true"] {
-    --lift: -26px;
-  }
-
-  .deck:hover .card[aria-selected="false"]:hover {
-    --lift: -8px;
+    --lift: -20px;
   }
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--hv-accent);
-  outline-offset: 2px;
-}
-
-.card:focus-visible[aria-selected="false"] {
-  --lift: -8px;
+  --lift: -12px;
+  box-shadow:
+    0 0 0 2px var(--hv-canvas),
+    0 0 0 4px var(--hv-accent),
+    0 16px 30px -16px color-mix(in oklab, black 40%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card {
+  .card,
+  .deck .card {
     transition: none;
   }
 }

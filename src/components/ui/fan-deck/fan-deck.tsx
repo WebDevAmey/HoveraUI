@@ -27,18 +27,21 @@ export type FanDeckProps = Omit<HTMLAttributes<HTMLDivElement>, "defaultValue" |
   onValueChange?: (id: string) => void;
   /** Degrees between neighbouring cards when the deck is fanned. */
   spread?: number;
+  /** Card width in px; height follows at 4:3. */
+  cardWidth?: number;
 };
 
 /**
- * A stack of cards that fans out like a hand. One card can be picked:
- * it lifts out of the fan and stays on top when the deck closes.
+ * A neat stack of cards that spreads into an arc on hover or focus. One card can be picked:
+ * it rises out of the arc and stays on top when the deck gathers again.
  */
 export function FanDeck({
   cards,
   value,
   defaultValue = null,
   onValueChange,
-  spread = 9,
+  spread = 5,
+  cardWidth = 150,
   className,
   style,
   onPointerDown,
@@ -103,7 +106,14 @@ export function FanDeck({
       data-open={touchOpen || undefined}
       data-picked={selectedIndex >= 0 || undefined}
       className={cn(styles.deck, className)}
-      style={{ "--mid": (cards.length - 1) / 2, "--spread": `${spread}deg`, ...style } as CSSProperties}
+      style={
+        {
+          "--count": cards.length,
+          "--spread": `${spread}deg`,
+          "--card-w": `${cardWidth}px`,
+          ...style,
+        } as CSSProperties
+      }
       onPointerDown={(event) => {
         // On touch the first tap only fans the deck; the next tap picks.
         swallowClick.current = event.pointerType !== "mouse" && !touchOpen;
@@ -127,7 +137,13 @@ export function FanDeck({
           aria-label={card.label}
           tabIndex={index === active ? 0 : -1}
           className={styles.card}
-          style={{ "--i": index, zIndex: card.id === selected ? cards.length + 1 : index } as CSSProperties}
+          style={
+            {
+              "--offset": index - (cards.length - 1) / 2,
+              "--abs": Math.abs(index - (cards.length - 1) / 2),
+              zIndex: card.id === selected ? cards.length + 1 : index,
+            } as CSSProperties
+          }
           onClick={() => {
             if (swallowClick.current) {
               swallowClick.current = false;

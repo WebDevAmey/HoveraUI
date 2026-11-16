@@ -1,46 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import type { CSSProperties } from "react";
 import { FanDeck } from "./fan-deck";
 import styles from "./demo.module.css";
 
-const swatches = [
-  { id: "oxblood", name: "Oxblood", kind: "Lacquer", fill: "var(--hv-oxblood)" },
-  { id: "gilt", name: "Gilt", kind: "Leaf", fill: "linear-gradient(135deg, var(--hv-gilt-hi), var(--hv-gilt) 55%, var(--hv-gilt-lo))" },
-  { id: "dusk", name: "Dusk", kind: "Gouache", fill: "linear-gradient(to bottom, var(--hv-sky-hi), var(--hv-sky-lo))" },
-  { id: "lilac", name: "Lilac", kind: "Chalk", fill: "var(--hv-ether-1)" },
-  { id: "ultramarine", name: "Marine", kind: "Pigment", fill: "#2e3fe0" },
+const chapters = [
+  { id: "type", title: "Type", kind: "lines", bg: "#ece6da", ink: "#26221c" },
+  { id: "colour", title: "Colour", kind: "rings", bg: "#5b3a52", ink: "#f4ebe9" },
+  { id: "space", title: "Space", kind: "dots", bg: "#c9d8e3", ink: "#1f2a33" },
+  { id: "motion", title: "Motion", kind: "waves", bg: "#6f7a4a", ink: "#f2f1e6" },
+  { id: "detail", title: "Detail", kind: "grid", bg: "#1d1c1a", ink: "#ecebe6" },
 ];
 
 export default function Demo() {
-  const [picked, setPicked] = useState("gilt");
-  const current = swatches.find((swatch) => swatch.id === picked);
-
   return (
-    <div className={styles.stage}>
-      <FanDeck
-        aria-label="Swatches"
-        spread={7}
-        value={picked}
-        onValueChange={setPicked}
-        cards={swatches.map((swatch, index) => ({
-          id: swatch.id,
-          label: `${swatch.name} ${String(index + 1).padStart(2, "0")} ${swatch.kind}`,
-          content: (
-            <>
-              <div className={styles.swatch} style={{ background: swatch.fill }} />
-              <div className={styles.row}>
-                <span className={styles.name}>{swatch.name}</span>
-                <span className={styles.num}>{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <span className={styles.kind}>{swatch.kind}</span>
-            </>
-          ),
-        }))}
-      />
-      <p className={styles.readout} aria-live="polite">
-        Picked <b>{current?.name}</b>
-      </p>
-    </div>
+    <FanDeck
+      aria-label="Chapters"
+      defaultValue="space"
+      cards={chapters.map((c, i) => ({
+        id: c.id,
+        label: `Chapter ${i + 1}: ${c.title}`,
+        content: (
+          <div className={styles.card} data-kind={c.kind} style={{ "--bg": c.bg, "--ink": c.ink } as CSSProperties}>
+            <span className={styles.art} aria-hidden="true" />
+            <span className={styles.num}>{String(i + 1).padStart(2, "0")}</span>
+            <span className={styles.title}>{c.title}</span>
+          </div>
+        ),
+      }))}
+    />
   );
 }

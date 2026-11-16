@@ -1,51 +1,58 @@
-.stage {
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  width: 100%;
-}
-
-.swatch {
-  height: 88px;
-  border-radius: 6px;
-  box-shadow: inset 0 0 0 1px color-mix(in oklab, black 8%, transparent);
-}
-
-.row {
+/* Chapter cards: a flat colour, a quiet drawn pattern, a serif title. */
+.card {
+  position: relative;
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 8px 2px 0;
+  height: 100%;
+  padding: 12px 14px 14px;
+  background: var(--bg);
+  color: var(--ink);
 }
 
-.name {
-  font: 400 17px / 1 var(--hv-font-serif);
-  letter-spacing: -0.01em;
+.art {
+  position: absolute;
+  inset: 34px 14px 58px;
+  border-radius: 4px;
+  opacity: 0.55;
+}
+
+.card[data-kind="lines"] .art {
+  background: repeating-linear-gradient(to bottom, currentColor 0 1px, transparent 1px 7px);
+  opacity: 0.35;
+}
+
+.card[data-kind="rings"] .art {
+  background: repeating-radial-gradient(circle at 50% 100%, currentColor 0 1px, transparent 1px 8px);
+  opacity: 0.4;
+}
+
+.card[data-kind="dots"] .art {
+  background: radial-gradient(circle, currentColor 1.1px, transparent 1.4px) 0 0 / 9px 9px;
+  opacity: 0.45;
+}
+
+.card[data-kind="waves"] .art {
+  background: repeating-linear-gradient(-35deg, currentColor 0 1px, transparent 1px 6px);
+  opacity: 0.35;
+}
+
+.card[data-kind="grid"] .art {
+  background:
+    linear-gradient(currentColor 1px, transparent 1px) 0 0 / 12px 12px,
+    linear-gradient(90deg, currentColor 1px, transparent 1px) 0 0 / 12px 12px;
+  opacity: 0.22;
 }
 
 .num {
-  font: 400 italic 15px / 1 var(--hv-font-serif);
-  color: var(--hv-ink-2);
+  position: relative;
+  font: 400 11px / 1 var(--hv-font-mono);
+  letter-spacing: 0.04em;
+  opacity: 0.75;
 }
 
-.kind {
-  display: block;
-  padding: 6px 2px 0;
-  font: 500 9px / 1 var(--hv-font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--hv-ink-2);
-}
-
-.readout {
-  margin: 0;
-  font: 500 11px / 1 var(--hv-font-mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--hv-ink-2);
-}
-
-.readout b {
-  font-weight: 500;
-  color: var(--hv-ink);
+.title {
+  position: relative;
+  font: 400 26px / 1 var(--hv-font-serif);
+  letter-spacing: -0.02em;
 }

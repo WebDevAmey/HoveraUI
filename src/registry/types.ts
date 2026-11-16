@@ -1,8 +1,8 @@
 export const categories = [
   { id: "essentials", label: "Essentials" },
+  { id: "accordions", label: "Accordions" },
   { id: "buttons", label: "Buttons" },
   { id: "cards", label: "Cards" },
-  { id: "effects", label: "Effects" },
   { id: "inputs", label: "Inputs" },
   { id: "navigation", label: "Navigation" },
   { id: "feedback", label: "Feedback" },

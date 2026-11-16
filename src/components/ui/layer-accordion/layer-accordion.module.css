@@ -1,0 +1,204 @@
+.root {
+  --overlap: 14px;
+  --radius: 16px;
+  --open: 520ms;
+  --close: 320ms;
+
+  display: grid;
+  width: 100%;
+  color: var(--hv-ink);
+}
+
+/* Each card tucks its top edge under the card above and casts a soft shadow up onto it. */
+.card {
+  position: relative;
+  padding-bottom: var(--overlap);
+  border-radius: var(--radius);
+  background: var(--hv-raised);
+  box-shadow:
+    inset 0 0 0 1px var(--hv-line),
+    0 -10px 22px -18px color-mix(in oklab, black 40%, transparent);
+  transition:
+    translate var(--close) var(--hv-ease-smooth),
+    background-color var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.card + .card {
+  margin-top: calc(var(--overlap) * -1);
+}
+
+.card:last-child {
+  padding-bottom: 0;
+}
+
+/* The open card lifts a little; the rest of the stack recedes. */
+.card[data-state="open"] {
+  translate: 0 -2px;
+  transition-duration: var(--open);
+}
+
+.root[data-any] .card[data-state="closed"] {
+  background: color-mix(in oklab, var(--hv-raised) 55%, var(--hv-surface));
+}
+
+.heading {
+  margin: 0;
+  font: inherit;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 18px 18px 20px;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: -3px;
+  border-radius: var(--radius);
+}
+
+.text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  gap: 3px;
+}
+
+.title {
+  font: 500 15px / 1.35 var(--hv-font-sans);
+  letter-spacing: -0.012em;
+  transition: color var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.summary {
+  overflow: hidden;
+  font: 400 13px / 1.4 var(--hv-font-sans);
+  color: var(--hv-ink-3);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.root[data-any] .card[data-state="closed"] .title {
+  color: var(--hv-ink-2);
+}
+
+@media (hover: hover) {
+  .root[data-any] .card[data-state="closed"] .trigger:hover .title {
+    color: var(--hv-ink);
+  }
+}
+
+.chevron {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--hv-sunken);
+  color: var(--hv-ink-2);
+  transition:
+    rotate var(--close) var(--hv-ease-smooth),
+    background-color var(--hv-dur-3) var(--hv-ease-out),
+    color var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.chevron svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card[data-state="open"] .chevron {
+  rotate: 180deg;
+  background: var(--hv-ink);
+  color: var(--hv-raised);
+  transition-duration: var(--open), var(--hv-dur-3), var(--hv-dur-3);
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--close) var(--hv-ease-smooth);
+}
+
+.card[data-state="open"] .panel {
+  grid-template-rows: 1fr;
+  transition-duration: var(--open);
+}
+
+.clip {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 8px;
+}
+
+/* The inner sheet: a second layer that slides out from under the header. */
+.sheet {
+  margin-bottom: 8px;
+  padding: 16px 18px 18px;
+  border-radius: calc(var(--radius) - 6px);
+  background: var(--hv-surface);
+  box-shadow: inset 0 0 0 1px var(--hv-line);
+  font: 400 14px / 1.6 var(--hv-font-sans);
+  color: var(--hv-ink-2);
+  opacity: 0;
+  translate: 0 -18px;
+  scale: 0.98;
+  transform-origin: 50% 0;
+  transition:
+    opacity 160ms var(--hv-ease-out),
+    translate var(--close) var(--hv-ease-smooth),
+    scale var(--close) var(--hv-ease-smooth);
+}
+
+.sheet > :first-child {
+  margin-top: 0;
+}
+
+.sheet > :last-child {
+  margin-bottom: 0;
+}
+
+.card[data-state="open"] .sheet {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+  transition:
+    opacity 360ms var(--hv-ease-out) 80ms,
+    translate var(--open) var(--hv-ease-smooth),
+    scale var(--open) var(--hv-ease-smooth);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card[data-state] .panel,
+  .card[data-state] .chevron,
+  .panel,
+  .chevron {
+    transition: none;
+  }
+
+  .card[data-state="open"] {
+    translate: none;
+  }
+
+  .sheet,
+  .card[data-state="open"] .sheet {
+    translate: none;
+    scale: 1;
+    transition: opacity var(--hv-dur-1) linear;
+  }
+}

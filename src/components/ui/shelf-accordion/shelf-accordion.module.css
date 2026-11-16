@@ -1,0 +1,205 @@
+.root {
+  --spine: 56px;
+  --gap: 6px;
+  --move: 620ms;
+
+  width: 100%;
+  container-type: inline-size;
+}
+
+.shelf {
+  display: flex;
+  gap: var(--gap);
+  height: var(--h, 340px);
+}
+
+/* Closed items keep only their spine; the open one takes all the remaining width. */
+.item {
+  position: relative;
+  display: flex;
+  flex: 0 0 var(--spine);
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--hv-r-3);
+  background: var(--hv-surface);
+  box-shadow: inset 0 0 0 1px var(--hv-line);
+  transition:
+    flex-grow var(--move) var(--hv-ease-smooth),
+    background-color var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.item[data-state="open"] {
+  flex-grow: 1;
+  background: var(--hv-raised);
+  box-shadow:
+    inset 0 0 0 1px var(--hv-line),
+    0 1px 2px color-mix(in oklab, black 4%, transparent);
+}
+
+.spine {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--spine);
+  padding: 18px 0;
+  border: 0;
+  background: none;
+  color: var(--hv-ink-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.spine:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: -4px;
+  border-radius: var(--hv-r-3);
+}
+
+.item[data-state="open"] .spine {
+  color: var(--hv-ink);
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .item[data-state="closed"]:hover {
+    background: color-mix(in oklab, var(--hv-raised) 60%, var(--hv-surface));
+  }
+
+  .item[data-state="closed"] .spine:hover {
+    color: var(--hv-ink);
+  }
+}
+
+.index {
+  font: 400 11.5px / 1 var(--hv-font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--hv-ink-3);
+}
+
+.spineTitle {
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+  font: 500 14px / 1 var(--hv-font-sans);
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+}
+
+/* The contents keep a fixed width, so they are uncovered as the item widens instead of reflowing. */
+.panel {
+  flex: 1 0 auto;
+  min-width: 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  box-sizing: border-box;
+  width: min(380px, calc(100cqw - var(--n, 4) * var(--spine) - (var(--n, 4) - 1) * var(--gap)));
+  height: 100%;
+  padding: 22px 24px 22px 4px;
+  opacity: 0;
+  translate: -12px 0;
+  transition:
+    opacity 160ms var(--hv-ease-out),
+    translate var(--hv-dur-3) var(--hv-ease-out);
+}
+
+.item[data-state="open"] .inner {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 420ms var(--hv-ease-out) 220ms,
+    translate var(--move) var(--hv-ease-smooth) 120ms;
+}
+
+.title {
+  margin: 0;
+  font: 400 30px / 1.05 var(--hv-font-serif);
+  letter-spacing: -0.02em;
+  color: var(--hv-ink);
+}
+
+.body {
+  font: 400 14px / 1.6 var(--hv-font-sans);
+  color: var(--hv-ink-2);
+}
+
+.body > :first-child {
+  margin-top: 0;
+}
+
+.body > :last-child {
+  margin-bottom: 0;
+}
+
+/* On a narrow shelf the spines lie down and each panel opens downward through a grid track. */
+@container (max-width: 520px) {
+  .shelf {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .item {
+    flex: none;
+    flex-direction: column;
+  }
+
+  .spine {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 14px;
+    width: 100%;
+    height: 52px;
+    padding: 0 18px;
+  }
+
+  .spineTitle {
+    writing-mode: horizontal-tb;
+    rotate: none;
+  }
+
+  .panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms var(--hv-ease-smooth);
+  }
+
+  .item[data-state="open"] .panel {
+    grid-template-rows: 1fr;
+    transition-duration: var(--move);
+  }
+
+  .inner {
+    min-height: 0;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    padding: 0 18px;
+    translate: 0 -6px;
+  }
+
+  .body {
+    padding-bottom: 20px;
+  }
+
+  .title {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .panel,
+  .item[data-state] .panel,
+  .item[data-state] .inner,
+  .inner {
+    transition: opacity var(--hv-dur-1) linear;
+    translate: none;
+  }
+}

@@ -6,12 +6,11 @@ import { Tile } from "@/components/site/tile";
 import { getEntry, registry } from "@/registry";
 
 const featured: { slug: string; className: string }[] = [
-  { slug: "glass-specimen", className: "md:col-span-4 md:row-span-2" },
+  { slug: "fan-deck", className: "md:col-span-3 md:row-span-2" },
+  { slug: "layer-accordion", className: "md:col-span-3 md:row-span-2" },
   { slug: "depth-key", className: "md:col-span-2" },
+  { slug: "morph-button", className: "md:col-span-2" },
   { slug: "led-meter", className: "md:col-span-2" },
-  { slug: "sliding-segment", className: "md:col-span-2" },
-  { slug: "gilded-frame", className: "md:col-span-2" },
-  { slug: "stack-toast", className: "md:col-span-2" },
 ];
 
 const usage = `import { DepthKey } from "@/components/ui/depth-key/depth-key";
@@ -28,19 +27,19 @@ export default function Home() {
       <section aria-labelledby="featured-title" className="px-2 sm:px-4">
         <div
           style={{ "--i": 5 } as React.CSSProperties}
-          className="rise mx-auto max-w-[1320px] rounded-[32px] bg-sunken/70 px-3 py-3 ring-1 ring-line sm:px-4 sm:py-4"
+          className="rise mx-auto max-w-[1240px]"
         >
           <h2 id="featured-title" className="sr-only">
             Selected components
           </h2>
-          <div className="grid gap-3 sm:gap-4 md:auto-rows-[minmax(320px,auto)] md:grid-cols-6">
+          <div className="grid gap-3 sm:gap-4 md:auto-rows-[minmax(280px,auto)] md:grid-cols-6">
             {featured.map(({ slug, className }) => {
               const entry = getEntry(slug);
               return entry ? <Tile key={slug} meta={entry.meta} Demo={entry.Demo} className={className} /> : null;
             })}
           </div>
         </div>
-        <p className="mx-auto mt-6 max-w-[1320px] text-center text-[14px] text-ink-2">
+        <p className="mx-auto mt-8 max-w-[1240px] text-center text-[14px] text-ink-2">
           Every one runs live here.{" "}
           <Link href="/components" className="text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-ink">
             See all {registry.length}

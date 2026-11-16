@@ -26,25 +26,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f3f1" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e0e0d" },
-  ],
+  themeColor: "#f4f3f1",
 };
-
-// Runs before first paint so a saved theme never flashes the wrong colors.
-const themeScript = `(function(){try{var t=localStorage.getItem("hv-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    // One theme for the whole library: every page and every preview is set in the light palette.
+    <html lang="en" data-theme="light" className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
       <body>
         <a
           href="#main"

@@ -27,7 +27,7 @@ const groupIcons: Record<string, React.ReactNode> = {
       <path d="M2.5 9.5h11" />
     </>
   ),
-  Effects: <path d="M8 2v3M8 11v3M2 8h3M11 8h3M3.8 3.8l2 2M10.2 10.2l2 2M3.8 12.2l2-2M10.2 5.8l2-2" />,
+  Accordions: <path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h11M11 5.5l-1-1M11 10l-1-1" />,
   Inputs: (
     <>
       <rect x="2" y="4.5" width="12" height="7" rx="1.5" />

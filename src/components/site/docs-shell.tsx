@@ -10,10 +10,10 @@ export function DocsShell({ children }: { children: ReactNode }) {
   const groups = sidebarGroups();
   return (
     <div className="mx-auto flex max-w-[1440px] px-4 sm:px-6">
-      <aside className="sticky top-16 hidden h-[calc(100dvh-4rem)] w-[272px] shrink-0 py-4 lg:block">
+      <aside className="sticky top-[76px] hidden h-[calc(100dvh-76px)] w-[272px] shrink-0 py-4 lg:block">
         <DocsSidebar groups={groups} panel />
       </aside>
-      <div className="min-w-0 flex-1 py-8 lg:py-14 lg:pl-12 xl:pl-16">
+      <div className="min-w-0 flex-1 pb-16 pt-6 lg:pb-24 lg:pt-12 lg:pl-12 xl:pl-20">
         <details className="group mb-8 rounded-xl border border-line bg-surface lg:hidden">
           <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
             Browse components

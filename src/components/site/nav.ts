@@ -3,17 +3,18 @@ import { categories } from "@/registry/types";
 
 export const github = "https://github.com/WebDevAmey/HoveraUI";
 
-export const mainNav = [
-  { href: "/components", label: "Components" },
-  { href: "/docs/introduction", label: "Docs" },
-  { href: "/docs/changelog", label: "Changelog" },
-];
-
 export type SidebarItem = { href: string; label: string; badge?: string };
 export type SidebarGroup = { title: string; items: SidebarItem[] };
 
 /** Components shipped in the latest release; the sidebar marks them "New". */
-const fresh = new Set(["morph-button", "glide-tabs", "soft-switch", "quiet-tooltip", "rolling-number", "copy-field", "hover-reveal", "pebble-tabs"]);
+const fresh = new Set([
+  "line-accordion",
+  "shelf-accordion",
+  "layer-accordion",
+  "cascade-accordion",
+  "pebble-tabs",
+  "hover-reveal",
+]);
 
 export const docsNav: SidebarGroup[] = [
   {

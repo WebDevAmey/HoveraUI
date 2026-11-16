@@ -22,7 +22,7 @@ export default function IntroductionPage() {
           {categories.map((c) => c.label.toLowerCase()).join(", ")}.
         </li>
         <li>
-          <strong>Live examples.</strong> Every component page runs the real component, in both themes and at phone width.
+          <strong>Live examples.</strong> Every component page runs the real component on one quiet stage, with nothing between you and it.
         </li>
         <li>
           <strong>Source in your project.</strong> Two files per component, a <code>.tsx</code> and a CSS module. Change anything.
@@ -34,9 +34,9 @@ export default function IntroductionPage() {
 
       <h2>Philosophy</h2>
       <p>
-        Every component exists because of one idea: a keycap that has a wall, a fill that arrives through a dither
-        matrix, a sky behind a cutout. If an idea already lives in another library, it does not belong here. The
-        components carry their own materials, from pixel grids to gilt foil, so the site around them stays quiet.
+        Fewer components, each finished properly: a keycap that has a wall, a fill that arrives through a dither
+        matrix, an accordion whose contents arrive in sequence. Every piece is held to the same standard of spacing,
+        motion and keyboard support, and the site around them stays quiet so the components can speak.
       </p>
       <p>
         Motion implies mass and stays short. Nothing needs animation to work, and every component falls back to a still

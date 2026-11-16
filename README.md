@@ -38,12 +38,13 @@ With no attribute, the system colour scheme decides. Set `data-theme="light"` or
 
 | Category | Components |
 | --- | --- |
-| Buttons | Depth Key, Dither Fill, Pillow Press, Split Label, Hold to Confirm, Detent Toggle |
-| Cards | Glass Specimen, Dither Image, Fan Deck, Gilded Frame, Corner Fold, Perforated Ticket, Slab Flip, Sky Cutout |
-| Effects | Dither Field, Halftone Trail, Grain, ASCII Resolve, Pixel Wipe, Aura |
-| Inputs | Sliding Segment, Stepped OTP, Detent Slider, Command Palette |
-| Navigation | Orbit Gallery, Plus-Minus Accordion, Timeline Rail, Morph Tabs |
-| Feedback | Stack Toast, LED Meter, Anchor Popover |
+| Essentials | Morph Button, Glide Tabs, Soft Switch, Quiet Tooltip, Rolling Number, Copy Field |
+| Accordions | Plus-Minus Accordion, Line Accordion, Shelf Accordion, Layer Accordion, Cascade Accordion |
+| Buttons | Depth Key, Pillow Press, Hold to Confirm, Dither Fill |
+| Cards | Fan Deck, Dither Image, Perforated Ticket |
+| Inputs | Stepped OTP, Detent Slider, Command Palette |
+| Navigation | Pebble Tabs, Hover Reveal |
+| Feedback | Anchor Popover, LED Meter |
 
 ## Develop
 

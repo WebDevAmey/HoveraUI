@@ -1,5 +1,7 @@
 # Plan
 
+> Note (2026-11-16): eighteen components in this plan were later removed and an Accordions category was added. The current list is in the README and in `src/registry/index.ts`.
+
 HoveraUI becomes 31 copy-paste React components (plus six Essentials added in the second pass), each with one idea, shown on a calm near-monochrome site. The site stays quiet so the components can be loud in their own materials: pixels, paper, glass, soft clay, gilt and sky.
 
 ## Components

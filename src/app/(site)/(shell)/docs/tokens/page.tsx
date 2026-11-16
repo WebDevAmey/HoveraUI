@@ -65,10 +65,11 @@ export default function TokensPage() {
 
       <h2>Motion</h2>
       <p>
-        Interactions run between 150 and 300ms (<code>--hv-dur-1</code> to <code>--hv-dur-3</code>) on{" "}
-        <code>--hv-ease-out</code> or the CSS <code>linear()</code> spring in <code>--hv-ease-spring</code>. Ambient loops
-        are slow, pause when off-screen or in a background tab, and stop entirely under{" "}
-        <code>prefers-reduced-motion: reduce</code>.
+        Small interactions run between 150 and 300ms (<code>--hv-dur-1</code> to <code>--hv-dur-3</code>) on{" "}
+        <code>--hv-ease-out</code>. Anything that changes size or place, such as an accordion opening or a card fanning
+        out, uses <code>--hv-ease-smooth</code>, a long soft deceleration, over about <code>--hv-dur-4</code>. Closing is
+        always quicker than opening. Ambient loops pause when off-screen or in a background tab, and everything stops
+        or simply fades under <code>prefers-reduced-motion: reduce</code>.
       </p>
 
       <h2>Shape</h2>

@@ -2,6 +2,24 @@
 
 All notable changes to the Hovera UI registry and site.
 
+## 2026-11-16 — Fewer, finer components
+
+### Added
+
+- An Accordions category: the refined `plus-minus-accordion` and four new ones, `line-accordion`, `shelf-accordion`, `layer-accordion` and `cascade-accordion`.
+- A morphing navbar: one dark shell that grows into the Components and Docs panels.
+
+### Changed
+
+- `fan-deck` is rebuilt: cards fan from a shared pivot with a staggered spread, lift on hover, and fit narrow containers.
+- `plus-minus-accordion` animates height with grid rows, morphs plus into minus and survives rapid toggling.
+- `anchor-popover` opens and closes with a short fade and offset, stays tied to its anchor and keeps its content while it exits.
+- Previews are one clean stage with a replay button. The site uses one light theme.
+
+### Removed
+
+`stack-toast`, `morph-tabs`, `timeline-rail`, `orbit-gallery`, `sliding-segment`, `aura`, `pixel-wipe`, `ascii-resolve`, `grain`, `halftone-trail`, `dither-field`, `sky-cutout`, `slab-flip`, `corner-fold`, `gilded-frame`, `glass-specimen`, `split-label` and `detent-toggle`, with their registry items. The per-preview Fit, Mobile and theme controls.
+
 ## 2026-10-31 — Essentials and a calmer site
 
 ### Added

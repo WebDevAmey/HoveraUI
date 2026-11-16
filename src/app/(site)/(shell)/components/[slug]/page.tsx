@@ -27,8 +27,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hoveraui.vercel.app
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-24 pt-16">
-      <h2 className="display text-[26px]">{title}</h2>
+    <section id={id} className="scroll-mt-28 pt-16">
+      <h2 className="text-[19px] font-medium tracking-[-0.015em]">{title}</h2>
       <div className="mt-5">{children}</div>
     </section>
   );
@@ -50,36 +50,37 @@ export default async function ComponentPage({ params }: Props) {
   const next = registry[index + 1]?.meta;
 
   return (
-    <article className="max-w-[860px]">
-      <nav aria-label="Breadcrumb" className="text-[13px] text-ink-2">
+    <article className="max-w-[880px]">
+      <nav aria-label="Breadcrumb" className="text-[13px] text-ink-3">
         <ol className="flex items-center gap-1.5">
           <li>
             <Link href="/components" className="transition-colors hover:text-ink">
               Components
             </Link>
           </li>
-          <li aria-hidden="true" className="text-ink-3">
-            /
+          <li aria-hidden="true">/</li>
+          <li>
+            <Link href={`/components#cat-${meta.category}`} className="transition-colors hover:text-ink">
+              {category?.label}
+            </Link>
           </li>
-          <li>{category?.label}</li>
         </ol>
       </nav>
-      <h1 className="display mt-4 text-[clamp(40px,5.4vw,56px)]">{meta.name}</h1>
-      <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-ink-2">{meta.description}.</p>
-      <dl className="mt-6 flex flex-wrap gap-2 text-[12.5px]">
-        {[
-          ["Material", meta.material],
-          ["Dependencies", "React only"],
-          ...(size !== undefined ? [["Size", `${formatBytes(size)} gzip`]] : []),
-        ].map(([term, value]) => (
-          <div key={term} className="flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1">
-            <dt className="text-ink-2">{term}</dt>
-            <dd className="font-medium text-ink">{value}</dd>
-          </div>
-        ))}
-      </dl>
+      <h1 className="display mt-5 text-[clamp(38px,5vw,52px)]">{meta.name}</h1>
+      <p className="mt-4 max-w-[36rem] text-[16.5px] leading-relaxed text-ink-2">{meta.description}.</p>
+      <p className="mt-5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[12.5px] text-ink-3">
+        <span>{meta.material}</span>
+        <span aria-hidden="true">·</span>
+        <span>React only</span>
+        {size !== undefined && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span className="tabular-nums">{formatBytes(size)} gzip</span>
+          </>
+        )}
+      </p>
 
-      <section id="preview" className="scroll-mt-24 pt-10" aria-labelledby="preview-title">
+      <section id="preview" className="scroll-mt-28 pt-10" aria-labelledby="preview-title">
         <h2 id="preview-title" className="sr-only">
           Preview
         </h2>

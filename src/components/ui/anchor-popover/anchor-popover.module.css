@@ -1,10 +1,14 @@
 .root {
   --ap-gap: 13px;
   --ap-arrow: 12px;
-  --ap-paper: color-mix(in oklab, var(--hv-raised) 93%, var(--hv-ether-2));
-  --ap-edge: color-mix(in oklab, var(--hv-ink) 14%, transparent);
+  --ap-paper: var(--hv-raised);
+  --ap-edge: color-mix(in oklab, var(--hv-ink) 11%, transparent);
   --ap-w: min(var(--ap-width, 240px), calc(100% - 16px));
-  --ap-glide: 320ms;
+  --ap-glide: 380ms;
+  --ap-in: 220ms;
+  --ap-out: 140ms;
+  /* The card enters from a few pixels toward its anchor. */
+  --ap-from: 5px;
 
   position: relative;
 }
@@ -33,7 +37,7 @@
 .term[data-active] {
   text-decoration-style: solid;
   text-decoration-color: var(--hv-ink);
-  background-color: color-mix(in oklab, var(--hv-gilt) 16%, transparent);
+  background-color: var(--hv-sunken);
 }
 
 .term:focus-visible {
@@ -51,31 +55,29 @@
   background: var(--ap-paper);
   box-shadow:
     0 0 0 1px var(--ap-edge),
-    0 1px 1px color-mix(in oklab, black 6%, transparent),
-    0 8px 20px -12px color-mix(in oklab, black 30%, transparent);
+    0 1px 2px color-mix(in oklab, black 5%, transparent),
+    0 10px 24px -14px color-mix(in oklab, black 28%, transparent);
   font: 400 13px / 1.5 var(--hv-font-sans);
   letter-spacing: 0;
   text-align: start;
   color: var(--hv-ink-2);
   opacity: 0;
-  scale: 0.97;
+  transform: translateY(var(--ap-from)) scale(0.98);
+  transform-origin: 50% 100%;
   visibility: hidden;
   pointer-events: none;
   transition:
-    opacity var(--hv-dur-1) var(--hv-ease-out),
-    scale var(--hv-dur-2) var(--hv-ease-out),
-    visibility 0s linear var(--hv-dur-1);
+    opacity var(--ap-out) var(--hv-ease-out),
+    transform var(--ap-out) var(--hv-ease-out),
+    visibility 0s linear var(--ap-out);
 }
 
-/* Paper tooth: a faint fixed noise, never animated. */
-.popover::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .4 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.14;
-  pointer-events: none;
+.root[data-side="bottom"] {
+  --ap-from: -5px;
+}
+
+.root[data-side="bottom"] .popover {
+  transform-origin: 50% 0;
 }
 
 .arrow {
@@ -89,11 +91,13 @@
   /* Only the half outside the card shows, so the card's own hairline stays unbroken elsewhere. */
   clip-path: polygon(115% -15%, 115% 115%, -15% 115%);
   opacity: 0;
+  transform: translateY(var(--ap-from));
   visibility: hidden;
   pointer-events: none;
   transition:
-    opacity var(--hv-dur-1) var(--hv-ease-out),
-    visibility 0s linear var(--hv-dur-1);
+    opacity var(--ap-out) var(--hv-ease-out),
+    transform var(--ap-out) var(--hv-ease-out),
+    visibility 0s linear var(--ap-out);
 }
 
 .root[data-side="bottom"] .arrow {
@@ -102,18 +106,22 @@
 
 .root[data-open] :is(.popover, .arrow) {
   opacity: 1;
-  scale: 1;
+  transform: none;
   visibility: visible;
-  transition-delay: 0s;
+  transition:
+    opacity var(--ap-in) var(--hv-ease-out),
+    transform var(--ap-in) var(--hv-ease-out),
+    visibility 0s;
 }
 
 .root[data-open] .popover {
   pointer-events: auto;
 }
 
+/* Moving between terms cross-fades the text while the card glides. */
 .content {
   position: relative;
-  animation: swap var(--hv-dur-2) var(--hv-ease-out);
+  animation: swap 260ms var(--hv-ease-out);
 }
 
 @keyframes swap {
@@ -170,20 +178,21 @@
 
   .root[data-open]:not([data-instant]) .popover {
     transition:
-      opacity var(--hv-dur-1) var(--hv-ease-out),
-      scale var(--hv-dur-2) var(--hv-ease-out),
-      left var(--ap-glide) var(--hv-ease-out),
-      top var(--ap-glide) var(--hv-ease-out),
-      bottom var(--ap-glide) var(--hv-ease-out);
+      opacity var(--ap-in) var(--hv-ease-out),
+      transform var(--ap-in) var(--hv-ease-out),
+      left var(--ap-glide) var(--hv-ease-smooth),
+      top var(--ap-glide) var(--hv-ease-smooth),
+      bottom var(--ap-glide) var(--hv-ease-smooth);
   }
 
   /* The arrow arrives a touch early, so it reads as sliding along the edge. */
   .root[data-open]:not([data-instant]) .arrow {
     transition:
-      opacity var(--hv-dur-1) var(--hv-ease-out),
-      left calc(var(--ap-glide) * 0.75) var(--hv-ease-out),
-      top var(--ap-glide) var(--hv-ease-out),
-      bottom var(--ap-glide) var(--hv-ease-out);
+      opacity var(--ap-in) var(--hv-ease-out),
+      transform var(--ap-in) var(--hv-ease-out),
+      left calc(var(--ap-glide) * 0.8) var(--hv-ease-smooth),
+      top var(--ap-glide) var(--hv-ease-smooth),
+      bottom var(--ap-glide) var(--hv-ease-smooth);
   }
 }
 
@@ -205,15 +214,16 @@
 
   .root[data-open]:not([data-instant]) .popover {
     transition:
-      opacity var(--hv-dur-1) var(--hv-ease-out),
-      scale var(--hv-dur-2) var(--hv-ease-out),
-      translate var(--ap-glide) var(--hv-ease-out);
+      opacity var(--ap-in) var(--hv-ease-out),
+      transform var(--ap-in) var(--hv-ease-out),
+      translate var(--ap-glide) var(--hv-ease-smooth);
   }
 
   .root[data-open]:not([data-instant]) .arrow {
     transition:
-      opacity var(--hv-dur-1) var(--hv-ease-out),
-      translate calc(var(--ap-glide) * 0.75) var(--hv-ease-out);
+      opacity var(--ap-in) var(--hv-ease-out),
+      transform var(--ap-in) var(--hv-ease-out),
+      translate calc(var(--ap-glide) * 0.8) var(--hv-ease-smooth);
   }
 }
 
@@ -222,7 +232,12 @@
     --ap-glide: 0ms;
   }
 
+  .root,
+  .root[data-side="bottom"] {
+    --ap-from: 0px;
+  }
+
   .popover {
-    scale: 1;
+    transform: none;
   }
 }

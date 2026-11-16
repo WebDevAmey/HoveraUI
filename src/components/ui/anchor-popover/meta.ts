@@ -3,9 +3,9 @@ import type { ComponentMeta } from "@/registry/types";
 const meta: ComponentMeta = {
   slug: "anchor-popover",
   name: "Anchor Popover",
-  description: "One paper popover shared by several anchors that glides between them while its arrow slides along the edge",
+  description: "One popover shared by several anchors; it rises out of the anchor, glides between terms and keeps its content while it fades away",
   category: "feedback",
-  material: "Paper",
+  material: "Essential",
   exports: ["AnchorPopover", "AnchorTerm"],
   props: [
     { name: "width", type: "number", default: "240", description: "AnchorPopover. Card width in px; it never exceeds the container minus 16px." },

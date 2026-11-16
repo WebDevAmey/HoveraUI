@@ -47,6 +47,9 @@ export type AnchorPopoverProps = HTMLAttributes<HTMLDivElement> & {
 export function AnchorPopover({ width = 240, className, style, children, ...props }: AnchorPopoverProps) {
   const popoverId = useId();
   const [active, setActive] = useState<Active | null>(null);
+  // The last content stays rendered while the card fades out, so it never collapses mid-exit.
+  const [shown, setShown] = useState<Active | null>(null);
+  if (active && active !== shown) setShown(active);
   const rootRef = useRef<HTMLDivElement>(null);
   const popRef = useRef<HTMLDivElement>(null);
   const anchorRef = useRef<HTMLElement | null>(null);
@@ -168,10 +171,10 @@ export function AnchorPopover({ width = 240, className, style, children, ...prop
           if (event.pointerType === "mouse") hide(160);
         }}
       >
-        {active ? (
-          <div key={active.id} className={styles.content}>
-            {active.heading ? <p className={styles.heading}>{active.heading}</p> : null}
-            <div className={styles.tip}>{active.tip}</div>
+        {shown ? (
+          <div key={shown.id} className={styles.content}>
+            {shown.heading ? <p className={styles.heading}>{shown.heading}</p> : null}
+            <div className={styles.tip}>{shown.tip}</div>
           </div>
         ) : null}
       </div>

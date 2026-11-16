@@ -4,9 +4,19 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { CommandPalette, type CommandGroup } from "@/components/ui/command-palette/command-palette";
 
-export type SearchGroup = { label: string; items: { href: string; label: string; hint?: string }[] };
+export type SearchGroup = {
+  label: string;
+  items: { href: string; label: string; hint?: string; keywords?: string }[];
+};
 
-/** Header search: the library's own Command Palette, opened with the icon button or ⌘K. */
+const EVENT = "hv:search";
+
+/** Opens the site search from anywhere, such as the sidebar's search button. */
+export function openSearch() {
+  window.dispatchEvent(new Event(EVENT));
+}
+
+/** Site search: the library's own Command Palette, opened with the icon button, ⌘K or /. */
 export function SiteSearch({ groups, className }: { groups: SearchGroup[]; className?: string }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -16,10 +26,21 @@ export function SiteSearch({ groups, className }: { groups: SearchGroup[]; class
       if (event.key.toLowerCase() === "k" && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
         setOpen((value) => !value);
+        return;
       }
+      if (event.key !== "/" || event.metaKey || event.ctrlKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      if (target?.closest("input, textarea, select, [contenteditable=true]")) return;
+      event.preventDefault();
+      setOpen(true);
     };
+    const onOpen = () => setOpen(true);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener(EVENT, onOpen);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener(EVENT, onOpen);
+    };
   }, []);
 
   const paletteGroups = useMemo<CommandGroup[]>(
@@ -30,6 +51,7 @@ export function SiteSearch({ groups, className }: { groups: SearchGroup[]; class
           id: item.href,
           label: item.label,
           hint: item.hint,
+          keywords: item.keywords,
           onSelect: () => router.push(item.href),
         })),
       })),
@@ -41,7 +63,7 @@ export function SiteSearch({ groups, className }: { groups: SearchGroup[]; class
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-keyshortcuts="Meta+K Control+K"
+        aria-keyshortcuts="Meta+K Control+K /"
         aria-label="Search components and guides"
         className={className}
       >

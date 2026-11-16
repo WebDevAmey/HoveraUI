@@ -7,7 +7,7 @@ export type SidebarItem = { href: string; label: string; badge?: string };
 export type SidebarGroup = { title: string; items: SidebarItem[] };
 
 /** Components shipped in the latest release; the sidebar marks them "New". */
-const fresh = new Set([
+export const fresh = new Set([
   "line-accordion",
   "shelf-accordion",
   "layer-accordion",
@@ -53,7 +53,12 @@ export function searchGroups() {
       label: category.label,
       items: registry
         .filter((entry) => entry.meta.category === category.id)
-        .map((entry) => ({ href: `/components/${entry.meta.slug}`, label: entry.meta.name, hint: entry.meta.material })),
+        .map((entry) => ({
+          href: `/components/${entry.meta.slug}`,
+          label: entry.meta.name,
+          hint: entry.meta.material,
+          keywords: `${category.label} ${entry.meta.material} ${entry.meta.description}`,
+        })),
     })),
   ];
 }

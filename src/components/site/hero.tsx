@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { registry } from "@/registry";
 import { CopyButton } from "./copy-button";
+import { SearchTrigger } from "./search-trigger";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hoveraui.vercel.app";
 
@@ -38,12 +39,7 @@ export function Hero() {
           >
             Browse components
           </Link>
-          <Link
-            href="/docs/introduction"
-            className="press rounded-full border border-line-strong bg-surface px-6 py-3 text-[14.5px] text-ink transition-[background-color,transform] hover:bg-raised"
-          >
-            Read the docs
-          </Link>
+          <SearchTrigger label="Search components" className="h-[46px] w-[260px] rounded-full pl-5 pr-3 text-[14.5px]" />
         </div>
         <div
           style={{ "--i": 4 } as React.CSSProperties}

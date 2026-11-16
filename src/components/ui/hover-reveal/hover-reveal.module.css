@@ -96,12 +96,12 @@ a.row {
     0 1px 2px color-mix(in oklab, black 12%, transparent),
     0 24px 48px -20px color-mix(in oklab, black 50%, transparent);
   opacity: 0;
-  scale: 0.72;
-  filter: blur(6px);
+  scale: 0.94;
+  filter: blur(4px);
   transition:
-    opacity 260ms var(--hv-ease-out),
-    scale 520ms var(--hv-ease-spring),
-    filter 320ms var(--hv-ease-out);
+    opacity 220ms var(--hv-ease-out),
+    scale 380ms var(--hv-ease-out),
+    filter 260ms var(--hv-ease-out);
 }
 
 .frame[data-visible] {
@@ -133,7 +133,7 @@ a.row {
   height: 100%;
   object-fit: cover;
   scale: 1.14;
-  transition: scale 900ms var(--hv-ease-out);
+  transition: scale 700ms var(--hv-ease-out);
   user-select: none;
 }
 

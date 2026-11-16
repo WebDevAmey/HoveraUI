@@ -94,7 +94,7 @@
 
 .checkIcon {
   opacity: 0;
-  transform: scale(0.5);
+  transform: scale(0.8);
   filter: blur(3px);
   stroke-width: 1.7 !important;
 }
@@ -105,7 +105,7 @@
 
 .action[data-copied] .copyIcon {
   opacity: 0;
-  transform: scale(0.5);
+  transform: scale(0.8);
   filter: blur(3px);
 }
 

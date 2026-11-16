@@ -8,7 +8,7 @@ const meta: ComponentMeta = {
   material: "Glass",
   exports: ["CommandPalette"],
   props: [
-    { name: "groups", type: "CommandGroup[]", description: "Groups of { label, items }. Each item has id, label, and optional hint, shortcut and onSelect." },
+    { name: "groups", type: "CommandGroup[]", description: "Groups of { label, items }. Each item has id, label, and optional hint, keywords (extra words that also match), shortcut and onSelect." },
     { name: "placeholder", type: "string", default: '"Type a command or search"', description: "Placeholder for the search input." },
     { name: "onSelect", type: "(item: CommandItem) => void", description: "Called when an item runs, after the item's own onSelect." },
     { name: "variant", type: '"inline" | "dialog"', default: '"inline"', description: "Inline renders the panel in place. Dialog renders it in a native modal dialog." },

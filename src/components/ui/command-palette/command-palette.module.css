@@ -88,6 +88,11 @@
   letter-spacing: -0.01em;
 }
 
+/* The panel shows focus for the input (below), so the field itself draws no ring. */
+.input:focus-visible {
+  outline: none;
+}
+
 .input::placeholder {
   color: var(--hv-ink-2);
 }
@@ -234,19 +239,19 @@
   backdrop-filter: blur(2px);
 }
 
+/* Opened many times a day from the keyboard, so the entrance is short and barely moves. */
 .dialog[open] .panel {
-  animation: rise var(--hv-dur-2) var(--hv-ease-out);
+  animation: rise var(--hv-dur-1) var(--hv-ease-out);
 }
 
 .dialog[open]::backdrop {
-  animation: fade var(--hv-dur-2) var(--hv-ease-out);
+  animation: fade var(--hv-dur-1) var(--hv-ease-out);
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    scale: 0.98;
-    translate: 0 -6px;
+    scale: 0.985;
   }
 }
 

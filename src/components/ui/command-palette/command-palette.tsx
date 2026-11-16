@@ -18,6 +18,8 @@ export type CommandItem = {
   label: string;
   /** Muted text after the label, such as a section or a path. */
   hint?: string;
+  /** Extra words that also find the item, such as a description or synonyms. */
+  keywords?: string;
   /** Keys shown on the right, e.g. ["⌘", "E"]. */
   shortcut?: string[];
   onSelect?: () => void;
@@ -151,6 +153,8 @@ function Panel({
         for (const item of group.items) {
           const result = fuzzy(trimmed, item.label);
           if (result) matches.push({ item, ...result, index: 0 });
+          else if (item.keywords && trimmed && item.keywords.toLowerCase().includes(trimmed.toLowerCase()))
+            matches.push({ item, score: -20, hits: [], index: 0 });
         }
         if (trimmed) matches.sort((a, b) => b.score - a.score);
         return { label: group.label, matches };

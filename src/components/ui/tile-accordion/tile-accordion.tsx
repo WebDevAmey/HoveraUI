@@ -1,46 +1,41 @@
 "use client";
 
-import { useId, useState, type CSSProperties, type HTMLAttributes, type ReactNode } from "react";
+import { useId, useState, type HTMLAttributes, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
-import styles from "./line-accordion.module.css";
+import styles from "./tile-accordion.module.css";
 
-export type LineAccordionItem = {
+export type TileAccordionItem = {
   id: string;
   title: ReactNode;
   content: ReactNode;
-  /** Short note set in small caps beside the title, such as a date or a count. */
-  meta?: ReactNode;
 };
 
-export type LineAccordionProps = Omit<HTMLAttributes<HTMLDivElement>, "defaultValue" | "onChange"> & {
-  items: LineAccordionItem[];
-  /** "single" keeps at most one row open; "multiple" lets rows open independently. */
+export type TileAccordionProps = Omit<HTMLAttributes<HTMLDivElement>, "defaultValue" | "onChange"> & {
+  items: TileAccordionItem[];
+  /** "single" keeps at most one tile open; "multiple" lets tiles open independently. */
   type?: "single" | "multiple";
   defaultValue?: string[];
-  /** Open rows (controlled). */
+  /** Open tiles (controlled). */
   value?: string[];
   onValueChange?: (value: string[]) => void;
-  /** Heading element that wraps each row's button. */
+  /** Heading element that wraps each tile's button. */
   headingLevel?: 2 | 3 | 4 | 5 | 6;
-  /** Show a two-digit index before each title. */
-  numbered?: boolean;
 };
 
 /**
- * A typographic accordion. Rows are set in serif between hairlines; opening one draws
- * an ink rule across its divider while the text settles in beneath.
+ * Each question is its own soft tile. Opening one swings its plus round into a cross
+ * while the answer grows in and fades up.
  */
-export function LineAccordion({
+export function TileAccordion({
   items,
   type = "single",
   defaultValue = [],
   value,
   onValueChange,
   headingLevel = 3,
-  numbered = true,
   className,
   ...props
-}: LineAccordionProps) {
+}: TileAccordionProps) {
   const [inner, setInner] = useState<string[]>(defaultValue);
   const open = value ?? inner;
   const uid = useId();
@@ -59,12 +54,7 @@ export function LineAccordion({
         const trigger = `${uid}-t${i}`;
         const panel = `${uid}-p${i}`;
         return (
-          <div
-            key={item.id}
-            className={styles.item}
-            data-state={isOpen ? "open" : "closed"}
-            style={{ "--i": i } as CSSProperties}
-          >
+          <div key={item.id} className={styles.tile} data-state={isOpen ? "open" : "closed"}>
             <Heading className={styles.heading}>
               <button
                 type="button"
@@ -74,14 +64,10 @@ export function LineAccordion({
                 aria-controls={panel}
                 onClick={() => toggle(item.id)}
               >
-                {numbered && (
-                  <span className={styles.index} aria-hidden="true">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                )}
                 <span className={styles.title}>{item.title}</span>
-                {item.meta !== undefined && <span className={styles.meta}>{item.meta}</span>}
-                <span className={styles.mark} aria-hidden="true" />
+                <svg className={styles.cross} viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M10 4v12M4 10h12" />
+                </svg>
               </button>
             </Heading>
             <div id={panel} role="region" aria-labelledby={trigger} className={styles.panel} inert={!isOpen}>
@@ -89,7 +75,6 @@ export function LineAccordion({
                 <div className={styles.body}>{item.content}</div>
               </div>
             </div>
-            <span className={styles.rule} aria-hidden="true" />
           </div>
         );
       })}

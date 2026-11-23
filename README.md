@@ -39,7 +39,7 @@ With no attribute, the system colour scheme decides. Set `data-theme="light"` or
 | Category | Components |
 | --- | --- |
 | Essentials | Morph Button, Glide Tabs, Soft Switch, Copy Field |
-| Accordions | Plus-Minus Accordion, Line Accordion, Shelf Accordion, Layer Accordion, Cascade Accordion |
+| Accordions | Plus-Minus Accordion, Hairline Accordion, Tile Accordion, Layer Accordion, Cascade Accordion |
 | Buttons | Depth Key, Pillow Press, Hold to Confirm, Dither Fill, Gloss Button |
 | Cards | Fan Deck, Perforated Ticket |
 | Navigation | Pebble Tabs, Hover Reveal, Branch Sidebar, Ruler Sidebar |

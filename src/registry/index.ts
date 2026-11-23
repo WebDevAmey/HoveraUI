@@ -11,10 +11,10 @@ import copyFieldMeta from "@/components/ui/copy-field/meta";
 import copyFieldDemo from "@/components/ui/copy-field/demo";
 import plusMinusAccordionMeta from "@/components/ui/plus-minus-accordion/meta";
 import plusMinusAccordionDemo from "@/components/ui/plus-minus-accordion/demo";
-import lineAccordionMeta from "@/components/ui/line-accordion/meta";
-import lineAccordionDemo from "@/components/ui/line-accordion/demo";
-import shelfAccordionMeta from "@/components/ui/shelf-accordion/meta";
-import shelfAccordionDemo from "@/components/ui/shelf-accordion/demo";
+import hairlineAccordionMeta from "@/components/ui/hairline-accordion/meta";
+import hairlineAccordionDemo from "@/components/ui/hairline-accordion/demo";
+import tileAccordionMeta from "@/components/ui/tile-accordion/meta";
+import tileAccordionDemo from "@/components/ui/tile-accordion/demo";
 import layerAccordionMeta from "@/components/ui/layer-accordion/meta";
 import layerAccordionDemo from "@/components/ui/layer-accordion/demo";
 import cascadeAccordionMeta from "@/components/ui/cascade-accordion/meta";
@@ -53,8 +53,8 @@ export const registry: Entry[] = [
   { meta: softSwitchMeta, Demo: softSwitchDemo },
   { meta: copyFieldMeta, Demo: copyFieldDemo },
   { meta: plusMinusAccordionMeta, Demo: plusMinusAccordionDemo },
-  { meta: lineAccordionMeta, Demo: lineAccordionDemo },
-  { meta: shelfAccordionMeta, Demo: shelfAccordionDemo },
+  { meta: hairlineAccordionMeta, Demo: hairlineAccordionDemo },
+  { meta: tileAccordionMeta, Demo: tileAccordionDemo },
   { meta: layerAccordionMeta, Demo: layerAccordionDemo },
   { meta: cascadeAccordionMeta, Demo: cascadeAccordionDemo },
   { meta: depthKeyMeta, Demo: depthKeyDemo },

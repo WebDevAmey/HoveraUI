@@ -1,0 +1,138 @@
+.root {
+  --open: 420ms;
+  --close: 280ms;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  font-family: var(--hv-font-sans);
+  color: var(--hv-ink);
+}
+
+/* A soft tile drawn with a ring rather than a border, so it never shifts the layout. */
+.tile {
+  padding: 20px;
+  border-radius: var(--hv-r-2);
+  background: var(--hv-raised);
+  box-shadow: 0 0 0 1px var(--hv-line);
+  transition: box-shadow var(--hv-dur-2) ease;
+}
+
+@media (hover: hover) {
+  .tile:hover {
+    box-shadow: 0 0 0 1px var(--hv-line-strong);
+  }
+}
+
+.heading {
+  margin: 0;
+  font: inherit;
+}
+
+.trigger {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 6px;
+  border-radius: var(--hv-r-1);
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  font: 500 clamp(17px, 2vw, 19px) / 1.25 var(--hv-font-sans);
+  letter-spacing: -0.02em;
+}
+
+/* A plus that swings an eighth of a turn into a cross, with a little overshoot. */
+.cross {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  transition: rotate var(--close) var(--hv-ease-out);
+}
+
+.tile[data-state="open"] .cross {
+  rotate: 45deg;
+  transition: rotate var(--open) var(--hv-ease-spring);
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows var(--close) var(--hv-ease-out),
+    opacity 160ms ease;
+}
+
+.tile[data-state="open"] .panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition:
+    grid-template-rows var(--open) var(--hv-ease-out),
+    opacity 300ms ease 80ms;
+}
+
+.clip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.body {
+  max-width: 36rem;
+  padding: 8px 36px 0 0;
+  font: 400 15.5px / 1.6 var(--hv-font-sans);
+  color: var(--hv-ink-2);
+  text-wrap: pretty;
+}
+
+.body > :first-child {
+  margin-top: 0;
+}
+
+.body > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+  .tile {
+    padding: 16px;
+  }
+
+  .body {
+    padding-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cross,
+  .tile[data-state] .cross,
+  .panel,
+  .tile[data-state] .panel {
+    transition: none;
+  }
+
+  .tile[data-state="open"] .panel {
+    transition: opacity var(--hv-dur-1) linear;
+  }
+}

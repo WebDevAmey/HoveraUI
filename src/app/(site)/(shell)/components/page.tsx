@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 /** Demos built for a full stage are shown smaller here, so each one fits its card whole. */
 const zoom: Record<string, number> = {
   "plus-minus-accordion": 0.8,
-  "line-accordion": 0.72,
-  "shelf-accordion": 0.66,
+  "hairline-accordion": 0.78,
+  "tile-accordion": 0.78,
   "layer-accordion": 0.74,
   "cascade-accordion": 0.74,
   "fan-deck": 0.82,

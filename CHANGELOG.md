@@ -2,6 +2,17 @@
 
 All notable changes to the Hovera UI registry and site.
 
+## 2026-11-23 — Hairline Accordion and Tile Accordion
+
+### Added
+
+- `hairline-accordion`: a quiet FAQ list between hairlines. Opening a row turns its plus into a minus (one bar swings half a turn, the other falls away) while the answer eases down and lifts into place.
+- `tile-accordion`: each question on its own soft tile with a ring that firms on hover. Opening one swings its plus round into a cross with a slight overshoot as the answer grows in and fades up.
+
+### Removed
+
+- `line-accordion` and `shelf-accordion`, with their demos and registry items.
+
 ## 2026-11-23 — Branch Sidebar, Ruler Sidebar and Gloss Button
 
 ### Added

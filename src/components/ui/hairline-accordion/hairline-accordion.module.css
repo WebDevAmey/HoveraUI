@@ -1,0 +1,154 @@
+.root {
+  --open: 380ms;
+  --close: 300ms;
+
+  width: 100%;
+  border-top: 1px solid var(--hv-line);
+  font-family: var(--hv-font-sans);
+  color: var(--hv-ink);
+}
+
+.item {
+  border-bottom: 1px solid var(--hv-line);
+}
+
+.heading {
+  margin: 0;
+  font: inherit;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 64px;
+  padding: 16px 0;
+  border: 0;
+  background: none;
+  font: 500 17px / 1.35 var(--hv-font-sans);
+  letter-spacing: -0.01em;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--hv-accent);
+  outline-offset: 2px;
+  border-radius: var(--hv-r-2);
+}
+
+.title {
+  min-width: 0;
+  color: var(--hv-ink);
+  transition: color var(--hv-dur-1) ease;
+}
+
+@media (hover: hover) {
+  .trigger:hover .title {
+    color: var(--hv-ink-2);
+  }
+}
+
+/* Two short bars. Opening turns the flat one half a turn and lets the upright one fall away. */
+.sign {
+  position: relative;
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+.sign::before,
+.sign::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--hv-ink-3);
+  transition:
+    rotate var(--close) var(--hv-ease-out),
+    opacity 200ms ease;
+}
+
+.sign::after {
+  rotate: 90deg;
+}
+
+.item[data-state="open"] .sign::before {
+  rotate: 180deg;
+  transition-duration: var(--open), 200ms;
+}
+
+.item[data-state="open"] .sign::after {
+  rotate: 0deg;
+  opacity: 0;
+  transition-duration: var(--open), 200ms;
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--close) var(--hv-ease-out);
+}
+
+.item[data-state="open"] .panel {
+  grid-template-rows: 1fr;
+  transition-duration: var(--open);
+}
+
+.clip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.body {
+  max-width: 38em;
+  padding: 0 0 22px;
+  font: 400 15px / 1.65 var(--hv-font-sans);
+  color: var(--hv-ink-2);
+  opacity: 0;
+  translate: 0 -4px;
+  transition:
+    opacity 200ms ease,
+    translate var(--close) var(--hv-ease-out);
+}
+
+.body > :first-child {
+  margin-top: 0;
+}
+
+.body > :last-child {
+  margin-bottom: 0;
+}
+
+.item[data-state="open"] .body {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 240ms ease 60ms,
+    translate var(--open) var(--hv-ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .item[data-state] .panel,
+  .sign::before,
+  .sign::after,
+  .item[data-state] .sign::before,
+  .item[data-state] .sign::after {
+    transition: none;
+  }
+
+  .body,
+  .item[data-state="open"] .body {
+    translate: none;
+    transition: opacity var(--hv-dur-1) linear;
+  }
+}

@@ -100,29 +100,50 @@
 }
 
 /* The one highlight that glides between rows. */
-.pill {
+.pill,
+.hover {
   position: absolute;
   top: 0;
-  right: 0;
   left: 0;
   border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.pill {
   background: var(--hv-raised);
   box-shadow:
     0 1px 2px rgb(0 0 0 / 0.05),
     inset 0 0 0 1px var(--hv-line);
-  opacity: 0;
-  pointer-events: none;
 }
 
+/* A long, soft ease-out: quick to leave, gentle to land. */
 .pill[data-ready] {
   transition:
-    transform 220ms var(--hv-ease-in-out),
-    height 220ms var(--hv-ease-in-out),
-    opacity 220ms var(--hv-ease-in-out);
+    transform 380ms var(--hv-ease-out),
+    width 380ms var(--hv-ease-out),
+    height 380ms var(--hv-ease-out),
+    opacity 200ms ease;
 }
 
-.pill[data-instant] {
-  transition: none !important;
+/* The hover highlight: a faint wash under the pointer, behind the active pill. */
+.hover {
+  background: color-mix(in oklab, var(--hv-ink) 5%, transparent);
+  transition:
+    transform 260ms var(--hv-ease-out),
+    width 260ms var(--hv-ease-out),
+    height 260ms var(--hv-ease-out),
+    opacity 180ms ease;
+}
+
+.hover[data-shown] {
+  opacity: 1;
+}
+
+.pill[data-instant],
+.hover[data-instant] {
+  transition: opacity 180ms ease !important;
 }
 
 /* Groups */
@@ -254,11 +275,15 @@
   top: 50%;
   width: 8px;
   height: 1px;
-  transition: background-color 200ms ease;
+  transform-origin: left;
+  transition:
+    background-color 300ms ease,
+    transform 380ms var(--hv-ease-out);
 }
 
 .tick[data-active] {
-  background: var(--hv-ink-3);
+  background: var(--hv-ink-2);
+  transform: scaleX(1.5);
 }
 
 .link {
@@ -271,12 +296,19 @@
   border-radius: 10px;
   color: var(--hv-ink-2);
   text-decoration: none;
-  transition: color 150ms ease;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color 220ms ease,
+    transform 160ms var(--hv-ease-out);
 }
 
+/* Colour alone marks the active row; a weight change would nudge the text as it moves. */
 .link[aria-current="page"] {
   color: var(--hv-ink);
-  font-weight: 500;
+}
+
+.link:active {
+  transform: scale(0.985);
 }
 
 .link:focus-visible {
@@ -339,9 +371,15 @@
 
 @media (prefers-reduced-motion: reduce) {
   .pill[data-ready],
+  .hover,
+  .link,
   .region,
   .chevron,
   .tick {
     transition: none;
+  }
+  .tick[data-active],
+  .link:active {
+    transform: none;
   }
 }

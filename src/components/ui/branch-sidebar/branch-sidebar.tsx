@@ -82,6 +82,7 @@ export function BranchSidebar({
 
   const navRef = useRef<HTMLElement>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
+  const hoverRef = useRef<HTMLSpanElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -113,8 +114,8 @@ export function BranchSidebar({
     const box = nav.getBoundingClientRect();
     const rect = link.getBoundingClientRect();
     if (!animate) pill.dataset.instant = "";
-    pill.style.left = `${rect.left - box.left}px`;
-    pill.style.transform = `translateY(${rect.top - box.top}px)`;
+    pill.style.transform = `translate3d(${rect.left - box.left}px, ${rect.top - box.top}px, 0)`;
+    pill.style.width = `${rect.width}px`;
     pill.style.height = `${rect.height}px`;
     pill.style.opacity = "1";
     if (!animate) {
@@ -171,7 +172,34 @@ export function BranchSidebar({
     }
   };
 
-  const toggle = (title: string) => setCollapsed((state) => ({ ...state, [title]: !state[title] }));
+  // A softer hover highlight follows the pointer between rows. It fades in where it lands,
+  // then glides from row to row while the pointer stays inside the list.
+  const hoverTo = (link: HTMLElement) => {
+    const nav = navRef.current;
+    const ghost = hoverRef.current;
+    if (!nav || !ghost || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const box = nav.getBoundingClientRect();
+    const rect = link.getBoundingClientRect();
+    const shown = ghost.dataset.shown !== undefined;
+    if (!shown) ghost.dataset.instant = "";
+    ghost.style.transform = `translate3d(${rect.left - box.left}px, ${rect.top - box.top}px, 0)`;
+    ghost.style.width = `${rect.width}px`;
+    ghost.style.height = `${rect.height}px`;
+    if (!shown) {
+      void ghost.offsetWidth;
+      delete ghost.dataset.instant;
+      ghost.dataset.shown = "";
+    }
+  };
+
+  const hoverOut = () => {
+    if (hoverRef.current) delete hoverRef.current.dataset.shown;
+  };
+
+  const toggle = (title: string) => {
+    hoverOut();
+    setCollapsed((state) => ({ ...state, [title]: !state[title] }));
+  };
 
   return (
     <div className={cn(styles.root, className)} {...props}>
@@ -185,7 +213,10 @@ export function BranchSidebar({
             ref={inputRef}
             type="search"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              hoverOut();
+              setQuery(event.target.value);
+            }}
             onKeyDown={onSearchKey}
             placeholder={searchPlaceholder}
             aria-label={`Filter ${label.toLowerCase()}`}
@@ -201,7 +232,8 @@ export function BranchSidebar({
       )}
 
       <div ref={scrollRef} className={styles.scroll}>
-        <nav ref={navRef} id={`${id}-nav`} aria-label={label} className={styles.nav}>
+        <nav ref={navRef} id={`${id}-nav`} aria-label={label} className={styles.nav} onPointerLeave={hoverOut}>
+          <span ref={hoverRef} aria-hidden="true" className={styles.hover} />
           <span ref={pillRef} aria-hidden="true" className={styles.pill} />
           {visible.map((group) => {
             const open = term ? true : !collapsed[group.title];
@@ -240,6 +272,7 @@ export function BranchSidebar({
                               onNavigate?.(item.href, event);
                               if (activeHref === undefined) setInnerActive(item.href);
                             }}
+                            onPointerEnter={(event) => hoverTo(event.currentTarget)}
                             className={styles.link}
                           >
                             {item.icon && <span className={styles.itemIcon}>{item.icon}</span>}

@@ -2,12 +2,17 @@
 
 All notable changes to the Hovera UI registry and site.
 
-## 2026-11-23 — Branch Sidebar
+## 2026-11-23 — Branch Sidebar and Ruler Sidebar
 
 ### Added
 
+- `ruler-sidebar`: a sidebar drawn as a fine ruler. Each row hangs off a tick with minor ticks between rows, the active tick reaches further out and its label slides with it, edges fade only while there is more to scroll, and one button slides the whole panel away to a hairline.
 - `branch-sidebar`: a panel sidebar with quick search, collapsible groups on a hairline branch, a lit tick on the active row and one highlight that glides between rows.
 - `branch-sidebar` feels smoother: a soft hover wash follows the pointer from row to row, the active highlight lands on a longer ease-out, rows press in slightly on click, and the active row no longer changes weight, so its text stays still.
+
+### Removed
+
+- `quiet-tooltip` and `rolling-number`, with their demos and registry items.
 
 ## 2026-11-17 — A quieter, clearer site
 

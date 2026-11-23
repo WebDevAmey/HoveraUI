@@ -49,8 +49,6 @@ Every component lists the material it explores. Items marked with † replace a 
 | 32 | Morph Button | Idle, loading and done labels share one grid cell; the outgoing one lifts and blurs while the next settles. |
 | 33 | Glide Tabs | An inked copy of the tab row is clipped to the active tab, so fill and text colour move together. |
 | 34 | Soft Switch | A settings row whose thumb stretches toward its destination while pressed. |
-| 35 | Quiet Tooltip | Grouped tooltips: the first waits, neighbours then open instantly and without motion. |
-| 36 | Rolling Number | Tabular digits on wheels that turn to their new value, lowest place first. |
 | 37 | Copy Field | A read-only value whose copy glyph blurs into a check while a small note rises. |
 
 ## File structure

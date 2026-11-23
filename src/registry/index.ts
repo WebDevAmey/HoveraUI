@@ -7,10 +7,6 @@ import glideTabsMeta from "@/components/ui/glide-tabs/meta";
 import glideTabsDemo from "@/components/ui/glide-tabs/demo";
 import softSwitchMeta from "@/components/ui/soft-switch/meta";
 import softSwitchDemo from "@/components/ui/soft-switch/demo";
-import quietTooltipMeta from "@/components/ui/quiet-tooltip/meta";
-import quietTooltipDemo from "@/components/ui/quiet-tooltip/demo";
-import rollingNumberMeta from "@/components/ui/rolling-number/meta";
-import rollingNumberDemo from "@/components/ui/rolling-number/demo";
 import copyFieldMeta from "@/components/ui/copy-field/meta";
 import copyFieldDemo from "@/components/ui/copy-field/demo";
 import plusMinusAccordionMeta from "@/components/ui/plus-minus-accordion/meta";
@@ -49,6 +45,8 @@ import hoverRevealMeta from "@/components/ui/hover-reveal/meta";
 import hoverRevealDemo from "@/components/ui/hover-reveal/demo";
 import branchSidebarMeta from "@/components/ui/branch-sidebar/meta";
 import branchSidebarDemo from "@/components/ui/branch-sidebar/demo";
+import rulerSidebarMeta from "@/components/ui/ruler-sidebar/meta";
+import rulerSidebarDemo from "@/components/ui/ruler-sidebar/demo";
 import anchorPopoverMeta from "@/components/ui/anchor-popover/meta";
 import anchorPopoverDemo from "@/components/ui/anchor-popover/demo";
 import ledMeterMeta from "@/components/ui/led-meter/meta";
@@ -61,8 +59,6 @@ export const registry: Entry[] = [
   { meta: morphButtonMeta, Demo: morphButtonDemo },
   { meta: glideTabsMeta, Demo: glideTabsDemo },
   { meta: softSwitchMeta, Demo: softSwitchDemo },
-  { meta: quietTooltipMeta, Demo: quietTooltipDemo },
-  { meta: rollingNumberMeta, Demo: rollingNumberDemo },
   { meta: copyFieldMeta, Demo: copyFieldDemo },
   { meta: plusMinusAccordionMeta, Demo: plusMinusAccordionDemo },
   { meta: lineAccordionMeta, Demo: lineAccordionDemo },
@@ -82,6 +78,7 @@ export const registry: Entry[] = [
   { meta: pebbleTabsMeta, Demo: pebbleTabsDemo },
   { meta: hoverRevealMeta, Demo: hoverRevealDemo },
   { meta: branchSidebarMeta, Demo: branchSidebarDemo },
+  { meta: rulerSidebarMeta, Demo: rulerSidebarDemo },
   { meta: anchorPopoverMeta, Demo: anchorPopoverDemo },
   { meta: ledMeterMeta, Demo: ledMeterDemo },
 ];

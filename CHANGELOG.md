@@ -2,6 +2,12 @@
 
 All notable changes to the Hovera UI registry and site.
 
+## 2026-11-23 — Branch Sidebar
+
+### Added
+
+- `branch-sidebar`: a panel sidebar with quick search, collapsible groups on a hairline branch, a lit tick on the active row and one highlight that glides between rows.
+
 ## 2026-11-17 — A quieter, clearer site
 
 ### Changed

@@ -47,6 +47,8 @@ import pebbleTabsMeta from "@/components/ui/pebble-tabs/meta";
 import pebbleTabsDemo from "@/components/ui/pebble-tabs/demo";
 import hoverRevealMeta from "@/components/ui/hover-reveal/meta";
 import hoverRevealDemo from "@/components/ui/hover-reveal/demo";
+import branchSidebarMeta from "@/components/ui/branch-sidebar/meta";
+import branchSidebarDemo from "@/components/ui/branch-sidebar/demo";
 import anchorPopoverMeta from "@/components/ui/anchor-popover/meta";
 import anchorPopoverDemo from "@/components/ui/anchor-popover/demo";
 import ledMeterMeta from "@/components/ui/led-meter/meta";
@@ -79,6 +81,7 @@ export const registry: Entry[] = [
   { meta: commandPaletteMeta, Demo: commandPaletteDemo },
   { meta: pebbleTabsMeta, Demo: pebbleTabsDemo },
   { meta: hoverRevealMeta, Demo: hoverRevealDemo },
+  { meta: branchSidebarMeta, Demo: branchSidebarDemo },
   { meta: anchorPopoverMeta, Demo: anchorPopoverDemo },
   { meta: ledMeterMeta, Demo: ledMeterDemo },
 ];

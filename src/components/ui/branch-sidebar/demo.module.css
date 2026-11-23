@@ -1,0 +1,5 @@
+/* A fixed height so the panel scrolls like it would beside a page. */
+.sidebar {
+  width: min(100%, 272px);
+  height: 460px;
+}

@@ -31,9 +31,6 @@ Every component lists the material it explores. Items marked with † replace a 
 | 19 | Pixel Wipe | Effects | Pixel | A section transition that covers and reveals content in stepped pixel blocks. |
 | 20 | Aura | Effects | Ethereal | A soft halo that breathes at a resting rate, made from layered conic and radial gradients. |
 | 21 | Sliding Segment | Inputs | Elastic | Segmented control whose thumb stretches toward its target, then settles. |
-| 22 | Stepped OTP | Inputs | Mechanical | One-time code input; each digit drops in on a stepped curve. Paste fills every slot. |
-| 23 | Detent Slider | Inputs | Mechanical | Slider with tick marks, snap detents, value readout and keyboard steps. |
-| 24 | Command Palette | Inputs | Glass | Keyboard-first palette with grouped results and a small fuzzy matcher. |
 | 25 | Orbit Gallery | Navigation | Ethereal | Items on a slow ring around a mark. Hover or focus pauses and opens a preview. |
 | 26 | Plus-Minus Accordion | Navigation | Editorial | Circular toggle whose plus folds into a minus while the fill inverts; height animates with grid rows. |
 | 27 | Timeline Rail | Navigation | Editorial | A date rail with nodes for changelogs and histories. |

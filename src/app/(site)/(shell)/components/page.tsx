@@ -18,7 +18,6 @@ const zoom: Record<string, number> = {
   "layer-accordion": 0.74,
   "cascade-accordion": 0.74,
   "fan-deck": 0.82,
-  "command-palette": 0.72,
   "hover-reveal": 0.6,
   "anchor-popover": 0.7,
 };

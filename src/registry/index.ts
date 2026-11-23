@@ -33,12 +33,6 @@ import ditherImageMeta from "@/components/ui/dither-image/meta";
 import ditherImageDemo from "@/components/ui/dither-image/demo";
 import perforatedTicketMeta from "@/components/ui/perforated-ticket/meta";
 import perforatedTicketDemo from "@/components/ui/perforated-ticket/demo";
-import steppedOtpMeta from "@/components/ui/stepped-otp/meta";
-import steppedOtpDemo from "@/components/ui/stepped-otp/demo";
-import detentSliderMeta from "@/components/ui/detent-slider/meta";
-import detentSliderDemo from "@/components/ui/detent-slider/demo";
-import commandPaletteMeta from "@/components/ui/command-palette/meta";
-import commandPaletteDemo from "@/components/ui/command-palette/demo";
 import pebbleTabsMeta from "@/components/ui/pebble-tabs/meta";
 import pebbleTabsDemo from "@/components/ui/pebble-tabs/demo";
 import hoverRevealMeta from "@/components/ui/hover-reveal/meta";
@@ -72,9 +66,6 @@ export const registry: Entry[] = [
   { meta: fanDeckMeta, Demo: fanDeckDemo },
   { meta: ditherImageMeta, Demo: ditherImageDemo },
   { meta: perforatedTicketMeta, Demo: perforatedTicketDemo },
-  { meta: steppedOtpMeta, Demo: steppedOtpDemo },
-  { meta: detentSliderMeta, Demo: detentSliderDemo },
-  { meta: commandPaletteMeta, Demo: commandPaletteDemo },
   { meta: pebbleTabsMeta, Demo: pebbleTabsDemo },
   { meta: hoverRevealMeta, Demo: hoverRevealDemo },
   { meta: branchSidebarMeta, Demo: branchSidebarDemo },

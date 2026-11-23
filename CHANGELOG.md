@@ -13,6 +13,11 @@ All notable changes to the Hovera UI registry and site.
 ### Removed
 
 - `quiet-tooltip` and `rolling-number`, with their demos and registry items.
+- The Inputs category: `stepped-otp`, `detent-slider` and `command-palette`. Site search keeps its palette as a site-only component.
+
+### Changed
+
+- `ruler-sidebar` is calmer and has a character of its own: major and minor ticks now differ in length and weight, an accent needle with a bead glides to the active row, a loupe swells and darkens the ticks and labels under the pointer (and follows keyboard focus), and a header carries an optional title and the row count.
 
 ## 2026-11-17 — A quieter, clearer site
 

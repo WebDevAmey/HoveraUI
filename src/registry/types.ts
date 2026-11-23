@@ -3,7 +3,6 @@ export const categories = [
   { id: "accordions", label: "Accordions" },
   { id: "buttons", label: "Buttons" },
   { id: "cards", label: "Cards" },
-  { id: "inputs", label: "Inputs" },
   { id: "navigation", label: "Navigation" },
   { id: "feedback", label: "Feedback" },
 ] as const;

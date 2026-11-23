@@ -42,7 +42,6 @@ With no attribute, the system colour scheme decides. Set `data-theme="light"` or
 | Accordions | Plus-Minus Accordion, Line Accordion, Shelf Accordion, Layer Accordion, Cascade Accordion |
 | Buttons | Depth Key, Pillow Press, Hold to Confirm, Dither Fill |
 | Cards | Fan Deck, Dither Image, Perforated Ticket |
-| Inputs | Stepped OTP, Detent Slider, Command Palette |
 | Navigation | Pebble Tabs, Hover Reveal, Branch Sidebar, Ruler Sidebar |
 | Feedback | Anchor Popover, LED Meter |
 

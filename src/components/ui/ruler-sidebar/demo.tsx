@@ -35,7 +35,7 @@ export default function Demo() {
       defaultActiveHref="#film-back"
       // The demo stays on this page: rows switch in place instead of jumping to an anchor.
       onNavigate={(_, event) => event.preventDefault()}
-      label="Glossary"
+      title="Glossary"
       className={styles.sidebar}
     />
   );

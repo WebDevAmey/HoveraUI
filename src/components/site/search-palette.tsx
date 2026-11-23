@@ -11,7 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { cn } from "@/lib/cn";
-import styles from "./command-palette.module.css";
+import styles from "./search-palette.module.css";
 
 export type CommandItem = {
   id: string;

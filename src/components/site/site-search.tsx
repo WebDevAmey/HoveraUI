@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { CommandPalette, type CommandGroup } from "@/components/ui/command-palette/command-palette";
+import { CommandPalette, type CommandGroup } from "@/components/site/search-palette";
 
 export type SearchGroup = {
   label: string;

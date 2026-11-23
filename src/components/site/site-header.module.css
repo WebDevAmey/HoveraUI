@@ -72,10 +72,16 @@
   transition: clip-path var(--t) var(--ease-morph);
 }
 
-/* Before measurement the shell is just the bar, drawn by the bar itself. */
+/* Before measurement the shell is just the bar, drawn by the bar itself with the same shadow,
+   and the unmeasured shell layer stays out of sight so the hand-off is seamless. */
 .nav:not([data-ready]) .bar {
   border-radius: var(--r);
   background: var(--shell);
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.1)) drop-shadow(0 14px 24px rgb(0 0 0 / 0.16));
+}
+
+.nav:not([data-ready]) .shellWrap {
+  visibility: hidden;
 }
 
 /* Sized by its content, never by the nav, so a late font swap is measured correctly. */

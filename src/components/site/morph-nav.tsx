@@ -131,7 +131,16 @@ export function MorphNav({
     nav.style.width = `${barW}px`;
     panels.forEach((p, i) => p.style.setProperty("left", `${boxes[i].l - bounds.l}px`));
     geo.current = { boxes, bounds, barW, barH };
+    // A measure is a correction, not a morph: snap the clip into place. Without this the first
+    // measure after hydration animated the shell from its unclipped full-panel rectangle (with
+    // its wide drop shadow) down to the bar, which read as a box flashing on every reload.
+    const clipped = [shellRef.current, clipRef.current].filter((el): el is HTMLDivElement => el !== null);
+    clipped.forEach((el) => (el.style.transition = "none"));
     apply();
+    clipped.forEach((el) => {
+      void getComputedStyle(el).clipPath;
+      el.style.transition = "";
+    });
     nav.dataset.ready = "";
   }, [apply]);
 

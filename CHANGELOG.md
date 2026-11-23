@@ -15,10 +15,15 @@ All notable changes to the Hovera UI registry and site.
 
 - `quiet-tooltip` and `rolling-number`, with their demos and registry items.
 - The Inputs category: `stepped-otp`, `detent-slider` and `command-palette`. Site search keeps its palette as a site-only component.
+- `dither-image` and `led-meter`, with their demos and registry items. The home page features `gloss-button` in place of the LED meter.
 
 ### Changed
 
 - `ruler-sidebar` is calmer and has a character of its own: major and minor ticks now differ in length and weight, an accent needle with a bead glides to the active row, a loupe swells and darkens the ticks and labels under the pointer (and follows keyboard focus), and a header carries an optional title and the row count.
+
+### Fixed
+
+- The navbar no longer flashes a large dark box with a pale shadow on page load or reload. Its first measurement used to animate the shell down from its full open size; it now snaps into place, and the bar carries the same shadow before and after hydration.
 
 ## 2026-11-17 — A quieter, clearer site
 

@@ -10,7 +10,7 @@ const featured: { slug: string; className: string }[] = [
   { slug: "layer-accordion", className: "md:col-span-3 md:row-span-2" },
   { slug: "depth-key", className: "md:col-span-2" },
   { slug: "morph-button", className: "md:col-span-2" },
-  { slug: "led-meter", className: "md:col-span-2" },
+  { slug: "gloss-button", className: "md:col-span-2" },
 ];
 
 const usage = `import { DepthKey } from "@/components/ui/depth-key/depth-key";

@@ -41,9 +41,9 @@ With no attribute, the system colour scheme decides. Set `data-theme="light"` or
 | Essentials | Morph Button, Glide Tabs, Soft Switch, Copy Field |
 | Accordions | Plus-Minus Accordion, Line Accordion, Shelf Accordion, Layer Accordion, Cascade Accordion |
 | Buttons | Depth Key, Pillow Press, Hold to Confirm, Dither Fill, Gloss Button |
-| Cards | Fan Deck, Dither Image, Perforated Ticket |
+| Cards | Fan Deck, Perforated Ticket |
 | Navigation | Pebble Tabs, Hover Reveal, Branch Sidebar, Ruler Sidebar |
-| Feedback | Anchor Popover, LED Meter |
+| Feedback | Anchor Popover |
 
 ## Develop
 

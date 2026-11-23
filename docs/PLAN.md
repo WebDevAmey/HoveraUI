@@ -17,7 +17,6 @@ Every component lists the material it explores. Items marked with † replace a 
 | 5 | Hold to Confirm | Buttons | Tactile | Press and hold fills a progress ring; early release drains it. Keyboard hold and live status. |
 | 6 | Detent Toggle | Buttons | Neumorphism | A switch whose knob climbs a visible detent ridge and settles with a small overshoot. |
 | 7 | Glass Specimen † | Cards | Glass | Replaces Tilt Specimen's generic sheen. A frosted pane over a colour field that tilts and refracts a specular band. |
-| 8 | Dither Image | Cards | Pixel | An image drawn through two-tone ordered dither that resolves to full colour on hover or focus. |
 | 9 | Fan Deck | Cards | Tactile | A stack that fans like a hand of cards; one card can be picked and lifts out. |
 | 10 | Gilded Frame † | Cards | Luxury | Replaces Spotlight Edge. A double hairline frame with serif numerals and a gilt foil band that follows the light. |
 | 11 | Corner Fold | Cards | Paper | The corner peels back with a real curl shadow to show a note underneath. |
@@ -36,7 +35,6 @@ Every component lists the material it explores. Items marked with † replace a 
 | 27 | Timeline Rail | Navigation | Editorial | A date rail with nodes for changelogs and histories. |
 | 28 | Morph Tabs | Navigation | Editorial | Chapter tabs with roman numerals; the indicator stretches from tab to tab. |
 | 29 | Stack Toast | Feedback | Glass | Toasts stack with depth and fan out on hover or focus. |
-| 30 | LED Meter | Feedback | Pixel | Segmented LED level meter, determinate or indeterminate. |
 | 31 | Anchor Popover | Feedback | Paper | One popover whose arrow travels between anchors. Uses CSS anchor positioning where available. |
 
 ### Essentials (second pass)

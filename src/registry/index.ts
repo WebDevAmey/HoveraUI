@@ -31,8 +31,6 @@ import glossButtonMeta from "@/components/ui/gloss-button/meta";
 import glossButtonDemo from "@/components/ui/gloss-button/demo";
 import fanDeckMeta from "@/components/ui/fan-deck/meta";
 import fanDeckDemo from "@/components/ui/fan-deck/demo";
-import ditherImageMeta from "@/components/ui/dither-image/meta";
-import ditherImageDemo from "@/components/ui/dither-image/demo";
 import perforatedTicketMeta from "@/components/ui/perforated-ticket/meta";
 import perforatedTicketDemo from "@/components/ui/perforated-ticket/demo";
 import pebbleTabsMeta from "@/components/ui/pebble-tabs/meta";
@@ -45,8 +43,6 @@ import rulerSidebarMeta from "@/components/ui/ruler-sidebar/meta";
 import rulerSidebarDemo from "@/components/ui/ruler-sidebar/demo";
 import anchorPopoverMeta from "@/components/ui/anchor-popover/meta";
 import anchorPopoverDemo from "@/components/ui/anchor-popover/demo";
-import ledMeterMeta from "@/components/ui/led-meter/meta";
-import ledMeterDemo from "@/components/ui/led-meter/demo";
 
 export type Entry = { meta: ComponentMeta; Demo: ComponentType };
 
@@ -67,14 +63,12 @@ export const registry: Entry[] = [
   { meta: ditherFillMeta, Demo: ditherFillDemo },
   { meta: glossButtonMeta, Demo: glossButtonDemo },
   { meta: fanDeckMeta, Demo: fanDeckDemo },
-  { meta: ditherImageMeta, Demo: ditherImageDemo },
   { meta: perforatedTicketMeta, Demo: perforatedTicketDemo },
   { meta: pebbleTabsMeta, Demo: pebbleTabsDemo },
   { meta: hoverRevealMeta, Demo: hoverRevealDemo },
   { meta: branchSidebarMeta, Demo: branchSidebarDemo },
   { meta: rulerSidebarMeta, Demo: rulerSidebarDemo },
   { meta: anchorPopoverMeta, Demo: anchorPopoverDemo },
-  { meta: ledMeterMeta, Demo: ledMeterDemo },
 ];
 
 export function getEntry(slug: string): Entry | undefined {

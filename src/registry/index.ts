@@ -27,6 +27,8 @@ import holdToConfirmMeta from "@/components/ui/hold-to-confirm/meta";
 import holdToConfirmDemo from "@/components/ui/hold-to-confirm/demo";
 import ditherFillMeta from "@/components/ui/dither-fill/meta";
 import ditherFillDemo from "@/components/ui/dither-fill/demo";
+import glossButtonMeta from "@/components/ui/gloss-button/meta";
+import glossButtonDemo from "@/components/ui/gloss-button/demo";
 import fanDeckMeta from "@/components/ui/fan-deck/meta";
 import fanDeckDemo from "@/components/ui/fan-deck/demo";
 import ditherImageMeta from "@/components/ui/dither-image/meta";
@@ -63,6 +65,7 @@ export const registry: Entry[] = [
   { meta: pillowPressMeta, Demo: pillowPressDemo },
   { meta: holdToConfirmMeta, Demo: holdToConfirmDemo },
   { meta: ditherFillMeta, Demo: ditherFillDemo },
+  { meta: glossButtonMeta, Demo: glossButtonDemo },
   { meta: fanDeckMeta, Demo: fanDeckDemo },
   { meta: ditherImageMeta, Demo: ditherImageDemo },
   { meta: perforatedTicketMeta, Demo: perforatedTicketDemo },

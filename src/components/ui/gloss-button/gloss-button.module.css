@@ -1,0 +1,193 @@
+.button {
+  /* Glaze: lighter at the top, deeper at the foot. */
+  --top: #6489fc;
+  --foot: #3056e2;
+  --rim: #2645c4;
+  --label: #ffffff;
+  --sheen: color-mix(in oklab, white 34%, transparent);
+  --cast: color-mix(in oklab, #1f3bb3 30%, transparent);
+  --ring: #3056e2;
+
+  --h: 40px;
+  --px: 18px;
+  --type: 14px;
+  --radius: 10px;
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: var(--h);
+  padding: 0 var(--px);
+  border: 1px solid var(--rim);
+  border-radius: var(--radius);
+  background: linear-gradient(to bottom, var(--top), var(--foot));
+  color: var(--label);
+  font: 500 var(--type) / 1 var(--hv-font-sans);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 color-mix(in oklab, black 12%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--sheen),
+    inset 0 -1px 0 color-mix(in oklab, black 8%, transparent),
+    0 1px 2px var(--cast),
+    0 4px 12px -4px var(--cast);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    box-shadow var(--hv-dur-2) var(--hv-ease-out),
+    translate var(--hv-dur-1) var(--hv-ease-out);
+}
+
+/* Gloss: a soft band of light across the upper half. */
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, white 16%, transparent),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+/* Hover and press wash, faded in rather than repainting the gradient. */
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--hv-dur-2) var(--hv-ease-out),
+    background-color var(--hv-dur-1) var(--hv-ease-out);
+}
+
+.button[data-size="sm"] {
+  --h: 32px;
+  --px: 12px;
+  --type: 13px;
+  --radius: 8px;
+  gap: 6px;
+}
+
+.button[data-size="lg"] {
+  --h: 48px;
+  --px: 24px;
+  --type: 16px;
+  --radius: 12px;
+}
+
+.button[data-shape="pill"] {
+  --radius: var(--hv-r-pill);
+}
+
+.button[data-tone="ink"] {
+  --top: #45443f;
+  --foot: #1f1e1c;
+  --rim: #0f0f0e;
+  --label: #f6f5f1;
+  --sheen: color-mix(in oklab, white 18%, transparent);
+  --cast: color-mix(in oklab, black 35%, transparent);
+  --ring: var(--hv-ink);
+}
+
+.button[data-tone="neutral"] {
+  --top: var(--hv-raised);
+  --foot: color-mix(in oklab, var(--hv-ink) 5%, var(--hv-raised));
+  --rim: var(--hv-line-strong);
+  --label: var(--hv-ink);
+  --sheen: color-mix(in oklab, white 70%, transparent);
+  --cast: color-mix(in oklab, black 10%, transparent);
+  --ring: var(--hv-accent);
+  text-shadow: none;
+}
+
+.icon {
+  display: inline-flex;
+  width: 1.1em;
+  height: 1.1em;
+  margin-inline-start: -2px;
+}
+
+.icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.label {
+  display: inline-block;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    translate: 0 -0.5px;
+    box-shadow:
+      inset 0 1px 0 var(--sheen),
+      inset 0 -1px 0 color-mix(in oklab, black 8%, transparent),
+      0 1px 2px var(--cast),
+      0 8px 18px -6px var(--cast);
+  }
+
+  .button:hover::after {
+    opacity: 0.08;
+  }
+}
+
+/* Press: the glaze sinks, the cast shadow tucks in and the top light dims. */
+.button:active,
+.button[data-pressed] {
+  translate: 0 1px;
+  box-shadow:
+    inset 0 1px 2px color-mix(in oklab, black 18%, transparent),
+    0 0 1px var(--cast);
+  transition-duration: 60ms;
+}
+
+.button:active::after,
+.button[data-pressed]::after {
+  background: black;
+  opacity: 0.06;
+  transition-duration: 60ms;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  translate: none;
+  box-shadow:
+    inset 0 1px 0 var(--sheen),
+    0 1px 2px var(--cast);
+}
+
+.button:disabled::after {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .button::after {
+    transition: none;
+  }
+
+  .button:hover,
+  .button:active,
+  .button[data-pressed] {
+    translate: none;
+  }
+}

@@ -2,10 +2,11 @@
 
 All notable changes to the Hovera UI registry and site.
 
-## 2026-11-23 — Branch Sidebar and Ruler Sidebar
+## 2026-11-23 — Branch Sidebar, Ruler Sidebar and Gloss Button
 
 ### Added
 
+- `gloss-button`: a glazed button with a lighter top, a deeper rim, a lit inner edge and a soft cast shadow. It lifts a touch on hover and sinks on press (pointer or keyboard). Blue, ink and neutral tones, three sizes, and a rounded or pill shape.
 - `ruler-sidebar`: a sidebar drawn as a fine ruler. Each row hangs off a tick with minor ticks between rows, the active tick reaches further out and its label slides with it, edges fade only while there is more to scroll, and one button slides the whole panel away to a hairline.
 - `branch-sidebar`: a panel sidebar with quick search, collapsible groups on a hairline branch, a lit tick on the active row and one highlight that glides between rows.
 - `branch-sidebar` feels smoother: a soft hover wash follows the pointer from row to row, the active highlight lands on a longer ease-out, rows press in slightly on click, and the active row no longer changes weight, so its text stays still.
